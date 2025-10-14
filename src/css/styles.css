@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Parkinsans", sans-serif;
+    font-weight: 700;
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ///////////////// PRINCIPAL ///////////////// */
+
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo {
+    height: 40%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #403050;
+}
+
+.titulos h1 {
+    font-size: 5vh;    
+}
+
+.titulos h2 {
+    font-size: 2.5vh;    
+}
+
+.redes {
+    display: flex;
+    gap: 1vh;
+    list-style: none;
+}
+
+.redes li {
+    padding: 1vh 2vh;
+    border-radius: 4vh;
+    background: #403050;
+}
+
+.redes li a {
+    text-decoration: none;
+    font-size: 2vh;    
+    color: #F2F6EE;
+    font-weight: 500;
+}
+
+.botao {
+    padding: 2vh 4vh;
+    border-radius: 4vh;
+    font-size: 2vh;    
+    font-weight: 500;
+    color: #F2F6EE;
+    background: #403050;
+    cursor: pointer;
+}
+
+.foto {
+    height: 70%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.foto img {
+    height: 100%;
+    width: 70%;
+    border-radius: 10vh;
+    object-fit: cover;
+}
+
+/* ///////////////// PROJETOS ///////////////// */
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.projetos{
+    width: 50%;
+    padding: 3vh;
+    display: flex;
+    align-items: center;
+}
+
+.projeto{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 3vh;
+    border-radius: 9vh;
+    background: #CCD6C2;
+}
+
+.imagem{
+    height: 70%;
+    border-radius: 6vh;
+}
+
+.imagem img{
+    height: 100%;
+    width: 100%;
+    border-radius: 6vh;
+    object-fit: cover;
+    object-position: top;
+}
+
+.descricao{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    padding: 3vh;
+    border-radius: 6vh;
+    background: #F2F6EE;
+}
+
+.textos h3{
+    font-size: 2.5vh;    
+    font-weight: 500;
+    color: #403050;
+}
+
+.textos p{
+    font-size: 1.5vh;    
+    font-weight: 400;
+    color: #403050;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+}
+
+.tags li {
+    padding: 0.5vh 1vh;
+    border-radius: 1vh;
+    font-size: 1vh;
+    font-weight: 500;
+    list-style: none;
+    background-color: #403050;
+    color: #F2F6EE;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links li {
+    padding: 0.5vh 1vh;
+    border-radius: 1vh;
+    font-size: 1.5vh;
+    font-weight: 500;
+    list-style: none;
+}
+
+.links li a{
+    text-decoration: none;
+    color: blue;
+}
+
+/* ///////////////// RESPONSIVIDADE ///////////////// */
+
