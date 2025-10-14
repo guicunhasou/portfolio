@@ -2,20 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('#projetos');
   if (!section) return;
 
+  // pega os slides (já existentes no HTML)
+  const slides = Array.from(section.querySelectorAll(':scope > .projeto'));
+  if (slides.length <= 1) return;
+
   // ativa o modo carrossel para o CSS
   section.classList.add('is-carousel');
 
-  // pega os slides (já existentes no HTML)
-  const slides = Array.from(section.querySelectorAll(':scope > .projeto'));
-  if (slides.length === 0) return;
-
   // cria botões e dots
   const btnPrev = document.createElement('button');
+  btnPrev.type = 'button';
   btnPrev.className = 'nav prev';
   btnPrev.setAttribute('aria-label', 'Anterior');
   btnPrev.textContent = '‹';
 
   const btnNext = document.createElement('button');
+  btnNext.type = 'button';
   btnNext.className = 'nav next';
   btnNext.setAttribute('aria-label', 'Próximo');
   btnNext.textContent = '›';
@@ -36,17 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let index = 0;
   let auto;
   let spacingPx = 0;
+  const maxVisible = 2;
 
   function layout() {
-    spacingPx = Math.round(section.clientWidth * 0.34);
+    const baseWidth = Math.min(section.clientWidth, 1100);
+    spacingPx = Math.round(baseWidth * 0.34);
 
     slides.forEach((slide, i) => {
       const d = i - index;
       const ad = Math.abs(d);
       const x = d * spacingPx;
 
-      const scale = ad === 0 ? 1 : ad === 1 ? 0.84 : ad === 2 ? 0.74 : 0.65;
-      const opacity = ad === 0 ? 1 : ad === 1 ? 0.55 : 0.25;
+      const scale = ad === 0 ? 1 : ad === 1 ? 0.84 : ad === 2 ? 0.7 : 0.6;
+      const opacity = ad === 0 ? 1 : ad === 1 ? 0.6 : ad === 2 ? 0.35 : 0;
 
       slide.style.setProperty('--x', `${x}px`);
       slide.style.setProperty('--scale', scale);
@@ -55,10 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.style.zIndex = String(100 - ad);
       slide.classList.toggle('is-center', ad === 0);
       slide.setAttribute('aria-hidden', ad !== 0);
-      slide.style.pointerEvents = ad > 2 ? 'none' : 'auto';
+      slide.style.pointerEvents = ad > maxVisible ? 'none' : 'auto';
+      slide.style.visibility = ad > maxVisible ? 'hidden' : 'visible';
     });
 
-    section.style.height = slides[index].offsetHeight + 'px';
+    const activeHeight = Math.max(slides[index].offsetHeight, window.innerHeight);
+    section.style.height = `${activeHeight}px`;
     dotButtons.forEach((b, i) => b.setAttribute('aria-current', i === index ? 'true' : 'false'));
   }
 
@@ -93,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
     swiping = false;
   });
+  window.addEventListener('pointercancel', () => { swiping = false; });
 
   // autoplay
   function startAutoplay() {
