@@ -13,7 +13,7 @@ body{
   font-weight: 700;
   color: var(--profundo);
   line-height: 1.35;
-  background: url('../images/background.png') no-repeat center center fixed;
+  background: url('../images/background.webp') no-repeat center center fixed;
   background-size: cover;
 }
 
