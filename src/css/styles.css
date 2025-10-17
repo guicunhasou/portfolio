@@ -347,7 +347,7 @@ section#projetos.carousel{
 #projetos .carousel-nav.next{ right: clamp(.5rem, 3vw, 1rem); }
 #projetos .carousel-nav svg{ width: 22px; height: 22px; }
 
-#projetos .carousel-dots{
+/* #projetos .carousel-dots{
   position: absolute;
   left: 50%; bottom: .75rem; translate: -50% 0;
   display: flex; gap: .5rem;
@@ -358,7 +358,7 @@ section#projetos.carousel{
 }
 #projetos .carousel-dots .dot.is-active{
   width: 20px; border-radius: 999px; background: rgba(0,0,0,.6);
-}
+} */
 
 @media (prefers-reduced-motion: reduce){
   #projetos .projeto{ transition: none; }
