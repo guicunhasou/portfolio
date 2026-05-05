@@ -295,7 +295,6 @@ section#projetos.carousel{
 
 #projetos .carousel-track {
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 #projetos .carousel-track::-webkit-scrollbar {
