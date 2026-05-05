@@ -182,7 +182,7 @@ section#projetos{
 }
 
 .tags li{
-  padding: .35rem .6rem;
+  padding: .30rem .6rem;
   border-radius: .6rem;
   font-size: clamp(.5rem, .5vw + .4rem, .6rem);
   font-weight: 500;
@@ -336,7 +336,6 @@ section#projetos.carousel{
   width: 44px; height: 44px;
   border-radius: 999px;
   background: rgba(255,255,255,.75);
-  backdrop-filter: blur(6px);
   display: grid; place-items: center;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(0,0,0,.12);
