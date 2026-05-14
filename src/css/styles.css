@@ -41,6 +41,9 @@ main{
 
 .titulos{
   color: var(--profundo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .titulos h1{
@@ -52,6 +55,19 @@ main{
   font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-weight: 600;
   opacity: .9;
+}
+
+.titulos .intro{
+  max-width: 560px;
+  margin-top: .75rem;
+  font-size: clamp(.9rem, .8vw + .65rem, 1.05rem);
+  font-weight: 500;
+  opacity: .85;
+}
+
+.subtitulos{
+  display: flex;
+  gap: 1rem;
 }
 
 .redes{
@@ -177,15 +193,22 @@ section#projetos{
 .tags, .links{
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem .6rem;
+  align-items: center;
+  gap: .55rem;
   list-style: none;
 }
 
 .tags li{
-  padding: .30rem .6rem;
-  border-radius: .6rem;
-  font-size: clamp(.5rem, .5vw + .4rem, .6rem);
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  white-space: nowrap;
+  padding: .45rem .8rem;
+  border-radius: .65rem;
+  font-size: clamp(.7rem, .7vw, .85rem);
+  line-height: 1;
+  font-weight: 600;
   background: var(--profundo);
   color: var(--neblina);
 }
@@ -344,19 +367,6 @@ section#projetos.carousel{
 #projetos .carousel-nav.prev{ left: clamp(.5rem, 3vw, 1rem); }
 #projetos .carousel-nav.next{ right: clamp(.5rem, 3vw, 1rem); }
 #projetos .carousel-nav svg{ width: 22px; height: 22px; }
-
-/* #projetos .carousel-dots{
-  position: absolute;
-  left: 50%; bottom: .75rem; translate: -50% 0;
-  display: flex; gap: .5rem;
-}
-#projetos .carousel-dots .dot{
-  width: 8px; height: 8px; border-radius: 999px; border: 0;
-  background: rgba(0,0,0,.25); cursor: pointer;
-}
-#projetos .carousel-dots .dot.is-active{
-  width: 20px; border-radius: 999px; background: rgba(0,0,0,.6);
-} */
 
 @media (prefers-reduced-motion: reduce){
   #projetos .projeto{ transition: none; }
