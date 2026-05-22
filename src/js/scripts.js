@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   section.setAttribute('aria-roledescription', 'carrossel');
 
   const originals = Array.from(section.querySelectorAll('.projeto'));
+  const totalSlides = originals.length;
+  if (!totalSlides) return;
 
   const track = document.createElement('div');
   track.className = 'carousel-track';
@@ -14,158 +16,205 @@ document.addEventListener('DOMContentLoaded', () => {
   track.setAttribute('aria-atomic', 'true');
   section.prepend(track);
 
-  originals.forEach((s, i) => {
-    s.classList.add('slide');
-    s.setAttribute('role', 'group');
-    s.setAttribute('aria-label', `Slide ${i + 1} de ${originals.length}`);
-    s.dataset.cloneOf = i;
-    track.appendChild(s);
+  originals.forEach((slide, index) => {
+    slide.classList.add('slide');
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-label', `Slide ${index + 1} de ${totalSlides}`);
+    slide.dataset.cloneOf = index;
+    track.appendChild(slide);
   });
 
-  const n = originals.length;
+  const centerLeft = (element) =>
+    element.offsetLeft - (track.clientWidth - element.offsetWidth) / 2;
 
-  // helpers de centralização via scrollLeft (não mexe na rolagem da página)
-  const centerLeft = (el) => el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2;
   const setLeft = (left, smooth = true) => {
-    const prev = track.style.scrollBehavior;
+    const previousBehavior = track.style.scrollBehavior;
+
     track.style.scrollBehavior = smooth ? 'smooth' : 'auto';
     track.scrollTo({ left });
-    // volta config
-    track.style.scrollBehavior = prev || '';
+    track.style.scrollBehavior = previousBehavior || '';
   };
 
-  // clones esquerda + direita
-  const fragLeft = document.createDocumentFragment();
-  const fragRight = document.createDocumentFragment();
-  originals.forEach((s, i) => {
-    const cL = s.cloneNode(true); cL.classList.add('is-clone'); cL.dataset.cloneOf = i; fragLeft.appendChild(cL);
-    const cR = s.cloneNode(true); cR.classList.add('is-clone'); cR.dataset.cloneOf = i; fragRight.appendChild(cR);
+  const createClone = (slide, index) => {
+    const clone = slide.cloneNode(true);
+
+    clone.removeAttribute('id');
+    clone.classList.add('is-clone');
+    clone.dataset.cloneOf = index;
+    clone.setAttribute('aria-hidden', 'true');
+
+    return clone;
+  };
+
+  const leftClones = document.createDocumentFragment();
+  const rightClones = document.createDocumentFragment();
+
+  originals.forEach((slide, index) => {
+    leftClones.appendChild(createClone(slide, index));
+    rightClones.appendChild(createClone(slide, index));
   });
-  track.prepend(fragLeft);
-  track.append(fragRight);
+
+  track.prepend(leftClones);
+  track.append(rightClones);
 
   const allSlides = Array.from(track.children);
 
-  // controles
-  const mkBtn = (cls, label, d) => {
-    const b = document.createElement('button');
-    b.className = `carousel-nav ${cls}`;
-    b.setAttribute('aria-label', label);
-    b.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
-    return b;
+  const createButton = (className, label, path) => {
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.className = `carousel-nav ${className}`;
+    button.setAttribute('aria-label', label);
+    button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+
+    return button;
   };
-  const prevBtn = mkBtn('prev', 'Projeto anterior', 'M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z');
-  const nextBtn = mkBtn('next', 'Próximo projeto', 'M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z');
 
-  const dots = document.createElement('div');
-  dots.className = 'carousel-dots';
-  for (let i = 0; i < n; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'dot';
-    dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
-    dots.appendChild(dot);
-  }
-  section.append(prevBtn, nextBtn, dots);
-  const dotEls = Array.from(dots.children);
+  const prevBtn = createButton(
+    'prev',
+    'Projeto anterior',
+    'M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z'
+  );
 
-  // estado
-  let current = 0;        // índice canônico (0..n-1)
-  let currentAllIndex = n; // começamos no 1º original (zona do meio)
+  const nextBtn = createButton(
+    'next',
+    'Próximo projeto',
+    'M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z'
+  );
 
-  const centerIndex = (arr) => {
-    const rect = track.getBoundingClientRect();
-    const mid = rect.left + rect.width / 2;
-    let idx = 0, best = Infinity;
-    arr.forEach((el, i) => {
-      const r = el.getBoundingClientRect();
-      const c = r.left + r.width / 2;
-      const d = Math.abs(c - mid);
-      if (d < best) { best = d; idx = i; }
+  section.append(prevBtn, nextBtn);
+
+  let current = 0;
+  let currentAllIndex = totalSlides;
+
+  const getCenteredIndex = (slides) => {
+    const trackRect = track.getBoundingClientRect();
+    const trackMiddle = trackRect.left + trackRect.width / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const slideRect = slide.getBoundingClientRect();
+      const slideMiddle = slideRect.left + slideRect.width / 2;
+      const distance = Math.abs(slideMiddle - trackMiddle);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
     });
-    return idx;
+
+    return closestIndex;
   };
 
   const applyState = () => {
-    currentAllIndex = centerIndex(allSlides);
-    const el = allSlides[currentAllIndex];
-    const canonical = el.classList.contains('is-clone')
-      ? Number(el.dataset.cloneOf)
-      : currentAllIndex - n;
+    currentAllIndex = getCenteredIndex(allSlides);
 
-    current = (canonical + n) % n;
+    const activeSlide = allSlides[currentAllIndex];
+    const canonicalIndex = activeSlide.classList.contains('is-clone')
+      ? Number(activeSlide.dataset.cloneOf)
+      : currentAllIndex - totalSlides;
 
-    originals.forEach((sl, i) => {
-      sl.classList.toggle('is-current', i === current);
-      sl.setAttribute('aria-hidden', i !== current);
-      sl.tabIndex = i === current ? 0 : -1;
+    current = (canonicalIndex + totalSlides) % totalSlides;
+
+    originals.forEach((slide, index) => {
+      const isCurrent = index === current;
+
+      slide.classList.toggle('is-current', isCurrent);
+      slide.setAttribute('aria-hidden', String(!isCurrent));
+      slide.tabIndex = isCurrent ? 0 : -1;
     });
-    dotEls.forEach((d, i) => d.classList.toggle('is-active', i === current));
 
-    // teleporte invisível se cair nos clones
-    if (currentAllIndex < n) {
-      const target = allSlides[currentAllIndex + n];
+    if (currentAllIndex < totalSlides) {
+      const target = allSlides[currentAllIndex + totalSlides];
       setLeft(centerLeft(target), false);
-      currentAllIndex += n;
-    } else if (currentAllIndex >= 2 * n) {
-      const target = allSlides[currentAllIndex - n];
+      currentAllIndex += totalSlides;
+    } else if (currentAllIndex >= totalSlides * 2) {
+      const target = allSlides[currentAllIndex - totalSlides];
       setLeft(centerLeft(target), false);
-      currentAllIndex -= n;
+      currentAllIndex -= totalSlides;
     }
   };
 
   const goTo = (index) => {
-    if (!n) return;
-    const target = (index + n) % n;
-    // escolhe o mais perto entre [clone-esq, original, clone-dir]
-    const candidates = [target, target + n, target + 2 * n];
-    let best = candidates[0], dist = Infinity;
-    candidates.forEach((i) => {
-      const d = Math.abs(i - currentAllIndex);
-      if (d < dist) { dist = d; best = i; }
+    const target = (index + totalSlides) % totalSlides;
+    const candidates = [target, target + totalSlides, target + totalSlides * 2];
+
+    let bestIndex = candidates[0];
+    let bestDistance = Infinity;
+
+    candidates.forEach((candidate) => {
+      const distance = Math.abs(candidate - currentAllIndex);
+
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = candidate;
+      }
     });
-    const el = allSlides[best];
-    setLeft(centerLeft(el), true);
+
+    setLeft(centerLeft(allSlides[bestIndex]));
   };
 
-  // eventos
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
-  dots.addEventListener('click', (e) => {
-    if (e.target.classList.contains('dot')) {
-      const i = dotEls.indexOf(e.target);
-      if (i >= 0) goTo(i);
+
+  section.tabIndex = 0;
+  section.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      goTo(current + 1);
+    }
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      goTo(current - 1);
     }
   });
 
-  section.tabIndex = 0;
-  section.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
-  });
-
   let raf = null;
+
   const onScroll = () => {
     if (raf) return;
-    raf = requestAnimationFrame(() => { raf = null; applyState(); });
+
+    raf = requestAnimationFrame(() => {
+      raf = null;
+      applyState();
+    });
   };
+
   track.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', applyState);
 
-  // autoplay (pausa no hover/focus)
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
   let autoId = null;
+
+  const stopAuto = () => {
+    if (!autoId) return;
+
+    clearInterval(autoId);
+    autoId = null;
+  };
+
   const startAuto = () => {
-    if (prefersReduced) return;
+    if (prefersReducedMotion) return;
+
     stopAuto();
     autoId = setInterval(() => goTo(current + 1), 4500);
   };
-  const stopAuto = () => { if (autoId) { clearInterval(autoId); autoId = null; } };
+
   section.addEventListener('mouseenter', stopAuto);
   section.addEventListener('mouseleave', startAuto);
   section.addEventListener('focusin', stopAuto);
   section.addEventListener('focusout', startAuto);
 
-  // inicia centrando o 1º ORIGINAL sem rolar a página
-  setLeft(centerLeft(allSlides[n]), false);
-  setTimeout(() => { applyState(); startAuto(); }, 200);
+  setLeft(centerLeft(allSlides[totalSlides]), false);
+
+  setTimeout(() => {
+    applyState();
+    startAuto();
+  }, 200);
 });

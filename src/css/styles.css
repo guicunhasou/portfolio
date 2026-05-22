@@ -133,8 +133,8 @@ main{
 /* ========== PROJETOS ========== */
 
 section{
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 90vh;
+  min-height: 90dvh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -244,6 +244,15 @@ section#projetos{
 
 .links a:hover{
   text-decoration: none;
+}
+
+.dados{
+  text-align: right;
+  font-size: clamp(.75rem, .7vw, .9rem);
+  font-weight: 500;
+  color: var(--profundo);
+  opacity: .75;
+  margin: var(--space-4);
 }
 
 /* ========== RESPONSIVO ========== */
