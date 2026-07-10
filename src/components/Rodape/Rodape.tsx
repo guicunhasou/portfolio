@@ -1,7 +1,11 @@
 function Rodape() {
   return (
     <footer className="rodape">
-      <p className="dados">Versão 2.0.0</p>
+      <p className="dados">
+        <span>Feito em Pernambuco</span>
+        <span aria-hidden="true">✦</span>
+        <span>Versão 2.13.2</span>
+      </p>
     </footer>
   );
 }

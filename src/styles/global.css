@@ -338,8 +338,11 @@ body{
   transform: translateY(1px);
 }
 
-.dados{
-  text-align: right;
+.dados {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
   font-size: clamp(.75rem, .7vw, .9rem);
   font-weight: 500;
   color: var(--profundo);
