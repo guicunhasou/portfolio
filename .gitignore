@@ -12,3 +12,6 @@ pnpm-debug.log*
 # Arquivos locais e de sistema
 *.local
 .DS_Store
+
+# Patches aplicados localmente
+*.patch
