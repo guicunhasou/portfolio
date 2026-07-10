@@ -13,7 +13,12 @@ function CardProjeto({
     <article className="card-projeto">
       <div className="imagem-projeto">
         {projeto.imagem ? (
-          <img src={projeto.imagem} alt={projeto.textoAlternativo} />
+          <img
+            src={projeto.imagem}
+            alt={projeto.textoAlternativo}
+            loading="lazy"
+            decoding="async"
+          />
         ) : (
           <div className="imagem-projeto-indisponivel">
             <span className="simbolo-projeto" aria-hidden="true">
@@ -30,7 +35,7 @@ function CardProjeto({
           <h3>{projeto.nome}</h3>
           <p>{projeto.descricaoCurta}</p>
           {projeto.informacaoAdicional && (
-            <p>{projeto.informacaoAdicional}</p>
+            <p className="informacao-card">{projeto.informacaoAdicional}</p>
           )}
         </div>
 
