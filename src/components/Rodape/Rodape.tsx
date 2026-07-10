@@ -4,7 +4,7 @@ function Rodape() {
       <p className="dados">
         <span>Feito em Pernambuco</span>
         <span aria-hidden="true">✦</span>
-        <span>Versão 2.13.2</span>
+        <span>Versão 2.13.3</span>
       </p>
     </footer>
   );

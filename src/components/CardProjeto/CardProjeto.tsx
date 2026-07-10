@@ -9,8 +9,18 @@ function CardProjeto({
   projeto,
   aoAbrirDetalhes,
 }: PropriedadesCardProjeto) {
+  const idTitulo = `titulo-card-${projeto.id}`;
+
   return (
-    <article className="card-projeto">
+    <article className="card-projeto" aria-labelledby={idTitulo}>
+      <button
+        className="acionador-card"
+        type="button"
+        onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
+      >
+        <span className="somente-leitor">Ver detalhes de {projeto.nome}</span>
+      </button>
+
       <div className="imagem-projeto">
         {projeto.imagem ? (
           <img
@@ -32,30 +42,9 @@ function CardProjeto({
 
       <div className="conteudo-projeto">
         <div className="textos-projeto">
-          <h3>{projeto.nome}</h3>
+          <h3 id={idTitulo}>{projeto.nome}</h3>
           <p>{projeto.descricaoCurta}</p>
-          {projeto.informacaoAdicional && (
-            <p className="informacao-card">{projeto.informacaoAdicional}</p>
-          )}
         </div>
-
-        <ul
-          className="tags-projeto"
-          aria-label={`Tecnologias e competências de ${projeto.nome}`}
-        >
-          {projeto.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-
-        <button
-          className="botao-detalhes"
-          type="button"
-          onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
-        >
-          Ver detalhes
-          <span className="somente-leitor"> de {projeto.nome}</span>
-        </button>
       </div>
     </article>
   );

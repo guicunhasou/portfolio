@@ -6,6 +6,19 @@ import type { Projeto } from '../types/projeto';
 
 export const projetos: Projeto[] = [
   {
+    id: 'estelar',
+    nome: 'Estelar',
+    descricaoCurta:
+      'Aplicativo mobile de saúde mental e bem-estar para astronautas em missões espaciais de longa duração.',
+    descricaoCompleta:
+      'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
+    informacaoAdicional: 'Global Solution FIAP 2026.',
+    textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
+    tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
+    links: [],
+    destaque: true,
+  },
+  {
     id: 'sportsx',
     nome: 'SportsX',
     descricaoCurta:
@@ -37,6 +50,30 @@ export const projetos: Projeto[] = [
     destaque: true,
   },
   {
+    id: 'jardimental',
+    nome: 'Jardimental',
+    descricaoCurta:
+      'Estudo de caso UX/UI de um app gamificado para acompanhamento de hábitos de saúde mental.',
+    descricaoCompleta:
+      'Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.',
+    imagem: imagemJardimental,
+    textoAlternativo:
+      'Protótipos do aplicativo Jardimental apresentados sobre fundo rosa',
+    tags: ['UX/UI', 'Estudo de Caso', 'Figma', 'Prototipagem', 'Gamificação'],
+    links: [
+      {
+        rotulo: 'Estudo de caso',
+        url: 'https://www.behance.net/gallery/186602883/Jardimental-Estudo-de-Caso-UXUI',
+        tipo: 'behance',
+      },
+      {
+        rotulo: 'Figma',
+        url: 'https://www.figma.com/design/ZrPQwEFRN4NBoRsO2I4aCa/JARDIMENTAL?node-id=89-116&t=jBzMcGUvaKzY9hy1-1',
+        tipo: 'figma',
+      },
+    ],
+  },
+  {
     id: 'iara-games',
     nome: 'Iara Games',
     descricaoCurta:
@@ -66,30 +103,6 @@ export const projetos: Projeto[] = [
     ],
   },
   {
-    id: 'jardimental',
-    nome: 'Jardimental',
-    descricaoCurta:
-      'Estudo de caso UX/UI de um app gamificado para acompanhamento de hábitos de saúde mental.',
-    descricaoCompleta:
-      'Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.',
-    imagem: imagemJardimental,
-    textoAlternativo:
-      'Protótipos do aplicativo Jardimental apresentados sobre fundo rosa',
-    tags: ['UX/UI', 'Estudo de Caso', 'Figma', 'Prototipagem', 'Gamificação'],
-    links: [
-      {
-        rotulo: 'Estudo de caso',
-        url: 'https://www.behance.net/gallery/186602883/Jardimental-Estudo-de-Caso-UXUI',
-        tipo: 'behance',
-      },
-      {
-        rotulo: 'Figma',
-        url: 'https://www.figma.com/design/ZrPQwEFRN4NBoRsO2I4aCa/JARDIMENTAL?node-id=89-116&t=jBzMcGUvaKzY9hy1-1',
-        tipo: 'figma',
-      },
-    ],
-  },
-  {
     id: 'site-institucional',
     nome: 'Site Institucional',
     descricaoCurta:
@@ -112,18 +125,5 @@ export const projetos: Projeto[] = [
         tipo: 'repositorio',
       },
     ],
-  },
-  {
-    id: 'estelar',
-    nome: 'Estelar',
-    descricaoCurta:
-      'Aplicativo mobile de saúde mental e bem-estar para astronautas em missões espaciais de longa duração.',
-    descricaoCompleta:
-      'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
-    informacaoAdicional: 'Global Solution FIAP 2026.',
-    textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
-    tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
-    links: [],
-    destaque: true,
   },
 ];

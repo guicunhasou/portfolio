@@ -52,6 +52,7 @@ body{
 }
 
 .apresentacao-perfil h1{
+  white-space: nowrap;
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   line-height: 1.05;
   letter-spacing: 0.2px;
@@ -61,7 +62,7 @@ body{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: .45rem 1rem;
+  gap: .5rem;
   font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-weight: 600;
   line-height: 1.45;
@@ -146,21 +147,14 @@ body{
   text-align: center;
 }
 
-.rotulo-projetos{
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--suco);
-}
-
 .cabecalho-projetos h2{
-  font-size: clamp(2rem, 8vw, 3rem);
-  line-height: 1;
+  font-size: clamp(1.7rem, 6vw, 2.5rem);
+  line-height: 1.05;
 }
 
 .descricao-projetos{
-  max-width: 58ch;
+  width: 100%;
+  max-width: none;
   margin: .55rem auto 0;
   font-size: clamp(.9rem, 2.5vw, 1rem);
   font-weight: 500;
@@ -181,6 +175,7 @@ body{
 }
 
 .card-projeto{
+  position: relative;
   width: 100%;
   display: grid;
   gap: var(--space-3);
@@ -189,11 +184,25 @@ body{
   border: 1px solid var(--borda-suave);
   border-radius: clamp(24px, 6vw, 40px);
   background: rgb(204 214 194 / 92%);
-  box-shadow: var(--sombra-suave);
+  cursor: pointer;
   transition:
     border-color var(--duracao-curta) ease,
-    box-shadow var(--duracao-curta) ease,
     transform var(--duracao-curta) ease;
+}
+
+.acionador-card{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: inherit;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.acionador-card:focus-visible{
+  outline: 0;
 }
 
 .imagem-projeto{
@@ -271,45 +280,12 @@ body{
   color: var(--profundo);
 }
 
-.textos-projeto .informacao-card{
-  width: fit-content;
-  margin-top: .2rem;
-  padding-left: .65rem;
-  border-left: 3px solid var(--lavanda);
-  font-size: clamp(.82rem, 2vw, .92rem);
-  font-weight: 600;
-}
-
-.tags-projeto{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .55rem;
-  list-style: none;
-}
-
-.tags-projeto li{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  white-space: nowrap;
-  min-height: 28px;
-  padding: .45rem .8rem;
-  border: 1px solid rgb(242 246 238 / 18%);
-  border-radius: .65rem;
-  font-size: clamp(.7rem, 2vw, .85rem);
-  line-height: 1;
-  font-weight: 600;
-  background: var(--profundo);
-  color: var(--neblina);
-}
-
 /* ========== INTERAÇÕES ========== */
 
 .card-projeto:focus-within{
   border-color: rgb(102 66 138 / 48%);
-  box-shadow: var(--sombra-elevada);
+  outline: 3px solid var(--profundo);
+  outline-offset: 3px;
 }
 
 @media (hover: hover) and (pointer: fine){
@@ -322,7 +298,6 @@ body{
 
   .card-projeto:hover{
     border-color: rgb(102 66 138 / 36%);
-    box-shadow: var(--sombra-elevada);
     transform: translateY(-4px);
   }
 
@@ -332,7 +307,6 @@ body{
 }
 
 .links-sociais a:active,
-.botao-detalhes:active,
 .botao-fechar:active,
 .links-modal a:active{
   transform: translateY(1px);
@@ -449,9 +423,6 @@ body{
     border-radius: clamp(18px, 3vw, 26px);
   }
 
-  .botao-detalhes{
-    margin-top: auto;
-  }
 }
 
 
@@ -515,33 +486,6 @@ body{
 
 body.modal-aberto{
   overflow: hidden;
-}
-
-.botao-detalhes{
-  width: fit-content;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: var(--radius-pill);
-  padding: .65rem 1rem;
-  font: inherit;
-  font-size: clamp(.9rem, .8vw + .5rem, 1rem);
-  font-weight: 600;
-  color: var(--neblina);
-  background: var(--suco);
-  box-shadow: 0 8px 18px rgb(102 66 138 / 18%);
-  cursor: pointer;
-  transition:
-    background-color var(--duracao-curta) ease,
-    box-shadow var(--duracao-curta) ease,
-    transform var(--duracao-curta) ease;
-}
-
-.botao-detalhes:hover{
-  background: var(--profundo);
-  box-shadow: 0 10px 24px rgb(64 48 80 / 24%);
 }
 
 .modal-projeto{
@@ -734,7 +678,6 @@ body.modal-aberto{
 }
 
 .links-sociais a:focus-visible,
-.botao-detalhes:focus-visible,
 .botao-fechar:focus-visible,
 .links-modal a:focus-visible{
   outline: 3px solid var(--neblina);
@@ -812,7 +755,7 @@ body.modal-aberto{
   .conteudo-principal{
     min-height: 0;
     display: grid;
-    grid-template-columns: minmax(330px, .85fr) minmax(560px, 1.4fr);
+    grid-template-columns: minmax(300px, .72fr) minmax(600px, 1.55fr);
     gap: clamp(1rem, 2vw, 2rem);
     padding: clamp(1rem, 2vw, 2rem);
     padding-bottom: 0;
@@ -834,12 +777,12 @@ body.modal-aberto{
   }
 
   .conteudo-perfil{
-    width: min(480px, 100%);
+    width: min(420px, 100%);
     gap: var(--space-3);
   }
 
   .apresentacao-perfil h1{
-    font-size: clamp(2rem, 3vw, 3.4rem);
+    font-size: clamp(1.9rem, 2.4vw, 2.8rem);
   }
 
   .areas-atuacao{
@@ -880,7 +823,7 @@ body.modal-aberto{
   }
 
   .cabecalho-projetos h2{
-    font-size: clamp(2rem, 3vw, 3.5rem);
+    font-size: clamp(1.8rem, 2.2vw, 2.75rem);
   }
 
   .descricao-projetos{
@@ -899,20 +842,12 @@ body.modal-aberto{
     overflow-x: hidden;
     overflow-y: auto;
     scroll-padding-block: .25rem 2rem;
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-    scrollbar-color: var(--lavanda) transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .lista-cards-projetos::-webkit-scrollbar{
-    width: 10px;
-  }
-
-  .lista-cards-projetos::-webkit-scrollbar-thumb{
-    border: 3px solid transparent;
-    border-radius: var(--radius-pill);
-    background: var(--lavanda);
-    background-clip: padding-box;
+    display: none;
   }
 
   #projetos .card-projeto{
@@ -940,10 +875,6 @@ body.modal-aberto{
 
   #projetos .textos-projeto h3{
     font-size: clamp(1.3rem, 1.8vw, 1.8rem);
-  }
-
-  #projetos .botao-detalhes{
-    margin-top: auto;
   }
 
   .dados{

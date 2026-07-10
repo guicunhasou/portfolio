@@ -9,17 +9,16 @@ function PainelPerfil() {
           <h1 id="titulo-perfil">Guilherme Cunha</h1>
 
           <p className="areas-atuacao">
-            <span>Web Design</span>
-            <span aria-hidden="true">✦</span>
             <span>Front-end</span>
             <span aria-hidden="true">✦</span>
-            <span>UX/UI</span>
+            <span>Design UX/UI</span>
           </p>
         </div>
 
         <p className="resumo-perfil">
-          Estudante de Web Design na FIAP, com foco em interfaces digitais,
-          desenvolvimento front-end e experiências web/mobile.
+          Estudante de Web Design na FIAP, transformo ideias em interfaces
+          responsivas, acessíveis e visualmente cuidadas, conectando design
+          UX/UI e desenvolvimento front-end.
         </p>
 
         <LinksSociais />

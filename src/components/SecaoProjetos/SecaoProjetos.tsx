@@ -32,11 +32,9 @@ function SecaoProjetos() {
         aria-labelledby="titulo-projetos"
       >
         <header className="cabecalho-projetos">
-          <p className="rotulo-projetos">Trabalhos selecionados</p>
-          <h2 id="titulo-projetos">Projetos</h2>
+          <h2 id="titulo-projetos">Projetos selecionados</h2>
           <p className="descricao-projetos">
-            Interfaces, produtos digitais e experiências construídas entre
-            design e código.
+            Interfaces, produtos digitais e experiências construídas entre design e código.
           </p>
         </header>
 
