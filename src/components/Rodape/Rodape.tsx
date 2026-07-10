@@ -1,5 +1,9 @@
 function Rodape() {
-  return <p className="dados">Versão 1.3.0</p>;
+  return (
+    <footer className="rodape">
+      <p className="dados">Versão 1.3.0</p>
+    </footer>
+  );
 }
 
 export default Rodape;

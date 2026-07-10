@@ -14,7 +14,8 @@ export const projetos: Projeto[] = [
       'Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível.',
     informacaoAdicional: 'Projeto selecionado para o FIAP NEXT 2025.',
     imagem: imagemSportsX,
-    textoAlternativo: 'Interface do projeto SportsX',
+    textoAlternativo:
+      'Página inicial do SportsX com destaque para escalada esportiva',
     tags: ['UX/UI', 'Front-end', 'JavaScript', 'Bootstrap', 'Acessibilidade'],
     links: [
       {
@@ -43,7 +44,8 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.',
     imagem: imagemIaraGames,
-    textoAlternativo: 'Interface do projeto Iara Games',
+    textoAlternativo:
+      'Página inicial do Iara Games com personagem ilustrada e acesso ao catálogo',
     tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
     links: [
       {
@@ -71,7 +73,8 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.',
     imagem: imagemJardimental,
-    textoAlternativo: 'Interface do projeto Jardimental',
+    textoAlternativo:
+      'Protótipos do aplicativo Jardimental apresentados sobre fundo rosa',
     tags: ['UX/UI', 'Estudo de Caso', 'Figma', 'Prototipagem', 'Gamificação'],
     links: [
       {
@@ -94,7 +97,8 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Site institucional desenvolvido para uma escola real, com foco em clareza de navegação, organização visual, responsividade e utilidade para a comunidade escolar.',
     imagem: imagemSiteInstitucional,
-    textoAlternativo: 'Interface do projeto Site Institucional',
+    textoAlternativo:
+      'Página inicial do site da escola com banner e atalhos de navegação',
     tags: ['Front-end', 'UX/UI', 'HTML', 'CSS', 'JavaScript'],
     links: [
       {

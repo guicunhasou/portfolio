@@ -40,15 +40,16 @@ function SecaoProjetos() {
           </p>
         </header>
 
-        <div className="lista-cards-projetos">
+        <ul className="lista-cards-projetos">
           {projetos.map((projeto) => (
-            <CardProjeto
-              key={projeto.id}
-              projeto={projeto}
-              aoAbrirDetalhes={abrirModal}
-            />
+            <li className="item-projeto" key={projeto.id}>
+              <CardProjeto
+                projeto={projeto}
+                aoAbrirDetalhes={abrirModal}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {projetoSelecionado && (

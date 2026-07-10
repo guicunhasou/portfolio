@@ -14,6 +14,9 @@ function LinksSociais() {
               rel={linkExterno ? 'noopener noreferrer' : undefined}
             >
               {link.rotulo}
+              {linkExterno && (
+                <span className="somente-leitor"> (abre em nova aba)</span>
+              )}
             </a>
           </li>
         );

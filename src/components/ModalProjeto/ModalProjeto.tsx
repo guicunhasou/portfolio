@@ -155,6 +155,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                         rel="noopener noreferrer"
                       >
                         {link.rotulo}
+                        <span className="somente-leitor"> (abre em nova aba)</span>
                       </a>
                     </li>
                   ))}

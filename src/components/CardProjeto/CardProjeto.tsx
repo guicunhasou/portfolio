@@ -39,7 +39,10 @@ function CardProjeto({
           )}
         </div>
 
-        <ul className="tags-projeto" aria-label="Tecnologias e competências">
+        <ul
+          className="tags-projeto"
+          aria-label={`Tecnologias e competências de ${projeto.nome}`}
+        >
           {projeto.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
@@ -51,6 +54,7 @@ function CardProjeto({
           onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
         >
           Ver detalhes
+          <span className="somente-leitor"> de {projeto.nome}</span>
         </button>
       </div>
     </article>
