@@ -109,4 +109,17 @@ export const projetos: Projeto[] = [
       },
     ],
   },
+  {
+    id: 'estelar',
+    nome: 'Estelar',
+    descricaoCurta:
+      'Aplicativo mobile de saúde mental e bem-estar para astronautas em missões espaciais de longa duração.',
+    descricaoCompleta:
+      'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
+    informacaoAdicional: 'Global Solution FIAP 2026.',
+    textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
+    tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
+    links: [],
+    destaque: true,
+  },
 ];

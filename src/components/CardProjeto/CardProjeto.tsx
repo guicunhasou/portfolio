@@ -21,7 +21,17 @@ const CardProjeto = forwardRef<HTMLElement, PropriedadesCardProjeto>(
         aria-label={`Projeto ${indice + 1} de ${quantidadeProjetos}: ${projeto.nome}`}
       >
         <div className="imagem-projeto">
-          <img src={projeto.imagem} alt={projeto.textoAlternativo} />
+          {projeto.imagem ? (
+            <img src={projeto.imagem} alt={projeto.textoAlternativo} />
+          ) : (
+            <div className="imagem-projeto-indisponivel">
+              <span className="simbolo-projeto" aria-hidden="true">
+                ✦
+              </span>
+              <strong>{projeto.nome}</strong>
+              <span>Prévia visual em atualização</span>
+            </div>
+          )}
         </div>
 
         <div className="conteudo-projeto">
@@ -42,19 +52,21 @@ const CardProjeto = forwardRef<HTMLElement, PropriedadesCardProjeto>(
             ))}
           </ul>
 
-          <ul className="links-projeto">
-            {projeto.links.map((link) => (
-              <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.rotulo}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {projeto.links.length > 0 && (
+            <ul className="links-projeto">
+              {projeto.links.map((link) => (
+                <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.rotulo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </article>
     );
