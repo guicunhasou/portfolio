@@ -15,18 +15,14 @@ function PainelPerfil() {
             <span aria-hidden="true">✦</span>
             <span>UX/UI</span>
           </p>
-
-          <p className="resumo-perfil">
-            Estudante de Web Design na FIAP, com foco em interfaces digitais,
-            desenvolvimento front-end e experiências web/mobile.
-          </p>
         </div>
 
-        <LinksSociais />
+        <p className="resumo-perfil">
+          Estudante de Web Design na FIAP, com foco em interfaces digitais,
+          desenvolvimento front-end e experiências web/mobile.
+        </p>
 
-        <a className="botao-projetos" href="#projetos">
-          Confira meus projetos
-        </a>
+        <LinksSociais />
       </div>
 
       <FotoPerfil />
