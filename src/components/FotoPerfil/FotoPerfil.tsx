@@ -6,8 +6,8 @@ function FotoPerfil() {
       <img
         src={fotoPerfil}
         alt="Retrato de Guilherme Cunha sorrindo"
-        width="1903"
-        height="2742"
+        width="972"
+        height="1400"
       />
     </figure>
   );

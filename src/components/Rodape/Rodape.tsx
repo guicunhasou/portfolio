@@ -1,7 +1,7 @@
 function Rodape() {
   return (
     <footer className="rodape">
-      <p className="dados">Versão 1.3.0</p>
+      <p className="dados">Versão 2.0.0</p>
     </footer>
   );
 }

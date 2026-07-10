@@ -1,7 +1,7 @@
-import imagemIaraGames from '../assets/imagens/img2.jpg';
-import imagemJardimental from '../assets/imagens/img1.jpg';
-import imagemSiteInstitucional from '../assets/imagens/img5.png';
-import imagemSportsX from '../assets/imagens/img4.jpg';
+import imagemIaraGames from '../assets/imagens/img2.webp';
+import imagemJardimental from '../assets/imagens/img1.webp';
+import imagemSiteInstitucional from '../assets/imagens/img5.webp';
+import imagemSportsX from '../assets/imagens/img4.webp';
 import type { Projeto } from '../types/projeto';
 
 export const projetos: Projeto[] = [
