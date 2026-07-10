@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { projetos } from '../../data/projetos';
+import CardProjeto from '../CardProjeto/CardProjeto';
 
 const quantidadeProjetos = projetos.length;
 
@@ -167,45 +168,16 @@ function SecaoProjetos() {
         onScroll={atualizarProjetoPelaRolagem}
       >
         {projetos.map((projeto, indice) => (
-          <article
+          <CardProjeto
             key={projeto.id}
-            className={`projeto ${projetoAtual === indice ? 'is-current' : ''}`}
             ref={(elemento) => {
               projetosRef.current[indice] = elemento;
             }}
-            aria-label={`Projeto ${indice + 1} de ${quantidadeProjetos}: ${projeto.nome}`}
-          >
-            <div className="imagem">
-              <img src={projeto.imagem} alt={projeto.textoAlternativo} />
-            </div>
-            <div className="descricao">
-              <div className="textos">
-                <h3>{projeto.nome}</h3>
-                <p>{projeto.descricaoCurta}</p>
-                {projeto.informacaoAdicional && (
-                  <p>{projeto.informacaoAdicional}</p>
-                )}
-              </div>
-              <ul className="tags" aria-label="Tecnologias e competências">
-                {projeto.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-              <ul className="links">
-                {projeto.links.map((link) => (
-                  <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.rotulo}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
+            projeto={projeto}
+            indice={indice}
+            quantidadeProjetos={quantidadeProjetos}
+            atual={projetoAtual === indice}
+          />
         ))}
       </div>
 
