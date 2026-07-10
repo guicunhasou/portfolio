@@ -1,18 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
 import { projetos } from '../../data/projetos';
+import type { Projeto } from '../../types/projeto';
 import CardProjeto from '../CardProjeto/CardProjeto';
+import ModalProjeto from '../ModalProjeto/ModalProjeto';
 
 const quantidadeProjetos = projetos.length;
 
 function SecaoProjetos() {
   const [projetoAtual, setProjetoAtual] = useState(0);
   const [carrosselPausado, setCarrosselPausado] = useState(false);
+  const [projetoSelecionado, setProjetoSelecionado] =
+    useState<Projeto | null>(null);
   const trilhaRef = useRef<HTMLDivElement>(null);
   const projetosRef = useRef<Array<HTMLElement | null>>([]);
   const rolagemProgramaticaRef = useRef(false);
   const temporizadorMovimentoRef = useRef<number | null>(null);
   const temporizadorLeituraRef = useRef<number | null>(null);
   const primeiraPosicaoRef = useRef(true);
+  const acionadorModalRef = useRef<HTMLButtonElement | null>(null);
+
+  const abrirModal = (projeto: Projeto, acionador: HTMLButtonElement) => {
+    acionadorModalRef.current = acionador;
+    setCarrosselPausado(true);
+    setProjetoSelecionado(projeto);
+  };
+
+  const fecharModal = () => {
+    const acionador = acionadorModalRef.current;
+
+    setCarrosselPausado(true);
+    setProjetoSelecionado(null);
+
+    window.requestAnimationFrame(() => {
+      acionador?.focus();
+    });
+  };
 
   const irParaProjeto = (indice: number) => {
     const proximoIndice = (indice + quantidadeProjetos) % quantidadeProjetos;
@@ -67,7 +89,7 @@ function SecaoProjetos() {
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
-    if (movimentoReduzido || carrosselPausado) {
+    if (movimentoReduzido || carrosselPausado || projetoSelecionado) {
       return;
     }
 
@@ -78,7 +100,7 @@ function SecaoProjetos() {
     }, 4500);
 
     return () => window.clearInterval(intervalo);
-  }, [carrosselPausado]);
+  }, [carrosselPausado, projetoSelecionado]);
 
   useEffect(() => {
     return () => {
@@ -136,73 +158,80 @@ function SecaoProjetos() {
   };
 
   return (
-    <section
-      id="projetos"
-      className="secao-projetos carousel"
-      aria-label="Projetos selecionados"
-      aria-roledescription="carrossel"
-      tabIndex={0}
-      onKeyDown={(evento) => {
-        if (evento.key === 'ArrowRight') {
-          evento.preventDefault();
-          irParaProjeto(projetoAtual + 1);
-        }
+    <>
+      <section
+        id="projetos"
+        className="secao-projetos carousel"
+        aria-label="Projetos selecionados"
+        aria-roledescription="carrossel"
+        tabIndex={0}
+        onKeyDown={(evento) => {
+          if (evento.key === 'ArrowRight') {
+            evento.preventDefault();
+            irParaProjeto(projetoAtual + 1);
+          }
 
-        if (evento.key === 'ArrowLeft') {
-          evento.preventDefault();
-          irParaProjeto(projetoAtual - 1);
-        }
-      }}
-      onMouseEnter={() => setCarrosselPausado(true)}
-      onMouseLeave={() => setCarrosselPausado(false)}
-      onFocusCapture={() => setCarrosselPausado(true)}
-      onBlurCapture={(evento) => {
-        if (!evento.currentTarget.contains(evento.relatedTarget)) {
-          setCarrosselPausado(false);
-        }
-      }}
-    >
-      <div
-        className="carousel-track"
-        ref={trilhaRef}
-        onScroll={atualizarProjetoPelaRolagem}
+          if (evento.key === 'ArrowLeft') {
+            evento.preventDefault();
+            irParaProjeto(projetoAtual - 1);
+          }
+        }}
+        onMouseEnter={() => setCarrosselPausado(true)}
+        onMouseLeave={() => setCarrosselPausado(false)}
+        onFocusCapture={() => setCarrosselPausado(true)}
+        onBlurCapture={(evento) => {
+          if (!evento.currentTarget.contains(evento.relatedTarget)) {
+            setCarrosselPausado(false);
+          }
+        }}
       >
-        {projetos.map((projeto, indice) => (
-          <CardProjeto
-            key={projeto.id}
-            ref={(elemento) => {
-              projetosRef.current[indice] = elemento;
-            }}
-            projeto={projeto}
-            indice={indice}
-            quantidadeProjetos={quantidadeProjetos}
-            atual={projetoAtual === indice}
-          />
-        ))}
-      </div>
+        <div
+          className="carousel-track"
+          ref={trilhaRef}
+          onScroll={atualizarProjetoPelaRolagem}
+        >
+          {projetos.map((projeto, indice) => (
+            <CardProjeto
+              key={projeto.id}
+              ref={(elemento) => {
+                projetosRef.current[indice] = elemento;
+              }}
+              projeto={projeto}
+              indice={indice}
+              quantidadeProjetos={quantidadeProjetos}
+              atual={projetoAtual === indice}
+              aoAbrirDetalhes={abrirModal}
+            />
+          ))}
+        </div>
 
-      <button
-        className="carousel-nav prev"
-        type="button"
-        aria-label="Projeto anterior"
-        onClick={() => irParaProjeto(projetoAtual - 1)}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-        </svg>
-      </button>
+        <button
+          className="carousel-nav prev"
+          type="button"
+          aria-label="Projeto anterior"
+          onClick={() => irParaProjeto(projetoAtual - 1)}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
 
-      <button
-        className="carousel-nav next"
-        type="button"
-        aria-label="Próximo projeto"
-        onClick={() => irParaProjeto(projetoAtual + 1)}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-        </svg>
-      </button>
-    </section>
+        <button
+          className="carousel-nav next"
+          type="button"
+          aria-label="Próximo projeto"
+          onClick={() => irParaProjeto(projetoAtual + 1)}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+          </svg>
+        </button>
+      </section>
+
+      {projetoSelecionado && (
+        <ModalProjeto projeto={projetoSelecionado} aoFechar={fecharModal} />
+      )}
+    </>
   );
 }
 

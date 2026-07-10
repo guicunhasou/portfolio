@@ -6,11 +6,12 @@ type PropriedadesCardProjeto = {
   indice: number;
   quantidadeProjetos: number;
   atual: boolean;
+  aoAbrirDetalhes: (projeto: Projeto, acionador: HTMLButtonElement) => void;
 };
 
 const CardProjeto = forwardRef<HTMLElement, PropriedadesCardProjeto>(
   function CardProjeto(
-    { projeto, indice, quantidadeProjetos, atual },
+    { projeto, indice, quantidadeProjetos, atual, aoAbrirDetalhes },
     referencia,
   ) {
     return (
@@ -52,21 +53,15 @@ const CardProjeto = forwardRef<HTMLElement, PropriedadesCardProjeto>(
             ))}
           </ul>
 
-          {projeto.links.length > 0 && (
-            <ul className="links-projeto">
-              {projeto.links.map((link) => (
-                <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.rotulo}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
+          <button
+            className="botao-detalhes"
+            type="button"
+            onClick={(evento) =>
+              aoAbrirDetalhes(projeto, evento.currentTarget)
+            }
+          >
+            Ver detalhes
+          </button>
         </div>
       </article>
     );
