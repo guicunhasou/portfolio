@@ -1,1 +1,14 @@
+# Dependências e builds
+node_modules/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos locais e de sistema
+*.local
 .DS_Store

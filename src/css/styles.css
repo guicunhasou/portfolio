@@ -309,14 +309,20 @@ section#projetos.carousel{
 }
 
 #projetos .carousel-track{
+  --espaco-entre-projetos: clamp(1rem, 3vw, 2rem);
   display: flex;
-  gap: clamp(1rem, 3vw, 2rem);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: clamp(1rem,2vw,2rem) clamp(5vw,10vw,12vw);
+  padding-block: clamp(1rem, 2vw, 2rem);
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+}
+
+#projetos .carousel-track::before,
+#projetos .carousel-track::after{
+  content: "";
+  flex: 0 0 14%;
 }
 
 #projetos .carousel-track::-webkit-scrollbar{ height:10px; }
@@ -338,7 +344,7 @@ section#projetos.carousel{
 #projetos .projeto{
   flex: 0 0 72%;
   width: auto;
-  margin-inline: 0; 
+  margin-inline: 0 var(--espaco-entre-projetos);
   scroll-snap-align: center;
   transition: transform .35s ease, opacity .35s ease, filter .35s ease;
   transform-origin: center center;
@@ -346,7 +352,16 @@ section#projetos.carousel{
   filter: saturate(.7);
 }
 
+#projetos .projeto:last-of-type{
+  margin-right: 0;
+}
+
 @media (min-width: 900px){
+  #projetos .carousel-track::before,
+  #projetos .carousel-track::after{
+    flex-basis: 22%;
+  }
+
   #projetos .projeto{ flex-basis: 56%; }
 }
 
