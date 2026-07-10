@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import imagemIaraGames from '../../assets/imagens/img2.jpg';
-import imagemJardimental from '../../assets/imagens/img1.jpg';
-import imagemSiteInstitucional from '../../assets/imagens/img5.png';
-import imagemSportsX from '../../assets/imagens/img4.jpg';
+import { projetos } from '../../data/projetos';
 
-const quantidadeProjetos = 4;
+const quantidadeProjetos = projetos.length;
 
 function SecaoProjetos() {
   const [projetoAtual, setProjetoAtual] = useState(0);
@@ -169,227 +166,47 @@ function SecaoProjetos() {
         ref={trilhaRef}
         onScroll={atualizarProjetoPelaRolagem}
       >
-        <article
-          className={`projeto ${projetoAtual === 0 ? 'is-current' : ''}`}
-          ref={(elemento) => {
-            projetosRef.current[0] = elemento;
-          }}
-          aria-label="Projeto 1 de 4: SportsX"
-        >
-          <div className="imagem">
-            <img src={imagemSportsX} alt="Interface do projeto SportsX" />
-          </div>
-          <div className="descricao">
-            <div className="textos">
-              <h3>SportsX</h3>
-              <p>
-                Plataforma web responsiva criada para dar visibilidade a
-                esportes menos valorizados, unindo front-end, UX/UI e
-                acessibilidade.
-              </p>
-              <p>Projeto selecionado para o FIAP NEXT 2025.</p>
+        {projetos.map((projeto, indice) => (
+          <article
+            key={projeto.id}
+            className={`projeto ${projetoAtual === indice ? 'is-current' : ''}`}
+            ref={(elemento) => {
+              projetosRef.current[indice] = elemento;
+            }}
+            aria-label={`Projeto ${indice + 1} de ${quantidadeProjetos}: ${projeto.nome}`}
+          >
+            <div className="imagem">
+              <img src={projeto.imagem} alt={projeto.textoAlternativo} />
             </div>
-            <ul className="tags" aria-label="Tecnologias e competências">
-              <li>UX/UI</li>
-              <li>Front-end</li>
-              <li>JavaScript</li>
-              <li>Bootstrap</li>
-              <li>Acessibilidade</li>
-            </ul>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://fiap-webdesign.github.io/enterprise-challenge-sportsx/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Página publicada
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/fiap-webdesign/enterprise-challenge-sportsx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Repositório
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.figma.com/design/QtaMgmCtG6Y0UcIVD4mC70/Enterprise-Challenge?node-id=348-2&t=G8Y0sdoiVUFy7WKq-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Figma
-                </a>
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article
-          className={`projeto ${projetoAtual === 1 ? 'is-current' : ''}`}
-          ref={(elemento) => {
-            projetosRef.current[1] = elemento;
-          }}
-          aria-label="Projeto 2 de 4: Iara Games"
-        >
-          <div className="imagem">
-            <img
-              src={imagemIaraGames}
-              alt="Interface do projeto Iara Games"
-            />
-          </div>
-          <div className="descricao">
-            <div className="textos">
-              <h3>Iara Games</h3>
-              <p>
-                Projeto acadêmico com interfaces interativas, acessibilidade
-                e visualização de dados usando HTML, CSS, JavaScript e
-                Node-RED.
-              </p>
+            <div className="descricao">
+              <div className="textos">
+                <h3>{projeto.nome}</h3>
+                <p>{projeto.descricaoCurta}</p>
+                {projeto.informacaoAdicional && (
+                  <p>{projeto.informacaoAdicional}</p>
+                )}
+              </div>
+              <ul className="tags" aria-label="Tecnologias e competências">
+                {projeto.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+              <ul className="links">
+                {projeto.links.map((link) => (
+                  <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.rotulo}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="tags" aria-label="Tecnologias e competências">
-              <li>Front-end</li>
-              <li>UX/UI</li>
-              <li>JavaScript</li>
-              <li>Bootstrap</li>
-              <li>Node-RED</li>
-            </ul>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://guicunhasou.github.io/iara-games/index.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Página publicada
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/guicunhasou/iara-games"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Repositório
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.figma.com/design/pMH6zTuYQDshExMhQQGLeK/Iara-Games?node-id=97-10&t=rxvJ9SQssHLTYwbs-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Figma
-                </a>
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article
-          className={`projeto ${projetoAtual === 2 ? 'is-current' : ''}`}
-          ref={(elemento) => {
-            projetosRef.current[2] = elemento;
-          }}
-          aria-label="Projeto 3 de 4: Jardimental"
-        >
-          <div className="imagem">
-            <img
-              src={imagemJardimental}
-              alt="Interface do projeto Jardimental"
-            />
-          </div>
-          <div className="descricao">
-            <div className="textos">
-              <h3>Jardimental</h3>
-              <p>
-                Estudo de caso UX/UI de um app gamificado para acompanhamento
-                de hábitos de saúde mental.
-              </p>
-            </div>
-            <ul className="tags" aria-label="Tecnologias e competências">
-              <li>UX/UI</li>
-              <li>Estudo de Caso</li>
-              <li>Figma</li>
-              <li>Prototipagem</li>
-              <li>Gamificação</li>
-            </ul>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://www.behance.net/gallery/186602883/Jardimental-Estudo-de-Caso-UXUI"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Estudo de caso
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.figma.com/design/ZrPQwEFRN4NBoRsO2I4aCa/JARDIMENTAL?node-id=89-116&t=jBzMcGUvaKzY9hy1-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Figma
-                </a>
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article
-          className={`projeto ${projetoAtual === 3 ? 'is-current' : ''}`}
-          ref={(elemento) => {
-            projetosRef.current[3] = elemento;
-          }}
-          aria-label="Projeto 4 de 4: Site Institucional"
-        >
-          <div className="imagem">
-            <img
-              src={imagemSiteInstitucional}
-              alt="Interface do projeto Site Institucional"
-            />
-          </div>
-          <div className="descricao">
-            <div className="textos">
-              <h3>Site Institucional</h3>
-              <p>
-                Projeto de site institucional para uma escola real, focado em
-                design intuitivo e responsivo.
-              </p>
-            </div>
-            <ul className="tags" aria-label="Tecnologias e competências">
-              <li>Front-end</li>
-              <li>UX/UI</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://guicunhasou.github.io/escolar/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Página publicada
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/guicunhasou/escolar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Repositório
-                </a>
-              </li>
-            </ul>
-          </div>
-        </article>
+          </article>
+        ))}
       </div>
 
       <button

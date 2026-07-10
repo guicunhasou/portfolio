@@ -9,7 +9,9 @@ export type Projeto = {
   nome: string;
   descricaoCurta: string;
   descricaoCompleta: string;
+  informacaoAdicional?: string;
   imagem: string;
+  textoAlternativo: string;
   tags: string[];
   links: LinkProjeto[];
   destaque?: boolean;
