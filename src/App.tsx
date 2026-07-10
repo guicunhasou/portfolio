@@ -1,12 +1,14 @@
+import PainelPerfil from './components/PainelPerfil/PainelPerfil';
 import Rodape from './components/Rodape/Rodape';
-import SecaoApresentacao from './components/SecaoApresentacao/SecaoApresentacao';
 import SecaoProjetos from './components/SecaoProjetos/SecaoProjetos';
 
 function App() {
   return (
     <>
-      <SecaoApresentacao />
-      <SecaoProjetos />
+      <main className="conteudo-principal">
+        <PainelPerfil />
+        <SecaoProjetos />
+      </main>
       <Rodape />
     </>
   );

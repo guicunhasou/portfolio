@@ -140,7 +140,7 @@ function SecaoProjetos() {
   return (
     <section
       id="projetos"
-      className="carousel"
+      className="secao-projetos carousel"
       aria-label="Projetos selecionados"
       aria-roledescription="carrossel"
       tabIndex={0}
