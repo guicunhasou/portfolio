@@ -706,3 +706,205 @@ body.modal-aberto{
     animation: none;
   }
 }
+
+/* ========== LAYOUT DESKTOP ========== */
+
+.cabecalho-projetos{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 1025px){
+  html,
+  body,
+  #root{
+    height: 100%;
+  }
+
+  body{
+    overflow: hidden;
+  }
+
+  #root{
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .conteudo-principal{
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(330px, .85fr) minmax(560px, 1.4fr);
+    gap: clamp(1rem, 2vw, 2rem);
+    padding: clamp(1rem, 2vw, 2rem);
+    padding-bottom: 0;
+  }
+
+  .painel-perfil{
+    min-height: 0;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: clamp(1.5rem, 3vw, 3rem);
+    overflow-y: auto;
+    border: 1px solid rgb(64 48 80 / 10%);
+    border-radius: clamp(28px, 4vw, 52px);
+    background: rgb(242 246 238 / 82%);
+    box-shadow: 0 20px 60px rgb(64 48 80 / 12%);
+    backdrop-filter: blur(12px);
+  }
+
+  .conteudo-perfil{
+    width: min(480px, 100%);
+    gap: var(--space-3);
+  }
+
+  .apresentacao-perfil h1{
+    font-size: clamp(2rem, 3vw, 3.4rem);
+  }
+
+  .areas-atuacao{
+    font-size: clamp(.95rem, 1.2vw, 1.3rem);
+  }
+
+  .resumo-perfil{
+    max-width: 44ch;
+  }
+
+  .foto-perfil{
+    order: -1;
+    width: min(15vw, 230px);
+  }
+
+  .foto-perfil img{
+    aspect-ratio: 4 / 5;
+    border-radius: clamp(28px, 3vw, 44px);
+    box-shadow: 0 16px 40px rgb(64 48 80 / 16%);
+  }
+
+  .botao-projetos{
+    display: none;
+  }
+
+  .secao-projetos.lista-projetos{
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: stretch;
+    justify-content: stretch;
+    gap: var(--space-3);
+    padding: clamp(.5rem, 1vw, 1rem) 0 0;
+    overflow: hidden;
+  }
+
+  .cabecalho-projetos{
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0 clamp(.25rem, 1vw, .75rem);
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  .rotulo-projetos{
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--suco);
+  }
+
+  .cabecalho-projetos h2{
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .descricao-projetos{
+    max-width: 58ch;
+    margin-top: .45rem;
+    font-size: clamp(.9rem, .8vw, 1rem);
+    font-weight: 500;
+    opacity: .82;
+  }
+
+  #projetos .carousel-track{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: var(--space-3);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    padding: .25rem clamp(.5rem, 1vw, .9rem) 2rem .25rem;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--lavanda) transparent;
+  }
+
+  #projetos .carousel-track::before,
+  #projetos .carousel-track::after{
+    display: none;
+  }
+
+  #projetos .card-projeto,
+  #projetos .card-projeto.card-atual,
+  #projetos .card-projeto:not(.card-atual){
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(190px, 36%) minmax(0, 1fr);
+    align-items: stretch;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3);
+    border-radius: clamp(24px, 2.5vw, 36px);
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  #projetos .imagem-projeto{
+    height: 100%;
+    min-height: 210px;
+    aspect-ratio: auto;
+    border-radius: clamp(18px, 2vw, 26px);
+  }
+
+  #projetos .conteudo-projeto{
+    align-content: start;
+    gap: var(--space-2);
+    padding: clamp(1rem, 1.7vw, 1.5rem);
+    border-radius: clamp(18px, 2vw, 26px);
+  }
+
+  #projetos .textos-projeto{
+    display: grid;
+    gap: .35rem;
+  }
+
+  #projetos .textos-projeto h3{
+    font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  }
+
+  #projetos .botao-detalhes{
+    margin-top: auto;
+  }
+
+  .dados{
+    margin: .45rem clamp(1.25rem, 2vw, 2rem) .8rem;
+  }
+}

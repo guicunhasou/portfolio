@@ -5,10 +5,14 @@ import CardProjeto from '../CardProjeto/CardProjeto';
 import ModalProjeto from '../ModalProjeto/ModalProjeto';
 
 const quantidadeProjetos = projetos.length;
+const consultaLayoutDesktop = '(min-width: 1025px)';
 
 function SecaoProjetos() {
   const [projetoAtual, setProjetoAtual] = useState(0);
   const [carrosselPausado, setCarrosselPausado] = useState(false);
+  const [layoutDesktop, setLayoutDesktop] = useState(() =>
+    window.matchMedia(consultaLayoutDesktop).matches,
+  );
   const [projetoSelecionado, setProjetoSelecionado] =
     useState<Projeto | null>(null);
   const trilhaRef = useRef<HTMLDivElement>(null);
@@ -42,7 +46,24 @@ function SecaoProjetos() {
   };
 
   useEffect(() => {
+    const consulta = window.matchMedia(consultaLayoutDesktop);
+    const atualizarLayout = () => setLayoutDesktop(consulta.matches);
+
+    atualizarLayout();
+    consulta.addEventListener('change', atualizarLayout);
+
+    return () => consulta.removeEventListener('change', atualizarLayout);
+  }, []);
+
+  useEffect(() => {
     const trilha = trilhaRef.current;
+
+    if (layoutDesktop) {
+      trilha?.scrollTo({ left: 0, behavior: 'auto' });
+      primeiraPosicaoRef.current = true;
+      return;
+    }
+
     const projeto = projetosRef.current[projetoAtual];
 
     if (!trilha || !projeto) {
@@ -82,14 +103,19 @@ function SecaoProjetos() {
     );
 
     primeiraPosicaoRef.current = false;
-  }, [projetoAtual]);
+  }, [layoutDesktop, projetoAtual]);
 
   useEffect(() => {
     const movimentoReduzido = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
-    if (movimentoReduzido || carrosselPausado || projetoSelecionado) {
+    if (
+      layoutDesktop ||
+      movimentoReduzido ||
+      carrosselPausado ||
+      projetoSelecionado
+    ) {
       return;
     }
 
@@ -100,7 +126,7 @@ function SecaoProjetos() {
     }, 4500);
 
     return () => window.clearInterval(intervalo);
-  }, [carrosselPausado, projetoSelecionado]);
+  }, [carrosselPausado, layoutDesktop, projetoSelecionado]);
 
   useEffect(() => {
     return () => {
@@ -115,7 +141,7 @@ function SecaoProjetos() {
   }, []);
 
   const atualizarProjetoPelaRolagem = () => {
-    if (rolagemProgramaticaRef.current) {
+    if (layoutDesktop || rolagemProgramaticaRef.current) {
       return;
     }
 
@@ -161,11 +187,15 @@ function SecaoProjetos() {
     <>
       <section
         id="projetos"
-        className="secao-projetos carousel"
-        aria-label="Projetos selecionados"
-        aria-roledescription="carrossel"
-        tabIndex={0}
+        className={`secao-projetos ${layoutDesktop ? 'lista-projetos' : 'carousel'}`}
+        aria-labelledby="titulo-projetos"
+        aria-roledescription={layoutDesktop ? undefined : 'carrossel'}
+        tabIndex={layoutDesktop ? undefined : 0}
         onKeyDown={(evento) => {
+          if (layoutDesktop) {
+            return;
+          }
+
           if (evento.key === 'ArrowRight') {
             evento.preventDefault();
             irParaProjeto(projetoAtual + 1);
@@ -185,6 +215,15 @@ function SecaoProjetos() {
           }
         }}
       >
+        <header className="cabecalho-projetos">
+          <p className="rotulo-projetos">Trabalhos selecionados</p>
+          <h2 id="titulo-projetos">Projetos</h2>
+          <p className="descricao-projetos">
+            Interfaces, produtos digitais e experiências construídas entre
+            design e código.
+          </p>
+        </header>
+
         <div
           className="carousel-track"
           ref={trilhaRef}
@@ -199,33 +238,37 @@ function SecaoProjetos() {
               projeto={projeto}
               indice={indice}
               quantidadeProjetos={quantidadeProjetos}
-              atual={projetoAtual === indice}
+              atual={!layoutDesktop && projetoAtual === indice}
               aoAbrirDetalhes={abrirModal}
             />
           ))}
         </div>
 
-        <button
-          className="carousel-nav prev"
-          type="button"
-          aria-label="Projeto anterior"
-          onClick={() => irParaProjeto(projetoAtual - 1)}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
+        {!layoutDesktop && (
+          <>
+            <button
+              className="carousel-nav prev"
+              type="button"
+              aria-label="Projeto anterior"
+              onClick={() => irParaProjeto(projetoAtual - 1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+              </svg>
+            </button>
 
-        <button
-          className="carousel-nav next"
-          type="button"
-          aria-label="Próximo projeto"
-          onClick={() => irParaProjeto(projetoAtual + 1)}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-          </svg>
-        </button>
+            <button
+              className="carousel-nav next"
+              type="button"
+              aria-label="Próximo projeto"
+              onClick={() => irParaProjeto(projetoAtual + 1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+              </svg>
+            </button>
+          </>
+        )}
       </section>
 
       {projetoSelecionado && (
