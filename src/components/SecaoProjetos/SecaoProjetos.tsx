@@ -8,6 +8,7 @@ function SecaoProjetos() {
   const [projetoSelecionado, setProjetoSelecionado] =
     useState<Projeto | null>(null);
   const acionadorModalRef = useRef<HTMLButtonElement | null>(null);
+  const projetosVisiveis = projetos.slice(0, 4);
 
   const abrirModal = (projeto: Projeto, acionador: HTMLButtonElement) => {
     acionadorModalRef.current = acionador;
@@ -39,7 +40,7 @@ function SecaoProjetos() {
         </header>
 
         <ul className="lista-cards-projetos">
-          {projetos.map((projeto) => (
+          {projetosVisiveis.map((projeto) => (
             <li className="item-projeto" key={projeto.id}>
               <CardProjeto
                 projeto={projeto}

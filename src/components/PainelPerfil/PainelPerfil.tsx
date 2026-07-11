@@ -26,11 +26,6 @@ function PainelPerfil() {
 
       <FotoPerfil />
 
-      <footer className="dados-perfil">
-        <span>Feito em Pernambuco</span>
-        <span aria-hidden="true">✦</span>
-        <span>Versão 2.13.4</span>
-      </footer>
     </section>
   );
 }

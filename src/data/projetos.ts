@@ -9,7 +9,7 @@ export const projetos: Projeto[] = [
     id: 'estelar',
     nome: 'Estelar',
     descricaoCurta:
-      'Aplicativo mobile de saúde mental e bem-estar para astronautas em missões espaciais de longa duração.',
+      'App mobile de saúde mental e bem-estar para astronautas em missões de longa duração.',
     descricaoCompleta:
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
     informacaoAdicional: 'Global Solution FIAP 2026.',
@@ -22,7 +22,7 @@ export const projetos: Projeto[] = [
     id: 'sportsx',
     nome: 'SportsX',
     descricaoCurta:
-      'Plataforma web responsiva criada para dar visibilidade a esportes menos valorizados, unindo front-end, UX/UI e acessibilidade.',
+      'Plataforma web responsiva criada para dar visibilidade a esportes menos valorizados.',
     descricaoCompleta:
       'Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível.',
     informacaoAdicional: 'Projeto selecionado para o FIAP NEXT 2025.',
@@ -53,7 +53,7 @@ export const projetos: Projeto[] = [
     id: 'jardimental',
     nome: 'Jardimental',
     descricaoCurta:
-      'Estudo de caso UX/UI de um app gamificado para acompanhamento de hábitos de saúde mental.',
+      'Estudo de caso UX/UI de um app para acompanhamento de hábitos de saúde mental.',
     descricaoCompleta:
       'Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.',
     imagem: imagemJardimental,
@@ -77,7 +77,7 @@ export const projetos: Projeto[] = [
     id: 'iara-games',
     nome: 'Iara Games',
     descricaoCurta:
-      'Projeto acadêmico com interfaces interativas, acessibilidade e visualização de dados usando HTML, CSS, JavaScript e Node-RED.',
+      'Projeto acadêmico focado em interfaces interativas, dados e acessibilidade.',
     descricaoCompleta:
       'Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.',
     imagem: imagemIaraGames,
