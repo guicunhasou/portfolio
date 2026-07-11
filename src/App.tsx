@@ -1,5 +1,4 @@
 import PainelPerfil from './components/PainelPerfil/PainelPerfil';
-import Rodape from './components/Rodape/Rodape';
 import SecaoProjetos from './components/SecaoProjetos/SecaoProjetos';
 
 function App() {
@@ -9,7 +8,6 @@ function App() {
         <PainelPerfil />
         <SecaoProjetos />
       </main>
-      <Rodape />
     </>
   );
 }
