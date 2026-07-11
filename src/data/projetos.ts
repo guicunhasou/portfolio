@@ -1,7 +1,8 @@
-import imagemIaraGames from '../assets/imagens/img2.webp';
-import imagemJardimental from '../assets/imagens/img1.webp';
-import imagemSiteInstitucional from '../assets/imagens/img5.webp';
-import imagemSportsX from '../assets/imagens/img4.webp';
+import imagemEstelar from '../assets/imagens/capa-estelar.webp';
+import imagemSportsX from '../assets/imagens/capa-sportsx.webp';
+import imagemIaraGames from '../assets/imagens/capa-iara.webp';
+import imagemJardimental from '../assets/imagens/capa-jardimental.webp';
+import imagemSiteInstitucional from '../assets/imagens/capa-institucional.webp';
 import type { Projeto } from '../types/projeto';
 
 export const projetos: Projeto[] = [
@@ -13,6 +14,7 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
     informacaoAdicional: 'Global Solution FIAP 2026.',
+    imagem: imagemEstelar,
     textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
     tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
     links: [],

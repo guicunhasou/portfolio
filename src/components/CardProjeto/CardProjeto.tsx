@@ -35,7 +35,6 @@ function CardProjeto({
               ✦
             </span>
             <strong>{projeto.nome}</strong>
-            <span>Prévia visual em atualização</span>
           </div>
         )}
       </div>
