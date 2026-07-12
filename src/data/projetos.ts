@@ -15,7 +15,7 @@ export const projetos: Projeto[] = [
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
     informacaoAdicional: 'Global Solution FIAP 2026.',
     imagem: imagemEstelar,
-    textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
+    textoAlternativo: 'Astronauta segurando um coração luminoso ao lado de interfaces de acompanhamento emocional e uma constelação colorida',
     tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
     links: [
       {
@@ -51,7 +51,7 @@ export const projetos: Projeto[] = [
     informacaoAdicional: 'Projeto selecionado para o FIAP NEXT 2025.',
     imagem: imagemSportsX,
     textoAlternativo:
-      'Página inicial do SportsX com destaque para escalada esportiva',
+      'Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas',
     tags: ['UX/UI', 'Front-end', 'JavaScript', 'Bootstrap', 'Acessibilidade'],
     links: [
       {
@@ -81,7 +81,7 @@ export const projetos: Projeto[] = [
       'Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.',
     imagem: imagemJardimental,
     textoAlternativo:
-      'Protótipos do aplicativo Jardimental apresentados sobre fundo rosa',
+      'Telas do aplicativo com registro de humor, jardim virtual florido e histórico emocional',
     tags: ['UX/UI', 'Estudo de Caso', 'Figma', 'Prototipagem', 'Gamificação'],
     links: [
       {
@@ -105,7 +105,7 @@ export const projetos: Projeto[] = [
       'Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.',
     imagem: imagemIaraGames,
     textoAlternativo:
-      'Página inicial do Iara Games com personagem ilustrada e acesso ao catálogo',
+      'Personagem Iara sentada em uma floresta ao lado de capas de diferentes jogos',
     tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
     links: [
       {
@@ -134,7 +134,7 @@ export const projetos: Projeto[] = [
       'Site institucional desenvolvido para uma escola real, com foco em clareza de navegação, organização visual, responsividade e utilidade para a comunidade escolar.',
     imagem: imagemSiteInstitucional,
     textoAlternativo:
-      'Página inicial do site da escola com banner e atalhos de navegação',
+      'Estudantes na entrada da escola, atividade com a comunidade escolar e aviso de reunião pedagógica',
     tags: ['Front-end', 'UX/UI', 'HTML', 'CSS', 'JavaScript'],
     links: [
       {

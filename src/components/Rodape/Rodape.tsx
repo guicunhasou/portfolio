@@ -9,9 +9,9 @@ function Rodape() {
           href="https://github.com/guicunhasou/portfolio"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Abrir o repositório do portfólio, versão 2.13.6, em uma nova aba"
+          aria-label="Abrir o repositório do portfólio em uma nova aba"
         >
-          Versão 2.13.7
+          Versão 2.13.8
         </a>
       </p>
     </footer>
