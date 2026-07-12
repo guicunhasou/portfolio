@@ -1,7 +1,7 @@
 export type LinkProjeto = {
   rotulo: string;
-  url: string;
-  tipo: 'site' | 'repositorio' | 'figma' | 'behance' | 'outro';
+  url?: string;
+  tipo: 'site' | 'repositorio' | 'figma' | 'medium' | 'behance' | 'medium' | 'outro';
 };
 
 export type Projeto = {

@@ -1,4 +1,5 @@
 import { linksSociais } from '../../data/linksSociais';
+import IconeAcao from '../IconeAcao/IconeAcao';
 
 function LinksSociais() {
   return (
@@ -9,11 +10,13 @@ function LinksSociais() {
         return (
           <li key={link.tipo}>
             <a
+              className="botao-acao botao-expansivel"
               href={link.url}
               target={linkExterno ? '_blank' : undefined}
               rel={linkExterno ? 'noopener noreferrer' : undefined}
             >
-              {link.rotulo}
+              <IconeAcao tipo={link.tipo} />
+              <span className="rotulo-botao">{link.rotulo}</span>
               {linkExterno && (
                 <span className="somente-leitor"> (abre em nova aba)</span>
               )}

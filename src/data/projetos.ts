@@ -17,7 +17,28 @@ export const projetos: Projeto[] = [
     imagem: imagemEstelar,
     textoAlternativo: 'Prévia visual do projeto Estelar em atualização',
     tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
-    links: [],
+    links: [
+      {
+        rotulo: 'Repositório',
+        url: '',
+        tipo: 'repositorio',
+      },
+      {
+        rotulo: 'Figma',
+        url: '',
+        tipo: 'figma',
+      },
+      {
+        rotulo: 'Medium',
+        url: '',
+        tipo: 'medium',
+      },
+      {
+        rotulo: 'Behance',
+        url: '',
+        tipo: 'behance',
+      },
+    ],
     destaque: true,
   },
   {

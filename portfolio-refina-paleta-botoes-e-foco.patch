@@ -1,0 +1,190 @@
+diff --git a/src/components/ModalProjeto/ModalProjeto.tsx b/src/components/ModalProjeto/ModalProjeto.tsx
+index 569abd3..0a2b9ac 100644
+--- a/src/components/ModalProjeto/ModalProjeto.tsx
++++ b/src/components/ModalProjeto/ModalProjeto.tsx
+@@ -4,7 +4,7 @@ import IconeAcao from '../IconeAcao/IconeAcao';
+ 
+ type PropriedadesModalProjeto = {
+   projeto: Projeto;
+-  aoFechar: () => void;
++  aoFechar: (origem: 'ponteiro' | 'teclado') => void;
+ };
+ 
+ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+@@ -88,7 +88,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+       aria-describedby={idDescricao}
+       onCancel={(evento) => {
+         evento.preventDefault();
+-        aoFechar();
++        aoFechar('teclado');
+       }}
+       onKeyDown={manterFocoNoModal}
+     >
+@@ -102,7 +102,9 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+           <button
+             className="botao-acao botao-expansivel botao-fechar"
+             type="button"
+-            onClick={aoFechar}
++            onClick={(evento) =>
++              aoFechar(evento.detail === 0 ? 'teclado' : 'ponteiro')
++            }
+           >
+             <IconeAcao tipo="fechar" />
+             <span className="rotulo-botao">Fechar</span>
+@@ -171,18 +173,14 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+                           </span>
+                         </a>
+                       ) : (
+-                        <button
+-                          className="botao-acao botao-completo botao-indisponivel"
+-                          type="button"
+-                          disabled
+-                        >
++                        <span className="botao-acao botao-completo link-projeto-em-breve">
+                           <IconeAcao tipo={link.tipo} />
+                           <span>{link.rotulo}</span>
+                           <span className="somente-leitor">
+                             {' '}
+                             (link em breve)
+                           </span>
+-                        </button>
++                        </span>
+                       )}
+                     </li>
+                   ))}
+diff --git a/src/components/SecaoProjetos/SecaoProjetos.tsx b/src/components/SecaoProjetos/SecaoProjetos.tsx
+index e695d37..7f15a8b 100644
+--- a/src/components/SecaoProjetos/SecaoProjetos.tsx
++++ b/src/components/SecaoProjetos/SecaoProjetos.tsx
+@@ -15,13 +15,18 @@ function SecaoProjetos() {
+     setProjetoSelecionado(projeto);
+   };
+ 
+-  const fecharModal = () => {
++  const fecharModal = (origem: 'ponteiro' | 'teclado') => {
+     const acionador = acionadorModalRef.current;
+ 
+     setProjetoSelecionado(null);
+ 
+     window.requestAnimationFrame(() => {
+-      acionador?.focus();
++      if (origem === 'teclado') {
++        acionador?.focus({ preventScroll: true });
++        return;
++      }
++
++      acionador?.blur();
+     });
+   };
+ 
+diff --git a/src/styles/global.css b/src/styles/global.css
+index 1b870bd..e92e0bf 100644
+--- a/src/styles/global.css
++++ b/src/styles/global.css
+@@ -185,7 +185,7 @@ body{
+ }
+ 
+ .links-sociais li:nth-child(2) .botao-expansivel{
+-  --largura-expandida: 6.75rem;
++  --largura-expandida: 7.25rem;
+ }
+ 
+ .links-sociais li:nth-child(3) .botao-expansivel{
+@@ -193,7 +193,7 @@ body{
+ }
+ 
+ .links-sociais li:nth-child(4) .botao-expansivel{
+-  --largura-expandida: 6.75rem;
++  --largura-expandida: 7.25rem;
+ }
+ 
+ .links-sociais .botao-expansivel:focus-visible{
+@@ -320,10 +320,10 @@ body{
+   gap: .55rem;
+   padding: var(--space-3);
+   text-align: center;
+-  color: #f4efff;
++  color: var(--neblina);
+   background:
+-    radial-gradient(circle at 28% 24%, rgb(244 123 170 / 35%), transparent 26%),
+-    linear-gradient(145deg, #17132f, #463077 58%, #6e3f86);
++    radial-gradient(circle at 28% 24%, rgb(138 86 189 / 35%), transparent 26%),
++    linear-gradient(145deg, var(--profundo), var(--suco) 58%, var(--lavanda));
+ }
+ 
+ .imagem-projeto-indisponivel strong{
+@@ -338,7 +338,7 @@ body{
+ .simbolo-projeto{
+   font-size: clamp(2rem, 12vw, 5rem);
+   line-height: 1;
+-  color: #f4a2bf;
++  color: var(--menta);
+ }
+ 
+ .conteudo-projeto{
+@@ -676,7 +676,7 @@ body.modal-aberto{
+ 
+ @media (hover: hover) and (pointer: fine){
+   .botao-fechar:hover{
+-    background: #dce5d3;
++    background: var(--lodo);
+   }
+ }
+ 
+@@ -709,10 +709,10 @@ body.modal-aberto{
+   gap: .55rem;
+   padding: var(--space-3);
+   text-align: center;
+-  color: #f4efff;
++  color: var(--neblina);
+   background:
+-    radial-gradient(circle at 28% 24%, rgb(244 123 170 / 35%), transparent 26%),
+-    linear-gradient(145deg, #17132f, #463077 58%, #6e3f86);
++    radial-gradient(circle at 28% 24%, rgb(138 86 189 / 35%), transparent 26%),
++    linear-gradient(145deg, var(--profundo), var(--suco) 58%, var(--lavanda));
+ }
+ 
+ .previa-modal-indisponivel strong{
+@@ -723,7 +723,7 @@ body.modal-aberto{
+ .simbolo-modal{
+   font-size: clamp(2.5rem, 9vw, 5rem);
+   line-height: 1;
+-  color: #f4a2bf;
++  color: var(--menta);
+ }
+ 
+ .detalhes-projeto{
+@@ -772,18 +772,16 @@ body.modal-aberto{
+ 
+ .links-modal .botao-completo{
+   color: var(--neblina);
+-  background: var(--oceano);
++  background: var(--suco);
+   font-size: .9rem;
+ }
+ 
+-.links-modal .botao-indisponivel{
+-  opacity: .52;
++.links-modal .link-projeto-em-breve{
+   cursor: default;
+-  filter: saturate(.55);
+ }
+ 
+ @media (hover: hover) and (pointer: fine){
+-  .links-modal .botao-completo:not(:disabled):hover{
++  .links-modal a.botao-completo:hover{
+     filter: brightness(.88);
+     transform: translateY(-2px);
+   }
+diff --git a/src/styles/variaveis.css b/src/styles/variaveis.css
+index ca53991..66f19ca 100644
+--- a/src/styles/variaveis.css
++++ b/src/styles/variaveis.css
+@@ -5,7 +5,6 @@
+   --lodo: #a6af9d;
+   --menta: #ccd6c2;
+   --neblina: #f2f6ee;
+-  --oceano: #1466b8;
+   --borda-suave: rgb(64 48 80 / 12%);
+   --fundo-painel: rgb(242 246 238 / 88%);
+   --sombra-suave: 0 14px 34px rgb(64 48 80 / 12%);

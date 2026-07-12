@@ -15,13 +15,18 @@ function SecaoProjetos() {
     setProjetoSelecionado(projeto);
   };
 
-  const fecharModal = () => {
+  const fecharModal = (origem: 'ponteiro' | 'teclado') => {
     const acionador = acionadorModalRef.current;
 
     setProjetoSelecionado(null);
 
     window.requestAnimationFrame(() => {
-      acionador?.focus();
+      if (origem === 'teclado') {
+        acionador?.focus({ preventScroll: true });
+        return;
+      }
+
+      acionador?.blur();
     });
   };
 

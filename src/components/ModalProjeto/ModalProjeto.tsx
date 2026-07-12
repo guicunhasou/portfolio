@@ -1,14 +1,14 @@
-import { useEffect, useRef, type KeyboardEvent } from 'react';
-import type { Projeto } from '../../types/projeto';
+import { useEffect, useRef, type KeyboardEvent } from "react";
+import type { Projeto } from "../../types/projeto";
+import IconeAcao from "../IconeAcao/IconeAcao";
 
 type PropriedadesModalProjeto = {
   projeto: Projeto;
-  aoFechar: () => void;
+  aoFechar: (origem: "ponteiro" | "teclado") => void;
 };
 
 function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   const dialogoRef = useRef<HTMLDialogElement>(null);
-  const botaoFecharRef = useRef<HTMLButtonElement>(null);
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
 
@@ -19,21 +19,21 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
       return;
     }
 
-    document.body.classList.add('modal-aberto');
+    document.body.classList.add("modal-aberto");
 
     if (!dialogo.open) {
       dialogo.showModal();
     }
 
-    botaoFecharRef.current?.focus();
+    dialogo.focus({ preventScroll: true });
 
     return () => {
-      document.body.classList.remove('modal-aberto');
+      document.body.classList.remove("modal-aberto");
     };
   }, []);
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
-    if (evento.key !== 'Tab') {
+    if (evento.key !== "Tab") {
       return;
     }
 
@@ -44,7 +44,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
     }
 
     const elementosFocaveis = Array.from(
-      dialogo.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]'),
+      dialogo.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"),
     );
     const primeiroElemento = elementosFocaveis[0];
     const ultimoElemento = elementosFocaveis.at(-1);
@@ -59,14 +59,21 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
 
     if (
       evento.shiftKey &&
-      (focoAtual === primeiroElemento || !dialogo.contains(focoAtual))
+      (focoAtual === dialogo ||
+        focoAtual === primeiroElemento ||
+        !dialogo.contains(focoAtual))
     ) {
       evento.preventDefault();
       ultimoElemento.focus();
       return;
     }
 
-    if (!evento.shiftKey && focoAtual === ultimoElemento) {
+    if (
+      !evento.shiftKey &&
+      (focoAtual === dialogo ||
+        focoAtual === ultimoElemento ||
+        !dialogo.contains(focoAtual))
+    ) {
       evento.preventDefault();
       primeiroElemento.focus();
     }
@@ -76,11 +83,17 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
     <dialog
       ref={dialogoRef}
       className="modal-projeto"
+      tabIndex={-1}
       aria-labelledby={idTitulo}
       aria-describedby={idDescricao}
+      onClick={(evento) => {
+        if (evento.target === evento.currentTarget) {
+          aoFechar("ponteiro");
+        }
+      }}
       onCancel={(evento) => {
         evento.preventDefault();
-        aoFechar();
+        aoFechar("teclado");
       }}
       onKeyDown={manterFocoNoModal}
     >
@@ -92,13 +105,14 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
           </div>
 
           <button
-            ref={botaoFecharRef}
-            className="botao-fechar"
+            className="botao-acao botao-expansivel botao-fechar"
             type="button"
-            onClick={aoFechar}
+            onClick={(evento) =>
+              aoFechar(evento.detail === 0 ? "teclado" : "ponteiro")
+            }
           >
-            <span aria-hidden="true">×</span>
-            <span>Fechar</span>
+            <IconeAcao tipo="fechar" />
+            <span className="rotulo-botao">Fechar</span>
           </button>
         </header>
 
@@ -149,14 +163,30 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                 <ul className="links-modal">
                   {projeto.links.map((link) => (
                     <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {link.rotulo}
-                        <span className="somente-leitor"> (abre em nova aba)</span>
-                      </a>
+                      {link.url ? (
+                        <a
+                          className="botao-acao botao-completo"
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <IconeAcao tipo={link.tipo} />
+                          <span>{link.rotulo}</span>
+                          <span className="somente-leitor">
+                            {" "}
+                            (abre em nova aba)
+                          </span>
+                        </a>
+                      ) : (
+                        <span className="botao-acao botao-completo link-projeto-em-breve">
+                          <IconeAcao tipo={link.tipo} />
+                          <span>{link.rotulo}</span>
+                          <span className="somente-leitor">
+                            {" "}
+                            (link em breve)
+                          </span>
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
