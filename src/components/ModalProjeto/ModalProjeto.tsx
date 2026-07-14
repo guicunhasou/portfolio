@@ -11,6 +11,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   const dialogoRef = useRef<HTMLDialogElement>(null);
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
+  const colaboradores = projeto.colaboradores ?? [];
 
   useEffect(() => {
     const dialogo = dialogoRef.current;
@@ -99,11 +100,6 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
     >
       <div className="conteudo-modal">
         <header className="cabecalho-modal">
-          <div>
-            <p className="rotulo-modal">Detalhes do projeto</p>
-            <h2 id={idTitulo}>{projeto.nome}</h2>
-          </div>
-
           <button
             className="botao-acao botao-expansivel botao-fechar"
             type="button"
@@ -114,6 +110,38 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
             <IconeAcao tipo="fechar" />
             <span className="rotulo-botao">Fechar</span>
           </button>
+
+          <div>
+            <p className="rotulo-modal">Detalhes do projeto</p>
+            <h2 id={idTitulo}>{projeto.nome}</h2>
+
+            {colaboradores.length > 0 && (
+              <p className="colaboradores-projeto">
+                Em colaboração com{" "}
+                {colaboradores.map((colaborador, indice) => (
+                  <span key={colaborador.nome}>
+                    {indice > 0 &&
+                      (indice === colaboradores.length - 1
+                        ? " e "
+                        : ", ")}
+                    {colaborador.url ? (
+                      <a
+                        href={colaborador.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`LinkedIn de ${colaborador.nome} (abre em nova aba)`}
+                      >
+                        {colaborador.nome}
+                      </a>
+                    ) : (
+                      colaborador.nome
+                    )}
+                  </span>
+                ))}
+                {"."}
+              </p>
+            )}
+          </div>
         </header>
 
         <div className="corpo-modal">

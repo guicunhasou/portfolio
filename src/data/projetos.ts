@@ -3,7 +3,22 @@ import imagemSportsX from '../assets/imagens/capa-sportsx.webp';
 import imagemIaraGames from '../assets/imagens/capa-iara.webp';
 import imagemJardimental from '../assets/imagens/capa-jardimental.webp';
 import imagemSiteInstitucional from '../assets/imagens/capa-institucional.webp';
-import type { Projeto } from '../types/projeto';
+import type { ColaboradorProjeto, Projeto } from '../types/projeto';
+
+const colaboradorasProjetos: ColaboradorProjeto[] = [
+  {
+    nome: 'Isa Alves',
+    url: 'https://www.linkedin.com/in/isalvesb/',
+  },
+  {
+    nome: 'Kauane Cavalcante',
+    url: 'https://www.linkedin.com/in/kauanecavalcante',
+  },
+  {
+    nome: 'Mirna Marinho',
+    url: 'https://www.linkedin.com/in/amimarinho/',
+  },
+];
 
 export const projetos: Projeto[] = [
   {
@@ -14,6 +29,7 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
     informacaoAdicional: 'Global Solution FIAP 2026.',
+    colaboradores: colaboradorasProjetos,
     imagem: imagemEstelar,
     textoAlternativo: 'Astronauta segurando um coração luminoso ao lado de interfaces de acompanhamento emocional e uma constelação colorida',
     tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
@@ -49,6 +65,7 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível.',
     informacaoAdicional: 'Projeto selecionado para o FIAP NEXT 2025.',
+    colaboradores: colaboradorasProjetos,
     imagem: imagemSportsX,
     textoAlternativo:
       'Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas',
@@ -103,7 +120,8 @@ export const projetos: Projeto[] = [
       'Projeto acadêmico focado em interfaces interativas, dados e acessibilidade.',
     descricaoCompleta:
       'Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.',
-    imagem: imagemIaraGames,
+    colaboradores: colaboradorasProjetos,
+      imagem: imagemIaraGames,
     textoAlternativo:
       'Personagem Iara sentada em uma floresta ao lado de capas de diferentes jogos',
     tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],

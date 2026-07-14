@@ -1,3 +1,8 @@
+export type ColaboradorProjeto = {
+  nome: string;
+  url?: string;
+};
+
 export type LinkProjeto = {
   rotulo: string;
   url?: string;
@@ -10,6 +15,7 @@ export type Projeto = {
   descricaoCurta: string;
   descricaoCompleta: string;
   informacaoAdicional?: string;
+  colaboradores?: ColaboradorProjeto[];
   imagem?: string;
   textoAlternativo: string;
   tags: string[];
