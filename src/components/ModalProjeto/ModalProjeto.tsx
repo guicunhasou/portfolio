@@ -1,4 +1,4 @@
-import { useEffect, useRef, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import type { Projeto } from "../../types/projeto";
 import IconeAcao from "../IconeAcao/IconeAcao";
 
@@ -9,9 +9,14 @@ type PropriedadesModalProjeto = {
 
 function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   const dialogoRef = useRef<HTMLDialogElement>(null);
+  const [indiceImagem, setIndiceImagem] = useState(0);
+  const [movimentoReduzido, setMovimentoReduzido] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
   const colaboradores = projeto.colaboradores ?? [];
+  const imagensModal = projeto.imagensModal ?? [];
 
   useEffect(() => {
     const dialogo = dialogoRef.current;
@@ -32,6 +37,47 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
       document.body.classList.remove("modal-aberto");
     };
   }, []);
+
+  useEffect(() => {
+    const consultaMovimento = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const atualizarPreferencia = (evento: MediaQueryListEvent) => {
+      setMovimentoReduzido(evento.matches);
+    };
+
+    setMovimentoReduzido(consultaMovimento.matches);
+    consultaMovimento.addEventListener("change", atualizarPreferencia);
+
+    return () => {
+      consultaMovimento.removeEventListener("change", atualizarPreferencia);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIndiceImagem(0);
+  }, [projeto.id]);
+
+  useEffect(() => {
+    if (movimentoReduzido) {
+      setIndiceImagem(0);
+      return;
+    }
+
+    if (imagensModal.length <= 1) {
+      return;
+    }
+
+    const intervalo = window.setInterval(() => {
+      setIndiceImagem((indiceAtual) =>
+        (indiceAtual + 1) % imagensModal.length,
+      );
+    }, 5000);
+
+    return () => {
+      window.clearInterval(intervalo);
+    };
+  }, [imagensModal.length, movimentoReduzido, projeto.id]);
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
     if (evento.key !== "Tab") {
@@ -121,9 +167,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                 {colaboradores.map((colaborador, indice) => (
                   <span key={colaborador.nome}>
                     {indice > 0 &&
-                      (indice === colaboradores.length - 1
-                        ? " e "
-                        : ", ")}
+                      (indice === colaboradores.length - 1 ? " e " : ", ")}
                     {colaborador.url ? (
                       <a
                         href={colaborador.url}
@@ -145,9 +189,32 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
         </header>
 
         <div className="corpo-modal">
-          <div className="imagem-modal">
-            {projeto.imagem ? (
-              <img src={projeto.imagem} alt={projeto.textoAlternativo} />
+          <div
+            className="imagem-modal"
+            role="group"
+            aria-label={`Imagens do projeto ${projeto.nome}`}
+          >
+            {imagensModal.length > 0 ? (
+              imagensModal.map((imagem, indice) => {
+                const imagemAtiva = indice === indiceImagem;
+
+                return (
+                  <img
+                    className={`imagem-slide${imagemAtiva ? " imagem-slide-ativa" : ""}`}
+                    key={imagem.src}
+                    src={imagem.src}
+                    alt={imagemAtiva ? imagem.textoAlternativo : ""}
+                    aria-hidden={!imagemAtiva}
+                    decoding="async"
+                  />
+                );
+              })
+            ) : projeto.imagem ? (
+              <img
+                className="imagem-modal-capa"
+                src={projeto.imagem}
+                alt={projeto.textoAlternativo}
+              />
             ) : (
               <div className="previa-modal-indisponivel">
                 <span className="simbolo-modal" aria-hidden="true">

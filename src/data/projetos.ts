@@ -3,6 +3,21 @@ import imagemSportsX from '../assets/imagens/capa-sportsx.webp';
 import imagemIaraGames from '../assets/imagens/capa-iara.webp';
 import imagemJardimental from '../assets/imagens/capa-jardimental.webp';
 import imagemSiteInstitucional from '../assets/imagens/capa-institucional.webp';
+import estelar1 from '../assets/imagens/modais/estelar-1.webp';
+import estelar2 from '../assets/imagens/modais/estelar-2.webp';
+import estelar3 from '../assets/imagens/modais/estelar-3.webp';
+import sportsx1 from '../assets/imagens/modais/sportsx-1.webp';
+import sportsx2 from '../assets/imagens/modais/sportsx-2.webp';
+import sportsx3 from '../assets/imagens/modais/sportsx-3.webp';
+import jardimental1 from '../assets/imagens/modais/jardimental-1.webp';
+import jardimental2 from '../assets/imagens/modais/jardimental-2.webp';
+import jardimental3 from '../assets/imagens/modais/jardimental-3.webp';
+import iara1 from '../assets/imagens/modais/iara-1.webp';
+import iara2 from '../assets/imagens/modais/iara-2.webp';
+import iara3 from '../assets/imagens/modais/iara-3.webp';
+import institucional1 from '../assets/imagens/modais/institucional-1.webp';
+import institucional2 from '../assets/imagens/modais/institucional-2.webp';
+import institucional3 from '../assets/imagens/modais/institucional-3.webp';
 import type { ColaboradorProjeto, Projeto } from '../types/projeto';
 
 const colaboradorasProjetos: ColaboradorProjeto[] = [
@@ -30,7 +45,25 @@ export const projetos: Projeto[] = [
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
     colaboradores: colaboradorasProjetos,
     imagem: imagemEstelar,
-    textoAlternativo: 'Astronauta segurando um coração luminoso ao lado de interfaces de acompanhamento emocional e uma constelação colorida',
+    textoAlternativo:
+      'Astronauta segurando um coração luminoso ao lado de interfaces de acompanhamento emocional e uma constelação colorida',
+    imagensModal: [
+      {
+        src: estelar1,
+        textoAlternativo:
+          'Astronauta segurando um coração luminoso ao lado da constelação da jornada emocional e de indicadores de bem-estar do Estelar',
+      },
+      {
+        src: estelar2,
+        textoAlternativo:
+          'Telas do Estelar para cuidado imediato, jornada emocional, registro de eventos e acompanhamento da missão',
+      },
+      {
+        src: estelar3,
+        textoAlternativo:
+          'Telas do Estelar com radar de suporte, painel da missão e área de conexão com a Terra',
+      },
+    ],
     tags: ['React Native', 'Expo Router', 'TypeScript', 'UX/UI', 'Figma'],
     links: [
       {
@@ -69,6 +102,23 @@ export const projetos: Projeto[] = [
     imagem: imagemSportsX,
     textoAlternativo:
       'Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas',
+    imagensModal: [
+      {
+        src: sportsx1,
+        textoAlternativo:
+          'Atleta praticando escalada ao lado de cards de corrida de trilha, asa-delta e escalada',
+      },
+      {
+        src: sportsx2,
+        textoAlternativo:
+          'Telas do SportsX com modalidades esportivas, página inicial e perfil de praticante',
+      },
+      {
+        src: sportsx3,
+        textoAlternativo:
+          'Telas do SportsX com detalhes de modalidade, área para patrocinadores e formulário de contato',
+      },
+    ],
     tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Acessibilidade'],
     links: [
       {
@@ -99,7 +149,30 @@ export const projetos: Projeto[] = [
     imagem: imagemJardimental,
     textoAlternativo:
       'Telas do aplicativo com registro de humor, jardim virtual florido e histórico emocional',
-    tags: ['Pesquisa UX', 'Figma', 'Prototipagem', 'Arquitetura da Informação', 'Gamificação'],
+    imagensModal: [
+      {
+        src: jardimental1,
+        textoAlternativo:
+          'Telas do Jardimental com registro de humor, jardim virtual e histórico emocional',
+      },
+      {
+        src: jardimental2,
+        textoAlternativo:
+          'Telas do Jardimental com evolução emocional, check-in diário e resumo do humor',
+      },
+      {
+        src: jardimental3,
+        textoAlternativo:
+          'Telas do Jardimental com comunidade, jardim virtual e conteúdo de relaxamento',
+      },
+    ],
+    tags: [
+      'Pesquisa UX',
+      'Figma',
+      'Prototipagem',
+      'Arquitetura da Informação',
+      'Gamificação',
+    ],
     links: [
       {
         rotulo: 'Estudo de caso',
@@ -121,9 +194,26 @@ export const projetos: Projeto[] = [
     descricaoCompleta:
       'Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.',
     colaboradores: colaboradorasProjetos,
-      imagem: imagemIaraGames,
+    imagem: imagemIaraGames,
     textoAlternativo:
       'Personagem Iara sentada em uma floresta ao lado de capas de diferentes jogos',
+    imagensModal: [
+      {
+        src: iara1,
+        textoAlternativo:
+          'Personagem Iara sentada na floresta ao lado de capas de jogos brasileiros',
+      },
+      {
+        src: iara2,
+        textoAlternativo:
+          'Telas da Iara Games com página inicial, fórum e perfil da personagem',
+      },
+      {
+        src: iara3,
+        textoAlternativo:
+          'Telas da Iara Games com detalhes de jogos, catálogo e página de compra',
+      },
+    ],
     tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
     links: [
       {
@@ -153,6 +243,23 @@ export const projetos: Projeto[] = [
     imagem: imagemSiteInstitucional,
     textoAlternativo:
       'Estudantes na entrada da escola, atividade com a comunidade escolar e aviso de reunião pedagógica',
+    imagensModal: [
+      {
+        src: institucional1,
+        textoAlternativo:
+          'Telas do site institucional da escola com as páginas A Escola, Blog e Contato',
+      },
+      {
+        src: institucional2,
+        textoAlternativo:
+          'Telas do site institucional da escola com calendário, página inicial e indicadores',
+      },
+      {
+        src: institucional3,
+        textoAlternativo:
+          'Estudantes diante da escola, atividade com a comunidade e aviso de reunião pedagógica',
+      },
+    ],
     tags: ['Front-end', 'HTML', 'CSS', 'JavaScript', 'Responsividade'],
     links: [
       {

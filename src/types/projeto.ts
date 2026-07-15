@@ -3,6 +3,11 @@ export type ColaboradorProjeto = {
   url?: string;
 };
 
+export type ImagemModalProjeto = {
+  src: string;
+  textoAlternativo: string;
+};
+
 export type LinkProjeto = {
   rotulo: string;
   url?: string;
@@ -17,6 +22,7 @@ export type Projeto = {
   colaboradores?: ColaboradorProjeto[];
   imagem?: string;
   textoAlternativo: string;
+  imagensModal?: ImagemModalProjeto[];
   tags: string[];
   links: LinkProjeto[];
   destaque?: boolean;
