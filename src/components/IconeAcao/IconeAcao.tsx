@@ -35,7 +35,7 @@ function IconeAcao({ tipo }: PropriedadesIconeAcao) {
     );
   }
 
-  if (tipo === 'github') {
+  if (tipo === 'github' || tipo === 'repositorio') {
     return (
       <span className="icone-acao" aria-hidden="true">
         <svg viewBox="0 0 24 24" focusable="false">
@@ -79,24 +79,6 @@ function IconeAcao({ tipo }: PropriedadesIconeAcao) {
           <path d="M9 8h3v6H9a3 3 0 0 1 0-6Z" opacity=".72" />
           <circle cx="15" cy="11" r="3" opacity=".9" />
           <path d="M9 14h3v3a3 3 0 1 1-3-3Z" opacity=".8" />
-        </svg>
-      </span>
-    );
-  }
-
-  if (tipo === 'repositorio') {
-    return (
-      <span className="icone-acao" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" focusable="false">
-          <circle cx="7" cy="5" r="2" stroke="currentColor" strokeWidth="1.8" />
-          <circle cx="17" cy="7" r="2" stroke="currentColor" strokeWidth="1.8" />
-          <circle cx="7" cy="19" r="2" stroke="currentColor" strokeWidth="1.8" />
-          <path
-            d="M7 7v10M9 7h4a4 4 0 0 1 4 4v4"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
         </svg>
       </span>
     );

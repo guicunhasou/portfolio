@@ -162,12 +162,6 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
           <div className="detalhes-projeto">
             <p id={idDescricao}>{projeto.descricaoCompleta}</p>
 
-            {projeto.informacaoAdicional && (
-              <p className="informacao-adicional">
-                {projeto.informacaoAdicional}
-              </p>
-            )}
-
             <section
               className="grupo-detalhes"
               aria-labelledby={`titulo-tags-${projeto.id}`}

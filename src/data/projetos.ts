@@ -28,22 +28,22 @@ export const projetos: Projeto[] = [
       'App mobile de saúde mental e bem-estar para astronautas em missões de longa duração.',
     descricaoCompleta:
       'Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.',
-    informacaoAdicional: 'Global Solution FIAP 2026.',
     colaboradores: colaboradorasProjetos,
     imagem: imagemEstelar,
     textoAlternativo: 'Astronauta segurando um coração luminoso ao lado de interfaces de acompanhamento emocional e uma constelação colorida',
-    tags: ['React Native', 'Expo', 'TypeScript', 'UX/UI', 'Figma'],
+    tags: ['React Native', 'Expo Router', 'TypeScript', 'UX/UI', 'Figma'],
     links: [
       {
         rotulo: 'Repositório',
-        url: '',
+        url: 'https://github.com/guicunhasou/Estelar',
         tipo: 'repositorio',
       },
       {
         rotulo: 'Figma',
-        url: '',
+        url: 'https://www.figma.com/design/iE0wnaC0eO3JqJgl6DSydU/Global-Solutions---Space-Connect--Estelar-?node-id=0-1&t=UQmPdZF8TQEDuGxo-1',
         tipo: 'figma',
       },
+      /*
       {
         rotulo: 'Medium',
         url: '',
@@ -54,6 +54,7 @@ export const projetos: Projeto[] = [
         url: '',
         tipo: 'behance',
       },
+      */
     ],
     destaque: true,
   },
@@ -63,13 +64,12 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       'Plataforma web responsiva criada para dar visibilidade a esportes menos valorizados.',
     descricaoCompleta:
-      'Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível.',
-    informacaoAdicional: 'Projeto selecionado para o FIAP NEXT 2025.',
+      'Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível. O projeto foi selecionado para o FIAP NEXT 2025.',
     colaboradores: colaboradorasProjetos,
     imagem: imagemSportsX,
     textoAlternativo:
       'Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas',
-    tags: ['UX/UI', 'Front-end', 'JavaScript', 'Bootstrap', 'Acessibilidade'],
+    tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Acessibilidade'],
     links: [
       {
         rotulo: 'Página publicada',
@@ -99,7 +99,7 @@ export const projetos: Projeto[] = [
     imagem: imagemJardimental,
     textoAlternativo:
       'Telas do aplicativo com registro de humor, jardim virtual florido e histórico emocional',
-    tags: ['UX/UI', 'Estudo de Caso', 'Figma', 'Prototipagem', 'Gamificação'],
+    tags: ['Pesquisa UX', 'Figma', 'Prototipagem', 'Arquitetura da Informação', 'Gamificação'],
     links: [
       {
         rotulo: 'Estudo de caso',
@@ -153,7 +153,7 @@ export const projetos: Projeto[] = [
     imagem: imagemSiteInstitucional,
     textoAlternativo:
       'Estudantes na entrada da escola, atividade com a comunidade escolar e aviso de reunião pedagógica',
-    tags: ['Front-end', 'UX/UI', 'HTML', 'CSS', 'JavaScript'],
+    tags: ['Front-end', 'HTML', 'CSS', 'JavaScript', 'Responsividade'],
     links: [
       {
         rotulo: 'Página publicada',
