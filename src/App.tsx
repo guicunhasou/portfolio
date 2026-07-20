@@ -7,6 +7,11 @@ function App() {
     <>
       <main className="conteudo-principal">
         <PainelPerfil />
+
+        <div className="divisor-mobile" aria-hidden="true">
+          <span>✦</span>
+        </div>
+
         <SecaoProjetos />
       </main>
       <Rodape />

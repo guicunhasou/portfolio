@@ -4,9 +4,20 @@ body {
   font-weight: 700;
   color: var(--profundo);
   line-height: 1.35;
-  background: url("../assets/imagens/background.jpg") no-repeat center center
-    fixed;
+  background-color: #fff;
+  background-image:
+    linear-gradient(
+      to bottom,
+      #fff 0,
+      transparent 8rem,
+      transparent calc(100% - 8rem),
+      #fff 100%
+    ),
+    url("../assets/imagens/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .somente-leitor {
@@ -25,6 +36,10 @@ body {
 
 .conteudo-principal {
   width: 100%;
+}
+
+.divisor-mobile {
+  display: none;
 }
 
 .painel-perfil {
@@ -556,6 +571,10 @@ body {
 }
 
 @media (max-width: 680px) {
+  .conteudo-principal {
+    row-gap: clamp(3rem, 12vw, 4.5rem);
+  }
+
   .painel-perfil {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -566,6 +585,7 @@ body {
       "links";
     gap: clamp(2.25rem, 7vw, 3.25rem);
     justify-items: center;
+    padding-bottom: 0;
   }
 
   .conteudo-perfil {
@@ -593,7 +613,35 @@ body {
     justify-content: center;
   }
 
+  .divisor-mobile {
+    width: min(240px, calc(100% - 4rem));
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 0.75rem;
+    color: var(--profundo);
+  }
+
+  .divisor-mobile::before,
+  .divisor-mobile::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, currentColor);
+    opacity: 0.55;
+  }
+
+  .divisor-mobile::after {
+    background: linear-gradient(90deg, currentColor, transparent);
+  }
+
+  .divisor-mobile span {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
   .secao-projetos {
+    padding-top: 0;
     padding-inline: 0.75rem;
   }
 
@@ -613,9 +661,11 @@ body.modal-aberto {
 }
 
 .modal-projeto {
+  position: fixed;
+  inset: 50% auto auto 50%;
   width: min(760px, calc(100% - 2rem));
   max-height: calc(100dvh - 2rem);
-  margin: auto;
+  margin: 0;
   padding: 0;
   overflow-y: auto;
   border: 0;
@@ -623,6 +673,7 @@ body.modal-aberto {
   color: var(--profundo);
   background: var(--neblina);
   box-shadow: 0 24px 70px rgb(31 22 41 / 35%);
+  transform: translate(-50%, -50%);
 }
 
 .modal-projeto[open] {
@@ -635,8 +686,6 @@ body.modal-aberto {
 
 .modal-projeto::backdrop {
   background: rgb(35 25 46 / 72%);
-  backdrop-filter: blur(5px);
-  animation: entrada-fundo-modal 0.2s ease-out;
 }
 
 .conteudo-modal {
@@ -843,13 +892,12 @@ body.modal-aberto {
 @keyframes entrada-modal {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
+    transform: translate(-50%, calc(-50% + 12px)) scale(0.98);
   }
-}
 
-@keyframes entrada-fundo-modal {
-  from {
-    opacity: 0;
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -1117,7 +1165,6 @@ body.modal-aberto {
 }
 
 @media (min-width: 1025px) and (max-height: 760px) {
-
   .foto-perfil {
     width: min(14.5vw, 23dvh, 210px);
   }
