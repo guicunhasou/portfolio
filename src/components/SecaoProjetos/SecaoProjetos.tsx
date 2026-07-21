@@ -34,14 +34,11 @@ function SecaoProjetos() {
     <>
       <section
         id="projetos"
-        className="secao-projetos lista-projetos"
+        className="secao-projetos"
         aria-labelledby="titulo-projetos"
       >
         <header className="cabecalho-projetos">
           <h2 id="titulo-projetos">Projetos selecionados</h2>
-          <p className="descricao-projetos">
-            Interfaces, produtos digitais e experiências construídas entre design e código.
-          </p>
         </header>
 
         <ul className="lista-cards-projetos">

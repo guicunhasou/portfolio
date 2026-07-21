@@ -73,23 +73,10 @@ export const projetos: Projeto[] = [
       },
       {
         rotulo: 'Figma',
-        url: 'https://www.figma.com/design/iE0wnaC0eO3JqJgl6DSydU/Global-Solutions---Space-Connect--Estelar-?node-id=0-1&t=UQmPdZF8TQEDuGxo-1',
+        url: 'https://www.figma.com/proto/iE0wnaC0eO3JqJgl6DSydU/Global-Solutions-Space-Connect-Estelar?node-id=1018-1370&viewport=167%2C913%2C0.41&t=8e3fCfVlCn0Vi6yu-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1018%3A1370',
         tipo: 'figma',
       },
-      /*
-      {
-        rotulo: 'Medium',
-        url: '',
-        tipo: 'medium',
-      },
-      {
-        rotulo: 'Behance',
-        url: '',
-        tipo: 'behance',
-      },
-      */
     ],
-    destaque: true,
   },
   {
     id: 'sportsx',
@@ -137,7 +124,6 @@ export const projetos: Projeto[] = [
         tipo: 'figma',
       },
     ],
-    destaque: true,
   },
   {
     id: 'jardimental',

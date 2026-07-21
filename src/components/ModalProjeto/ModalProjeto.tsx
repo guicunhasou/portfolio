@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import type { Projeto } from "../../types/projeto";
-import IconeAcao from "../IconeAcao/IconeAcao";
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import type { Projeto } from '../../types/projeto';
+import IconeAcao from '../IconeAcao/IconeAcao';
 
 type PropriedadesModalProjeto = {
   projeto: Projeto;
-  aoFechar: (origem: "ponteiro" | "teclado") => void;
+  aoFechar: (origem: 'ponteiro' | 'teclado') => void;
 };
 
 function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   const dialogoRef = useRef<HTMLDialogElement>(null);
   const [indiceImagem, setIndiceImagem] = useState(0);
   const [movimentoReduzido, setMovimentoReduzido] = useState(() =>
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   );
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
@@ -40,17 +40,17 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
 
   useEffect(() => {
     const consultaMovimento = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      '(prefers-reduced-motion: reduce)',
     );
     const atualizarPreferencia = (evento: MediaQueryListEvent) => {
       setMovimentoReduzido(evento.matches);
     };
 
     setMovimentoReduzido(consultaMovimento.matches);
-    consultaMovimento.addEventListener("change", atualizarPreferencia);
+    consultaMovimento.addEventListener('change', atualizarPreferencia);
 
     return () => {
-      consultaMovimento.removeEventListener("change", atualizarPreferencia);
+      consultaMovimento.removeEventListener('change', atualizarPreferencia);
     };
   }, []);
 
@@ -80,7 +80,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   }, [imagensModal.length, movimentoReduzido, projeto.id]);
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
-    if (evento.key !== "Tab") {
+    if (evento.key !== 'Tab') {
       return;
     }
 
@@ -91,7 +91,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
     }
 
     const elementosFocaveis = Array.from(
-      dialogo.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"),
+      dialogo.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]'),
     );
     const primeiroElemento = elementosFocaveis[0];
     const ultimoElemento = elementosFocaveis.at(-1);
@@ -135,12 +135,12 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
       aria-describedby={idDescricao}
       onClick={(evento) => {
         if (evento.target === evento.currentTarget) {
-          aoFechar("ponteiro");
+          aoFechar('ponteiro');
         }
       }}
       onCancel={(evento) => {
         evento.preventDefault();
-        aoFechar("teclado");
+        aoFechar('teclado');
       }}
       onKeyDown={manterFocoNoModal}
     >
@@ -150,7 +150,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
             className="botao-acao botao-expansivel botao-fechar"
             type="button"
             onClick={(evento) =>
-              aoFechar(evento.detail === 0 ? "teclado" : "ponteiro")
+              aoFechar(evento.detail === 0 ? 'teclado' : 'ponteiro')
             }
           >
             <IconeAcao tipo="fechar" />
@@ -163,13 +163,14 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
 
             {colaboradores.length > 0 && (
               <p className="colaboradores-projeto">
-                Em colaboração com{" "}
+                Em colaboração com{' '}
                 {colaboradores.map((colaborador, indice) => (
                   <span key={colaborador.nome}>
                     {indice > 0 &&
-                      (indice === colaboradores.length - 1 ? " e " : ", ")}
+                      (indice === colaboradores.length - 1 ? ' e ' : ', ')}
                     {colaborador.url ? (
                       <a
+                        className="link-discreto"
                         href={colaborador.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -182,7 +183,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                     )}
                   </span>
                 ))}
-                {"."}
+                {'.'}
               </p>
             )}
           </div>
@@ -203,7 +204,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                     className={`imagem-slide${imagemAtiva ? " imagem-slide-ativa" : ""}`}
                     key={imagem.src}
                     src={imagem.src}
-                    alt={imagemAtiva ? imagem.textoAlternativo : ""}
+                    alt={imagemAtiva ? imagem.textoAlternativo : ''}
                     aria-hidden={!imagemAtiva}
                     decoding="async"
                   />
@@ -262,7 +263,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                           <IconeAcao tipo={link.tipo} />
                           <span>{link.rotulo}</span>
                           <span className="somente-leitor">
-                            {" "}
+                            {' '}
                             (abre em nova aba)
                           </span>
                         </a>
@@ -271,7 +272,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                           <IconeAcao tipo={link.tipo} />
                           <span>{link.rotulo}</span>
                           <span className="somente-leitor">
-                            {" "}
+                            {' '}
                             (link em breve)
                           </span>
                         </span>

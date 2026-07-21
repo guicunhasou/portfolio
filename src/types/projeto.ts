@@ -25,5 +25,4 @@ export type Projeto = {
   imagensModal?: ImagemModalProjeto[];
   tags: string[];
   links: LinkProjeto[];
-  destaque?: boolean;
 };

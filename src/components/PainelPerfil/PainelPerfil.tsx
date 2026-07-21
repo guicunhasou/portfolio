@@ -1,5 +1,5 @@
-import FotoPerfil from '../FotoPerfil/FotoPerfil';
-import LinksSociais from '../LinksSociais/LinksSociais';
+import FotoPerfil from "../FotoPerfil/FotoPerfil";
+import LinksSociais from "../LinksSociais/LinksSociais";
 
 function PainelPerfil() {
   return (
@@ -9,23 +9,23 @@ function PainelPerfil() {
           <h1 id="titulo-perfil">Guilherme Cunha</h1>
 
           <p className="areas-atuacao">
-            <span>Front-end</span>
+            <span>Interfaces Digitais</span>
             <span aria-hidden="true">✦</span>
-            <span>Design UX/UI</span>
+            <span>Desenvolvimento Web</span>
           </p>
         </div>
 
-        <p className="resumo-perfil">
-          Estudante de Web Design na FIAP, transformo ideias em interfaces
-          responsivas, acessíveis e visualmente cuidadas, conectando design
-          UX/UI e desenvolvimento front-end.
-        </p>
+        <div className="bio">
+          <p className="bio">Estudante de Web Design na<a className="link-discreto" href="https://www.fiap.com.br" target="_blank" rel="noopener noreferrer"> FIAP</a>, </p>
+          <p className="bio">transformo ideias em interfaces </p>
+          <p className="bio">caprichadas, responsivas e acessíveis, </p>
+          <p className="bio">com carinho em cada pixel.</p>
+        </div>
 
         <LinksSociais />
       </div>
 
       <FotoPerfil />
-
     </section>
   );
 }
