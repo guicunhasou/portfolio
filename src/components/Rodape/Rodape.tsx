@@ -13,7 +13,7 @@ function Rodape() {
           rel="noopener noreferrer"
           aria-label="Abrir o repositório do portfólio em uma nova aba"
         >
-          Versão atual 2.14.3
+          Versão atual 2.15.0
         </a>
       </p>
     </footer>

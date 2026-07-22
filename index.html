@@ -4,6 +4,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f2f6ee" />
+  <script>
+    (() => {
+      let temaSalvo = null;
+
+      try {
+        temaSalvo = localStorage.getItem('portfolio:tema');
+      } catch {
+        temaSalvo = null;
+      }
+
+      const temaSistemaEscuro = matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+      const temaAtivo =
+        temaSalvo === 'claro' || temaSalvo === 'escuro'
+          ? temaSalvo
+          : temaSistemaEscuro
+            ? 'escuro'
+            : 'claro';
+
+      document.documentElement.dataset.tema = temaAtivo;
+      document.documentElement.style.colorScheme =
+        temaAtivo === 'escuro' ? 'dark' : 'light';
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute('content', temaAtivo === 'escuro' ? '#1d1624' : '#f2f6ee');
+    })();
+  </script>
   <meta name="description" content="Portfólio de Guilherme Cunha, estudante de Web Design na FIAP com foco em UX/UI, desenvolvimento web, React, React Native e Figma." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
