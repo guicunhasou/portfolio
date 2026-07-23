@@ -1,11 +1,14 @@
 import fotoPerfil from '../../assets/imagens/perfil.webp';
+import { useIdioma } from '../../idiomas/IdiomaContexto';
 
 function FotoPerfil() {
+  const { traducao } = useIdioma();
+
   return (
     <figure className="foto-perfil">
       <img
         src={fotoPerfil}
-        alt="Retrato de Guilherme Cunha sorrindo"
+        alt={traducao.perfil.fotoAlt}
         width="972"
         height="1400"
       />

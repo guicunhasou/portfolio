@@ -4,42 +4,47 @@ import {
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
-} from "react";
-import IconeControle from "../IconeControle/IconeControle";
+} from 'react';
+import {
+  useAcessibilidade,
+  type PreferenciaAcessibilidade,
+} from '../../acessibilidade/AcessibilidadeContexto';
+import { useIdioma } from '../../idiomas/IdiomaContexto';
+import {
+  IDIOMAS_DISPONIVEIS,
+  type Idioma,
+} from '../../idiomas/tipos';
+import IconeControle from '../IconeControle/IconeControle';
 
-type TipoControle = "musica" | "tema" | "idioma" | "acessibilidade";
-type TemaPreferido = "sistema" | "claro" | "escuro";
-type TemaAtivo = Exclude<TemaPreferido, "sistema">;
+type TipoControle = 'tema' | 'idioma' | 'acessibilidade';
+type TemaPreferido = 'sistema' | 'claro' | 'escuro';
+type TemaAtivo = Exclude<TemaPreferido, 'sistema'>;
 
-const CHAVE_TEMA = "portfolio:tema";
-const TEMAS: TemaPreferido[] = ["claro", "escuro", "sistema"];
-const CORES_NAVEGADOR: Record<TemaAtivo, string> = {
-  claro: "#f2f6ee",
-  escuro: "#1d1624",
-};
-
-const controles: Array<{
-  tipo: TipoControle;
-  rotulo: string;
-}> = [
-  { tipo: "musica", rotulo: "Música" },
-  { tipo: "tema", rotulo: "Tema" },
-  { tipo: "idioma", rotulo: "Idioma" },
-  { tipo: "acessibilidade", rotulo: "Acessibilidade" },
+const CHAVE_TEMA = 'portfolio:tema';
+const TEMAS: TemaPreferido[] = ['claro', 'escuro', 'sistema'];
+const PREFERENCIAS_ACESSIBILIDADE: PreferenciaAcessibilidade[] = [
+  'reduzirMovimento',
+  'pausarAnimacoes',
+  'contrasteReforcado',
+  'destacarLinks',
 ];
+const CORES_NAVEGADOR: Record<TemaAtivo, string> = {
+  claro: '#f2f6ee',
+  escuro: '#1d1624',
+};
 
 function obterTemaSalvo(): TemaPreferido {
   try {
     const temaSalvo = window.localStorage.getItem(CHAVE_TEMA);
 
-    if (temaSalvo === "claro" || temaSalvo === "escuro") {
+    if (temaSalvo === 'claro' || temaSalvo === 'escuro') {
       return temaSalvo;
     }
   } catch {
-    return "sistema";
+    return 'sistema';
   }
 
-  return "sistema";
+  return 'sistema';
 }
 
 function salvarTema(tema: TemaPreferido) {
@@ -50,14 +55,61 @@ function salvarTema(tema: TemaPreferido) {
   }
 }
 
+function navegarGrupoOpcoes<T extends string>(
+  evento: ReactKeyboardEvent<HTMLButtonElement>,
+  valorAtual: T,
+  opcoes: readonly T[],
+  selecionar: (valor: T) => void,
+  referencias: Partial<Record<T, HTMLButtonElement>>,
+) {
+  const teclasAvancar = ['ArrowRight', 'ArrowDown'];
+  const teclasVoltar = ['ArrowLeft', 'ArrowUp'];
+
+  if (
+    !teclasAvancar.includes(evento.key) &&
+    !teclasVoltar.includes(evento.key) &&
+    evento.key !== 'Home' &&
+    evento.key !== 'End'
+  ) {
+    return;
+  }
+
+  evento.preventDefault();
+
+  const indiceAtual = opcoes.indexOf(valorAtual);
+  let proximoIndice = indiceAtual;
+
+  if (teclasAvancar.includes(evento.key)) {
+    proximoIndice = (indiceAtual + 1) % opcoes.length;
+  } else if (teclasVoltar.includes(evento.key)) {
+    proximoIndice = (indiceAtual - 1 + opcoes.length) % opcoes.length;
+  } else if (evento.key === 'Home') {
+    proximoIndice = 0;
+  } else if (evento.key === 'End') {
+    proximoIndice = opcoes.length - 1;
+  }
+
+  const proximoValor = opcoes[proximoIndice];
+  selecionar(proximoValor);
+  window.requestAnimationFrame(() => {
+    referencias[proximoValor]?.focus({ preventScroll: true });
+  });
+}
+
 function ControlesExperiencia() {
+  const { idioma, definirIdioma, traducao } = useIdioma();
+  const {
+    preferencias,
+    acessibilidadeAtiva,
+    alternarPreferencia,
+  } = useAcessibilidade();
   const [controleAberto, setControleAberto] = useState<TipoControle | null>(
     null,
   );
   const [temaPreferido, setTemaPreferido] =
     useState<TemaPreferido>(obterTemaSalvo);
   const [sistemaEscuro, setSistemaEscuro] = useState(
-    () => window.matchMedia("(prefers-color-scheme: dark)").matches,
+    () => window.matchMedia('(prefers-color-scheme: dark)').matches,
   );
   const grupoRef = useRef<HTMLElement | null>(null);
   const acionadoresRef = useRef<
@@ -69,34 +121,51 @@ function ControlesExperiencia() {
   const opcoesTemaRef = useRef<
     Partial<Record<TemaPreferido, HTMLButtonElement>>
   >({});
+  const opcoesIdiomaRef = useRef<
+    Partial<Record<Idioma, HTMLButtonElement>>
+  >({});
+  const opcoesAcessibilidadeRef = useRef<
+    Partial<Record<PreferenciaAcessibilidade, HTMLButtonElement>>
+  >({});
   const temaAtivo: TemaAtivo =
-    temaPreferido === "sistema"
+    temaPreferido === 'sistema'
       ? sistemaEscuro
-        ? "escuro"
-        : "claro"
+        ? 'escuro'
+        : 'claro'
       : temaPreferido;
+  const idiomaSelecionado = IDIOMAS_DISPONIVEIS.find(
+    (opcao) => opcao.codigo === idioma,
+  );
+  const controles: Array<{ tipo: TipoControle; rotulo: string }> = [
+    { tipo: 'tema', rotulo: traducao.controles.rotulos.tema },
+    { tipo: 'idioma', rotulo: traducao.controles.rotulos.idioma },
+    {
+      tipo: 'acessibilidade',
+      rotulo: traducao.controles.rotulos.acessibilidade,
+    },
+  ];
 
   useEffect(() => {
-    const consultaTema = window.matchMedia("(prefers-color-scheme: dark)");
+    const consultaTema = window.matchMedia('(prefers-color-scheme: dark)');
     const atualizarTemaSistema = (evento: MediaQueryListEvent) => {
       setSistemaEscuro(evento.matches);
     };
 
     setSistemaEscuro(consultaTema.matches);
-    consultaTema.addEventListener("change", atualizarTemaSistema);
+    consultaTema.addEventListener('change', atualizarTemaSistema);
 
     return () => {
-      consultaTema.removeEventListener("change", atualizarTemaSistema);
+      consultaTema.removeEventListener('change', atualizarTemaSistema);
     };
   }, []);
 
   useEffect(() => {
     document.documentElement.dataset.tema = temaAtivo;
     document.documentElement.style.colorScheme =
-      temaAtivo === "escuro" ? "dark" : "light";
+      temaAtivo === 'escuro' ? 'dark' : 'light';
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", CORES_NAVEGADOR[temaAtivo]);
+      ?.setAttribute('content', CORES_NAVEGADOR[temaAtivo]);
     salvarTema(temaPreferido);
   }, [temaAtivo, temaPreferido]);
 
@@ -106,12 +175,14 @@ function ControlesExperiencia() {
     }
 
     const elementoInicial =
-      controleAberto === "tema"
+      controleAberto === 'tema'
         ? opcoesTemaRef.current[temaPreferido]
-        : fecharRef.current[controleAberto];
+        : controleAberto === 'idioma'
+          ? opcoesIdiomaRef.current[idioma]
+          : opcoesAcessibilidadeRef.current.reduzirMovimento;
 
     elementoInicial?.focus({ preventScroll: true });
-  }, [controleAberto]);
+  }, [controleAberto, idioma, temaPreferido]);
 
   useEffect(() => {
     if (!controleAberto) {
@@ -131,7 +202,7 @@ function ControlesExperiencia() {
     };
 
     const fecharComEsc = (evento: KeyboardEvent) => {
-      if (evento.key !== "Escape") {
+      if (evento.key !== 'Escape') {
         return;
       }
 
@@ -139,12 +210,12 @@ function ControlesExperiencia() {
       setControleAberto(null);
     };
 
-    document.addEventListener("pointerdown", fecharAoClicarFora);
-    document.addEventListener("keydown", fecharComEsc);
+    document.addEventListener('pointerdown', fecharAoClicarFora);
+    document.addEventListener('keydown', fecharComEsc);
 
     return () => {
-      document.removeEventListener("pointerdown", fecharAoClicarFora);
-      document.removeEventListener("keydown", fecharComEsc);
+      document.removeEventListener('pointerdown', fecharAoClicarFora);
+      document.removeEventListener('keydown', fecharComEsc);
     };
   }, [controleAberto]);
 
@@ -161,49 +232,11 @@ function ControlesExperiencia() {
     });
   };
 
-  const navegarOpcoesTema = (
-    evento: ReactKeyboardEvent<HTMLButtonElement>,
-    temaAtual: TemaPreferido,
-  ) => {
-    const teclasAvancar = ["ArrowRight", "ArrowDown"];
-    const teclasVoltar = ["ArrowLeft", "ArrowUp"];
-
-    if (
-      !teclasAvancar.includes(evento.key) &&
-      !teclasVoltar.includes(evento.key) &&
-      evento.key !== "Home" &&
-      evento.key !== "End"
-    ) {
-      return;
-    }
-
-    evento.preventDefault();
-
-    const indiceAtual = TEMAS.indexOf(temaAtual);
-    let proximoIndice = indiceAtual;
-
-    if (teclasAvancar.includes(evento.key)) {
-      proximoIndice = (indiceAtual + 1) % TEMAS.length;
-    } else if (teclasVoltar.includes(evento.key)) {
-      proximoIndice = (indiceAtual - 1 + TEMAS.length) % TEMAS.length;
-    } else if (evento.key === "Home") {
-      proximoIndice = 0;
-    } else if (evento.key === "End") {
-      proximoIndice = TEMAS.length - 1;
-    }
-
-    const proximoTema = TEMAS[proximoIndice];
-    setTemaPreferido(proximoTema);
-    window.requestAnimationFrame(() => {
-      opcoesTemaRef.current[proximoTema]?.focus({ preventScroll: true });
-    });
-  };
-
   const encaminharFocoParaConteudo = (
     evento: ReactKeyboardEvent<HTMLButtonElement>,
     fecharPainel = false,
   ) => {
-    if (evento.key !== "Tab" || evento.shiftKey) {
+    if (evento.key !== 'Tab' || evento.shiftKey) {
       return;
     }
 
@@ -229,18 +262,23 @@ function ControlesExperiencia() {
   return (
     <aside
       ref={grupoRef}
-      className={`controles-experiencia${controleAberto ? " tem-controle-aberto" : ""}`}
-      aria-label="Controles de experiência"
+      className={`controles-experiencia${controleAberto ? ' tem-controle-aberto' : ''}`}
+      aria-label={traducao.controles.ariaGrupo}
     >
       <ul className="lista-controles-experiencia">
         {controles.map(({ tipo, rotulo }) => {
           const aberto = controleAberto === tipo;
           const idPainel = `painel-controle-${tipo}`;
-          const descricaoEstado = tipo === "tema" ? `, tema ${temaAtivo}` : "";
+          const descricaoEstado =
+            tipo === 'tema'
+              ? `, ${traducao.controles.temaAtivo[temaAtivo]}`
+              : tipo === 'idioma'
+                ? `, ${traducao.controles.idiomaAtivo} ${idiomaSelecionado?.nome ?? idioma}`
+                : '';
 
           return (
             <li
-              className={`controle-experiencia controle-${tipo}${aberto ? " controle-aberto" : ""}`}
+              className={`controle-experiencia controle-${tipo}${aberto ? ' controle-aberto' : ''}`}
               key={tipo}
             >
               <button
@@ -262,7 +300,7 @@ function ControlesExperiencia() {
                 }}
                 onClick={() => alternarControle(tipo)}
                 onKeyDown={(evento) => {
-                  if (tipo === "acessibilidade" && !aberto) {
+                  if (tipo === 'acessibilidade' && !aberto) {
                     encaminharFocoParaConteudo(evento);
                   }
                 }}
@@ -270,9 +308,8 @@ function ControlesExperiencia() {
                 <IconeControle
                   tipo={tipo}
                   temaAtivo={temaAtivo}
-                  nivelMusica={0}
-                  idiomaAlternativo={false}
-                  acessibilidadeAtiva={false}
+                  idiomaAlternativo={idioma !== 'pt'}
+                  acessibilidadeAtiva={acessibilidadeAtiva}
                 />
                 <span className="rotulo-controle">{rotulo}</span>
               </button>
@@ -288,9 +325,8 @@ function ControlesExperiencia() {
                     <IconeControle
                       tipo={tipo}
                       temaAtivo={temaAtivo}
-                      nivelMusica={0}
-                      idiomaAlternativo={false}
-                      acessibilidadeAtiva={false}
+                      idiomaAlternativo={idioma !== 'pt'}
+                      acessibilidadeAtiva={acessibilidadeAtiva}
                     />
                     <span>{rotulo}</span>
                   </h2>
@@ -302,15 +338,10 @@ function ControlesExperiencia() {
                     }}
                     className="fechar-controle"
                     type="button"
-                    aria-label={`Fechar opções de ${rotulo.toLowerCase()}`}
+                    aria-label={`${traducao.controles.fecharOpcoes} ${rotulo}`}
                     disabled={!aberto}
                     tabIndex={aberto ? 0 : -1}
                     onClick={() => fecharControle(tipo)}
-                    onKeyDown={(evento) => {
-                      if (tipo === "acessibilidade") {
-                        encaminharFocoParaConteudo(evento, true);
-                      }
-                    }}
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -328,19 +359,19 @@ function ControlesExperiencia() {
                   </button>
                 </header>
 
-                {tipo === "tema" ? (
+                {tipo === 'tema' ? (
                   <div
                     className="opcoes-tema"
                     role="radiogroup"
-                    aria-label="Escolha o tema do portfólio"
+                    aria-label={traducao.controles.escolherTema}
                   >
                     {TEMAS.map((tema) => {
                       const selecionado = temaPreferido === tema;
                       const temaRepresentado: TemaAtivo =
-                        tema === "sistema"
+                        tema === 'sistema'
                           ? sistemaEscuro
-                            ? "escuro"
-                            : "claro"
+                            ? 'escuro'
+                            : 'claro'
                           : tema;
 
                       return (
@@ -359,26 +390,119 @@ function ControlesExperiencia() {
                           key={tema}
                           onClick={() => setTemaPreferido(tema)}
                           onKeyDown={(evento) =>
-                            navegarOpcoesTema(evento, tema)
+                            navegarGrupoOpcoes(
+                              evento,
+                              tema,
+                              TEMAS,
+                              setTemaPreferido,
+                              opcoesTemaRef.current,
+                            )
                           }
                         >
                           <IconeControle
                             tipo="tema"
                             temaAtivo={temaRepresentado}
                           />
-                          <span>
-                            {tema === "sistema"
-                              ? "Sistema"
-                              : tema === "claro"
-                                ? "Claro"
-                                : "Escuro"}
+                          <span>{traducao.controles.temas[tema]}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : tipo === 'idioma' ? (
+                  <div
+                    className="opcoes-idioma"
+                    role="radiogroup"
+                    aria-label={traducao.controles.escolherIdioma}
+                  >
+                    {IDIOMAS_DISPONIVEIS.map((opcao) => {
+                      const selecionado = idioma === opcao.codigo;
+
+                      return (
+                        <button
+                          ref={(elemento: HTMLButtonElement | null) => {
+                            if (elemento) {
+                              opcoesIdiomaRef.current[opcao.codigo] = elemento;
+                            }
+                          }}
+                          className="opcao-idioma"
+                          type="button"
+                          role="radio"
+                          aria-checked={selecionado}
+                          aria-label={opcao.nome}
+                          disabled={!aberto}
+                          tabIndex={aberto && selecionado ? 0 : -1}
+                          key={opcao.codigo}
+                          onClick={() => definirIdioma(opcao.codigo)}
+                          onKeyDown={(evento) =>
+                            navegarGrupoOpcoes(
+                              evento,
+                              opcao.codigo,
+                              IDIOMAS_DISPONIVEIS.map(
+                                (idiomaDisponivel) => idiomaDisponivel.codigo,
+                              ),
+                              definirIdioma,
+                              opcoesIdiomaRef.current,
+                            )
+                          }
+                        >
+                          <span className="sigla-idioma" aria-hidden="true">
+                            {opcao.sigla}
                           </span>
+                          <span>{opcao.nome}</span>
                         </button>
                       );
                     })}
                   </div>
                 ) : (
-                  <p className="controle-em-breve">Em breve</p>
+                  <div
+                    className="opcoes-acessibilidade"
+                    role="group"
+                    aria-label={traducao.controles.escolherAcessibilidade}
+                  >
+                    {PREFERENCIAS_ACESSIBILIDADE.map((preferencia, indice) => {
+                      const ativa = preferencias[preferencia];
+                      const ultimaOpcao =
+                        indice === PREFERENCIAS_ACESSIBILIDADE.length - 1;
+
+                      return (
+                        <button
+                          ref={(elemento: HTMLButtonElement | null) => {
+                            if (elemento) {
+                              opcoesAcessibilidadeRef.current[preferencia] =
+                                elemento;
+                            }
+                          }}
+                          className="opcao-acessibilidade"
+                          type="button"
+                          role="switch"
+                          aria-checked={ativa}
+                          disabled={!aberto}
+                          tabIndex={aberto ? 0 : -1}
+                          key={preferencia}
+                          onClick={() => alternarPreferencia(preferencia)}
+                          onKeyDown={(evento) => {
+                            if (ultimaOpcao) {
+                              encaminharFocoParaConteudo(evento, true);
+                            }
+                          }}
+                        >
+                          <span
+                            className="indicador-preferencia"
+                            aria-hidden="true"
+                          >
+                            <span />
+                          </span>
+                          <span>
+                            {
+                              traducao.controles.preferenciasAcessibilidade[
+                                preferencia
+                              ]
+                            }
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 )}
               </section>
             </li>

@@ -1,14 +1,20 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { projetos } from '../../data/projetos';
+import { useIdioma } from '../../idiomas/IdiomaContexto';
+import { traduzirProjeto } from '../../idiomas/traducoes';
 import type { Projeto } from '../../types/projeto';
 import CardProjeto from '../CardProjeto/CardProjeto';
 import ModalProjeto from '../ModalProjeto/ModalProjeto';
 
 function SecaoProjetos() {
+  const { idioma, traducao } = useIdioma();
   const [projetoSelecionado, setProjetoSelecionado] =
     useState<Projeto | null>(null);
   const acionadorModalRef = useRef<HTMLButtonElement | null>(null);
-  const projetosVisiveis = projetos.slice(0, 4);
+  const projetosVisiveis = useMemo(
+    () => projetos.slice(0, 4).map((projeto) => traduzirProjeto(projeto, idioma)),
+    [idioma],
+  );
 
   const abrirModal = (projeto: Projeto, acionador: HTMLButtonElement) => {
     acionadorModalRef.current = acionador;
@@ -38,7 +44,7 @@ function SecaoProjetos() {
         aria-labelledby="titulo-projetos"
       >
         <header className="cabecalho-projetos">
-          <h2 id="titulo-projetos">Projetos selecionados</h2>
+          <h2 id="titulo-projetos">{traducao.projetos.tituloSecao}</h2>
         </header>
 
         <ul className="lista-cards-projetos">

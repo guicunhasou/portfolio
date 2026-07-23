@@ -1,9 +1,12 @@
 import { linksSociais } from '../../data/linksSociais';
+import { useIdioma } from '../../idiomas/IdiomaContexto';
 import IconeAcao from '../IconeAcao/IconeAcao';
 
 function LinksSociais() {
+  const { traducao } = useIdioma();
+
   return (
-    <ul className="links-sociais" aria-label="Links sociais">
+    <ul className="links-sociais" aria-label={traducao.sociais.ariaLista}>
       {linksSociais.map((link) => {
         const linkExterno = link.tipo !== 'email';
 
@@ -19,7 +22,10 @@ function LinksSociais() {
               <IconeAcao tipo={link.tipo} />
               <span className="rotulo-botao">{link.rotulo}</span>
               {linkExterno && (
-                <span className="somente-leitor"> (abre em nova aba)</span>
+                <span className="somente-leitor">
+                  {' '}
+                  ({traducao.geral.abreNovaAba})
+                </span>
               )}
             </a>
           </li>

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useAcessibilidade } from '../../acessibilidade/AcessibilidadeContexto';
+import { useIdioma } from '../../idiomas/IdiomaContexto';
 import type { Projeto } from '../../types/projeto';
 import IconeAcao from '../IconeAcao/IconeAcao';
 
@@ -8,15 +10,20 @@ type PropriedadesModalProjeto = {
 };
 
 function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+  const { traducao } = useIdioma();
+  const { movimentoReduzido, preferencias } = useAcessibilidade();
   const dialogoRef = useRef<HTMLDialogElement>(null);
   const [indiceImagem, setIndiceImagem] = useState(0);
-  const [movimentoReduzido, setMovimentoReduzido] = useState(() =>
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
+  const animacoesPausadas = preferencias.pausarAnimacoes;
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
   const colaboradores = projeto.colaboradores ?? [];
   const imagensModal = projeto.imagensModal ?? [];
+  const indiceQuebraTags = Math.ceil(projeto.tags.length / 2);
+  const linhasTags = [
+    projeto.tags.slice(0, indiceQuebraTags),
+    projeto.tags.slice(indiceQuebraTags),
+  ].filter((linha) => linha.length > 0);
 
   useEffect(() => {
     const dialogo = dialogoRef.current;
@@ -39,27 +46,11 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
   }, []);
 
   useEffect(() => {
-    const consultaMovimento = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    );
-    const atualizarPreferencia = (evento: MediaQueryListEvent) => {
-      setMovimentoReduzido(evento.matches);
-    };
-
-    setMovimentoReduzido(consultaMovimento.matches);
-    consultaMovimento.addEventListener('change', atualizarPreferencia);
-
-    return () => {
-      consultaMovimento.removeEventListener('change', atualizarPreferencia);
-    };
-  }, []);
-
-  useEffect(() => {
     setIndiceImagem(0);
   }, [projeto.id]);
 
   useEffect(() => {
-    if (movimentoReduzido) {
+    if (movimentoReduzido || animacoesPausadas) {
       setIndiceImagem(0);
       return;
     }
@@ -77,7 +68,7 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
     return () => {
       window.clearInterval(intervalo);
     };
-  }, [imagensModal.length, movimentoReduzido, projeto.id]);
+  }, [animacoesPausadas, imagensModal.length, movimentoReduzido, projeto.id]);
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
     if (evento.key !== 'Tab') {
@@ -154,27 +145,29 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
             }
           >
             <IconeAcao tipo="fechar" />
-            <span className="rotulo-botao">Fechar</span>
+            <span className="rotulo-botao">{traducao.projetos.fechar}</span>
           </button>
 
           <div>
-            <p className="rotulo-modal">Detalhes do projeto</p>
+            <p className="rotulo-modal">{traducao.projetos.detalhesProjeto}</p>
             <h2 id={idTitulo}>{projeto.nome}</h2>
 
             {colaboradores.length > 0 && (
               <p className="colaboradores-projeto">
-                Em colaboração com{' '}
+                {traducao.projetos.colaboracaoCom}{' '}
                 {colaboradores.map((colaborador, indice) => (
                   <span key={colaborador.nome}>
                     {indice > 0 &&
-                      (indice === colaboradores.length - 1 ? ' e ' : ', ')}
+                      (indice === colaboradores.length - 1
+                        ? traducao.projetos.conjuncaoColaboradores
+                        : ', ')}
                     {colaborador.url ? (
                       <a
                         className="link-discreto"
                         href={colaborador.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`LinkedIn de ${colaborador.nome} (abre em nova aba)`}
+                        aria-label={`${traducao.projetos.linkedinDe} ${colaborador.nome} (${traducao.geral.abreNovaAba})`}
                       >
                         {colaborador.nome}
                       </a>
@@ -190,98 +183,110 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
         </header>
 
         <div className="corpo-modal">
-          <div
-            className="imagem-modal"
-            role="group"
-            aria-label={`Imagens do projeto ${projeto.nome}`}
-          >
-            {imagensModal.length > 0 ? (
-              imagensModal.map((imagem, indice) => {
-                const imagemAtiva = indice === indiceImagem;
+          <p className="descricao-projeto-modal" id={idDescricao}>
+            {projeto.descricaoCompleta}
+          </p>
 
-                return (
-                  <img
-                    className={`imagem-slide${imagemAtiva ? " imagem-slide-ativa" : ""}`}
-                    key={imagem.src}
-                    src={imagem.src}
-                    alt={imagemAtiva ? imagem.textoAlternativo : ''}
-                    aria-hidden={!imagemAtiva}
-                    decoding="async"
-                  />
-                );
-              })
-            ) : projeto.imagem ? (
-              <img
-                className="imagem-modal-capa"
-                src={projeto.imagem}
-                alt={projeto.textoAlternativo}
-              />
-            ) : (
-              <div className="previa-modal-indisponivel">
-                <span className="simbolo-modal" aria-hidden="true">
-                  ✦
-                </span>
-                <strong>{projeto.nome}</strong>
-                <span>Prévia visual em atualização</span>
-              </div>
-            )}
-          </div>
-
-          <div className="detalhes-projeto">
-            <p id={idDescricao}>{projeto.descricaoCompleta}</p>
-
-            <section
-              className="grupo-detalhes"
-              aria-labelledby={`titulo-tags-${projeto.id}`}
+          <div className="grade-conteudo-modal">
+            <div
+              className="imagem-modal"
+              role="group"
+              aria-label={`${traducao.projetos.imagensProjeto} ${projeto.nome}`}
             >
-              <h3 id={`titulo-tags-${projeto.id}`}>
-                Tecnologias e competências
-              </h3>
-              <ul className="tags-modal">
-                {projeto.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            </section>
+              {imagensModal.length > 0 ? (
+                imagensModal.map((imagem, indice) => {
+                  const imagemAtiva = indice === indiceImagem;
 
-            {projeto.links.length > 0 && (
+                  return (
+                    <img
+                      className={`imagem-slide${imagemAtiva ? " imagem-slide-ativa" : ""}`}
+                      key={imagem.src}
+                      src={imagem.src}
+                      alt={imagemAtiva ? imagem.textoAlternativo : ''}
+                      aria-hidden={!imagemAtiva}
+                      decoding="async"
+                    />
+                  );
+                })
+              ) : projeto.imagem ? (
+                <img
+                  className="imagem-modal-capa"
+                  src={projeto.imagem}
+                  alt={projeto.textoAlternativo}
+                />
+              ) : (
+                <div className="previa-modal-indisponivel">
+                  <span className="simbolo-modal" aria-hidden="true">
+                    ✦
+                  </span>
+                  <strong>{projeto.nome}</strong>
+                  <span>{traducao.projetos.previaAtualizacao}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="detalhes-projeto">
               <section
                 className="grupo-detalhes"
-                aria-labelledby={`titulo-links-${projeto.id}`}
+                aria-labelledby={`titulo-tags-${projeto.id}`}
               >
-                <h3 id={`titulo-links-${projeto.id}`}>Links do projeto</h3>
-                <ul className="links-modal">
-                  {projeto.links.map((link) => (
-                    <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
-                      {link.url ? (
-                        <a
-                          className="botao-acao botao-completo"
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <IconeAcao tipo={link.tipo} />
-                          <span>{link.rotulo}</span>
-                          <span className="somente-leitor">
-                            {' '}
-                            (abre em nova aba)
-                          </span>
-                        </a>
-                      ) : (
-                        <span className="botao-acao botao-completo link-projeto-em-breve">
-                          <IconeAcao tipo={link.tipo} />
-                          <span>{link.rotulo}</span>
-                          <span className="somente-leitor">
-                            {' '}
-                            (link em breve)
-                          </span>
+                <h3 id={`titulo-tags-${projeto.id}`}>
+                  {traducao.projetos.tecnologiasCompetencias}
+                </h3>
+                <div className="tags-modal" role="list">
+                  {linhasTags.map((linha, indice) => (
+                    <div className="linha-tags-modal" role="presentation" key={indice}>
+                      {linha.map((tag) => (
+                        <span role="listitem" key={tag}>
+                          {tag}
                         </span>
-                      )}
-                    </li>
+                      ))}
+                    </div>
                   ))}
-                </ul>
+                </div>
               </section>
-            )}
+
+              {projeto.links.length > 0 && (
+                <section
+                  className="grupo-detalhes"
+                  aria-labelledby={`titulo-links-${projeto.id}`}
+                >
+                  <h3 id={`titulo-links-${projeto.id}`}>
+                    {traducao.projetos.linksProjeto}
+                  </h3>
+                  <ul className="links-modal" data-quantidade={projeto.links.length}>
+                    {projeto.links.map((link) => (
+                      <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
+                        {link.url ? (
+                          <a
+                            className="botao-acao botao-completo"
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <IconeAcao tipo={link.tipo} />
+                            <span>{link.rotulo}</span>
+                            <span className="somente-leitor">
+                              {' '}
+                              ({traducao.geral.abreNovaAba})
+                            </span>
+                          </a>
+                        ) : (
+                          <span className="botao-acao botao-completo link-projeto-em-breve">
+                            <IconeAcao tipo={link.tipo} />
+                            <span>{link.rotulo}</span>
+                            <span className="somente-leitor">
+                              {' '}
+                              ({traducao.geral.linkEmBreve})
+                            </span>
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
           </div>
         </div>
       </div>

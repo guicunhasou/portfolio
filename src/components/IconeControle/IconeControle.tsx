@@ -95,8 +95,31 @@ function IconeControle({
           />
           <path
             d="M3.8 12h16.4M12 3.5c2.1 2.3 3.1 5.1 3.1 8.5S14.1 18.2 12 20.5C9.9 18.2 8.9 15.4 8.9 12S9.9 5.8 12 3.5Z"
-            stroke={idiomaAlternativo ? 'var(--texto-controle)' : 'currentColor'}
+            stroke={idiomaAlternativo ? 'var(--detalhe-icone-idioma)' : 'currentColor'}
             strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    );
+  }
+
+  if (acessibilidadeAtiva) {
+    return (
+      <span className="icone-controle" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="currentColor" />
+          <circle
+            cx="12"
+            cy="5.2"
+            r="1.7"
+            fill="var(--detalhe-icone-acessibilidade)"
+          />
+          <path
+            d="M6.4 9.1c1.8.8 3.7 1.2 5.6 1.2s3.8-.4 5.6-1.2M12 10.3v3.5M12 13.8 9.1 19M12 13.8l2.9 5.2"
+            stroke="var(--detalhe-icone-acessibilidade)"
+            strokeWidth="1.65"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -112,7 +135,6 @@ function IconeControle({
           cx="12"
           cy="4.4"
           r="2.1"
-          fill={acessibilidadeAtiva ? 'currentColor' : 'none'}
           stroke="currentColor"
           strokeWidth="1.7"
         />
@@ -123,13 +145,6 @@ function IconeControle({
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        {acessibilidadeAtiva && (
-          <path
-            d="M8.9 10.1h6.2L14 15.4l1.6 5.6H8.4l1.6-5.6-1.1-5.3Z"
-            fill="currentColor"
-            opacity=".22"
-          />
-        )}
       </svg>
     </span>
   );

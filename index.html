@@ -33,6 +33,73 @@
         ?.setAttribute('content', temaAtivo === 'escuro' ? '#1d1624' : '#f2f6ee');
     })();
   </script>
+  <script>
+    (() => {
+      const idiomas = ['pt', 'en', 'es', 'fr', 'de'];
+      const idiomasHtml = {
+        pt: 'pt-BR',
+        en: 'en',
+        es: 'es',
+        fr: 'fr',
+        de: 'de',
+      };
+      let idiomaSalvo = null;
+
+      try {
+        idiomaSalvo = localStorage.getItem('portfolio:idioma');
+      } catch {
+        idiomaSalvo = null;
+      }
+
+      const preferencias = navigator.languages?.length
+        ? navigator.languages
+        : [navigator.language];
+      const idiomaNavegador = preferencias
+        .map((preferencia) => preferencia.toLowerCase().split('-')[0])
+        .find((idioma) => idiomas.includes(idioma));
+      const idiomaAtivo = idiomas.includes(idiomaSalvo)
+        ? idiomaSalvo
+        : idiomaNavegador ?? 'pt';
+
+      document.documentElement.lang = idiomasHtml[idiomaAtivo];
+    })();
+  </script>
+  <script>
+    (() => {
+      const preferenciasPadrao = {
+        reduzirMovimento: false,
+        pausarAnimacoes: false,
+        contrasteReforcado: false,
+        destacarLinks: false,
+      };
+      let preferencias = preferenciasPadrao;
+
+      try {
+        preferencias = {
+          ...preferenciasPadrao,
+          ...JSON.parse(
+            localStorage.getItem('portfolio:acessibilidade') ?? '{}',
+          ),
+        };
+      } catch {
+        preferencias = preferenciasPadrao;
+      }
+
+      const movimentoReduzido =
+        preferencias.reduzirMovimento === true ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.documentElement.dataset.reduzirMovimento = movimentoReduzido
+        ? 'true'
+        : 'false';
+      document.documentElement.dataset.pausarAnimacoes =
+        preferencias.pausarAnimacoes === true ? 'true' : 'false';
+      document.documentElement.dataset.contrasteReforcado =
+        preferencias.contrasteReforcado === true ? 'true' : 'false';
+      document.documentElement.dataset.destacarLinks =
+        preferencias.destacarLinks === true ? 'true' : 'false';
+    })();
+  </script>
   <meta name="description" content="Portfólio de Guilherme Cunha, estudante de Web Design na FIAP com foco em UX/UI, desenvolvimento web, React, React Native e Figma." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />

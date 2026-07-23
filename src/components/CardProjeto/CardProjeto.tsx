@@ -1,3 +1,4 @@
+import { useIdioma } from '../../idiomas/IdiomaContexto';
 import type { Projeto } from '../../types/projeto';
 
 type PropriedadesCardProjeto = {
@@ -9,6 +10,7 @@ function CardProjeto({
   projeto,
   aoAbrirDetalhes,
 }: PropriedadesCardProjeto) {
+  const { traducao } = useIdioma();
   const idTitulo = `titulo-card-${projeto.id}`;
 
   return (
@@ -19,7 +21,9 @@ function CardProjeto({
         tabIndex={0}
         onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
       >
-        <span className="somente-leitor">Ver detalhes de {projeto.nome}</span>
+        <span className="somente-leitor">
+          {traducao.projetos.verDetalhes} {projeto.nome}
+        </span>
       </button>
 
       <div className="imagem-projeto">

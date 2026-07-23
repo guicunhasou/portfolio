@@ -1,19 +1,22 @@
+import { useIdioma } from '../../idiomas/IdiomaContexto';
 import SeparadorLogo from '../SeparadorLogo/SeparadorLogo';
 
 function Rodape() {
+  const { traducao } = useIdioma();
+
   return (
     <footer className="rodape">
       <p className="dados-rodape">
-        <span>Feito em Pernambuco</span>
+        <span>{traducao.rodape.feitoEm}</span>
         <SeparadorLogo />
         <a
           className="link-discreto"
           href="https://github.com/guicunhasou/portfolio"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Abrir o repositório do portfólio em uma nova aba"
+          aria-label={traducao.rodape.ariaRepositorio}
         >
-          Versão atual 2.15.0
+          {traducao.rodape.versaoAtual} 2.16.0
         </a>
       </p>
     </footer>

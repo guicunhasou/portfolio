@@ -1,7 +1,10 @@
-import FotoPerfil from "../FotoPerfil/FotoPerfil";
-import LinksSociais from "../LinksSociais/LinksSociais";
+import { useIdioma } from '../../idiomas/IdiomaContexto';
+import FotoPerfil from '../FotoPerfil/FotoPerfil';
+import LinksSociais from '../LinksSociais/LinksSociais';
 
 function PainelPerfil() {
+  const { traducao } = useIdioma();
+
   return (
     <section className="painel-perfil" aria-labelledby="titulo-perfil">
       <div className="conteudo-perfil">
@@ -9,18 +12,25 @@ function PainelPerfil() {
           <h1 id="titulo-perfil">Guilherme Cunha</h1>
 
           <p className="areas-atuacao">
-            <span>Interfaces Digitais</span>
+            <span>{traducao.perfil.areas[0]}</span>
             <span aria-hidden="true">✦</span>
-            <span>Desenvolvimento Web</span>
+            <span>{traducao.perfil.areas[1]}</span>
           </p>
         </div>
 
-        <div className="bio">
-          <p className="bio">Estudante de Web Design na<a className="link-discreto" href="https://www.fiap.com.br" target="_blank" rel="noopener noreferrer"> FIAP</a>, </p>
-          <p className="bio">transformo ideias em interfaces </p>
-          <p className="bio">caprichadas, responsivas e acessíveis, </p>
-          <p className="bio">com carinho em cada pixel.</p>
-        </div>
+        <p className="bio">
+          {traducao.perfil.bioInicio}{' '}
+          <a
+            className="link-discreto"
+            href="https://www.fiap.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FIAP
+          </a>
+          {traducao.perfil.bioDepoisFiap}{' '}
+          {traducao.perfil.bioLinhas.join(' ')}
+        </p>
 
         <LinksSociais />
       </div>

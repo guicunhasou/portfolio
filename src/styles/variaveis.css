@@ -25,6 +25,7 @@
   --fundo-card-desktop: rgb(204 214 194 / 16%);
   --fundo-modal: var(--neblina);
   --fundo-imagem: var(--fundo-painel);
+  --fundo-grupo-modal: rgb(204 214 194 / 18%);
   --sombra-suave: 0 14px 34px rgb(64 48 80 / 12%);
   --sombra-elevada: 0 22px 52px rgb(64 48 80 / 18%);
   --sombra-foto: 0 16px 40px rgb(64 48 80 / 16%);
@@ -37,6 +38,8 @@
   --fundo-controle-experiencia: linear-gradient(180deg, var(--topo-controle-experiencia), var(--base-controle-experiencia));
   --fundo-controle-experiencia-hover: var(--fundo-controle-experiencia);
   --texto-controle-experiencia: var(--profundo);
+  --detalhe-icone-idioma: var(--neblina);
+  --detalhe-icone-acessibilidade: var(--neblina);
   --borda-controle-experiencia: rgb(204 214 194 / 40%);
   --sombra-controle-experiencia: 0 10px 24px rgb(64 48 80 / 10%);
   --sombra-controle-experiencia-aberto: none;
@@ -69,6 +72,7 @@
   --fundo-card-desktop: rgb(166 175 157 / 7%);
   --fundo-modal: var(--ameixa);
   --fundo-imagem: var(--berinjela);
+  --fundo-grupo-modal: rgb(241 235 245 / 5%);
   --sombra-suave: 0 16px 38px rgb(8 5 11 / 32%);
   --sombra-elevada: 0 24px 58px rgb(8 5 11 / 42%);
   --sombra-foto: 0 18px 44px rgb(8 5 11 / 38%);
@@ -81,9 +85,39 @@
   --borda-controle-experiencia: rgb(241 235 245 / 14%);
   --sombra-controle-experiencia: 0 12px 28px rgb(8 5 11 / 26%);
   --texto-controle-experiencia: var(--neblina);
+  --detalhe-icone-idioma: var(--figo);
+  --detalhe-icone-acessibilidade: var(--figo);
   --fundo-opcao: rgb(242 246 238 / 9%);
   --fundo-opcao-ativa: var(--menta);
   --texto-opcao-ativa: var(--profundo);
   --foco-claro: var(--neblina);
   --foco-escuro: var(--noite);
+}
+
+:root[data-contraste-reforcado="true"] {
+  --texto-secundario: var(--profundo);
+  --texto-suave: rgb(64 48 80 / 94%);
+  --texto-rodape: rgb(64 48 80 / 72%);
+  --borda-suave: rgb(64 48 80 / 34%);
+  --fundo-painel: rgb(242 246 238 / 97%);
+  --fundo-card: rgb(204 214 194 / 48%);
+  --fundo-card-desktop: rgb(204 214 194 / 36%);
+  --fundo-grupo-modal: rgb(204 214 194 / 34%);
+  --borda-controle: rgb(242 246 238 / 52%);
+  --borda-controle-experiencia: rgb(64 48 80 / 42%);
+  --fundo-opcao: rgb(64 48 80 / 14%);
+}
+
+:root[data-tema="escuro"][data-contraste-reforcado="true"] {
+  --texto-secundario: var(--luar);
+  --texto-suave: rgb(241 235 245 / 94%);
+  --texto-rodape: rgb(241 235 245 / 74%);
+  --borda-suave: rgb(241 235 245 / 34%);
+  --fundo-painel: rgb(38 29 47 / 98%);
+  --fundo-card: rgb(166 175 157 / 20%);
+  --fundo-card-desktop: rgb(166 175 157 / 15%);
+  --fundo-grupo-modal: rgb(241 235 245 / 10%);
+  --borda-controle: rgb(64 48 80 / 42%);
+  --borda-controle-experiencia: rgb(241 235 245 / 38%);
+  --fundo-opcao: rgb(242 246 238 / 16%);
 }
