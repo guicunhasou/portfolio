@@ -14,6 +14,16 @@
   --fundo-pagina: #fff;
   --fundo-extremos: #fff;
   --sobreposicao-fundo: transparent;
+  --fundo-lava-base: #f4f6ef;
+  --fundo-lava-veu: rgb(252 255 250 / 60%);
+  --opacidade-lava: 0.82;
+  --desfoque-lava: clamp(64px, 6.5vw, 128px);
+  --gradiente-lava-1: linear-gradient(145deg, #3fff5f, #ffaa00);
+  --gradiente-lava-2: linear-gradient(145deg, #ff0055, #ffd000);
+  --gradiente-lava-3: linear-gradient(90deg, #3fffdc, #00ff09);
+  --gradiente-lava-4: linear-gradient(145deg, #00ffd1, #8976ff);
+  --gradiente-lava-5: linear-gradient(90deg, #a5a6ff, #ff5cd9);
+  --gradiente-lava-6: linear-gradient(145deg, #ff613f, #f259ff);
   --texto-principal: var(--profundo);
   --texto-secundario: rgb(64 48 80 / 85%);
   --texto-suave: rgb(64 48 80 / 72%);
@@ -61,6 +71,15 @@
   --fundo-pagina: var(--noite);
   --fundo-extremos: var(--noite);
   --sobreposicao-fundo: rgb(29 22 36 / 62%);
+  --fundo-lava-base: var(--noite);
+  --fundo-lava-veu: rgb(29 22 36 / 64%);
+  --opacidade-lava: 0.52;
+  --gradiente-lava-1: linear-gradient(145deg, #377950, #9f712f);
+  --gradiente-lava-2: linear-gradient(145deg, #9a3d62, #9e7f35);
+  --gradiente-lava-3: linear-gradient(90deg, #277c72, #3d7852);
+  --gradiente-lava-4: linear-gradient(145deg, #347a79, #62538e);
+  --gradiente-lava-5: linear-gradient(90deg, #585d99, #8e4f83);
+  --gradiente-lava-6: linear-gradient(145deg, #9d5143, #7b4b91);
   --texto-principal: var(--luar);
   --texto-secundario: rgb(241 235 245 / 82%);
   --texto-suave: rgb(241 235 245 / 68%);
@@ -106,6 +125,8 @@
   --borda-controle: rgb(242 246 238 / 52%);
   --borda-controle-experiencia: rgb(64 48 80 / 42%);
   --fundo-opcao: rgb(64 48 80 / 14%);
+  --fundo-lava-veu: rgb(252 255 250 / 88%);
+  --opacidade-lava: 0.5;
 }
 
 :root[data-tema="escuro"][data-contraste-reforcado="true"] {
@@ -120,4 +141,6 @@
   --borda-controle: rgb(64 48 80 / 42%);
   --borda-controle-experiencia: rgb(241 235 245 / 38%);
   --fundo-opcao: rgb(242 246 238 / 16%);
+  --fundo-lava-veu: rgb(29 22 36 / 78%);
+  --opacidade-lava: 0.38;
 }

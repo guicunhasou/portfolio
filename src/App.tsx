@@ -1,4 +1,5 @@
 import ControlesExperiencia from "./components/ControlesExperiencia/ControlesExperiencia";
+import FundoLava from "./components/FundoLava/FundoLava";
 import PainelPerfil from "./components/PainelPerfil/PainelPerfil";
 import Rodape from "./components/Rodape/Rodape";
 import SecaoProjetos from "./components/SecaoProjetos/SecaoProjetos";
@@ -35,6 +36,7 @@ function App() {
   }, []);
   return (
     <>
+      <FundoLava />
       <ControlesExperiencia />
 
       <main className="conteudo-principal">

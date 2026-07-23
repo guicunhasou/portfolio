@@ -2,6 +2,12 @@ html {
   background: var(--fundo-pagina);
 }
 
+#root {
+  position: relative;
+  min-height: 100dvh;
+  isolation: isolate;
+}
+
 body {
   min-width: 320px;
   font-family: "Parkinsans", sans-serif;
@@ -26,6 +32,270 @@ body {
   transition:
     color 260ms ease,
     background-color 320ms ease;
+}
+
+/* ========== FUNDO LUMINÁRIA LAVA ========== */
+
+.fundo-lava {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--fundo-lava-base);
+  transition: background-color 320ms ease;
+}
+
+.fundo-lava::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+  linear-gradient(
+    to bottom,
+    var(--fundo-extremos) 0,
+    transparent 8rem,
+    transparent calc(100% - 8rem),
+    var(--fundo-extremos) 100%
+  ),
+  linear-gradient(
+    var(--fundo-lava-veu),
+    var(--fundo-lava-veu)
+  );
+}
+
+.forma-lava {
+  --x-1: 0vw;
+  --y-1: 0vh;
+  --x-2: 0vw;
+  --y-2: 0vh;
+  --x-3: 0vw;
+  --y-3: 0vh;
+  --rotacao-inicial: 0deg;
+  --rotacao-1: 0deg;
+  --rotacao-2: 0deg;
+  --rotacao-3: 0deg;
+  --escala-1: 1;
+  --escala-2: 1;
+  --escala-3: 1;
+
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: var(--opacidade-lava);
+  filter: blur(var(--desfoque-lava));
+  transform: translate3d(0, 0, 0) rotate(var(--rotacao-inicial));
+  animation: deriva-lava var(--duracao-lava) ease-in-out var(--atraso-lava)
+    infinite;
+  will-change: transform;
+  transition: opacity 320ms ease;
+}
+
+.forma-lava-1 {
+  --duracao-lava: 18s;
+  --atraso-lava: -7s;
+  --x-1: -18vw;
+  --y-1: 12vh;
+  --x-2: -6vw;
+  --y-2: -20vh;
+  --x-3: 14vw;
+  --y-3: -8vh;
+  --rotacao-inicial: -18deg;
+  --rotacao-1: -8deg;
+  --rotacao-2: -26deg;
+  --rotacao-3: -14deg;
+  --escala-1: 1.1;
+  --escala-2: 0.92;
+  --escala-3: 1.06;
+
+  width: clamp(42rem, 76vw, 86rem);
+  height: clamp(28rem, 60vh, 64rem);
+  top: 24%;
+  left: 52%;
+  background: var(--gradiente-lava-1);
+}
+
+.forma-lava-2 {
+  --duracao-lava: 22s;
+  --atraso-lava: -14s;
+  --x-1: 20vw;
+  --y-1: -10vh;
+  --x-2: 8vw;
+  --y-2: -22vh;
+  --x-3: -14vw;
+  --y-3: 10vh;
+  --rotacao-inicial: 24deg;
+  --rotacao-1: 16deg;
+  --rotacao-2: 34deg;
+  --rotacao-3: 21deg;
+  --escala-1: 0.92;
+  --escala-2: 1.1;
+  --escala-3: 1.05;
+
+  width: clamp(38rem, 66vw, 76rem);
+  height: clamp(30rem, 68vh, 68rem);
+  top: 48%;
+  left: -23%;
+  background: var(--gradiente-lava-2);
+}
+
+.forma-lava-3 {
+  --duracao-lava: 16s;
+  --atraso-lava: -5s;
+  --x-1: 14vw;
+  --y-1: 18vh;
+  --x-2: 26vw;
+  --y-2: 8vh;
+  --x-3: 6vw;
+  --y-3: -12vh;
+  --rotacao-inicial: 11deg;
+  --rotacao-1: 22deg;
+  --rotacao-2: 5deg;
+  --rotacao-3: 16deg;
+  --escala-1: 1.1;
+  --escala-2: 0.9;
+  --escala-3: 1.12;
+
+  width: clamp(34rem, 58vw, 68rem);
+  height: clamp(28rem, 58vh, 58rem);
+  top: -22%;
+  left: -18%;
+  background: var(--gradiente-lava-3);
+}
+
+.forma-lava-4 {
+  --duracao-lava: 20s;
+  --atraso-lava: -11s;
+  --x-1: -16vw;
+  --y-1: -16vh;
+  --x-2: 20vw;
+  --y-2: -5vh;
+  --x-3: 4vw;
+  --y-3: 22vh;
+  --rotacao-inicial: -28deg;
+  --rotacao-1: -16deg;
+  --rotacao-2: -36deg;
+  --rotacao-3: -23deg;
+  --escala-1: 0.92;
+  --escala-2: 1.12;
+  --escala-3: 1.06;
+
+  width: clamp(30rem, 50vw, 60rem);
+  height: clamp(30rem, 64vh, 62rem);
+  top: 18%;
+  left: 8%;
+  background: var(--gradiente-lava-4);
+}
+
+.forma-lava-5 {
+  --duracao-lava: 23s;
+  --atraso-lava: -3s;
+  --x-1: -20vw;
+  --y-1: 12vh;
+  --x-2: -8vw;
+  --y-2: 22vh;
+  --x-3: 16vw;
+  --y-3: 5vh;
+  --rotacao-inicial: 18deg;
+  --rotacao-1: 8deg;
+  --rotacao-2: 28deg;
+  --rotacao-3: 14deg;
+  --escala-1: 1.12;
+  --escala-2: 0.93;
+  --escala-3: 1.08;
+
+  width: clamp(34rem, 56vw, 66rem);
+  height: clamp(25rem, 50vh, 52rem);
+  top: -18%;
+  left: 60%;
+  background: var(--gradiente-lava-5);
+}
+
+.forma-lava-6 {
+  --duracao-lava: 19s;
+  --atraso-lava: -13s;
+  --x-1: 14vw;
+  --y-1: -20vh;
+  --x-2: -18vw;
+  --y-2: -10vh;
+  --x-3: -5vw;
+  --y-3: 16vh;
+  --rotacao-inicial: -10deg;
+  --rotacao-1: -20deg;
+  --rotacao-2: 2deg;
+  --rotacao-3: -14deg;
+  --escala-1: 0.92;
+  --escala-2: 1.1;
+  --escala-3: 1.05;
+
+  width: clamp(40rem, 70vw, 80rem);
+  height: clamp(27rem, 54vh, 58rem);
+  top: 68%;
+  left: 38%;
+  background: var(--gradiente-lava-6);
+}
+
+@keyframes deriva-lava {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--rotacao-inicial)) scale(1);
+  }
+
+  32% {
+    transform: translate3d(var(--x-1), var(--y-1), 0)
+      rotate(var(--rotacao-1)) scale(var(--escala-1));
+  }
+
+  66% {
+    transform: translate3d(var(--x-2), var(--y-2), 0)
+      rotate(var(--rotacao-2)) scale(var(--escala-2));
+  }
+
+  84% {
+    transform: translate3d(var(--x-3), var(--y-3), 0)
+      rotate(var(--rotacao-3)) scale(var(--escala-3));
+  }
+}
+
+.fundo-lava-pausado .forma-lava,
+html[data-pausar-animacoes="true"] .forma-lava {
+  animation-play-state: paused;
+}
+
+html[data-reduzir-movimento="true"] .forma-lava {
+  animation: none;
+  will-change: auto;
+}
+
+@media (max-width: 680px) {
+  .forma-lava {
+    filter: blur(clamp(46px, 13vw, 72px));
+  }
+
+  .forma-lava-1 {
+    top: 16%;
+    left: 38%;
+  }
+
+  .forma-lava-2 {
+    top: 58%;
+    left: -76%;
+  }
+
+  .forma-lava-3 {
+    top: -14%;
+    left: -72%;
+  }
+
+  .forma-lava-4 {
+    top: 34%;
+    left: -24%;
+  }
+
+  .forma-lava-5,
+  .forma-lava-6 {
+    display: none;
+  }
 }
 
 .somente-leitor {

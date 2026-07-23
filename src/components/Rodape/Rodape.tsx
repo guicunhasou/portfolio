@@ -16,7 +16,7 @@ function Rodape() {
           rel="noopener noreferrer"
           aria-label={traducao.rodape.ariaRepositorio}
         >
-          {traducao.rodape.versaoAtual} 2.16.0
+          {traducao.rodape.versaoAtual} 2.17.0
         </a>
       </p>
     </footer>
