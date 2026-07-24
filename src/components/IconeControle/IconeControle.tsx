@@ -58,8 +58,11 @@ function IconeControle({
         <span className="icone-controle" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" focusable="false">
             <path
-              d="M19.4 15.3A8 8 0 0 1 8.7 4.6a8 8 0 1 0 10.7 10.7Z"
-              fill="currentColor"
+              d="M19.45 15.35A8 8 0 0 1 8.65 4.55a8 8 0 1 0 10.8 10.8Z"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </span>
@@ -69,9 +72,15 @@ function IconeControle({
     return (
       <span className="icone-controle" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" focusable="false">
-          <circle cx="12" cy="12" r="3.8" fill="currentColor" />
+          <circle
+            cx="12"
+            cy="12"
+            r="3.45"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
           <path
-            d="M12 2.8v2.1M12 19.1v2.1M21.2 12h-2.1M4.9 12H2.8M18.5 5.5 17 7M7 17l-1.5 1.5M18.5 18.5 17 17M7 7 5.5 5.5"
+            d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.35 5.65 16.8 7.2M7.2 16.8l-1.55 1.55M18.35 18.35 16.8 16.8M7.2 7.2 5.65 5.65"
             stroke="currentColor"
             strokeWidth="1.8"
             strokeLinecap="round"
@@ -88,15 +97,18 @@ function IconeControle({
           <circle
             cx="12"
             cy="12"
-            r="8.5"
-            fill={idiomaAlternativo ? 'currentColor' : 'none'}
+            r="8.35"
             stroke="currentColor"
             strokeWidth="1.7"
           />
           <path
-            d="M3.8 12h16.4M12 3.5c2.1 2.3 3.1 5.1 3.1 8.5S14.1 18.2 12 20.5C9.9 18.2 8.9 15.4 8.9 12S9.9 5.8 12 3.5Z"
-            stroke={idiomaAlternativo ? 'var(--detalhe-icone-idioma)' : 'currentColor'}
-            strokeWidth="1.5"
+            d="M3.65 12h16.7M12 3.65c2.15 2.3 3.25 5.1 3.25 8.35S14.15 18.05 12 20.35C9.85 18.05 8.75 15.25 8.75 12S9.85 5.95 12 3.65Z"
+            stroke={
+              idiomaAlternativo
+                ? 'var(--detalhe-icone-idioma)'
+                : 'currentColor'
+            }
+            strokeWidth="1.55"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -109,17 +121,25 @@ function IconeControle({
     return (
       <span className="icone-controle" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" focusable="false">
-          <circle cx="12" cy="12" r="9" fill="currentColor" />
           <circle
             cx="12"
-            cy="5.2"
-            r="1.7"
+            cy="12"
+            r="8.35"
+            fill="currentColor"
+            fillOpacity={0.1}
+            stroke="currentColor"
+            strokeWidth="1.6"
+          />
+          <circle
+            cx="12"
+            cy="7.15"
+            r="1.35"
             fill="var(--detalhe-icone-acessibilidade)"
           />
           <path
-            d="M6.4 9.1c1.8.8 3.7 1.2 5.6 1.2s3.8-.4 5.6-1.2M12 10.3v3.5M12 13.8 9.1 19M12 13.8l2.9 5.2"
+            d="M7.65 10.2c1.35.62 2.8.93 4.35.93s3-.31 4.35-.93M12 11.15v3.05M12 14.2l-2.65 4.2M12 14.2l2.65 4.2"
             stroke="var(--detalhe-icone-acessibilidade)"
-            strokeWidth="1.65"
+            strokeWidth="1.7"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -133,15 +153,16 @@ function IconeControle({
       <svg viewBox="0 0 24 24" fill="none" focusable="false">
         <circle
           cx="12"
-          cy="4.4"
-          r="2.1"
+          cy="12"
+          r="8.35"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        />
+        <circle cx="12" cy="7.15" r="1.35" fill="currentColor" />
+        <path
+          d="M7.65 10.2c1.35.62 2.8.93 4.35.93s3-.31 4.35-.93M12 11.15v3.05M12 14.2l-2.65 4.2M12 14.2l2.65 4.2"
           stroke="currentColor"
           strokeWidth="1.7"
-        />
-        <path
-          d="M5 8.5c2.2 1 4.5 1.5 7 1.5s4.8-.5 7-1.5M12 10v4.2M12 14.2 8.4 21M12 14.2l3.6 6.8"
-          stroke="currentColor"
-          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
