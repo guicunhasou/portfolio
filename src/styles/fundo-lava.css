@@ -29,6 +29,44 @@
   );
 }
 
+:root[data-tema="escuro"] .fundo-lava::after {
+  --passo-suave-fundo-extremos: calc(
+    var(--alcance-fundo-extremos) - clamp(1rem, 2vh, 1.5rem)
+  );
+  --fundo-lava-transicao-suave-1: color-mix(
+    in srgb,
+    var(--fundo-extremos) 84%,
+    var(--fundo-lava-veu)
+  );
+  --fundo-lava-transicao-suave-2: color-mix(
+    in srgb,
+    var(--fundo-extremos) 23%,
+    var(--fundo-lava-veu)
+  );
+  --fundo-lava-transicao-suave-3: color-mix(
+    in srgb,
+    var(--fundo-extremos) 3%,
+    var(--fundo-lava-veu)
+  );
+
+  background: linear-gradient(
+    to bottom,
+    var(--fundo-extremos) 0,
+    var(--fundo-lava-transicao-suave-1) var(--passo-1-fundo-extremos),
+    var(--fundo-lava-transicao-suave-2) var(--passo-2-fundo-extremos),
+    var(--fundo-lava-transicao-suave-3) var(--passo-suave-fundo-extremos),
+    var(--fundo-lava-veu) var(--alcance-fundo-extremos),
+    var(--fundo-lava-veu) calc(100% - var(--alcance-fundo-extremos)),
+    var(--fundo-lava-transicao-suave-3)
+      calc(100% - var(--passo-suave-fundo-extremos)),
+    var(--fundo-lava-transicao-suave-2)
+      calc(100% - var(--passo-2-fundo-extremos)),
+    var(--fundo-lava-transicao-suave-1)
+      calc(100% - var(--passo-1-fundo-extremos)),
+    var(--fundo-extremos) 100%
+  );
+}
+
 .forma-lava {
   --x-1: 0vw;
   --y-1: 0vh;
