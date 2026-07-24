@@ -17,13 +17,13 @@
   --passo-2-fundo-extremos: clamp(4.5rem, 7.5vh, 6.5rem);
   --alcance-fundo-extremos: clamp(7rem, 12vh, 10rem);
   --fundo-lava-transicao-extremos: rgb(252 251 253 / 88%);
-  --fundo-lava-transicao-veu: rgb(252 255 250 / 70%);
+  --fundo-lava-transicao-veu: rgb(249 252 246 / 58%);
   --sobreposicao-fundo: transparent;
-  --fundo-lava-base: #f4f6ef;
-  --fundo-lava-veu: rgb(252 255 250 / 60%);
-  --fundo-lava-veu-mobile: rgb(252 255 250 / 75%);
-  --opacidade-lava: 0.82;
-  --desfoque-lava: clamp(64px, 6.5vw, 128px);
+  --fundo-lava-base: #e8ede2;
+  --fundo-lava-veu: rgb(249 252 246 / 46%);
+  --fundo-lava-veu-mobile: rgb(249 252 246 / 58%);
+  --opacidade-lava: 0.88;
+  --desfoque-lava: clamp(48px, 5.2vw, 96px);
   --gradiente-lava-1: linear-gradient(145deg, #3fff5f, #ffaa00);
   --gradiente-lava-2: linear-gradient(145deg, #ff0055, #ffd000);
   --gradiente-lava-3: linear-gradient(90deg, #3fffdc, #00ff09);
@@ -131,7 +131,7 @@
   --fundo-lava-base: #101713;
   --fundo-lava-veu: rgb(16 23 19 / 40%);
   --fundo-lava-veu-mobile: rgb(16 23 19 / 58%);
-  --opacidade-lava: 0.76;
+  --opacidade-lava: 0.82;
   --gradiente-lava-1: linear-gradient(145deg, #44bf7f, #a7c95f);
   --gradiente-lava-2: linear-gradient(145deg, #d85d8f, #e2826f);
   --gradiente-lava-3: linear-gradient(90deg, #3ac1b6, #5ec77b);

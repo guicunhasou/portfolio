@@ -1,0 +1,390 @@
+/* ========== FUNDO LUMINÁRIA LAVA ========== */
+
+.fundo-lava {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--fundo-lava-base);
+  transition: background-color 320ms ease;
+}
+
+.fundo-lava::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    to bottom,
+    var(--fundo-extremos) 0,
+    var(--fundo-lava-transicao-extremos) var(--passo-1-fundo-extremos),
+    var(--fundo-lava-transicao-veu) var(--passo-2-fundo-extremos),
+    var(--fundo-lava-veu) var(--alcance-fundo-extremos),
+    var(--fundo-lava-veu) calc(100% - var(--alcance-fundo-extremos)),
+    var(--fundo-lava-transicao-veu)
+      calc(100% - var(--passo-2-fundo-extremos)),
+    var(--fundo-lava-transicao-extremos)
+      calc(100% - var(--passo-1-fundo-extremos)),
+    var(--fundo-extremos) 100%
+  );
+}
+
+.forma-lava {
+  --x-1: 0vw;
+  --y-1: 0vh;
+  --x-2: 0vw;
+  --y-2: 0vh;
+  --x-3: 0vw;
+  --y-3: 0vh;
+  --x-4: 0vw;
+  --y-4: 0vh;
+  --rotacao-inicial: 0deg;
+  --rotacao-1: 0deg;
+  --rotacao-2: 0deg;
+  --rotacao-3: 0deg;
+  --rotacao-4: 0deg;
+  --escala-1: 1;
+  --escala-2: 1;
+  --escala-3: 1;
+  --escala-4: 1;
+
+  position: absolute;
+  display: block;
+  border-radius: 44% 56% 52% 48% / 58% 42% 56% 44%;
+  opacity: var(--opacidade-lava);
+  filter: blur(var(--desfoque-lava));
+  transform: translate3d(0, 0, 0) rotate(var(--rotacao-inicial));
+  animation: deriva-lava var(--duracao-lava) ease-in-out var(--atraso-lava)
+    infinite;
+  will-change: transform;
+  transition: opacity 320ms ease;
+}
+
+.forma-lava-1 {
+  --duracao-lava: 14s;
+  --atraso-lava: -7s;
+  --x-1: -52vw;
+  --y-1: 8vh;
+  --x-2: -36vw;
+  --y-2: 52vh;
+  --x-3: 12vw;
+  --y-3: 58vh;
+  --x-4: 38vw;
+  --y-4: 14vh;
+  --rotacao-inicial: -18deg;
+  --rotacao-1: -7deg;
+  --rotacao-2: -28deg;
+  --rotacao-3: -12deg;
+  --rotacao-4: -24deg;
+  --escala-1: 1.08;
+  --escala-2: 0.9;
+  --escala-3: 1.05;
+  --escala-4: 0.96;
+
+  width: clamp(28rem, 44vw, 56rem);
+  height: clamp(20rem, 38vh, 42rem);
+  top: 8%;
+  left: 52%;
+  background: var(--gradiente-lava-1);
+}
+
+.forma-lava-2 {
+  --duracao-lava: 17s;
+  --atraso-lava: -13s;
+  --x-1: 44vw;
+  --y-1: -46vh;
+  --x-2: 76vw;
+  --y-2: -18vh;
+  --x-3: 58vw;
+  --y-3: 34vh;
+  --x-4: 18vw;
+  --y-4: 24vh;
+  --rotacao-inicial: 24deg;
+  --rotacao-1: 14deg;
+  --rotacao-2: 36deg;
+  --rotacao-3: 19deg;
+  --rotacao-4: 30deg;
+  --escala-1: 0.92;
+  --escala-2: 1.08;
+  --escala-3: 1.02;
+  --escala-4: 0.94;
+
+  width: clamp(27rem, 40vw, 50rem);
+  height: clamp(22rem, 42vh, 46rem);
+  top: 54%;
+  left: -18%;
+  background: var(--gradiente-lava-2);
+}
+
+.forma-lava-3 {
+  --duracao-lava: 13s;
+  --atraso-lava: -4s;
+  --x-1: 38vw;
+  --y-1: 18vh;
+  --x-2: 66vw;
+  --y-2: 54vh;
+  --x-3: 18vw;
+  --y-3: 76vh;
+  --x-4: -8vw;
+  --y-4: 38vh;
+  --rotacao-inicial: 11deg;
+  --rotacao-1: 24deg;
+  --rotacao-2: 4deg;
+  --rotacao-3: 18deg;
+  --rotacao-4: 7deg;
+  --escala-1: 1.08;
+  --escala-2: 0.9;
+  --escala-3: 1.1;
+  --escala-4: 0.95;
+
+  width: clamp(24rem, 35vw, 44rem);
+  height: clamp(20rem, 36vh, 38rem);
+  top: -16%;
+  left: -10%;
+  background: var(--gradiente-lava-3);
+}
+
+.forma-lava-4 {
+  --duracao-lava: 18s;
+  --atraso-lava: -10s;
+  --x-1: 54vw;
+  --y-1: -24vh;
+  --x-2: 44vw;
+  --y-2: 44vh;
+  --x-3: -16vw;
+  --y-3: 56vh;
+  --x-4: -28vw;
+  --y-4: 6vh;
+  --rotacao-inicial: -28deg;
+  --rotacao-1: -14deg;
+  --rotacao-2: -38deg;
+  --rotacao-3: -21deg;
+  --rotacao-4: -32deg;
+  --escala-1: 0.92;
+  --escala-2: 1.1;
+  --escala-3: 1.04;
+  --escala-4: 0.94;
+
+  width: clamp(22rem, 32vw, 40rem);
+  height: clamp(23rem, 40vh, 42rem);
+  top: 24%;
+  left: 20%;
+  background: var(--gradiente-lava-4);
+}
+
+.forma-lava-5 {
+  --duracao-lava: 16s;
+  --atraso-lava: -2s;
+  --x-1: -34vw;
+  --y-1: 24vh;
+  --x-2: -68vw;
+  --y-2: 58vh;
+  --x-3: -24vw;
+  --y-3: 74vh;
+  --x-4: 14vw;
+  --y-4: 30vh;
+  --rotacao-inicial: 18deg;
+  --rotacao-1: 6deg;
+  --rotacao-2: 30deg;
+  --rotacao-3: 12deg;
+  --rotacao-4: 24deg;
+  --escala-1: 1.1;
+  --escala-2: 0.92;
+  --escala-3: 1.06;
+  --escala-4: 0.96;
+
+  width: clamp(24rem, 34vw, 43rem);
+  height: clamp(18rem, 32vh, 34rem);
+  top: -12%;
+  left: 66%;
+  background: var(--gradiente-lava-5);
+}
+
+.forma-lava-6 {
+  --duracao-lava: 15s;
+  --atraso-lava: -12s;
+  --x-1: 42vw;
+  --y-1: -52vh;
+  --x-2: 8vw;
+  --y-2: -72vh;
+  --x-3: -38vw;
+  --y-3: -46vh;
+  --x-4: -12vw;
+  --y-4: 4vh;
+  --rotacao-inicial: -10deg;
+  --rotacao-1: -22deg;
+  --rotacao-2: 4deg;
+  --rotacao-3: -16deg;
+  --rotacao-4: -5deg;
+  --escala-1: 0.92;
+  --escala-2: 1.08;
+  --escala-3: 1.03;
+  --escala-4: 0.95;
+
+  width: clamp(28rem, 42vw, 52rem);
+  height: clamp(20rem, 35vh, 38rem);
+  top: 72%;
+  left: 38%;
+  background: var(--gradiente-lava-6);
+}
+
+:root[data-tema="escuro"] .forma-lava-1 {
+  --duracao-lava: 28s;
+  --atraso-lava: -14s;
+}
+
+:root[data-tema="escuro"] .forma-lava-2 {
+  --duracao-lava: 34s;
+  --atraso-lava: -26s;
+}
+
+:root[data-tema="escuro"] .forma-lava-3 {
+  --duracao-lava: 26s;
+  --atraso-lava: -8s;
+}
+
+:root[data-tema="escuro"] .forma-lava-4 {
+  --duracao-lava: 36s;
+  --atraso-lava: -20s;
+}
+
+:root[data-tema="escuro"] .forma-lava-5 {
+  --duracao-lava: 32s;
+  --atraso-lava: -4s;
+}
+
+:root[data-tema="escuro"] .forma-lava-6 {
+  --duracao-lava: 30s;
+  --atraso-lava: -24s;
+}
+
+@keyframes deriva-lava {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--rotacao-inicial)) scale(1);
+  }
+
+  20% {
+    transform: translate3d(var(--x-1), var(--y-1), 0)
+      rotate(var(--rotacao-1)) scale(var(--escala-1));
+  }
+
+  40% {
+    transform: translate3d(var(--x-2), var(--y-2), 0)
+      rotate(var(--rotacao-2)) scale(var(--escala-2));
+  }
+
+  60% {
+    transform: translate3d(var(--x-3), var(--y-3), 0)
+      rotate(var(--rotacao-3)) scale(var(--escala-3));
+  }
+
+  80% {
+    transform: translate3d(var(--x-4), var(--y-4), 0)
+      rotate(var(--rotacao-4)) scale(var(--escala-4));
+  }
+}
+
+.fundo-lava-pausado .forma-lava,
+html[data-pausar-animacoes="true"] .forma-lava {
+  animation-play-state: paused;
+}
+
+html[data-reduzir-movimento="true"] .forma-lava {
+  animation: none;
+  will-change: auto;
+}
+
+@media (max-width: 680px) {
+  .fundo-lava {
+    --fundo-lava-veu: var(--fundo-lava-veu-mobile);
+  }
+
+  .forma-lava {
+    filter: blur(clamp(42px, 12vw, 64px));
+  }
+
+  .forma-lava-1 {
+    --x-1: -82vw;
+    --y-1: 24vh;
+    --x-2: -42vw;
+    --y-2: 74vh;
+    --x-3: 38vw;
+    --y-3: 58vh;
+    --x-4: 10vw;
+    --y-4: 8vh;
+
+    width: clamp(20rem, 92vw, 27rem);
+    height: clamp(16rem, 48vh, 24rem);
+    top: 2%;
+    left: 38%;
+  }
+
+  .forma-lava-2 {
+    --x-1: 102vw;
+    --y-1: -36vh;
+    --x-2: 122vw;
+    --y-2: 18vh;
+    --x-3: 46vw;
+    --y-3: 48vh;
+    --x-4: 2vw;
+    --y-4: -12vh;
+
+    width: clamp(18rem, 82vw, 24rem);
+    height: clamp(18rem, 42vh, 23rem);
+    top: 56%;
+    left: -72%;
+  }
+
+  .forma-lava-3 {
+    --x-1: 88vw;
+    --y-1: 20vh;
+    --x-2: 118vw;
+    --y-2: 62vh;
+    --x-3: 30vw;
+    --y-3: 82vh;
+    --x-4: -4vw;
+    --y-4: 28vh;
+
+    width: clamp(17rem, 76vw, 22rem);
+    height: clamp(16rem, 38vh, 21rem);
+    top: -18%;
+    left: -62%;
+  }
+
+  .forma-lava-4 {
+    --x-1: 58vw;
+    --y-1: -34vh;
+    --x-2: -18vw;
+    --y-2: -20vh;
+    --x-3: -42vw;
+    --y-3: 42vh;
+    --x-4: 20vw;
+    --y-4: 54vh;
+
+    width: clamp(17rem, 74vw, 22rem);
+    height: clamp(18rem, 40vh, 23rem);
+    top: 34%;
+    left: 8%;
+  }
+
+  .forma-lava-5 {
+    --x-1: -72vw;
+    --y-1: 32vh;
+    --x-2: -38vw;
+    --y-2: 78vh;
+    --x-3: 32vw;
+    --y-3: 62vh;
+    --x-4: 12vw;
+    --y-4: 8vh;
+
+    width: clamp(16rem, 70vw, 20rem);
+    height: clamp(14rem, 34vh, 19rem);
+    top: -10%;
+    left: 62%;
+  }
+
+  .forma-lava-6 {
+    display: none;
+  }
+}

@@ -5,6 +5,7 @@ import { ProvedorAcessibilidade } from './acessibilidade/AcessibilidadeContexto'
 import { ProvedorIdioma } from './idiomas/IdiomaContexto';
 import './styles/variaveis.css';
 import './styles/reset.css';
+import './styles/fundo-lava.css';
 import './styles/global.css';
 
 createRoot(document.getElementById('root')!).render(
