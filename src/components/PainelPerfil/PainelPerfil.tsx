@@ -13,8 +13,7 @@ function PainelPerfil() {
 
           <p className="areas-atuacao">
             <span>{traducao.perfil.areas[0]}</span>
-            <span aria-hidden="true">✦</span>
-            <span>{traducao.perfil.areas[1]}</span>
+            <span>& {traducao.perfil.areas[1]}</span>
           </p>
         </div>
 

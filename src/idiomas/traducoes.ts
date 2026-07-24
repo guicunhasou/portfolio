@@ -112,7 +112,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       emBreve: 'Em breve',
     },
     perfil: {
-      areas: ['Interfaces Digitais', 'Desenvolvimento Web'],
+      areas: ['Desenvolvedor Front-end', 'Designer de Interfaces'],
       bioInicio: 'Estudante de Web Design na',
       bioDepoisFiap: ',',
       bioLinhas: [
@@ -190,7 +190,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       emBreve: 'Coming soon',
     },
     perfil: {
-      areas: ['Digital Interfaces', 'Web Development'],
+      areas: ['Front-end Developer', 'Interface Designer'],
       bioInicio: 'Web Design student at',
       bioDepoisFiap: ',',
       bioLinhas: [
@@ -268,7 +268,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       emBreve: 'Próximamente',
     },
     perfil: {
-      areas: ['Interfaces Digitales', 'Desarrollo Web'],
+      areas: ['Desarrollador Front-end', 'Diseñador de Interfaces'],
       bioInicio: 'Estudiante de Web Design en',
       bioDepoisFiap: ',',
       bioLinhas: [
@@ -346,7 +346,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       emBreve: 'Bientôt disponible',
     },
     perfil: {
-      areas: ['Interfaces Numériques', 'Développement Web'],
+      areas: ['Développeur Front-end', 'Designer d’Interfaces'],
       bioInicio: 'Étudiant en Web Design à la',
       bioDepoisFiap: ',',
       bioLinhas: [
@@ -424,7 +424,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       emBreve: 'Demnächst',
     },
     perfil: {
-      areas: ['Digitale Interfaces', 'Webentwicklung'],
+      areas: ['Frontend-Entwickler', 'Interface-Designer'],
       bioInicio: 'Webdesign-Student an der',
       bioDepoisFiap: ',',
       bioLinhas: [

@@ -11,11 +11,17 @@
   --ameixa: #2b2135;
   --berinjela: #31263b;
   --figo: #33263f;
-  --fundo-pagina: #fff;
-  --fundo-extremos: #fff;
+  --fundo-pagina: #fcfbfd;
+  --fundo-extremos: #fcfbfd;
+  --passo-1-fundo-extremos: clamp(2rem, 3.5vh, 3rem);
+  --passo-2-fundo-extremos: clamp(4.5rem, 7.5vh, 6.5rem);
+  --alcance-fundo-extremos: clamp(7rem, 12vh, 10rem);
+  --fundo-lava-transicao-extremos: rgb(252 251 253 / 88%);
+  --fundo-lava-transicao-veu: rgb(252 255 250 / 70%);
   --sobreposicao-fundo: transparent;
   --fundo-lava-base: #f4f6ef;
   --fundo-lava-veu: rgb(252 255 250 / 60%);
+  --fundo-lava-veu-mobile: rgb(252 255 250 / 75%);
   --opacidade-lava: 0.82;
   --desfoque-lava: clamp(64px, 6.5vw, 128px);
   --gradiente-lava-1: linear-gradient(145deg, #3fff5f, #ffaa00);
@@ -29,33 +35,82 @@
   --texto-suave: rgb(64 48 80 / 72%);
   --texto-rodape: rgb(64 48 80 / 48%);
   --texto-destaque: var(--suco);
+  --cor-acao: var(--texto-destaque);
+  --cor-acao-hover: #563875;
+  --texto-sobre-acao: var(--neblina);
   --borda-suave: rgb(64 48 80 / 12%);
-  --fundo-painel: rgb(242 246 238 / 88%);
-  --fundo-card: rgb(204 214 194 / 28%);
-  --fundo-card-desktop: rgb(204 214 194 / 16%);
-  --fundo-modal: var(--neblina);
+  --fundo-painel: rgb(248 245 250 / 88%);
+  --fundo-painel-desktop:
+    radial-gradient(circle at 14% 8%, rgb(255 255 255 / 46%), transparent 30%),
+    linear-gradient(145deg, rgb(255 255 255 / 25%), rgb(138 86 189 / 7%));
+  --borda-painel-desktop: rgb(255 255 255 / 50%);
+  --sombra-painel-desktop:
+    inset 0 1px 0 rgb(255 255 255 / 60%), inset 0 -1px 0 rgb(64 48 80 / 7%),
+    0 22px 52px rgb(64 48 80 / 15%);
+  --filtro-painel-desktop: blur(18px) saturate(125%);
+  --fundo-card: rgb(255 255 255 / 58%);
+  --fundo-card-desktop: rgb(255 255 255 / 46%);
+  --fundo-modal:
+    radial-gradient(circle at 12% 8%, rgb(255 255 255 / 58%), transparent 32%),
+    linear-gradient(145deg, rgb(255 255 255 / 88%), rgb(248 244 250 / 76%));
+  --fundo-modal-solido: #f8f6fa;
+  --borda-modal: rgb(255 255 255 / 58%);
+  --sombra-modal:
+    inset 0 1px 0 rgb(255 255 255 / 72%), inset 0 -1px 0 rgb(64 48 80 / 7%),
+    0 24px 70px rgb(31 22 41 / 30%);
+  --filtro-modal: blur(22px) saturate(125%);
   --fundo-imagem: var(--fundo-painel);
-  --fundo-grupo-modal: rgb(204 214 194 / 18%);
+  --fundo-grupo-modal: rgb(255 255 255 / 38%);
+  --borda-card-interacao: rgb(102 66 138 / 48%);
+  --borda-card-ativa: rgb(102 66 138 / 42%);
+  --sombra-card-interacao: 0 10px 24px rgb(64 48 80 / 12%);
   --sombra-suave: 0 14px 34px rgb(64 48 80 / 12%);
   --sombra-elevada: 0 22px 52px rgb(64 48 80 / 18%);
   --sombra-foto: 0 16px 40px rgb(64 48 80 / 16%);
-  --fundo-controle: var(--profundo);
-  --fundo-controle-hover: var(--suco);
-  --texto-controle: var(--neblina);
+  --fundo-controle: var(--cor-acao);
+  --fundo-controle-hover: var(--cor-acao-hover);
+  --texto-controle: var(--texto-sobre-acao);
   --borda-controle: rgb(242 246 238 / 20%);
-  --topo-controle-experiencia: var(--fundo-extremos);
-  --base-controle-experiencia: var(--neblina);
-  --fundo-controle-experiencia: linear-gradient(180deg, var(--topo-controle-experiencia), var(--base-controle-experiencia));
-  --fundo-controle-experiencia-hover: var(--fundo-controle-experiencia);
+  --sombra-controle-hover: 0 8px 18px rgb(64 48 80 / 14%);
+  --fundo-botao-fechar: var(--cor-acao);
+  --fundo-botao-fechar-hover: var(--cor-acao-hover);
+  --texto-botao-fechar: var(--texto-sobre-acao);
+  --fundo-tag-modal: rgb(102 66 138 / 18%);
+  --texto-tag-modal: var(--profundo);
+  --borda-tag-modal: rgb(102 66 138 / 16%);
+  --fundo-link-modal: var(--cor-acao);
+  --texto-link-modal: var(--texto-sobre-acao);
+  --fundo-controle-experiencia:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 40%), transparent 34%),
+    linear-gradient(180deg, rgb(255 255 255 / 56%), rgb(248 245 250 / 66%));
+
+  --fundo-controle-experiencia-hover:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 46%), transparent 36%),
+    linear-gradient(180deg, rgb(255 255 255 / 62%), rgb(248 245 250 / 72%));
+  --fundo-controle-experiencia-aberto:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 6%), transparent 34%),
+    linear-gradient(180deg, rgb(255 255 255 / 10%), rgb(248 245 250 / 14%));
   --texto-controle-experiencia: var(--profundo);
-  --detalhe-icone-idioma: var(--neblina);
-  --detalhe-icone-acessibilidade: var(--neblina);
-  --borda-controle-experiencia: rgb(204 214 194 / 40%);
-  --sombra-controle-experiencia: 0 10px 24px rgb(64 48 80 / 10%);
-  --sombra-controle-experiencia-aberto: none;
-  --fundo-opcao: rgb(64 48 80 / 8%);
-  --fundo-opcao-ativa: var(--profundo);
-  --texto-opcao-ativa: var(--neblina);
+  --detalhe-icone-idioma: rgb(102 66 138 / 78%);
+  --detalhe-icone-acessibilidade: rgb(102 66 138 / 78%);
+  --borda-controle-experiencia: rgb(255 255 255 / 52%);
+  --borda-controle-experiencia-aberto: rgb(255 255 255 / 60%);
+  --sombra-controle-experiencia:
+    inset 0 1px 0 rgb(255 255 255 / 62%), inset 0 -1px 0 rgb(64 48 80 / 6%),
+    0 12px 28px rgb(64 48 80 / 10%);
+  --sombra-controle-experiencia-aberto:
+    inset 0 1px 0 rgb(255 255 255 / 66%), inset 0 -1px 0 rgb(64 48 80 / 7%),
+    0 18px 36px rgb(64 48 80 / 14%);
+  --filtro-controle-experiencia: blur(18px) saturate(125%);
+  --fundo-fechar-controle: rgb(102 66 138 / 10%);
+  --fundo-fechar-controle-hover: rgb(102 66 138 / 16%);
+  --borda-fechar-controle: rgb(102 66 138 / 18%);
+  --fundo-opcao: rgb(255 255 255 / 12%);
+  --fundo-opcao-hover: rgb(255 255 255 / 20%);
+  --fundo-opcao-ativa: rgb(102 66 138 / 8%);
+  --borda-opcao: rgb(102 66 138 / 10%);
+  --borda-opcao-ativa: rgb(102 66 138 / 20%);
+  --texto-opcao-ativa: var(--profundo);
   --foco-claro: var(--neblina);
   --foco-escuro: var(--profundo);
   --duracao-curta: 180ms;
@@ -68,47 +123,102 @@
 }
 
 :root[data-tema="escuro"] {
-  --fundo-pagina: var(--noite);
-  --fundo-extremos: var(--noite);
-  --sobreposicao-fundo: rgb(29 22 36 / 62%);
-  --fundo-lava-base: var(--noite);
-  --fundo-lava-veu: rgb(29 22 36 / 64%);
-  --opacidade-lava: 0.52;
-  --gradiente-lava-1: linear-gradient(145deg, #377950, #9f712f);
-  --gradiente-lava-2: linear-gradient(145deg, #9a3d62, #9e7f35);
-  --gradiente-lava-3: linear-gradient(90deg, #277c72, #3d7852);
-  --gradiente-lava-4: linear-gradient(145deg, #347a79, #62538e);
-  --gradiente-lava-5: linear-gradient(90deg, #585d99, #8e4f83);
-  --gradiente-lava-6: linear-gradient(145deg, #9d5143, #7b4b91);
-  --texto-principal: var(--luar);
-  --texto-secundario: rgb(241 235 245 / 82%);
-  --texto-suave: rgb(241 235 245 / 68%);
-  --texto-rodape: rgb(241 235 245 / 48%);
-  --texto-destaque: var(--orquidea);
-  --borda-suave: rgb(241 235 245 / 12%);
-  --fundo-painel: rgb(38 29 47 / 90%);
-  --fundo-card: rgb(166 175 157 / 10%);
-  --fundo-card-desktop: rgb(166 175 157 / 7%);
-  --fundo-modal: var(--ameixa);
-  --fundo-imagem: var(--berinjela);
-  --fundo-grupo-modal: rgb(241 235 245 / 5%);
-  --sombra-suave: 0 16px 38px rgb(8 5 11 / 32%);
-  --sombra-elevada: 0 24px 58px rgb(8 5 11 / 42%);
-  --sombra-foto: 0 18px 44px rgb(8 5 11 / 38%);
-  --fundo-controle: rgb(242 246 238 / 94%);
-  --fundo-controle-hover: var(--menta);
-  --texto-controle: var(--figo);
-  --borda-controle: rgb(64 48 80 / 16%);
-  --topo-controle-experiencia: var(--noite);
-  --base-controle-experiencia: var(--fundo-painel);
-  --borda-controle-experiencia: rgb(241 235 245 / 14%);
-  --sombra-controle-experiencia: 0 12px 28px rgb(8 5 11 / 26%);
-  --texto-controle-experiencia: var(--neblina);
-  --detalhe-icone-idioma: var(--figo);
-  --detalhe-icone-acessibilidade: var(--figo);
-  --fundo-opcao: rgb(242 246 238 / 9%);
-  --fundo-opcao-ativa: var(--menta);
-  --texto-opcao-ativa: var(--profundo);
+  --fundo-pagina: #101713;
+  --fundo-extremos: #101713;
+  --fundo-lava-transicao-extremos: rgb(16 23 19 / 88%);
+  --fundo-lava-transicao-veu: rgb(16 23 19 / 58%);
+  --sobreposicao-fundo: rgb(16 23 19 / 44%);
+  --fundo-lava-base: #101713;
+  --fundo-lava-veu: rgb(16 23 19 / 40%);
+  --fundo-lava-veu-mobile: rgb(16 23 19 / 58%);
+  --opacidade-lava: 0.76;
+  --gradiente-lava-1: linear-gradient(145deg, #44bf7f, #a7c95f);
+  --gradiente-lava-2: linear-gradient(145deg, #d85d8f, #e2826f);
+  --gradiente-lava-3: linear-gradient(90deg, #3ac1b6, #5ec77b);
+  --gradiente-lava-4: linear-gradient(145deg, #3eaaae, #8070d3);
+  --gradiente-lava-5: linear-gradient(90deg, #737ade, #c760ac);
+  --gradiente-lava-6: linear-gradient(145deg, #db6d68, #9e63c7);
+  --texto-principal: #eef5f0;
+  --texto-secundario: rgb(238 245 240 / 83%);
+  --texto-suave: rgb(238 245 240 / 69%);
+  --texto-rodape: rgb(238 245 240 / 49%);
+  --texto-destaque: #9bd6ae;
+  --cor-acao: var(--texto-destaque);
+  --cor-acao-hover: #7fc395;
+  --texto-sobre-acao: #17372a;
+  --borda-suave: rgb(222 241 228 / 15%);
+  --fundo-painel: rgb(21 32 27 / 90%);
+  --fundo-painel-desktop:
+    radial-gradient(circle at 14% 8%, rgb(255 255 255 / 14%), transparent 28%),
+    linear-gradient(145deg, rgb(61 91 75 / 20%), rgb(11 22 17 / 20%));
+  --borda-painel-desktop: rgb(222 241 228 / 19%);
+  --sombra-painel-desktop:
+    inset 0 1px 0 rgb(238 255 244 / 18%), inset 0 -1px 0 rgb(4 13 9 / 18%),
+    0 24px 58px rgb(3 12 8 / 36%);
+  --filtro-painel-desktop: blur(20px) saturate(140%);
+  --fundo-card: rgb(244 249 246 / 16%);
+  --fundo-card-desktop: rgb(244 249 246 / 13%);
+  --fundo-modal:
+    radial-gradient(circle at 12% 8%, rgb(238 255 244 / 14%), transparent 32%),
+    linear-gradient(145deg, rgb(67 81 72 / 72%), rgb(31 45 37 / 72%));
+  --fundo-modal-solido: #28382f;
+  --borda-modal: rgb(222 241 228 / 21%);
+  --sombra-modal:
+    inset 0 1px 0 rgb(238 255 244 / 18%), inset 0 -1px 0 rgb(4 13 9 / 18%),
+    0 26px 74px rgb(3 12 8 / 40%);
+  --filtro-modal: blur(24px) saturate(135%);
+  --fundo-imagem: rgb(31 46 37 / 82%);
+  --fundo-grupo-modal: rgb(244 249 246 / 10%);
+  --borda-card-interacao: rgb(155 214 174 / 48%);
+  --borda-card-ativa: rgb(155 214 174 / 42%);
+  --sombra-card-interacao: 0 10px 24px rgb(3 12 8 / 26%);
+  --sombra-suave: 0 16px 38px rgb(3 12 8 / 32%);
+  --sombra-elevada: 0 24px 58px rgb(3 12 8 / 42%);
+  --sombra-foto: 0 18px 44px rgb(3 12 8 / 38%);
+  --fundo-controle: var(--cor-acao);
+  --fundo-controle-hover: var(--cor-acao-hover);
+  --texto-controle: var(--texto-sobre-acao);
+  --borda-controle: rgb(23 55 42 / 18%);
+  --sombra-controle-hover: 0 8px 18px rgb(3 12 8 / 24%);
+  --fundo-botao-fechar: var(--cor-acao);
+  --fundo-botao-fechar-hover: var(--cor-acao-hover);
+  --texto-botao-fechar: var(--texto-sobre-acao);
+  --fundo-tag-modal: rgb(155 214 174 / 18%);
+  --texto-tag-modal: #e4f1e8;
+  --borda-tag-modal: rgb(155 214 174 / 18%);
+  --fundo-link-modal: var(--cor-acao);
+  --texto-link-modal: var(--texto-sobre-acao);
+  --fundo-controle-experiencia:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 12%), transparent 30%),
+    linear-gradient(180deg, rgb(53 72 62 / 58%), rgb(21 34 28 / 64%));
+
+  --fundo-controle-experiencia-hover:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 16%), transparent 32%),
+    linear-gradient(180deg, rgb(59 82 70 / 64%), rgb(24 39 32 / 70%));
+  --fundo-controle-experiencia-aberto:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 3%), transparent 30%),
+    linear-gradient(180deg, rgb(53 72 62 / 8%), rgb(21 34 28 / 12%));
+  --borda-controle-experiencia: rgb(223 245 230 / 18%);
+  --borda-controle-experiencia-aberto: rgb(223 245 230 / 24%);
+  --sombra-controle-experiencia:
+    inset 0 1px 0 rgb(238 255 244 / 16%), inset 0 -1px 0 rgb(4 13 9 / 16%),
+    0 14px 30px rgb(3 12 8 / 24%);
+  --sombra-controle-experiencia-aberto:
+    inset 0 1px 0 rgb(238 255 244 / 18%), inset 0 -1px 0 rgb(4 13 9 / 18%),
+    0 18px 36px rgb(3 12 8 / 28%);
+  --filtro-controle-experiencia: blur(20px) saturate(140%);
+  --texto-controle-experiencia: var(--texto-principal);
+  --detalhe-icone-idioma: rgb(155 214 174 / 88%);
+  --detalhe-icone-acessibilidade: rgb(155 214 174 / 88%);
+  --fundo-fechar-controle: rgb(155 214 174 / 10%);
+  --fundo-fechar-controle-hover: rgb(155 214 174 / 16%);
+  --borda-fechar-controle: rgb(155 214 174 / 18%);
+  --fundo-opcao: rgb(244 249 246 / 4%);
+  --fundo-opcao-hover: rgb(244 249 246 / 7%);
+  --fundo-opcao-ativa: rgb(155 214 174 / 8%);
+  --borda-opcao: rgb(223 245 230 / 8%);
+  --borda-opcao-ativa: rgb(155 214 174 / 22%);
+  --texto-opcao-ativa: var(--texto-principal);
   --foco-claro: var(--neblina);
   --foco-escuro: var(--noite);
 }
@@ -119,28 +229,70 @@
   --texto-rodape: rgb(64 48 80 / 72%);
   --borda-suave: rgb(64 48 80 / 34%);
   --fundo-painel: rgb(242 246 238 / 97%);
-  --fundo-card: rgb(204 214 194 / 48%);
-  --fundo-card-desktop: rgb(204 214 194 / 36%);
-  --fundo-grupo-modal: rgb(204 214 194 / 34%);
+  --fundo-painel-desktop: rgb(242 246 238 / 96%);
+  --borda-painel-desktop: rgb(64 48 80 / 42%);
+  --sombra-painel-desktop: 0 22px 52px rgb(64 48 80 / 18%);
+  --filtro-painel-desktop: none;
+  --fundo-card: rgb(255 255 255 / 90%);
+  --fundo-card-desktop: rgb(255 255 255 / 84%);
+  --fundo-modal: var(--fundo-modal-solido);
+  --borda-modal: rgb(64 48 80 / 42%);
+  --filtro-modal: none;
+  --fundo-grupo-modal: rgb(255 255 255 / 76%);
   --borda-controle: rgb(242 246 238 / 52%);
+  --fundo-controle-experiencia: rgb(242 246 238 / 96%);
+  --fundo-controle-experiencia-hover: rgb(242 246 238 / 98%);
+  --fundo-controle-experiencia-aberto: rgb(242 246 238 / 96%);
   --borda-controle-experiencia: rgb(64 48 80 / 42%);
+  --borda-controle-experiencia-aberto: rgb(64 48 80 / 48%);
+  --sombra-controle-experiencia: 0 12px 28px rgb(64 48 80 / 12%);
+  --sombra-controle-experiencia-aberto: 0 16px 34px rgb(64 48 80 / 14%);
+  --filtro-controle-experiencia: none;
+  --fundo-fechar-controle: rgb(64 48 80 / 10%);
+  --fundo-fechar-controle-hover: rgb(64 48 80 / 16%);
+  --borda-fechar-controle: rgb(64 48 80 / 20%);
   --fundo-opcao: rgb(64 48 80 / 14%);
+  --fundo-opcao-hover: rgb(64 48 80 / 18%);
+  --borda-opcao: rgb(64 48 80 / 14%);
+  --borda-opcao-ativa: rgb(64 48 80 / 28%);
   --fundo-lava-veu: rgb(252 255 250 / 88%);
+  --fundo-lava-veu-mobile: rgb(252 255 250 / 90%);
   --opacidade-lava: 0.5;
 }
 
 :root[data-tema="escuro"][data-contraste-reforcado="true"] {
-  --texto-secundario: var(--luar);
-  --texto-suave: rgb(241 235 245 / 94%);
-  --texto-rodape: rgb(241 235 245 / 74%);
-  --borda-suave: rgb(241 235 245 / 34%);
-  --fundo-painel: rgb(38 29 47 / 98%);
-  --fundo-card: rgb(166 175 157 / 20%);
-  --fundo-card-desktop: rgb(166 175 157 / 15%);
-  --fundo-grupo-modal: rgb(241 235 245 / 10%);
-  --borda-controle: rgb(64 48 80 / 42%);
-  --borda-controle-experiencia: rgb(241 235 245 / 38%);
+  --texto-secundario: var(--texto-principal);
+  --texto-suave: rgb(238 247 241 / 94%);
+  --texto-rodape: rgb(238 247 241 / 76%);
+  --borda-suave: rgb(223 245 230 / 38%);
+  --fundo-painel: rgb(16 32 25 / 98%);
+  --fundo-painel-desktop: rgb(16 32 25 / 97%);
+  --borda-painel-desktop: rgb(223 245 230 / 42%);
+  --sombra-painel-desktop: 0 24px 58px rgb(3 12 8 / 44%);
+  --filtro-painel-desktop: none;
+  --fundo-card: rgb(244 249 246 / 24%);
+  --fundo-card-desktop: rgb(244 249 246 / 20%);
+  --fundo-modal: var(--fundo-modal-solido);
+  --borda-modal: rgb(223 245 230 / 42%);
+  --filtro-modal: none;
+  --fundo-grupo-modal: rgb(244 249 246 / 18%);
+  --borda-controle: rgb(23 55 42 / 46%);
+  --fundo-controle-experiencia: rgb(16 32 25 / 97%);
+  --fundo-controle-experiencia-hover: rgb(18 36 28 / 98%);
+  --fundo-controle-experiencia-aberto: rgb(16 32 25 / 97%);
+  --borda-controle-experiencia: rgb(223 245 230 / 38%);
+  --borda-controle-experiencia-aberto: rgb(223 245 230 / 44%);
+  --sombra-controle-experiencia: 0 14px 30px rgb(3 12 8 / 28%);
+  --sombra-controle-experiencia-aberto: 0 18px 36px rgb(3 12 8 / 32%);
+  --filtro-controle-experiencia: none;
+  --fundo-fechar-controle: rgb(223 245 230 / 10%);
+  --fundo-fechar-controle-hover: rgb(223 245 230 / 16%);
+  --borda-fechar-controle: rgb(223 245 230 / 22%);
   --fundo-opcao: rgb(242 246 238 / 16%);
-  --fundo-lava-veu: rgb(29 22 36 / 78%);
-  --opacidade-lava: 0.38;
+  --fundo-opcao-hover: rgb(242 246 238 / 20%);
+  --borda-opcao: rgb(223 245 230 / 12%);
+  --borda-opcao-ativa: rgb(223 245 230 / 28%);
+  --fundo-lava-veu: rgb(13 25 21 / 76%);
+  --fundo-lava-veu-mobile: rgb(13 25 21 / 82%);
+  --opacidade-lava: 0.4;
 }
