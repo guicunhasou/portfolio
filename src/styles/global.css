@@ -929,6 +929,12 @@ html[data-destacar-links="true"] a.botao-acao {
   font-size: clamp(0.72rem, 0.7vw, 0.85rem);
   font-weight: 500;
   color: var(--texto-rodape);
+  cursor: default;
+  transition: color 180ms ease;
+}
+
+.dados-rodape:focus-within {
+  color: var(--texto-rodape-hover);
 }
 
 .dados-rodape > span {
@@ -939,6 +945,13 @@ html[data-destacar-links="true"] a.botao-acao {
 .dados-rodape .link-discreto {
   text-align: left;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dados-rodape:hover {
+    color: var(--texto-rodape-hover);
+  }
 }
 
 /* ========== RESPONSIVO ========== */

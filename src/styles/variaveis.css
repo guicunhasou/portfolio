@@ -2,15 +2,9 @@
   --profundo: #403050;
   --suco: #66428a;
   --lavanda: #8a56bd;
-  --lodo: #a6af9d;
   --menta: #ccd6c2;
   --neblina: #f2f6ee;
   --noite: #1d1624;
-  --luar: #f1ebf5;
-  --orquidea: #c7a3e8;
-  --ameixa: #2b2135;
-  --berinjela: #31263b;
-  --figo: #33263f;
   --fundo-pagina: #fcfbfd;
   --fundo-extremos: #fcfbfd;
   --passo-1-fundo-extremos: clamp(2rem, 3.5vh, 3rem);
@@ -33,7 +27,8 @@
   --texto-principal: var(--profundo);
   --texto-secundario: rgb(64 48 80 / 85%);
   --texto-suave: rgb(64 48 80 / 72%);
-  --texto-rodape: rgb(64 48 80 / 48%);
+  --texto-rodape: rgb(64 48 80 / 18%);
+  --texto-rodape-hover: rgb(64 48 80 / 34%);
   --texto-destaque: var(--suco);
   --cor-acao: var(--texto-destaque);
   --cor-acao-hover: #563875;
@@ -65,7 +60,6 @@
   --borda-card-ativa: rgb(102 66 138 / 42%);
   --sombra-card-interacao: 0 10px 24px rgb(64 48 80 / 12%);
   --sombra-suave: 0 14px 34px rgb(64 48 80 / 12%);
-  --sombra-elevada: 0 22px 52px rgb(64 48 80 / 18%);
   --sombra-foto: 0 16px 40px rgb(64 48 80 / 16%);
   --fundo-controle: var(--cor-acao);
   --fundo-controle-hover: var(--cor-acao-hover);
@@ -141,7 +135,8 @@
   --texto-principal: #eef5f0;
   --texto-secundario: rgb(238 245 240 / 83%);
   --texto-suave: rgb(238 245 240 / 69%);
-  --texto-rodape: rgb(238 245 240 / 49%);
+  --texto-rodape: rgb(238 245 240 / 18%);
+  --texto-rodape-hover: rgb(238 245 240 / 36%);
   --texto-destaque: #9bd6ae;
   --cor-acao: var(--texto-destaque);
   --cor-acao-hover: #7fc395;
@@ -173,7 +168,6 @@
   --borda-card-ativa: rgb(155 214 174 / 42%);
   --sombra-card-interacao: 0 10px 24px rgb(3 12 8 / 26%);
   --sombra-suave: 0 16px 38px rgb(3 12 8 / 32%);
-  --sombra-elevada: 0 24px 58px rgb(3 12 8 / 42%);
   --sombra-foto: 0 18px 44px rgb(3 12 8 / 38%);
   --fundo-controle: var(--cor-acao);
   --fundo-controle-hover: var(--cor-acao-hover);
@@ -227,6 +221,7 @@
   --texto-secundario: var(--profundo);
   --texto-suave: rgb(64 48 80 / 94%);
   --texto-rodape: rgb(64 48 80 / 72%);
+  --texto-rodape-hover: rgb(64 48 80 / 88%);
   --borda-suave: rgb(64 48 80 / 34%);
   --fundo-painel: rgb(242 246 238 / 97%);
   --fundo-painel-desktop: rgb(242 246 238 / 96%);
@@ -264,6 +259,7 @@
   --texto-secundario: var(--texto-principal);
   --texto-suave: rgb(238 247 241 / 94%);
   --texto-rodape: rgb(238 247 241 / 76%);
+  --texto-rodape-hover: rgb(238 247 241 / 90%);
   --borda-suave: rgb(223 245 230 / 38%);
   --fundo-painel: rgb(16 32 25 / 98%);
   --fundo-painel-desktop: rgb(16 32 25 / 97%);

@@ -4,6 +4,7 @@ import {
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
 } from 'react';
 import {
   useAcessibilidade,
@@ -28,6 +29,8 @@ const PREFERENCIAS_ACESSIBILIDADE: PreferenciaAcessibilidade[] = [
   'contrasteReforcado',
   'destacarLinks',
 ];
+const DURACAO_PERMANENCIA_MOUSE = 1200;
+
 const CORES_NAVEGADOR: Record<TemaAtivo, string> = {
   claro: '#f2f6ee',
   escuro: '#1d1624',
@@ -127,6 +130,8 @@ function ControlesExperiencia() {
   const opcoesAcessibilidadeRef = useRef<
     Partial<Record<PreferenciaAcessibilidade, HTMLButtonElement>>
   >({});
+  const temporizadorAberturaRef = useRef<number | null>(null);
+  const aberturaSemFocoRef = useRef(false);
   const temaAtivo: TemaAtivo =
     temaPreferido === 'sistema'
       ? sistemaEscuro
@@ -174,6 +179,11 @@ function ControlesExperiencia() {
       return;
     }
 
+    if (aberturaSemFocoRef.current) {
+      aberturaSemFocoRef.current = false;
+      return;
+    }
+
     const elementoInicial =
       controleAberto === 'tema'
         ? opcoesTemaRef.current[temaPreferido]
@@ -218,6 +228,43 @@ function ControlesExperiencia() {
       document.removeEventListener('keydown', fecharComEsc);
     };
   }, [controleAberto]);
+
+  useEffect(() => {
+    return () => {
+      if (temporizadorAberturaRef.current !== null) {
+        window.clearTimeout(temporizadorAberturaRef.current);
+      }
+    };
+  }, []);
+
+  const limparTemporizadorAbertura = () => {
+    if (temporizadorAberturaRef.current === null) {
+      return;
+    }
+
+    window.clearTimeout(temporizadorAberturaRef.current);
+    temporizadorAberturaRef.current = null;
+  };
+
+  const abrirControleSemMoverFoco = (tipo: TipoControle) => {
+    aberturaSemFocoRef.current = true;
+    setControleAberto(tipo);
+  };
+
+  const iniciarPermanenciaMouse = (
+    evento: ReactPointerEvent<HTMLLIElement>,
+    tipo: TipoControle,
+  ) => {
+    if (evento.pointerType !== 'mouse' || controleAberto) {
+      return;
+    }
+
+    limparTemporizadorAbertura();
+    temporizadorAberturaRef.current = window.setTimeout(() => {
+      temporizadorAberturaRef.current = null;
+      abrirControleSemMoverFoco(tipo);
+    }, DURACAO_PERMANENCIA_MOUSE);
+  };
 
   const alternarControle = (tipo: TipoControle) => {
     setControleAberto((controleAtual) =>
@@ -280,6 +327,10 @@ function ControlesExperiencia() {
             <li
               className={`controle-experiencia controle-${tipo}${aberto ? ' controle-aberto' : ''}`}
               key={tipo}
+              onPointerEnter={(evento) =>
+                iniciarPermanenciaMouse(evento, tipo)
+              }
+              onPointerLeave={limparTemporizadorAbertura}
             >
               <button
                 ref={(elemento: HTMLButtonElement | null) => {
@@ -294,6 +345,8 @@ function ControlesExperiencia() {
                 aria-label={`${rotulo}${descricaoEstado}`}
                 tabIndex={aberto ? -1 : 0}
                 onFocus={() => {
+                  limparTemporizadorAbertura();
+
                   if (controleAberto && controleAberto !== tipo) {
                     setControleAberto(null);
                   }
