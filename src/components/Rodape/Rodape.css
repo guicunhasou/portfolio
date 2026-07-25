@@ -1,0 +1,57 @@
+/* ========== RODAPÉ ========== */
+
+.rodape {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0.45rem 1rem 1rem;
+}
+
+.rodape .separador-logo {
+  width: 1.4em;
+  height: 1.4em;
+}
+
+.dados-rodape {
+  width: min(100%, 28rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.72rem, 0.7vw, 0.85rem);
+  font-weight: 500;
+  color: var(--texto-rodape);
+  cursor: default;
+  transition: color 180ms ease;
+}
+
+.dados-rodape:focus-within {
+  color: var(--texto-rodape-hover);
+}
+
+@media (max-width: 680px) {
+  .rodape:focus {
+    outline: none;
+  }
+
+  .rodape:focus .dados-rodape {
+    color: var(--texto-rodape-hover);
+  }
+}
+
+.dados-rodape > span {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.dados-rodape .link-discreto {
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dados-rodape:hover {
+    color: var(--texto-rodape-hover);
+  }
+}

@@ -17,7 +17,6 @@ function LinksSociais() {
               href={link.url}
               target={linkExterno ? '_blank' : undefined}
               rel={linkExterno ? 'noopener noreferrer' : undefined}
-              tabIndex={0}
             >
               <IconeAcao tipo={link.tipo} />
               <span className="rotulo-botao">{link.rotulo}</span>

@@ -1,0 +1,51 @@
+/* ========== ACESSIBILIDADE GLOBAL ========== */
+
+html[data-destacar-links="true"] a.link-discreto {
+  text-decoration: underline;
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.18em;
+}
+
+html[data-destacar-links="true"] a.botao-acao {
+  border-color: currentColor;
+  box-shadow: 0 0 0 2px var(--borda-suave);
+}
+
+
+.botao-acao:focus-visible {
+  outline: 3px solid var(--foco-claro);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--foco-escuro);
+}
+
+html[data-pausar-animacoes="true"] .imagem-slide {
+  transition: none;
+}
+
+html[data-reduzir-movimento="true"] {
+  scroll-behavior: auto;
+}
+
+html[data-reduzir-movimento="true"] *,
+html[data-reduzir-movimento="true"] *::before,
+html[data-reduzir-movimento="true"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

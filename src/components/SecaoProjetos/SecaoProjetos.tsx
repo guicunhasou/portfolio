@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { projetos } from '../../data/projetos';
 import { useIdioma } from '../../idiomas/IdiomaContexto';
 import { traduzirProjeto } from '../../idiomas/traducoes';
@@ -6,25 +6,34 @@ import type { Projeto } from '../../types/projeto';
 import CardProjeto from '../CardProjeto/CardProjeto';
 import ModalProjeto from '../ModalProjeto/ModalProjeto';
 
-function SecaoProjetos() {
+type PropriedadesSecaoProjetos = {
+  aoDefinirDestinoControles: (elemento: HTMLElement | null) => void;
+};
+
+function SecaoProjetos({
+  aoDefinirDestinoControles,
+}: PropriedadesSecaoProjetos) {
   const { idioma, traducao } = useIdioma();
-  const [projetoSelecionado, setProjetoSelecionado] =
-    useState<Projeto | null>(null);
+  const [idProjetoSelecionado, setIdProjetoSelecionado] =
+  useState<string | null>(null);
   const acionadorModalRef = useRef<HTMLButtonElement | null>(null);
-  const projetosVisiveis = useMemo(
-    () => projetos.slice(0, 4).map((projeto) => traduzirProjeto(projeto, idioma)),
-    [idioma],
+  const projetosVisiveis = projetos.map((projeto) =>
+    traduzirProjeto(projeto, idioma),
   );
+  const projetoSelecionado =
+  projetosVisiveis.find(
+    ({ id }) => id === idProjetoSelecionado,
+  ) ?? null;
 
   const abrirModal = (projeto: Projeto, acionador: HTMLButtonElement) => {
     acionadorModalRef.current = acionador;
-    setProjetoSelecionado(projeto);
+    setIdProjetoSelecionado(projeto.id);
   };
 
   const fecharModal = (origem: 'ponteiro' | 'teclado') => {
     const acionador = acionadorModalRef.current;
 
-    setProjetoSelecionado(null);
+    setIdProjetoSelecionado(null);
 
     window.requestAnimationFrame(() => {
       if (origem === 'teclado') {
@@ -60,7 +69,11 @@ function SecaoProjetos() {
       </section>
 
       {projetoSelecionado && (
-        <ModalProjeto projeto={projetoSelecionado} aoFechar={fecharModal} />
+        <ModalProjeto
+          projeto={projetoSelecionado}
+          aoFechar={fecharModal}
+          aoDefinirDestinoControles={aoDefinirDestinoControles}
+        />
       )}
     </>
   );

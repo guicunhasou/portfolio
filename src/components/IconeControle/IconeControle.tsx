@@ -1,9 +1,8 @@
-type TipoIconeControle = 'musica' | 'tema' | 'idioma' | 'acessibilidade';
+type TipoIconeControle = 'tema' | 'idioma' | 'acessibilidade';
 
 type PropriedadesIconeControle = {
   tipo: TipoIconeControle;
   temaAtivo?: 'claro' | 'escuro';
-  nivelMusica?: 0 | 1 | 2 | 3;
   idiomaAlternativo?: boolean;
   acessibilidadeAtiva?: boolean;
 };
@@ -11,47 +10,9 @@ type PropriedadesIconeControle = {
 function IconeControle({
   tipo,
   temaAtivo = 'claro',
-  nivelMusica = 0,
   idiomaAlternativo = false,
   acessibilidadeAtiva = false,
 }: PropriedadesIconeControle) {
-  if (tipo === 'musica') {
-    return (
-      <span className="icone-controle" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" focusable="false">
-          <path
-            d="M4 10v4h3.2l4.3 3.5v-11L7.2 10H4Z"
-            fill="currentColor"
-          />
-          {nivelMusica >= 1 && (
-            <path
-              d="M14.4 9.2a4 4 0 0 1 0 5.6"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          )}
-          {nivelMusica >= 2 && (
-            <path
-              d="M16.8 6.9a7.3 7.3 0 0 1 0 10.2"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          )}
-          {nivelMusica >= 3 && (
-            <path
-              d="M19.2 4.8a10.2 10.2 0 0 1 0 14.4"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          )}
-        </svg>
-      </span>
-    );
-  }
-
   if (tipo === 'tema') {
     if (temaAtivo === 'escuro') {
       return (

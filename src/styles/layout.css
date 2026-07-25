@@ -1,0 +1,104 @@
+/* ========== LAYOUT COMPARTILHADO ========== */
+
+.conteudo-principal {
+  width: 100%;
+}
+
+.divisor-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .conteudo-principal {
+    display: grid;
+  }
+}
+
+@media (max-width: 680px) {
+  .conteudo-principal {
+    row-gap: clamp(4rem, 15vw, 5rem);
+  }
+
+  .divisor-mobile {
+    width: min(240px, calc(100% - 4rem));
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 0.75rem;
+    color: var(--texto-principal);
+  }
+
+  .divisor-mobile::before,
+  .divisor-mobile::after {
+    content: "";
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, currentColor);
+    opacity: 0.55;
+  }
+
+  .divisor-mobile::after {
+    background: linear-gradient(90deg, currentColor, transparent);
+  }
+
+  .divisor-mobile .separador-logo {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.75;
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --altura-blocos: min(720px, calc(100dvh - 5rem));
+    --gap-paineis: clamp(0.9rem, 1.4vw, 1.5rem);
+    --padding-horizontal-conteudo: clamp(1rem, 2vw, 2rem);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  #root {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .conteudo-principal {
+    width: min(
+      calc(
+        1050px + var(--gap-paineis) + var(--padding-horizontal-conteudo) +
+          var(--padding-horizontal-conteudo)
+      ),
+      100%
+    );
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(384px, 2fr) minmax(576px, 3fr);
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-paineis);
+    margin-inline: auto;
+    padding: 1rem var(--padding-horizontal-conteudo);
+  }
+
+  @supports not (
+    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+  ) {
+    .painel-perfil,
+    .secao-projetos {
+      background: var(--fundo-painel);
+    }
+  }
+}

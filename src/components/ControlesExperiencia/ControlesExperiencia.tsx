@@ -118,9 +118,6 @@ function ControlesExperiencia() {
   const acionadoresRef = useRef<
     Partial<Record<TipoControle, HTMLButtonElement>>
   >({});
-  const fecharRef = useRef<Partial<Record<TipoControle, HTMLButtonElement>>>(
-    {},
-  );
   const opcoesTemaRef = useRef<
     Partial<Record<TemaPreferido, HTMLButtonElement>>
   >({});
@@ -217,7 +214,11 @@ function ControlesExperiencia() {
       }
 
       evento.preventDefault();
+      const tipoAberto = controleAberto;
       setControleAberto(null);
+      window.requestAnimationFrame(() => {
+        acionadoresRef.current[tipoAberto]?.focus({ preventScroll: true });
+      });
     };
 
     document.addEventListener('pointerdown', fecharAoClicarFora);
@@ -287,8 +288,12 @@ function ControlesExperiencia() {
       return;
     }
 
-    const primeiroElemento = document.querySelector<HTMLElement>(
-      'main a[href], main button:not([disabled]), main input:not([disabled]), main select:not([disabled]), main textarea:not([disabled]), main [tabindex]:not([tabindex="-1"])',
+    const dialogoAberto = grupoRef.current?.closest('dialog[open]');
+    const raizConteudo =
+      dialogoAberto?.querySelector<HTMLElement>('.conteudo-modal') ??
+      document.querySelector<HTMLElement>('main');
+    const primeiroElemento = raizConteudo?.querySelector<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
     );
 
     if (!primeiroElemento) {
@@ -384,11 +389,6 @@ function ControlesExperiencia() {
                     <span>{rotulo}</span>
                   </h2>
                   <button
-                    ref={(elemento: HTMLButtonElement | null) => {
-                      if (elemento) {
-                        fecharRef.current[tipo] = elemento;
-                      }
-                    }}
                     className="fechar-controle"
                     type="button"
                     aria-label={`${traducao.controles.fecharOpcoes} ${rotulo}`}

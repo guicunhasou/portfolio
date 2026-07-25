@@ -7,9 +7,14 @@ import IconeAcao from '../IconeAcao/IconeAcao';
 type PropriedadesModalProjeto = {
   projeto: Projeto;
   aoFechar: (origem: 'ponteiro' | 'teclado') => void;
+  aoDefinirDestinoControles: (elemento: HTMLElement | null) => void;
 };
 
-function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
+function ModalProjeto({
+  projeto,
+  aoFechar,
+  aoDefinirDestinoControles,
+}: PropriedadesModalProjeto) {
   const { traducao } = useIdioma();
   const { movimentoReduzido, preferencias } = useAcessibilidade();
   const dialogoRef = useRef<HTMLDialogElement>(null);
@@ -78,6 +83,9 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
 
     const elementosFocaveis = Array.from(
       dialogo.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]'),
+    ).filter(
+      (elemento) =>
+        elemento.tabIndex >= 0 && elemento.getClientRects().length > 0,
     );
     const primeiroElemento = elementosFocaveis[0];
     const ultimoElemento = elementosFocaveis.at(-1);
@@ -139,7 +147,6 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
               <p className="colaboradores-projeto-modal">
                 {traducao.projetos.colaboracaoCom}{' '}
                 {colaboradores.map((colaborador, indice) => {
-                  const nomeCurto = colaborador.nome.split(' ')[0];
 
                   return (
                     <span key={colaborador.nome}>
@@ -155,14 +162,15 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
                           rel="noopener noreferrer"
                           aria-label={`${traducao.projetos.linkedinDe} ${colaborador.nome} (${traducao.geral.abreNovaAba})`}
                         >
-                          {nomeCurto}
+                          {colaborador.nome}
                         </a>
                       ) : (
-                        nomeCurto
+                        colaborador.nome
                       )}
                     </span>
                   );
                 })}
+                {'.'}
               </p>
             )}
           </div>
@@ -272,6 +280,11 @@ function ModalProjeto({ projeto, aoFechar }: PropriedadesModalProjeto) {
           )}
         </div>
       </div>
+
+      <div
+        className="destino-controles-modal"
+        ref={aoDefinirDestinoControles}
+      />
     </dialog>
   );
 }

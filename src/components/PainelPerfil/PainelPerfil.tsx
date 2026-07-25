@@ -26,6 +26,10 @@ function PainelPerfil() {
             rel="noopener noreferrer"
           >
             FIAP
+            <span className="somente-leitor">
+              {' '}
+              ({traducao.geral.abreNovaAba})
+            </span>
           </a>
           {traducao.perfil.bioDepoisFiap}{' '}
           {traducao.perfil.bioLinhas.join(' ')}

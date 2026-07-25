@@ -2,7 +2,6 @@ import imagemEstelar from "../assets/imagens/capa-estelar.webp";
 import imagemSportsX from "../assets/imagens/capa-sportsx.webp";
 import imagemIaraGames from "../assets/imagens/capa-iara.webp";
 import imagemJardimental from "../assets/imagens/capa-jardimental.webp";
-import imagemSiteInstitucional from "../assets/imagens/capa-institucional.webp";
 import estelar1 from "../assets/imagens/modais/estelar-1.webp";
 import estelar2 from "../assets/imagens/modais/estelar-2.webp";
 import estelar3 from "../assets/imagens/modais/estelar-3.webp";
@@ -15,9 +14,6 @@ import jardimental3 from "../assets/imagens/modais/jardimental-3.webp";
 import iara1 from "../assets/imagens/modais/iara-1.webp";
 import iara2 from "../assets/imagens/modais/iara-2.webp";
 import iara3 from "../assets/imagens/modais/iara-3.webp";
-import institucional1 from "../assets/imagens/modais/institucional-1.webp";
-import institucional2 from "../assets/imagens/modais/institucional-2.webp";
-import institucional3 from "../assets/imagens/modais/institucional-3.webp";
 import type { ColaboradorProjeto, Projeto } from "../types/projeto";
 
 const colaboradorasProjetos: ColaboradorProjeto[] = [
@@ -218,47 +214,6 @@ export const projetos: Projeto[] = [
         rotulo: "Figma",
         url: "https://www.figma.com/design/pMH6zTuYQDshExMhQQGLeK/Iara-Games?node-id=97-10&t=rxvJ9SQssHLTYwbs-1",
         tipo: "figma",
-      },
-    ],
-  },
-  {
-    id: "site-institucional",
-    nome: "Site Institucional",
-    descricaoCurta:
-      "Projeto de site institucional para uma escola real, focado em design intuitivo e responsivo.",
-    descricaoCompleta:
-      "Site institucional desenvolvido para uma escola real, com foco em clareza de navegação, organização visual, responsividade e utilidade para a comunidade escolar.",
-    imagem: imagemSiteInstitucional,
-    textoAlternativo:
-      "Estudantes na entrada da escola, atividade com a comunidade escolar e aviso de reunião pedagógica",
-    imagensModal: [
-      {
-        src: institucional1,
-        textoAlternativo:
-          "Telas do site institucional da escola com as páginas A Escola, Blog e Contato",
-      },
-      {
-        src: institucional2,
-        textoAlternativo:
-          "Telas do site institucional da escola com calendário, página inicial e indicadores",
-      },
-      {
-        src: institucional3,
-        textoAlternativo:
-          "Estudantes diante da escola, atividade com a comunidade e aviso de reunião pedagógica",
-      },
-    ],
-    tags: ["Front-end", "HTML", "CSS", "JavaScript", "Responsividade"],
-    links: [
-      {
-        rotulo: "Página publicada",
-        url: "https://guicunhasou.github.io/escolar/",
-        tipo: "site",
-      },
-      {
-        rotulo: "Repositório",
-        url: "https://github.com/guicunhasou/escolar",
-        tipo: "repositorio",
       },
     ],
   },

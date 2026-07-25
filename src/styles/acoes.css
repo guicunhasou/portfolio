@@ -1,0 +1,92 @@
+/* ========== AÇÕES COMPARTILHADAS ========== */
+
+.botao-acao {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--duracao-curta) ease,
+    background-color var(--duracao-curta) ease,
+    border-color var(--duracao-curta) ease,
+    box-shadow var(--duracao-curta) ease,
+    filter var(--duracao-curta) ease,
+    transform var(--duracao-curta) ease,
+    width 260ms cubic-bezier(0.22, 0.8, 0.26, 1);
+}
+
+.icone-acao {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 1.15rem;
+  display: grid;
+  place-items: center;
+}
+
+.icone-acao svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icone-acao-textual {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.botao-expansivel {
+  --largura-expandida: 7rem;
+
+  width: 44px;
+  min-width: 44px;
+  gap: 0;
+  overflow: hidden;
+  padding: 0.55rem 0.68rem;
+}
+
+.botao-expansivel .rotulo-botao {
+  flex: 0 0 auto;
+  margin-left: 0.45rem;
+  opacity: 0;
+  transform: translateX(-0.2rem);
+  transition:
+    opacity 150ms ease,
+    transform 220ms cubic-bezier(0.22, 0.8, 0.26, 1);
+}
+
+.botao-expansivel:focus-visible {
+  width: var(--largura-expandida);
+}
+
+.botao-expansivel:focus-visible .rotulo-botao {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.botao-completo {
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .botao-expansivel:hover {
+    width: var(--largura-expandida);
+  }
+
+  .botao-expansivel:hover .rotulo-botao {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.botao-acao:active {
+  transform: scale(0.96);
+}

@@ -26,13 +26,9 @@
   --gradiente-lava-6: linear-gradient(145deg, #ff613f, #f259ff);
   --texto-principal: var(--profundo);
   --texto-secundario: rgb(64 48 80 / 85%);
-  --texto-suave: rgb(64 48 80 / 72%);
   --texto-rodape: rgb(64 48 80 / 18%);
   --texto-rodape-hover: rgb(64 48 80 / 34%);
   --texto-destaque: var(--suco);
-  --cor-acao: var(--texto-destaque);
-  --cor-acao-hover: #563875;
-  --texto-sobre-acao: var(--neblina);
   --borda-suave: rgb(64 48 80 / 12%);
   --fundo-painel: rgb(248 245 250 / 88%);
   --fundo-painel-desktop:
@@ -66,11 +62,6 @@
   --sombra-card-interacao: 0 10px 24px rgb(64 48 80 / 12%);
   --sombra-suave: 0 14px 34px rgb(64 48 80 / 12%);
   --sombra-foto: 0 16px 40px rgb(64 48 80 / 16%);
-  --fundo-controle: var(--cor-acao);
-  --fundo-controle-hover: var(--cor-acao-hover);
-  --texto-controle: var(--texto-sobre-acao);
-  --borda-controle: rgb(242 246 238 / 20%);
-  --sombra-controle-hover: 0 8px 18px rgb(64 48 80 / 14%);
   --fundo-botao-vidro:
     radial-gradient(circle at 18% 10%, rgb(255 255 255 / 48%), transparent 34%),
     linear-gradient(145deg, rgb(255 255 255 / 40%), rgb(248 245 250 / 28%));
@@ -153,13 +144,9 @@
   --gradiente-lava-6: linear-gradient(145deg, #db6d68, #9e63c7);
   --texto-principal: #eef5f0;
   --texto-secundario: rgb(238 245 240 / 83%);
-  --texto-suave: rgb(238 245 240 / 69%);
   --texto-rodape: rgb(238 245 240 / 18%);
   --texto-rodape-hover: rgb(238 245 240 / 36%);
   --texto-destaque: #9bd6ae;
-  --cor-acao: var(--texto-destaque);
-  --cor-acao-hover: #7fc395;
-  --texto-sobre-acao: #17372a;
   --borda-suave: rgb(222 241 228 / 15%);
   --fundo-painel: rgb(21 32 27 / 90%);
   --fundo-painel-desktop:
@@ -193,11 +180,6 @@
   --sombra-card-interacao: 0 10px 24px rgb(3 12 8 / 26%);
   --sombra-suave: 0 16px 38px rgb(3 12 8 / 32%);
   --sombra-foto: 0 18px 44px rgb(3 12 8 / 38%);
-  --fundo-controle: var(--cor-acao);
-  --fundo-controle-hover: var(--cor-acao-hover);
-  --texto-controle: var(--texto-sobre-acao);
-  --borda-controle: rgb(23 55 42 / 18%);
-  --sombra-controle-hover: 0 8px 18px rgb(3 12 8 / 24%);
   --fundo-botao-vidro:
     radial-gradient(circle at 18% 10%, rgb(238 255 244 / 12%), transparent 32%),
     linear-gradient(145deg, rgb(53 72 62 / 38%), rgb(21 34 28 / 44%));
@@ -258,7 +240,6 @@
 
 :root[data-contraste-reforcado="true"] {
   --texto-secundario: var(--profundo);
-  --texto-suave: rgb(64 48 80 / 94%);
   --texto-rodape: rgb(64 48 80 / 72%);
   --texto-rodape-hover: rgb(64 48 80 / 88%);
   --borda-suave: rgb(64 48 80 / 34%);
@@ -272,7 +253,6 @@
   --fundo-modal: var(--fundo-modal-solido);
   --borda-modal: rgb(64 48 80 / 42%);
   --filtro-modal: none;
-  --borda-controle: rgb(242 246 238 / 52%);
   --fundo-botao-vidro: rgb(242 246 238 / 96%);
   --fundo-botao-vidro-hover: rgb(255 255 255 / 98%);
   --borda-botao-vidro: rgb(64 48 80 / 42%);
@@ -307,7 +287,6 @@
 
 :root[data-tema="escuro"][data-contraste-reforcado="true"] {
   --texto-secundario: var(--texto-principal);
-  --texto-suave: rgb(238 247 241 / 94%);
   --texto-rodape: rgb(238 247 241 / 76%);
   --texto-rodape-hover: rgb(238 247 241 / 90%);
   --borda-suave: rgb(223 245 230 / 38%);
@@ -321,7 +300,6 @@
   --fundo-modal: var(--fundo-modal-solido);
   --borda-modal: rgb(223 245 230 / 42%);
   --filtro-modal: none;
-  --borda-controle: rgb(23 55 42 / 46%);
   --fundo-botao-vidro: rgb(16 32 25 / 97%);
   --fundo-botao-vidro-hover: rgb(20 39 31 / 98%);
   --borda-botao-vidro: rgb(223 245 230 / 38%);

@@ -18,7 +18,6 @@ function CardProjeto({
       <button
         className="acionador-card"
         type="button"
-        tabIndex={0}
         onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
       >
         <span className="somente-leitor">

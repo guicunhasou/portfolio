@@ -1,7 +1,7 @@
 import type { Projeto } from '../types/projeto';
 import type { Idioma } from './tipos';
 
-type TipoControle = 'musica' | 'tema' | 'idioma' | 'acessibilidade';
+type TipoControle = 'tema' | 'idioma' | 'acessibilidade';
 type TemaPreferido = 'claro' | 'escuro' | 'sistema';
 type TemaAtivo = Exclude<TemaPreferido, 'sistema'>;
 
@@ -33,7 +33,6 @@ type TraducaoInterface = {
       destacarLinks: string;
     };
     temas: Record<TemaPreferido, string>;
-    emBreve: string;
   };
   perfil: {
     areas: [string, string];
@@ -49,7 +48,6 @@ type TraducaoInterface = {
     tituloSecao: string;
     verDetalhes: string;
     fechar: string;
-    detalhesProjeto: string;
     colaboracaoCom: string;
     conjuncaoColaboradores: string;
     linkedinDe: string;
@@ -84,7 +82,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     controles: {
       ariaGrupo: 'Controles de experiência',
       rotulos: {
-        musica: 'Música',
         tema: 'Tema',
         idioma: 'Idioma',
         acessibilidade: 'Acessibilidade',
@@ -109,7 +106,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
         escuro: 'Escuro',
         sistema: 'Sistema',
       },
-      emBreve: 'Em breve',
     },
     perfil: {
       areas: ['Desenvolvedor Front-end', 'Designer de Interfaces'],
@@ -129,7 +125,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       tituloSecao: 'Projetos selecionados',
       verDetalhes: 'Ver detalhes de',
       fechar: 'Fechar',
-      detalhesProjeto: 'Detalhes do projeto',
       colaboracaoCom: 'em colaboração com',
       conjuncaoColaboradores: ' e ',
       linkedinDe: 'LinkedIn de',
@@ -162,7 +157,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     controles: {
       ariaGrupo: 'Experience controls',
       rotulos: {
-        musica: 'Music',
         tema: 'Theme',
         idioma: 'Language',
         acessibilidade: 'Accessibility',
@@ -187,7 +181,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
         escuro: 'Dark',
         sistema: 'System',
       },
-      emBreve: 'Coming soon',
     },
     perfil: {
       areas: ['Front-end Developer', 'Interface Designer'],
@@ -207,7 +200,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       tituloSecao: 'Selected projects',
       verDetalhes: 'View details for',
       fechar: 'Close',
-      detalhesProjeto: 'Project details',
       colaboracaoCom: 'in collaboration with',
       conjuncaoColaboradores: ' and ',
       linkedinDe: 'LinkedIn profile of',
@@ -240,7 +232,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     controles: {
       ariaGrupo: 'Controles de experiencia',
       rotulos: {
-        musica: 'Música',
         tema: 'Tema',
         idioma: 'Idioma',
         acessibilidade: 'Accesibilidad',
@@ -265,7 +256,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
         escuro: 'Oscuro',
         sistema: 'Sistema',
       },
-      emBreve: 'Próximamente',
     },
     perfil: {
       areas: ['Desarrollador Front-end', 'Diseñador de Interfaces'],
@@ -285,7 +275,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       tituloSecao: 'Proyectos seleccionados',
       verDetalhes: 'Ver detalles de',
       fechar: 'Cerrar',
-      detalhesProjeto: 'Detalles del proyecto',
       colaboracaoCom: 'en colaboración con',
       conjuncaoColaboradores: ' y ',
       linkedinDe: 'LinkedIn de',
@@ -318,7 +307,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     controles: {
       ariaGrupo: 'Contrôles de l’expérience',
       rotulos: {
-        musica: 'Musique',
         tema: 'Thème',
         idioma: 'Langue',
         acessibilidade: 'Accessibilité',
@@ -343,7 +331,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
         escuro: 'Sombre',
         sistema: 'Système',
       },
-      emBreve: 'Bientôt disponible',
     },
     perfil: {
       areas: ['Développeur Front-end', 'Designer d’Interfaces'],
@@ -363,7 +350,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       tituloSecao: 'Projets sélectionnés',
       verDetalhes: 'Voir les détails de',
       fechar: 'Fermer',
-      detalhesProjeto: 'Détails du projet',
       colaboracaoCom: 'en collaboration avec',
       conjuncaoColaboradores: ' et ',
       linkedinDe: 'Profil LinkedIn de',
@@ -396,7 +382,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     controles: {
       ariaGrupo: 'Einstellungen für das Erlebnis',
       rotulos: {
-        musica: 'Musik',
         tema: 'Design',
         idioma: 'Sprache',
         acessibilidade: 'Barrierefrei',
@@ -421,7 +406,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
         escuro: 'Dunkel',
         sistema: 'System',
       },
-      emBreve: 'Demnächst',
     },
     perfil: {
       areas: ['Frontend-Entwickler', 'Interface-Designer'],
@@ -441,7 +425,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       tituloSecao: 'Ausgewählte Projekte',
       verDetalhes: 'Details anzeigen für',
       fechar: 'Schließen',
-      detalhesProjeto: 'Projektdetails',
       colaboracaoCom: 'in Zusammenarbeit mit',
       conjuncaoColaboradores: ' und ',
       linkedinDe: 'LinkedIn-Profil von',
