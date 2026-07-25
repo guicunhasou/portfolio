@@ -662,8 +662,12 @@ body {
   inset-block: 0;
   left: 50%;
   z-index: 1;
-  color: var(--texto-controle);
-  background: var(--fundo-controle);
+  color: var(--texto-botao-vidro);
+  background: var(--fundo-botao-vidro);
+  border-color: var(--borda-botao-vidro);
+  box-shadow: var(--sombra-botao-vidro);
+  -webkit-backdrop-filter: var(--filtro-botao-vidro);
+  backdrop-filter: var(--filtro-botao-vidro);
   font-size: clamp(0.85rem, 0.65vw + 0.55rem, 0.95rem);
   font-weight: 500;
   transform: translateX(-50%);
@@ -687,9 +691,10 @@ body {
 
 .links-sociais .botao-expansivel:focus-visible {
   z-index: 3;
-  background: var(--fundo-controle-hover);
-  border-color: var(--borda-controle);
-  box-shadow: var(--sombra-controle-hover);
+  color: var(--texto-botao-vidro);
+  background: var(--fundo-botao-vidro-hover);
+  border-color: var(--borda-botao-vidro-hover);
+  box-shadow: var(--sombra-botao-vidro-hover);
 }
 
 .foto-perfil {
@@ -885,9 +890,10 @@ html[data-destacar-links="true"] a.botao-acao {
 
   .links-sociais .botao-expansivel:hover {
     z-index: 3;
-    background: var(--fundo-controle-hover);
-    border-color: var(--borda-controle);
-    box-shadow: var(--sombra-controle-hover);
+    color: var(--texto-botao-vidro);
+    background: var(--fundo-botao-vidro-hover);
+    border-color: var(--borda-botao-vidro-hover);
+    box-shadow: var(--sombra-botao-vidro-hover);
   }
 
   .card-projeto:hover {
@@ -1250,8 +1256,12 @@ body.modal-aberto {
   z-index: 1;
   justify-content: center;
   padding-inline: 0;
-  color: var(--texto-botao-fechar);
-  background: var(--fundo-botao-fechar);
+  color: var(--texto-botao-vidro);
+  background: var(--fundo-botao-vidro);
+  border-color: var(--borda-botao-vidro);
+  box-shadow: var(--sombra-botao-vidro);
+  -webkit-backdrop-filter: var(--filtro-botao-vidro);
+  backdrop-filter: var(--filtro-botao-vidro);
   font-size: 0.85rem;
 }
 
@@ -1281,13 +1291,21 @@ body.modal-aberto {
   transform: translateX(-50%);
 }
 
+.botao-fechar:focus-visible {
+  background: var(--fundo-botao-vidro-hover);
+  border-color: var(--borda-botao-vidro-hover);
+  box-shadow: var(--sombra-botao-vidro-hover);
+}
+
 .botao-fechar:focus-visible .rotulo-botao {
   transform: translateY(0);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .botao-fechar:hover {
-    background: var(--fundo-botao-fechar-hover);
+    background: var(--fundo-botao-vidro-hover);
+    border-color: var(--borda-botao-vidro-hover);
+    box-shadow: var(--sombra-botao-vidro-hover);
   }
 
   .botao-fechar:hover .icone-acao {
@@ -1327,14 +1345,17 @@ body.modal-aberto {
 }
 
 .tags-modal [role="listitem"] {
-  padding: 0.38rem 0.58rem;
+  padding: 0.32rem 0.54rem;
   border: 1px solid var(--borda-tag-modal);
-  border-radius: 0.65rem;
-  font-size: clamp(0.86rem, 0.82vw, 0.94rem);
+  border-radius: 0.58rem;
+  font-size: clamp(0.84rem, 0.8vw, 0.92rem);
   font-weight: 600;
   line-height: 1.15;
   color: var(--texto-tag-modal);
   background: var(--fundo-tag-modal);
+  box-shadow: var(--sombra-tag-modal);
+  -webkit-backdrop-filter: var(--filtro-tag-modal);
+  backdrop-filter: var(--filtro-tag-modal);
   white-space: nowrap;
 }
 
@@ -1350,9 +1371,19 @@ body.modal-aberto {
 .links-modal .botao-completo {
   min-height: 40px;
   padding: 0.48rem 0.72rem;
-  color: var(--texto-link-modal);
-  background: var(--fundo-link-modal);
+  color: var(--texto-botao-vidro);
+  background: var(--fundo-botao-vidro);
+  border-color: var(--borda-botao-vidro);
+  box-shadow: var(--sombra-botao-vidro);
+  -webkit-backdrop-filter: var(--filtro-botao-vidro);
+  backdrop-filter: var(--filtro-botao-vidro);
   font-size: clamp(0.78rem, 0.72vw, 0.88rem);
+}
+
+.links-modal a.botao-completo:focus-visible {
+  background: var(--fundo-botao-vidro-hover);
+  border-color: var(--borda-botao-vidro-hover);
+  box-shadow: var(--sombra-botao-vidro-hover);
 }
 
 .links-modal .link-projeto-em-breve {
@@ -1361,7 +1392,9 @@ body.modal-aberto {
 
 @media (hover: hover) and (pointer: fine) {
   .links-modal a.botao-completo:hover {
-    filter: brightness(0.88);
+    background: var(--fundo-botao-vidro-hover);
+    border-color: var(--borda-botao-vidro-hover);
+    box-shadow: var(--sombra-botao-vidro-hover);
     transform: translateY(-2px);
   }
 }

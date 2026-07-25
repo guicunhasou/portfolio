@@ -46,14 +46,20 @@
   --fundo-card: rgb(255 255 255 / 58%);
   --fundo-card-desktop: rgb(255 255 255 / 46%);
   --fundo-modal:
-    radial-gradient(circle at 12% 8%, rgb(255 255 255 / 58%), transparent 32%),
-    linear-gradient(145deg, rgb(255 255 255 / 88%), rgb(248 244 250 / 76%));
-  --fundo-modal-solido: #f8f6fa;
-  --borda-modal: rgb(255 255 255 / 58%);
+    radial-gradient(circle at 12% 8%, rgb(255 255 255 / 72%), transparent 34%),
+    radial-gradient(circle at 88% 92%, rgb(204 214 194 / 16%), transparent 42%),
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 84%),
+      rgb(248 244 250 / 76%) 54%,
+      rgb(242 246 238 / 68%)
+    );
+  --fundo-modal-solido: #f7f6f9;
+  --borda-modal: rgb(255 255 255 / 68%);
   --sombra-modal:
-    inset 0 1px 0 rgb(255 255 255 / 72%), inset 0 -1px 0 rgb(64 48 80 / 7%),
-    0 24px 70px rgb(31 22 41 / 30%);
-  --filtro-modal: blur(22px) saturate(125%);
+    inset 0 1px 0 rgb(255 255 255 / 82%), inset 0 -1px 0 rgb(64 48 80 / 8%),
+    0 24px 70px rgb(31 22 41 / 28%);
+  --filtro-modal: blur(24px) saturate(135%);
   --fundo-imagem: var(--fundo-painel);
   --borda-card-interacao: rgb(102 66 138 / 48%);
   --borda-card-ativa: rgb(102 66 138 / 42%);
@@ -65,14 +71,29 @@
   --texto-controle: var(--texto-sobre-acao);
   --borda-controle: rgb(242 246 238 / 20%);
   --sombra-controle-hover: 0 8px 18px rgb(64 48 80 / 14%);
-  --fundo-botao-fechar: var(--cor-acao);
-  --fundo-botao-fechar-hover: var(--cor-acao-hover);
-  --texto-botao-fechar: var(--texto-sobre-acao);
-  --fundo-tag-modal: rgb(102 66 138 / 18%);
-  --texto-tag-modal: var(--profundo);
-  --borda-tag-modal: rgb(102 66 138 / 16%);
-  --fundo-link-modal: var(--cor-acao);
-  --texto-link-modal: var(--texto-sobre-acao);
+  --fundo-botao-vidro:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 48%), transparent 34%),
+    linear-gradient(145deg, rgb(255 255 255 / 40%), rgb(248 245 250 / 28%));
+  --fundo-botao-vidro-hover:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 58%), transparent 36%),
+    linear-gradient(145deg, rgb(255 255 255 / 50%), rgb(248 245 250 / 36%));
+  --texto-botao-vidro: var(--texto-destaque);
+  --borda-botao-vidro: rgb(255 255 255 / 54%);
+  --borda-botao-vidro-hover: rgb(255 255 255 / 72%);
+  --sombra-botao-vidro:
+    inset 0 1px 0 rgb(255 255 255 / 62%), inset 0 -1px 0 rgb(64 48 80 / 6%),
+    0 8px 20px rgb(64 48 80 / 10%);
+  --sombra-botao-vidro-hover:
+    inset 0 1px 0 rgb(255 255 255 / 74%), inset 0 -1px 0 rgb(64 48 80 / 7%),
+    0 10px 24px rgb(64 48 80 / 15%);
+  --filtro-botao-vidro: blur(14px) saturate(120%);
+  --fundo-tag-modal:
+    radial-gradient(circle at 18% 10%, rgb(255 255 255 / 34%), transparent 38%),
+    linear-gradient(145deg, rgb(255 255 255 / 22%), rgb(102 66 138 / 7%));
+  --texto-tag-modal: rgb(64 48 80 / 88%);
+  --borda-tag-modal: rgb(102 66 138 / 12%);
+  --sombra-tag-modal: inset 0 1px 0 rgb(255 255 255 / 44%);
+  --filtro-tag-modal: blur(8px) saturate(110%);
   --fundo-controle-experiencia:
     radial-gradient(circle at 18% 10%, rgb(255 255 255 / 40%), transparent 34%),
     linear-gradient(180deg, rgb(255 255 255 / 56%), rgb(248 245 250 / 66%));
@@ -152,14 +173,20 @@
   --fundo-card: rgb(244 249 246 / 16%);
   --fundo-card-desktop: rgb(244 249 246 / 13%);
   --fundo-modal:
-    radial-gradient(circle at 12% 8%, rgb(238 255 244 / 14%), transparent 32%),
-    linear-gradient(145deg, rgb(67 81 72 / 72%), rgb(31 45 37 / 72%));
-  --fundo-modal-solido: #28382f;
-  --borda-modal: rgb(222 241 228 / 21%);
+    radial-gradient(circle at 12% 8%, rgb(238 255 244 / 18%), transparent 34%),
+    radial-gradient(circle at 88% 92%, rgb(155 214 174 / 8%), transparent 44%),
+    linear-gradient(
+      145deg,
+      rgb(67 81 72 / 70%),
+      rgb(39 55 46 / 72%) 54%,
+      rgb(27 41 33 / 74%)
+    );
+  --fundo-modal-solido: #27372e;
+  --borda-modal: rgb(222 241 228 / 24%);
   --sombra-modal:
-    inset 0 1px 0 rgb(238 255 244 / 18%), inset 0 -1px 0 rgb(4 13 9 / 18%),
-    0 26px 74px rgb(3 12 8 / 40%);
-  --filtro-modal: blur(24px) saturate(135%);
+    inset 0 1px 0 rgb(238 255 244 / 22%), inset 0 -1px 0 rgb(4 13 9 / 21%),
+    0 26px 74px rgb(3 12 8 / 38%);
+  --filtro-modal: blur(26px) saturate(145%);
   --fundo-imagem: rgb(31 46 37 / 82%);
   --borda-card-interacao: rgb(155 214 174 / 48%);
   --borda-card-ativa: rgb(155 214 174 / 42%);
@@ -171,14 +198,29 @@
   --texto-controle: var(--texto-sobre-acao);
   --borda-controle: rgb(23 55 42 / 18%);
   --sombra-controle-hover: 0 8px 18px rgb(3 12 8 / 24%);
-  --fundo-botao-fechar: var(--cor-acao);
-  --fundo-botao-fechar-hover: var(--cor-acao-hover);
-  --texto-botao-fechar: var(--texto-sobre-acao);
-  --fundo-tag-modal: rgb(155 214 174 / 18%);
-  --texto-tag-modal: #e4f1e8;
-  --borda-tag-modal: rgb(155 214 174 / 18%);
-  --fundo-link-modal: var(--cor-acao);
-  --texto-link-modal: var(--texto-sobre-acao);
+  --fundo-botao-vidro:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 12%), transparent 32%),
+    linear-gradient(145deg, rgb(53 72 62 / 38%), rgb(21 34 28 / 44%));
+  --fundo-botao-vidro-hover:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 17%), transparent 34%),
+    linear-gradient(145deg, rgb(60 82 70 / 48%), rgb(24 39 32 / 54%));
+  --texto-botao-vidro: var(--texto-destaque);
+  --borda-botao-vidro: rgb(223 245 230 / 19%);
+  --borda-botao-vidro-hover: rgb(223 245 230 / 30%);
+  --sombra-botao-vidro:
+    inset 0 1px 0 rgb(238 255 244 / 16%), inset 0 -1px 0 rgb(4 13 9 / 16%),
+    0 10px 22px rgb(3 12 8 / 24%);
+  --sombra-botao-vidro-hover:
+    inset 0 1px 0 rgb(238 255 244 / 22%), inset 0 -1px 0 rgb(4 13 9 / 18%),
+    0 12px 26px rgb(3 12 8 / 32%);
+  --filtro-botao-vidro: blur(16px) saturate(135%);
+  --fundo-tag-modal:
+    radial-gradient(circle at 18% 10%, rgb(238 255 244 / 8%), transparent 36%),
+    linear-gradient(145deg, rgb(66 91 77 / 20%), rgb(24 39 32 / 24%));
+  --texto-tag-modal: rgb(228 241 232 / 88%);
+  --borda-tag-modal: rgb(155 214 174 / 12%);
+  --sombra-tag-modal: inset 0 1px 0 rgb(238 255 244 / 10%);
+  --filtro-tag-modal: blur(8px) saturate(115%);
   --fundo-controle-experiencia:
     radial-gradient(circle at 18% 10%, rgb(238 255 244 / 12%), transparent 30%),
     linear-gradient(180deg, rgb(53 72 62 / 58%), rgb(21 34 28 / 64%));
@@ -231,6 +273,18 @@
   --borda-modal: rgb(64 48 80 / 42%);
   --filtro-modal: none;
   --borda-controle: rgb(242 246 238 / 52%);
+  --fundo-botao-vidro: rgb(242 246 238 / 96%);
+  --fundo-botao-vidro-hover: rgb(255 255 255 / 98%);
+  --borda-botao-vidro: rgb(64 48 80 / 42%);
+  --borda-botao-vidro-hover: rgb(64 48 80 / 56%);
+  --sombra-botao-vidro: 0 8px 20px rgb(64 48 80 / 12%);
+  --sombra-botao-vidro-hover: 0 10px 24px rgb(64 48 80 / 16%);
+  --filtro-botao-vidro: none;
+  --fundo-tag-modal: rgb(255 255 255 / 88%);
+  --texto-tag-modal: var(--profundo);
+  --borda-tag-modal: rgb(64 48 80 / 32%);
+  --sombra-tag-modal: none;
+  --filtro-tag-modal: none;
   --fundo-controle-experiencia: rgb(242 246 238 / 96%);
   --fundo-controle-experiencia-hover: rgb(242 246 238 / 98%);
   --fundo-controle-experiencia-aberto: rgb(242 246 238 / 96%);
@@ -268,6 +322,18 @@
   --borda-modal: rgb(223 245 230 / 42%);
   --filtro-modal: none;
   --borda-controle: rgb(23 55 42 / 46%);
+  --fundo-botao-vidro: rgb(16 32 25 / 97%);
+  --fundo-botao-vidro-hover: rgb(20 39 31 / 98%);
+  --borda-botao-vidro: rgb(223 245 230 / 38%);
+  --borda-botao-vidro-hover: rgb(223 245 230 / 52%);
+  --sombra-botao-vidro: 0 10px 22px rgb(3 12 8 / 28%);
+  --sombra-botao-vidro-hover: 0 12px 26px rgb(3 12 8 / 34%);
+  --filtro-botao-vidro: none;
+  --fundo-tag-modal: rgb(28 47 38 / 96%);
+  --texto-tag-modal: var(--texto-principal);
+  --borda-tag-modal: rgb(223 245 230 / 34%);
+  --sombra-tag-modal: none;
+  --filtro-tag-modal: none;
   --fundo-controle-experiencia: rgb(16 32 25 / 97%);
   --fundo-controle-experiencia-hover: rgb(18 36 28 / 98%);
   --fundo-controle-experiencia-aberto: rgb(16 32 25 / 97%);
