@@ -55,7 +55,6 @@
     0 24px 70px rgb(31 22 41 / 30%);
   --filtro-modal: blur(22px) saturate(125%);
   --fundo-imagem: var(--fundo-painel);
-  --fundo-grupo-modal: rgb(255 255 255 / 38%);
   --borda-card-interacao: rgb(102 66 138 / 48%);
   --borda-card-ativa: rgb(102 66 138 / 42%);
   --sombra-card-interacao: 0 10px 24px rgb(64 48 80 / 12%);
@@ -108,7 +107,6 @@
   --foco-claro: var(--neblina);
   --foco-escuro: var(--profundo);
   --duracao-curta: 180ms;
-  --space-1: clamp(0.5rem, 0.4vw + 0.3rem, 0.75rem);
   --space-2: clamp(0.75rem, 0.7vw + 0.3rem, 1rem);
   --space-3: clamp(1rem, 1vw + 0.5rem, 1.5rem);
   --space-4: clamp(1.5rem, 1.5vw + 0.5rem, 2rem);
@@ -163,7 +161,6 @@
     0 26px 74px rgb(3 12 8 / 40%);
   --filtro-modal: blur(24px) saturate(135%);
   --fundo-imagem: rgb(31 46 37 / 82%);
-  --fundo-grupo-modal: rgb(244 249 246 / 10%);
   --borda-card-interacao: rgb(155 214 174 / 48%);
   --borda-card-ativa: rgb(155 214 174 / 42%);
   --sombra-card-interacao: 0 10px 24px rgb(3 12 8 / 26%);
@@ -233,7 +230,6 @@
   --fundo-modal: var(--fundo-modal-solido);
   --borda-modal: rgb(64 48 80 / 42%);
   --filtro-modal: none;
-  --fundo-grupo-modal: rgb(255 255 255 / 76%);
   --borda-controle: rgb(242 246 238 / 52%);
   --fundo-controle-experiencia: rgb(242 246 238 / 96%);
   --fundo-controle-experiencia-hover: rgb(242 246 238 / 98%);
@@ -271,7 +267,6 @@
   --fundo-modal: var(--fundo-modal-solido);
   --borda-modal: rgb(223 245 230 / 42%);
   --filtro-modal: none;
-  --fundo-grupo-modal: rgb(244 249 246 / 18%);
   --borda-controle: rgb(23 55 42 / 46%);
   --fundo-controle-experiencia: rgb(16 32 25 / 97%);
   --fundo-controle-experiencia-hover: rgb(18 36 28 / 98%);
