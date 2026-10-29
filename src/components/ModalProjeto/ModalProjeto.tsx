@@ -189,6 +189,7 @@ function ModalProjeto({
           <button
             className="botao-acao botao-expansivel botao-fechar"
             type="button"
+            onPointerDown={(evento) => evento.stopPropagation()}
             onClick={(evento) =>
               aoFechar(evento.detail === 0 ? 'teclado' : 'ponteiro')
             }
