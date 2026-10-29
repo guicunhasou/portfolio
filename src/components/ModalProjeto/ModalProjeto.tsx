@@ -19,6 +19,7 @@ function ModalProjeto({
   const { movimentoReduzido, preferencias } = useAcessibilidade();
   const dialogoRef = useRef<HTMLDialogElement>(null);
   const [indiceImagem, setIndiceImagem] = useState(0);
+  const [rotacaoInterrompida, setRotacaoInterrompida] = useState(false);
   const animacoesPausadas = preferencias.pausarAnimacoes;
   const idTitulo = `titulo-modal-${projeto.id}`;
   const idDescricao = `descricao-modal-${projeto.id}`;
@@ -47,11 +48,11 @@ function ModalProjeto({
 
   useEffect(() => {
     setIndiceImagem(0);
+    setRotacaoInterrompida(false);
   }, [projeto.id]);
 
   useEffect(() => {
-    if (movimentoReduzido || animacoesPausadas) {
-      setIndiceImagem(0);
+    if (movimentoReduzido || animacoesPausadas || rotacaoInterrompida) {
       return;
     }
 
@@ -68,7 +69,17 @@ function ModalProjeto({
     return () => {
       window.clearInterval(intervalo);
     };
-  }, [animacoesPausadas, imagensModal.length, movimentoReduzido, projeto.id]);
+  }, [animacoesPausadas, imagensModal.length, movimentoReduzido, projeto.id, rotacaoInterrompida]);
+
+  const navegarImagem = (direcao: number) => {
+    setRotacaoInterrompida(true);
+    setIndiceImagem((indiceAtual) =>
+      (indiceAtual + direcao + imagensModal.length) % imagensModal.length,
+    );
+  };
+  const posicaoImagem = traducao.projetos.posicaoImagem
+    .replace('{atual}', String(indiceImagem + 1))
+    .replace('{total}', String(imagensModal.length));
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
     if (evento.key !== 'Tab') {
@@ -208,6 +219,7 @@ function ModalProjeto({
 
           <div
             className="imagem-modal"
+            onPointerEnter={() => setRotacaoInterrompida(true)}
             role="group"
             aria-label={`${traducao.projetos.imagensProjeto} ${projeto.nome}`}
           >
@@ -242,6 +254,43 @@ function ModalProjeto({
               </div>
             )}
           </div>
+
+          {imagensModal.length > 1 && (
+            <div
+              className="controles-galeria"
+              role="group"
+              aria-label={`${traducao.projetos.imagensProjeto} ${projeto.nome}`}
+              onFocusCapture={() => setRotacaoInterrompida(true)}
+            >
+              <button
+                className="botao-acao botao-galeria"
+                type="button"
+                aria-label={traducao.projetos.imagemAnterior}
+                onClick={() => navegarImagem(-1)}
+              >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="m14 6-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <span
+                className="posicao-galeria"
+                aria-live={rotacaoInterrompida || movimentoReduzido || animacoesPausadas ? 'polite' : 'off'}
+                aria-atomic="true"
+              >
+                {posicaoImagem}
+              </span>
+              <button
+                className="botao-acao botao-galeria"
+                type="button"
+                aria-label={traducao.projetos.proximaImagem}
+                onClick={() => navegarImagem(1)}
+              >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="m10 6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          )}
 
           {projeto.links.length > 0 && (
             <ul
