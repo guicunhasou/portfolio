@@ -38,7 +38,7 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "App mobile de saúde mental e bem-estar para astronautas em missões de longa duração.",
     descricaoCompleta:
-      "Projeto funcional desenvolvido para a Global Solution FIAP 2026, com foco em saúde mental no espaço, experiência mobile, acompanhamento emocional e uma identidade visual autoral.",
+      "Aplicativo mobile desenvolvido em equipe para a Global Solution FIAP 2026, voltado ao bem-estar de astronautas em missões prolongadas. Participei da concepção, da identidade visual e da prototipação no Figma. No desenvolvimento com React Native e TypeScript, contribuí para o aprimoramento do check-in emocional, da jornada interativa e da padronização de componentes reutilizáveis e feedbacks.",
     colaboradores: colaboradorasProjetos,
     imagem: imagemEstelar,
     textoAlternativo:
@@ -80,7 +80,7 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Plataforma web responsiva criada para dar visibilidade a esportes menos valorizados.",
     descricaoCompleta:
-      "Projeto acadêmico desenvolvido em equipe para ampliar a visibilidade de esportes menos valorizados por meio de uma experiência web responsiva e acessível. O projeto foi selecionado para o FIAP NEXT 2025.",
+      "Plataforma web desenvolvida em equipe para ampliar a visibilidade de esportes pouco divulgados. Participei do desenvolvimento com foco em JavaScript e documentação, contribuindo para a implementação do carrossel de depoimentos, com navegação circular, e para a organização da documentação técnica do projeto. O SportsX foi selecionado para o FIAP NEXT 2025, conquistando o 2º lugar.",
     colaboradores: colaboradorasProjetos,
     imagem: imagemSportsX,
     textoAlternativo:
@@ -174,7 +174,7 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Projeto acadêmico focado em interfaces interativas, dados e acessibilidade.",
     descricaoCompleta:
-      "Projeto educacional que reúne interfaces interativas, prototipação e visualização de dados em uma experiência construída com tecnologias web e Node-RED.",
+      "Projeto acadêmico desenvolvido em equipe para valorizar e facilitar a descoberta de jogos brasileiros. Participei do desenvolvimento front-end, contribuindo para melhorias de acessibilidade, navegação por teclado e tipografia. Também colaborei na prototipação de um fórum em Node-RED Dashboard, com funcionalidades de listagem e busca de tópicos.",
     colaboradores: colaboradorasProjetos.filter(
       ({ nome }) => nome !== "Mirna Marinho",
     ),

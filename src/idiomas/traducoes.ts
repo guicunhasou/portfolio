@@ -479,7 +479,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Mobile mental health and well-being app for astronauts on long-duration missions.',
       descricaoCompleta:
-        'Functional project developed for FIAP Global Solution 2026, focused on mental health in space, mobile experience, emotional support and an original visual identity.',
+        'Mobile app developed as a team for FIAP Global Solution 2026, focused on the well-being of astronauts on long-duration missions. I took part in the concept development, visual identity and prototyping in Figma. Working with React Native and TypeScript, I contributed to improving the emotional check-in and interactive journey, and to standardizing reusable components and feedback.',
       textoAlternativo:
         'Astronaut holding a glowing heart beside emotional tracking interfaces and a colorful constellation',
       textosAlternativosModal: [
@@ -494,7 +494,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Responsive web platform designed to bring visibility to overlooked sports.',
       descricaoCompleta:
-        'Academic team project created to increase the visibility of overlooked sports through a responsive and accessible web experience. The project was selected for FIAP NEXT 2025.',
+        'Web platform developed as a team to increase the visibility of lesser-known sports. I took part in development with a focus on JavaScript and documentation, contributing to the implementation of the testimonial carousel with circular navigation and to the organization of the project’s technical documentation. SportsX was selected for FIAP NEXT 2025, where it took 2nd place.',
       textoAlternativo:
         'Athlete rock climbing beside cards featuring different sports',
       textosAlternativosModal: [
@@ -530,7 +530,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Academic project focused on interactive interfaces, data and accessibility.',
       descricaoCompleta:
-        'Educational project combining interactive interfaces, prototyping and data visualization in an experience built with web technologies and Node-RED.',
+        'Academic project developed as a team to promote Brazilian games and make them easier to discover. I took part in front-end development, contributing to improvements in accessibility, keyboard navigation and typography. I also collaborated on prototyping a forum in Node-RED Dashboard, with topic listing and search features.',
       textoAlternativo:
         'Iara character sitting in a forest beside covers from different games',
       textosAlternativosModal: [
@@ -547,7 +547,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'App móvil de salud mental y bienestar para astronautas en misiones de larga duración.',
       descricaoCompleta:
-        'Proyecto funcional desarrollado para la Global Solution FIAP 2026, enfocado en salud mental en el espacio, experiencia móvil, acompañamiento emocional y una identidad visual propia.',
+        'Aplicación móvil desarrollada en equipo para la Global Solution FIAP 2026, orientada al bienestar de astronautas en misiones prolongadas. Participé en la concepción, la identidad visual y el prototipado en Figma. En el desarrollo con React Native y TypeScript, contribuí a mejorar el registro emocional y el recorrido interactivo, así como a estandarizar componentes reutilizables y mensajes de respuesta.',
       textoAlternativo:
         'Astronauta sosteniendo un corazón luminoso junto a interfaces de seguimiento emocional y una constelación colorida',
       textosAlternativosModal: [
@@ -562,7 +562,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Plataforma web responsiva creada para dar visibilidad a deportes menos valorados.',
       descricaoCompleta:
-        'Proyecto académico desarrollado en equipo para ampliar la visibilidad de deportes menos valorados mediante una experiencia web responsiva y accesible. El proyecto fue seleccionado para FIAP NEXT 2025.',
+        'Plataforma web desarrollada en equipo para ampliar la visibilidad de deportes poco difundidos. Participé en el desarrollo con un enfoque en JavaScript y documentación, contribuyendo a la implementación del carrusel de testimonios con navegación circular y a la organización de la documentación técnica del proyecto. SportsX fue seleccionado para FIAP NEXT 2025, donde obtuvo el 2.º puesto.',
       textoAlternativo:
         'Atleta practicando escalada junto a tarjetas que presentan distintas modalidades deportivas',
       textosAlternativosModal: [
@@ -598,7 +598,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Proyecto académico enfocado en interfaces interactivas, datos y accesibilidad.',
       descricaoCompleta:
-        'Proyecto educativo que reúne interfaces interactivas, prototipado y visualización de datos en una experiencia construida con tecnologías web y Node-RED.',
+        'Proyecto académico desarrollado en equipo para poner en valor y facilitar el descubrimiento de juegos brasileños. Participé en el desarrollo front-end, contribuyendo a mejoras de accesibilidad, navegación por teclado y tipografía. También colaboré en el prototipado de un foro en Node-RED Dashboard, con funcionalidades de listado y búsqueda de temas.',
       textoAlternativo:
         'Personaje Iara sentada en un bosque junto a portadas de distintos juegos',
       textosAlternativosModal: [
@@ -615,7 +615,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Application mobile de santé mentale et de bien-être pour les astronautes en mission longue durée.',
       descricaoCompleta:
-        'Projet fonctionnel développé pour la Global Solution FIAP 2026, axé sur la santé mentale dans l’espace, l’expérience mobile, l’accompagnement émotionnel et une identité visuelle originale.',
+        'Application mobile développée en équipe pour la Global Solution FIAP 2026, consacrée au bien-être des astronautes en mission de longue durée. J’ai participé à la conception, à l’identité visuelle et au prototypage sur Figma. Dans le développement avec React Native et TypeScript, j’ai contribué à améliorer le bilan émotionnel et le parcours interactif, ainsi qu’à harmoniser les composants réutilisables et les messages de retour.',
       textoAlternativo:
         'Astronaute tenant un cœur lumineux près d’interfaces de suivi émotionnel et d’une constellation colorée',
       textosAlternativosModal: [
@@ -630,7 +630,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Plateforme web responsive conçue pour donner de la visibilité aux sports moins médiatisés.',
       descricaoCompleta:
-        'Projet universitaire réalisé en équipe pour accroître la visibilité des sports moins médiatisés grâce à une expérience web responsive et accessible. Le projet a été sélectionné pour le FIAP NEXT 2025.',
+        'Plateforme web développée en équipe pour accroître la visibilité des sports peu médiatisés. J’ai participé au développement en me concentrant sur JavaScript et la documentation, en contribuant à l’implémentation du carrousel de témoignages avec navigation circulaire et à l’organisation de la documentation technique du projet. SportsX a été sélectionné pour le FIAP NEXT 2025, où il a obtenu la 2e place.',
       textoAlternativo:
         'Athlète pratiquant l’escalade près de cartes présentant différentes disciplines sportives',
       textosAlternativosModal: [
@@ -666,7 +666,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Projet universitaire axé sur les interfaces interactives, les données et l’accessibilité.',
       descricaoCompleta:
-        'Projet pédagogique réunissant interfaces interactives, prototypage et visualisation de données dans une expérience créée avec des technologies web et Node-RED.',
+        'Projet universitaire développé en équipe pour valoriser les jeux brésiliens et faciliter leur découverte. J’ai participé au développement front-end, en contribuant à améliorer l’accessibilité, la navigation au clavier et la typographie. J’ai également collaboré au prototypage d’un forum dans Node-RED Dashboard, avec des fonctionnalités de liste et de recherche de sujets.',
       textoAlternativo:
         'Personnage Iara assis dans une forêt près de jaquettes de différents jeux',
       textosAlternativosModal: [
@@ -683,7 +683,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Mobile App für mentale Gesundheit und Wohlbefinden von Astronauten auf Langzeitmissionen.',
       descricaoCompleta:
-        'Funktionsfähiges Projekt für die FIAP Global Solution 2026 mit Fokus auf mentale Gesundheit im All, mobile Nutzererfahrung, emotionale Begleitung und eine eigenständige visuelle Identität.',
+        'Mobile App, die im Team für die FIAP Global Solution 2026 entwickelt wurde und auf das Wohlbefinden von Astronauten auf Langzeitmissionen ausgerichtet ist. Ich beteiligte mich an der Konzeption, der visuellen Identität und dem Prototyping in Figma. Bei der Entwicklung mit React Native und TypeScript trug ich zur Verbesserung des emotionalen Check-ins und der interaktiven Reise sowie zur Vereinheitlichung wiederverwendbarer Komponenten und Rückmeldungen bei.',
       textoAlternativo:
         'Astronaut mit leuchtendem Herzen neben Interfaces zur emotionalen Begleitung und einer farbigen Konstellation',
       textosAlternativosModal: [
@@ -698,7 +698,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Responsive Webplattform, die weniger beachteten Sportarten mehr Sichtbarkeit gibt.',
       descricaoCompleta:
-        'Akademisches Teamprojekt, das weniger beachteten Sportarten durch eine responsive und barrierefreie Web-Erfahrung mehr Sichtbarkeit verschafft. Das Projekt wurde für die FIAP NEXT 2025 ausgewählt.',
+        'Webplattform, die im Team entwickelt wurde, um wenig beachteten Sportarten mehr Sichtbarkeit zu geben. Ich beteiligte mich an der Entwicklung mit Schwerpunkt auf JavaScript und Dokumentation und trug zur Implementierung des Karussells für Erfahrungsberichte mit zyklischer Navigation sowie zur Strukturierung der technischen Projektdokumentation bei. SportsX wurde für die FIAP NEXT 2025 ausgewählt und belegte dort den 2. Platz.',
       textoAlternativo:
         'Kletternder Athlet neben Karten mit verschiedenen Sportarten',
       textosAlternativosModal: [
@@ -734,7 +734,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Akademisches Projekt mit Fokus auf interaktive Interfaces, Daten und Barrierefreiheit.',
       descricaoCompleta:
-        'Bildungsprojekt, das interaktive Interfaces, Prototyping und Datenvisualisierung in einer mit Webtechnologien und Node-RED entwickelten Erfahrung verbindet.',
+        'Akademisches Projekt, das im Team entwickelt wurde, um brasilianische Spiele zu würdigen und ihre Entdeckung zu erleichtern. Ich beteiligte mich an der Frontend-Entwicklung und trug zu Verbesserungen der Barrierefreiheit, der Tastaturnavigation und der Typografie bei. Außerdem wirkte ich am Prototyp eines Forums in Node-RED Dashboard mit, das Funktionen zum Auflisten und Suchen von Themen bietet.',
       textoAlternativo:
         'Figur Iara sitzt in einem Wald neben Covern verschiedener Spiele',
       textosAlternativosModal: [
