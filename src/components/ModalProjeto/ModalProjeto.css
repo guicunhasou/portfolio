@@ -383,6 +383,7 @@ body.modal-aberto {
     );
     height: var(--altura-blocos);
     max-height: var(--altura-blocos);
+    grid-template-rows: auto minmax(0, 1fr);
     overflow: hidden;
   }
 
@@ -408,6 +409,8 @@ body.modal-aberto {
   }
 
   .corpo-modal {
+    overflow-y: auto;
+    overscroll-behavior: contain;
     align-content: space-between;
     justify-items: center;
     gap: clamp(0.7rem, 1vw, 0.9rem);
