@@ -52,6 +52,9 @@ type TraducaoInterface = {
     conjuncaoColaboradores: string;
     linkedinDe: string;
     imagensProjeto: string;
+    imagemAnterior: string;
+    proximaImagem: string;
+    posicaoImagem: string;
     previaAtualizacao: string;
     tecnologiasCompetencias: string;
     linksProjeto: string;
@@ -129,6 +132,9 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' e ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imagens do projeto',
+      imagemAnterior: 'Imagem anterior',
+      proximaImagem: 'Próxima imagem',
+      posicaoImagem: 'Imagem {atual} de {total}',
       previaAtualizacao: 'Prévia visual em atualização',
       tecnologiasCompetencias: 'Tecnologias e competências',
       linksProjeto: 'Links do projeto',
@@ -204,6 +210,9 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' and ',
       linkedinDe: 'LinkedIn profile of',
       imagensProjeto: 'Images from project',
+      imagemAnterior: 'Previous image',
+      proximaImagem: 'Next image',
+      posicaoImagem: 'Image {atual} of {total}',
       previaAtualizacao: 'Visual preview being updated',
       tecnologiasCompetencias: 'Technologies and skills',
       linksProjeto: 'Project links',
@@ -279,6 +288,9 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' y ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imágenes del proyecto',
+      imagemAnterior: 'Imagen anterior',
+      proximaImagem: 'Imagen siguiente',
+      posicaoImagem: 'Imagen {atual} de {total}',
       previaAtualizacao: 'Vista previa visual en actualización',
       tecnologiasCompetencias: 'Tecnologías y competencias',
       linksProjeto: 'Enlaces del proyecto',
@@ -354,6 +366,9 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' et ',
       linkedinDe: 'Profil LinkedIn de',
       imagensProjeto: 'Images du projet',
+      imagemAnterior: 'Image précédente',
+      proximaImagem: 'Image suivante',
+      posicaoImagem: 'Image {atual} sur {total}',
       previaAtualizacao: 'Aperçu visuel en cours de mise à jour',
       tecnologiasCompetencias: 'Technologies et compétences',
       linksProjeto: 'Liens du projet',
@@ -429,6 +444,9 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' und ',
       linkedinDe: 'LinkedIn-Profil von',
       imagensProjeto: 'Bilder des Projekts',
+      imagemAnterior: 'Vorheriges Bild',
+      proximaImagem: 'Nächstes Bild',
+      posicaoImagem: 'Bild {atual} von {total}',
       previaAtualizacao: 'Visuelle Vorschau wird aktualisiert',
       tecnologiasCompetencias: 'Technologien und Kompetenzen',
       linksProjeto: 'Projektlinks',

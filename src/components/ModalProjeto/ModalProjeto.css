@@ -409,6 +409,7 @@ body.modal-aberto {
   }
 
   .corpo-modal {
+    container-type: size;
     overflow-y: auto;
     overscroll-behavior: contain;
     align-content: space-between;
@@ -433,11 +434,58 @@ body.modal-aberto {
   }
 
   .imagem-modal {
+    /* Reserva os controles, links e intervalos sem recortar a arte. */
     width: min(76%, 760px);
+    width: min(
+      76%,
+      760px,
+      max(
+        16rem,
+        calc(2 * (100cqh - 44px - 40px - 2 * clamp(0.7rem, 1vw, 0.9rem)))
+      )
+    );
   }
 
   .links-modal {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* Navegação manual mantém as imagens disponíveis sem movimento automático. */
+.controles-galeria {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.botao-galeria {
+  width: 44px;
+  min-width: 44px;
+  justify-content: center;
+  padding: 0.6rem;
+  color: var(--texto-botao-vidro);
+  background: var(--fundo-botao-vidro);
+  border-color: var(--borda-botao-vidro);
+  box-shadow: var(--sombra-botao-vidro);
+}
+
+.botao-galeria svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.botao-galeria:hover,
+.botao-galeria:focus-visible {
+  background: var(--fundo-botao-vidro-hover);
+  border-color: var(--borda-botao-vidro-hover);
+}
+
+.posicao-galeria {
+  color: var(--texto-principal);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
 }
