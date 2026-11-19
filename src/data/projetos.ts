@@ -64,7 +64,7 @@ export const projetos: Projeto[] = [
     links: [
       {
         rotulo: "Repositório",
-        url: "https://github.com/guicunhasou/Estelar",
+        url: "https://github.com/amimarinho/Estelar",
         tipo: "repositorio",
       },
       {
