@@ -532,6 +532,28 @@ body.modal-aberto {
   grid-template-columns: minmax(0, 1fr);
   overflow-y: auto;
   overscroll-behavior: contain;
+  padding: 6px;
+  scroll-padding: 6px;
+}
+
+/* Em janelas baixas, o cabeçalho rola junto para liberar espaço aos controles. */
+@media (max-height: 420px) {
+  .modal-projeto[open] .conteudo-modal {
+    grid-template-rows: max-content max-content;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-padding: 6px;
+  }
+
+  .modal-projeto[open] .corpo-modal {
+    container-type: normal;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .modal-projeto[open] .imagem-modal {
+    width: min(100%, 480px);
+  }
 }
 
 @keyframes entrada-modal-fluxo {

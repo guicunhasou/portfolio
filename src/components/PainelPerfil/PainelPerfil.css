@@ -72,11 +72,7 @@
   border-radius: var(--radius-pill);
 }
 
-.links-sociais .botao-expansivel {
-  position: absolute;
-  inset-block: 0;
-  left: 50%;
-  z-index: 1;
+.links-sociais .botao-acao {
   color: var(--texto-botao-vidro);
   background: var(--fundo-botao-vidro);
   border-color: var(--borda-botao-vidro);
@@ -85,11 +81,18 @@
   backdrop-filter: var(--filtro-botao-vidro);
   font-size: clamp(0.85rem, 0.65vw + 0.55rem, 0.95rem);
   font-weight: 500;
+}
+
+.links-sociais .botao-expansivel {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  z-index: 1;
   transform: translateX(-50%);
 }
 
-.links-sociais li:nth-child(1) .botao-expansivel {
-  --largura-expandida: 6rem;
+.links-sociais .link-social-email {
+  width: auto;
 }
 
 .links-sociais li:nth-child(2) .botao-expansivel {
@@ -104,7 +107,7 @@
   --largura-expandida: 7.25rem;
 }
 
-.links-sociais .botao-expansivel:focus-visible {
+.links-sociais .botao-acao:focus-visible {
   z-index: 3;
   color: var(--texto-botao-vidro);
   background: var(--fundo-botao-vidro-hover);
@@ -130,7 +133,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .links-sociais .botao-expansivel:hover {
+  .links-sociais .botao-acao:hover {
     z-index: 3;
     color: var(--texto-botao-vidro);
     background: var(--fundo-botao-vidro-hover);
@@ -230,6 +233,11 @@
   .apresentacao-perfil {
     grid-area: apresentacao;
     text-align: center;
+  }
+
+  .apresentacao-perfil h1 {
+    max-width: 100%;
+    white-space: normal;
   }
 
   .foto-perfil {

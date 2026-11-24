@@ -71,7 +71,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     metadados: {
       titulo: 'Guilherme Cunha | Portfólio',
       descricao:
-        'Portfólio de Guilherme Cunha, estudante de Web Design na FIAP com foco em UX/UI, desenvolvimento web, React, React Native e Figma.',
+        'Portfólio de Guilherme Cunha, formado em Web Design pela FIAP com foco em UX/UI, desenvolvimento web, React, React Native e Figma.',
       descricaoSocial:
         'Interfaces digitais e desenvolvimento web, com carinho em cada pixel.',
       imagemSocialAlt:
@@ -112,7 +112,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     },
     perfil: {
       areas: ['Desenvolvedor Front-end', 'Designer de Interfaces'],
-      bioInicio: 'Estudante de Web Design na',
+      bioInicio: 'Formado em Web Design pela',
       bioDepoisFiap: ',',
       bioLinhas: [
         'transformo ideias em interfaces',
@@ -149,7 +149,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     metadados: {
       titulo: 'Guilherme Cunha | Portfolio',
       descricao:
-        'Portfolio of Guilherme Cunha, a Web Design student at FIAP focused on UX/UI, web development, React, React Native and Figma.',
+        'Portfolio of Guilherme Cunha, a Web Design graduate from FIAP focused on UX/UI, web development, React, React Native and Figma.',
       descricaoSocial:
         'Digital interfaces and web development, with care in every pixel.',
       imagemSocialAlt:
@@ -190,7 +190,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     },
     perfil: {
       areas: ['Front-end Developer', 'Interface Designer'],
-      bioInicio: 'Web Design student at',
+      bioInicio: 'Web Design graduate from',
       bioDepoisFiap: ',',
       bioLinhas: [
         'I turn ideas into polished, responsive',
@@ -227,7 +227,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     metadados: {
       titulo: 'Guilherme Cunha | Portafolio',
       descricao:
-        'Portafolio de Guilherme Cunha, estudiante de Web Design en FIAP, enfocado en UX/UI, desarrollo web, React, React Native y Figma.',
+        'Portafolio de Guilherme Cunha, graduado en Web Design por FIAP, enfocado en UX/UI, desarrollo web, React, React Native y Figma.',
       descricaoSocial:
         'Interfaces digitales y desarrollo web, con cuidado en cada píxel.',
       imagemSocialAlt:
@@ -268,7 +268,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     },
     perfil: {
       areas: ['Desarrollador Front-end', 'Diseñador de Interfaces'],
-      bioInicio: 'Estudiante de Web Design en',
+      bioInicio: 'Graduado en Web Design por',
       bioDepoisFiap: ',',
       bioLinhas: [
         'transformo ideas en interfaces cuidadas,',
@@ -305,7 +305,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     metadados: {
       titulo: 'Guilherme Cunha | Portfolio',
       descricao:
-        'Portfolio de Guilherme Cunha, étudiant en Web Design à la FIAP, spécialisé en UX/UI, développement web, React, React Native et Figma.',
+        'Portfolio de Guilherme Cunha, diplômé en Web Design de la FIAP, spécialisé en UX/UI, développement web, React, React Native et Figma.',
       descricaoSocial:
         'Interfaces numériques et développement web, avec soin dans chaque pixel.',
       imagemSocialAlt:
@@ -346,7 +346,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     },
     perfil: {
       areas: ['Développeur Front-end', 'Designer d’Interfaces'],
-      bioInicio: 'Étudiant en Web Design à la',
+      bioInicio: 'Diplômé en Web Design de la',
       bioDepoisFiap: ',',
       bioLinhas: [
         'je transforme les idées en interfaces soignées,',
@@ -383,7 +383,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     metadados: {
       titulo: 'Guilherme Cunha | Portfolio',
       descricao:
-        'Portfolio von Guilherme Cunha, Webdesign-Student an der FIAP mit Schwerpunkt auf UX/UI, Webentwicklung, React, React Native und Figma.',
+        'Portfolio von Guilherme Cunha, Webdesign-Absolvent der FIAP mit Schwerpunkt auf UX/UI, Webentwicklung, React, React Native und Figma.',
       descricaoSocial:
         'Digitale Interfaces und Webentwicklung, mit Sorgfalt in jedem Pixel.',
       imagemSocialAlt:
@@ -424,10 +424,10 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
     },
     perfil: {
       areas: ['Frontend-Entwickler', 'Interface-Designer'],
-      bioInicio: 'Webdesign-Student an der',
-      bioDepoisFiap: ',',
+      bioInicio: 'Ich habe einen Abschluss in Webdesign von der',
+      bioDepoisFiap: '.',
       bioLinhas: [
-        'ich verwandle Ideen in sorgfältig gestaltete,',
+        'Ich verwandle Ideen in sorgfältig gestaltete,',
         'responsive und barrierefreie Interfaces,',
         'mit Sorgfalt in jedem Pixel.',
       ],
@@ -509,7 +509,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'UX/UI case study for an app that helps track mental health habits.',
       descricaoCompleta:
-        'UX/UI case study for a gamified app focused on tracking mental health habits, with an emphasis on prototyping and product storytelling.',
+        'UX/UI case study and prototype for tracking mental health habits. Completing habits earns flowers for a virtual garden, making progress visible through visual rewards.',
       textoAlternativo:
         'App screens featuring mood logging, a blooming virtual garden and emotional history',
       textosAlternativosModal: [
@@ -577,7 +577,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Caso de estudio UX/UI de una app para acompañar hábitos de salud mental.',
       descricaoCompleta:
-        'Caso de estudio de UX/UI para una aplicación gamificada enfocada en el seguimiento de hábitos de salud mental, con énfasis en prototipado y narrativa de producto.',
+        'Estudio de caso de UX/UI y prototipo para el seguimiento de hábitos de salud mental. Al completar hábitos, se obtienen flores para un jardín virtual que permite visualizar el progreso.',
       textoAlternativo:
         'Pantallas de la aplicación con registro de ánimo, jardín virtual florecido e historial emocional',
       textosAlternativosModal: [
@@ -645,7 +645,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Étude de cas UX/UI d’une application de suivi des habitudes de santé mentale.',
       descricaoCompleta:
-        'Étude de cas UX/UI pour une application gamifiée dédiée au suivi des habitudes de santé mentale, avec un accent sur le prototypage et la narration produit.',
+        'Étude de cas UX/UI et prototype de suivi des habitudes liées à la santé mentale. Les habitudes accomplies rapportent des fleurs pour un jardin virtuel, ce qui permet de visualiser les progrès.',
       textoAlternativo:
         'Écrans de l’application avec suivi de l’humeur, jardin virtuel fleuri et historique émotionnel',
       textosAlternativosModal: [
@@ -713,7 +713,7 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'UX/UI-Fallstudie zu einer App für die Begleitung von Gewohnheiten rund um mentale Gesundheit.',
       descricaoCompleta:
-        'UX/UI-Fallstudie für eine gamifizierte App zur Begleitung von Gewohnheiten rund um mentale Gesundheit, mit Schwerpunkt auf Prototyping und Produkt-Storytelling.',
+        'UX/UI-Fallstudie und Prototyp zur Begleitung von Gewohnheiten rund um die mentale Gesundheit. Wer Gewohnheiten erfüllt, erhält Blumen für einen virtuellen Garten und kann so seine Fortschritte sehen.',
       textoAlternativo:
         'App-Bildschirme mit Stimmungserfassung, blühendem virtuellem Garten und emotionalem Verlauf',
       textosAlternativosModal: [
