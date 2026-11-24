@@ -127,7 +127,7 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Estudo de caso UX/UI de um app para acompanhamento de hábitos de saúde mental.",
     descricaoCompleta:
-      "Estudo de caso de UX/UI para um aplicativo gamificado voltado ao acompanhamento de hábitos de saúde mental, com foco em prototipação e storytelling de produto.",
+      "Estudo de caso de UX/UI e protótipo para acompanhar hábitos de saúde mental. Ao concluir hábitos, a pessoa ganha flores para um jardim virtual, que torna o progresso visível por meio de recompensas.",
     imagem: imagemJardimental,
     textoAlternativo:
       "Telas do aplicativo com registro de humor, jardim virtual florido e histórico emocional",

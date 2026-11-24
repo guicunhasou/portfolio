@@ -1,4 +1,5 @@
 import { useIdioma } from '../../idiomas/IdiomaContexto';
+import { version as versao } from '../../../package.json';
 import SeparadorLogo from '../SeparadorLogo/SeparadorLogo';
 
 function Rodape() {
@@ -29,9 +30,9 @@ function Rodape() {
           href="https://github.com/guicunhasou/portfolio"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${traducao.rodape.ariaRepositorio} ${traducao.rodape.versaoAtual} 2.22.6.`}
+          aria-label={`${traducao.rodape.versaoAtual} ${versao}. ${traducao.rodape.ariaRepositorio}`}
         >
-          {traducao.rodape.versaoAtual} 2.22.6
+          {traducao.rodape.versaoAtual} {versao}
         </a>
       </p>
     </footer>
