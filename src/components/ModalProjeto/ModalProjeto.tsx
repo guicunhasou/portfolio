@@ -6,7 +6,7 @@ import IconeAcao from '../IconeAcao/IconeAcao';
 
 type PropriedadesModalProjeto = {
   projeto: Projeto;
-  aoFechar: (origem: 'ponteiro' | 'teclado') => void;
+  aoFechar: () => void;
   aoDefinirDestinoControles: (elemento: HTMLElement | null) => void;
 };
 
@@ -81,8 +81,14 @@ function ModalProjeto({
     .replace('{atual}', String(indiceImagem + 1))
     .replace('{total}', String(imagensModal.length));
 
+  const fecharDialogo = () => {
+    // Libera o foco fora do diálogo antes da atualização da árvore do React.
+    dialogoRef.current?.close();
+    aoFechar();
+  };
+
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
-    if (evento.key !== 'Tab') {
+    if (evento.key !== 'Tab' || evento.defaultPrevented) {
       return;
     }
 
@@ -140,12 +146,12 @@ function ModalProjeto({
       aria-describedby={idDescricao}
       onClick={(evento) => {
         if (evento.target === evento.currentTarget) {
-          aoFechar('ponteiro');
+          fecharDialogo();
         }
       }}
       onCancel={(evento) => {
         evento.preventDefault();
-        aoFechar('teclado');
+        fecharDialogo();
       }}
       onKeyDown={manterFocoNoModal}
     >
@@ -190,9 +196,7 @@ function ModalProjeto({
             className="botao-acao botao-expansivel botao-fechar"
             type="button"
             onPointerDown={(evento) => evento.stopPropagation()}
-            onClick={(evento) =>
-              aoFechar(evento.detail === 0 ? 'teclado' : 'ponteiro')
-            }
+            onClick={fecharDialogo}
           >
             <IconeAcao tipo="fechar" />
             <span className="rotulo-botao">{traducao.projetos.fechar}</span>
