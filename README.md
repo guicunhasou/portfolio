@@ -1,6 +1,6 @@
 # Guilherme Cunha | Portfólio
 
-Portfólio profissional de Guilherme Cunha, estudante de Web Design na FIAP, com foco em desenvolvimento front-end, UX/UI e design de interfaces. Reúne uma apresentação pessoal, canais de contato e projetos selecionados, com descrições de contexto e participação individual.
+Portfólio profissional de Guilherme Cunha, formado em Web Design pela FIAP, com foco em desenvolvimento front-end, UX/UI e design de interfaces. Reúne uma apresentação pessoal, canais de contato e projetos selecionados, com descrições de contexto e participação individual.
 
 A interface combina uma identidade visual autoral com composição minimalista, fundo animado, temas claro e escuro e controles de experiência.
 
