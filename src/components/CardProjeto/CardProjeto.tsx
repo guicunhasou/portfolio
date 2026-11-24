@@ -18,6 +18,7 @@ function CardProjeto({
       <button
         className="acionador-card"
         type="button"
+        aria-haspopup="dialog"
         onClick={(evento) => aoAbrirDetalhes(projeto, evento.currentTarget)}
       >
         <span className="somente-leitor">

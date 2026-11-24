@@ -92,9 +92,22 @@
 }
 
 .textos-projeto h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
   font-size: clamp(1.125rem, 4vw, 1.5rem);
   font-weight: 700;
   color: var(--texto-principal);
+}
+
+.textos-projeto h3::after {
+  content: '';
+  width: 0.37em;
+  height: 0.37em;
+  flex: none;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-0.12em) rotate(-45deg);
 }
 
 .textos-projeto p {

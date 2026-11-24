@@ -11,9 +11,9 @@ function LinksSociais() {
         const linkExterno = link.tipo !== 'email';
 
         return (
-          <li key={link.tipo}>
+          <li key={link.tipo} className={linkExterno ? undefined : 'link-social-email'}>
             <a
-              className="botao-acao botao-expansivel"
+              className={`botao-acao ${linkExterno ? 'botao-expansivel' : 'botao-completo'}`}
               href={link.url}
               target={linkExterno ? '_blank' : undefined}
               rel={linkExterno ? 'noopener noreferrer' : undefined}
