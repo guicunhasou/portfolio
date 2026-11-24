@@ -306,9 +306,7 @@ function ControlesExperiencia() {
       setControleAberto(null);
     }
 
-    window.requestAnimationFrame(() => {
-      primeiroElemento.focus();
-    });
+    primeiroElemento.focus();
   };
 
   return (

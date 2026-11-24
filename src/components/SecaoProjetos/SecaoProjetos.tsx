@@ -30,19 +30,10 @@ function SecaoProjetos({
     setIdProjetoSelecionado(projeto.id);
   };
 
-  const fecharModal = (origem: 'ponteiro' | 'teclado') => {
-    const acionador = acionadorModalRef.current;
-
+  const fecharModal = () => {
+    acionadorModalRef.current?.focus({ preventScroll: true });
+    acionadorModalRef.current = null;
     setIdProjetoSelecionado(null);
-
-    window.requestAnimationFrame(() => {
-      if (origem === 'teclado') {
-        acionador?.focus({ preventScroll: true });
-        return;
-      }
-
-      acionador?.blur();
-    });
   };
 
   return (
