@@ -29,9 +29,9 @@ function Rodape() {
           href="https://github.com/guicunhasou/portfolio"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${traducao.rodape.ariaRepositorio} ${traducao.rodape.versaoAtual} 2.22.9.`}
+          aria-label={`${traducao.rodape.versaoAtual} 2.22.10. ${traducao.rodape.ariaRepositorio}`}
         >
-          {traducao.rodape.versaoAtual} 2.22.9
+          {traducao.rodape.versaoAtual} 2.22.10
         </a>
       </p>
     </footer>
