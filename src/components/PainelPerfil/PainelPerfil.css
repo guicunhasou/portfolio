@@ -87,8 +87,8 @@
   transform: translateX(-50%);
 }
 
-.links-sociais .link-social-email {
-  width: auto;
+.links-sociais a[href^="mailto:"] {
+  --largura-expandida: 6rem;
 }
 
 .links-sociais li:nth-child(2) .botao-expansivel {
