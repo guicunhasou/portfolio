@@ -19,6 +19,7 @@ export type Projeto = {
   nome: string;
   descricaoCurta: string;
   descricaoCompleta: string;
+  contribuicao?: string[];
   colaboradores?: ColaboradorProjeto[];
   imagem?: string;
   textoAlternativo: string;

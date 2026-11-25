@@ -31,6 +31,8 @@ const colaboradorasProjetos: ColaboradorProjeto[] = [
   },
 ];
 
+const matheus: ColaboradorProjeto = { nome: "Matheus Dias Gomes Silva" };
+
 export const projetos: Projeto[] = [
   {
     id: "estelar",
@@ -38,7 +40,11 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "App mobile de saúde mental e bem-estar para astronautas em missões de longa duração.",
     descricaoCompleta:
-      "Aplicativo mobile desenvolvido em equipe para a Global Solution FIAP 2026, voltado ao bem-estar de astronautas em missões prolongadas. Participei da concepção, da identidade visual e da prototipação no Figma. No desenvolvimento com React Native e TypeScript, contribuí para o aprimoramento do check-in emocional, da jornada interativa e da padronização de componentes reutilizáveis e feedbacks.",
+      "Criamos o Estelar para a Global Solution Space Connect da FIAP de 2026. O app mobile propõe uma rotina de cuidado emocional para astronautas em missões longas. O check-in registra humor, energia, estresse e sono. Ao longo da missão, os registros se tornam pontos de uma constelação que mostra como o bem-estar evoluiu.",
+    contribuicao: [
+      "Participei da concepção, da identidade visual e da prototipação no Figma. Em React Native e TypeScript, contribuí para refinar o check-in e a jornada em forma de constelação, além de padronizar componentes e mensagens de feedback entre as telas.",
+      "A equipe reuniu registro local, respiração guiada e um radar de suporte no mesmo fluxo de missão. A galeria mostra como o registro diário leva à jornada e como o app oferece caminhos de cuidado imediato.",
+    ],
     colaboradores: colaboradorasProjetos,
     imagem: imagemEstelar,
     textoAlternativo:
@@ -80,8 +86,12 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Plataforma web responsiva criada para dar visibilidade a esportes menos valorizados.",
     descricaoCompleta:
-      "Plataforma web desenvolvida em equipe para ampliar a visibilidade de esportes pouco divulgados. Participei do desenvolvimento com foco em JavaScript e documentação, contribuindo para a implementação do carrossel de depoimentos, com navegação circular, e para a organização da documentação técnica do projeto. O SportsX foi selecionado para o FIAP NEXT 2025, conquistando o 2º lugar.",
-    colaboradores: colaboradorasProjetos,
+      "Criamos o SportsX no Enterprise Challenge da FIAP com Concentrix e Google para dar espaço a esportes pouco divulgados. Na vitrine web, a pessoa descobre modalidades, consulta perfis e usa a busca e o mapa para encontrar locais de prática.",
+    contribuicao: [
+      "Trabalhei em JavaScript e na documentação. Contribuí para o carrossel circular de depoimentos, que permite avançar e voltar sem chegar a um fim abrupto, e organizei a documentação técnica para facilitar a manutenção em equipe.",
+      "Na revisão da versão web, contribuí com ajustes de navegação e busca. O SportsX foi selecionado para o NEXT FIAP 2025 e ficou em segundo lugar, conforme meu registro da participação.",
+    ],
+    colaboradores: [...colaboradorasProjetos, matheus],
     imagem: imagemSportsX,
     textoAlternativo:
       "Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas",
@@ -127,7 +137,11 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Estudo de caso UX/UI de um app para acompanhamento de hábitos de saúde mental.",
     descricaoCompleta:
-      "Estudo de caso de UX/UI e protótipo para acompanhar hábitos de saúde mental. Ao concluir hábitos, a pessoa ganha flores para um jardim virtual, que torna o progresso visível por meio de recompensas.",
+      "Criei o Jardimental como estudo de caso de UX/UI para explorar como um diário pode incentivar hábitos de bem-estar. No protótipo, a pessoa registra o humor, consulta o histórico e ganha flores para um jardim virtual ao concluir hábitos.",
+    contribuicao: [
+      "Concebi o jardim como representação visual da rotina. Organizei a arquitetura do app no Figma e desenhei os fluxos que ligam o check-in diário, o resumo do humor e o jardim, para que a pessoa acompanhe a evolução de formas complementares.",
+      "Desenvolvi a identidade botânica e prototipei telas de conteúdos de relaxamento e comunidade. O estudo de caso detalha como essas escolhas aparecem nas telas e como a recompensa visual se integra ao acompanhamento diário.",
+    ],
     imagem: imagemJardimental,
     textoAlternativo:
       "Telas do aplicativo com registro de humor, jardim virtual florido e histórico emocional",
@@ -174,10 +188,15 @@ export const projetos: Projeto[] = [
     descricaoCurta:
       "Projeto acadêmico focado em interfaces interativas, dados e acessibilidade.",
     descricaoCompleta:
-      "Projeto acadêmico desenvolvido em equipe para valorizar e facilitar a descoberta de jogos brasileiros. Participei do desenvolvimento front-end, contribuindo para melhorias de acessibilidade, navegação por teclado e tipografia. Também colaborei na prototipação de um fórum em Node-RED Dashboard, com funcionalidades de listagem e busca de tópicos.",
-    colaboradores: colaboradorasProjetos.filter(
-      ({ nome }) => nome !== "Mirna Marinho",
-    ),
+      "A equipe criou a Iara Games como vitrine acadêmica para facilitar a descoberta de jogos brasileiros. A versão Web reúne catálogo, fichas com detalhes dos jogos e um cadastro demonstrativo validado no navegador com dados fictícios.",
+    contribuicao: [
+      "Trabalhei no front-end com foco na tipografia, nos estados de foco e na navegação por teclado. Também contribuí para o cadastro demonstrativo, com validação local e avisos sobre o uso de dados fictícios.",
+      "Em um experimento separado, colaborei no protótipo de um fórum no Node-RED Dashboard, com listagem e busca de tópicos. A galeria reúne telas da vitrine e desse protótipo.",
+    ],
+    colaboradores: [
+      ...colaboradorasProjetos.filter(({ nome }) => nome !== "Mirna Marinho"),
+      matheus,
+    ],
     imagem: imagemIaraGames,
     textoAlternativo:
       "Personagem Iara sentada em uma floresta ao lado de capas de diferentes jogos",

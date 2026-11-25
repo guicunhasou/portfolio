@@ -52,6 +52,8 @@ type TraducaoInterface = {
     conjuncaoColaboradores: string;
     linkedinDe: string;
     imagensProjeto: string;
+    conteudoProjeto: string;
+    minhaContribuicao: string;
     imagemAnterior: string;
     proximaImagem: string;
     posicaoImagem: string;
@@ -132,6 +134,8 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' e ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imagens do projeto',
+      conteudoProjeto: 'Conteúdo do projeto',
+      minhaContribuicao: 'Minha contribuição',
       imagemAnterior: 'Imagem anterior',
       proximaImagem: 'Próxima imagem',
       posicaoImagem: 'Imagem {atual} de {total}',
@@ -210,6 +214,8 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' and ',
       linkedinDe: 'LinkedIn profile of',
       imagensProjeto: 'Images from project',
+      conteudoProjeto: 'Project content',
+      minhaContribuicao: 'My contribution',
       imagemAnterior: 'Previous image',
       proximaImagem: 'Next image',
       posicaoImagem: 'Image {atual} of {total}',
@@ -288,6 +294,8 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' y ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imágenes del proyecto',
+      conteudoProjeto: 'Contenido del proyecto',
+      minhaContribuicao: 'Mi contribución',
       imagemAnterior: 'Imagen anterior',
       proximaImagem: 'Imagen siguiente',
       posicaoImagem: 'Imagen {atual} de {total}',
@@ -366,6 +374,8 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' et ',
       linkedinDe: 'Profil LinkedIn de',
       imagensProjeto: 'Images du projet',
+      conteudoProjeto: 'Contenu du projet',
+      minhaContribuicao: 'Ma contribution',
       imagemAnterior: 'Image précédente',
       proximaImagem: 'Image suivante',
       posicaoImagem: 'Image {atual} sur {total}',
@@ -444,6 +454,8 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       conjuncaoColaboradores: ' und ',
       linkedinDe: 'LinkedIn-Profil von',
       imagensProjeto: 'Bilder des Projekts',
+      conteudoProjeto: 'Projektinhalte',
+      minhaContribuicao: 'Mein Beitrag',
       imagemAnterior: 'Vorheriges Bild',
       proximaImagem: 'Nächstes Bild',
       posicaoImagem: 'Bild {atual} von {total}',
@@ -462,6 +474,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
 type TraducaoProjeto = {
   descricaoCurta: string;
   descricaoCompleta: string;
+  contribuicao: string[];
   textoAlternativo: string;
   textosAlternativosModal: string[];
   tags: string[];
@@ -479,7 +492,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Mobile mental health and well-being app for astronauts on long-duration missions.',
       descricaoCompleta:
-        'Mobile app developed as a team for FIAP Global Solution 2026, focused on the well-being of astronauts on long-duration missions. I took part in the concept development, visual identity and prototyping in Figma. Working with React Native and TypeScript, I contributed to improving the emotional check-in and interactive journey, and to standardizing reusable components and feedback.',
+        'We created Estelar for FIAP’s 2026 Global Solution Space Connect. The mobile app proposes a routine for emotional care during long space missions. Astronauts log mood, energy, stress and sleep. Over time, those entries form a constellation that shows how their well-being has changed.',
+      contribuicao: [
+        'I helped develop the concept, visual identity and Figma prototype. In React Native and TypeScript, I helped refine the emotional check-in and constellation journey, and standardized components and feedback across screens.',
+        'Our team brought together on-device logging, guided breathing and a support radar within the mission flow. The gallery shows how daily entries feed the journey and how the app provides access to immediate care.',
+      ],
       textoAlternativo:
         'Astronaut holding a glowing heart beside emotional tracking interfaces and a colorful constellation',
       textosAlternativosModal: [
@@ -494,7 +511,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Responsive web platform designed to bring visibility to overlooked sports.',
       descricaoCompleta:
-        'Web platform developed as a team to increase the visibility of lesser-known sports. I took part in development with a focus on JavaScript and documentation, contributing to the implementation of the testimonial carousel with circular navigation and to the organization of the project’s technical documentation. SportsX was selected for FIAP NEXT 2025, where it took 2nd place.',
+        'We built SportsX for FIAP’s Enterprise Challenge with Concentrix and Google to give lesser-known sports more visibility. On the site, visitors can explore sports, browse profiles and use the search and map to find places to practice.',
+      contribuicao: [
+        'I worked on JavaScript and documentation. I contributed to the looping testimonial carousel, where visitors can move in either direction without hitting an abrupt end, and organized the technical documentation so the team could maintain the project.',
+        'I also contributed navigation and search refinements in the web revision. SportsX was selected for NEXT FIAP 2025 and placed second, according to my record of our participation.',
+      ],
       textoAlternativo:
         'Athlete rock climbing beside cards featuring different sports',
       textosAlternativosModal: [
@@ -509,7 +530,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'UX/UI case study for an app that helps track mental health habits.',
       descricaoCompleta:
-        'UX/UI case study and prototype for tracking mental health habits. Completing habits earns flowers for a virtual garden, making progress visible through visual rewards.',
+        'I created Jardimental as a UX/UI case study to explore how a journal could encourage well-being habits. In the prototype, people log their mood, review past entries and earn flowers for a virtual garden when they complete habits.',
+      contribuicao: [
+        'I designed the garden as a visual record of daily routines. In Figma, I organized the app’s information architecture and designed the flows linking the daily check-in, mood summary and garden so people can track progress in complementary ways.',
+        'I developed the botanical identity and prototyped screens for relaxation content and community. The case study shows how those choices appear in the interface and how the visual reward fits into daily tracking.',
+      ],
       textoAlternativo:
         'App screens featuring mood logging, a blooming virtual garden and emotional history',
       textosAlternativosModal: [
@@ -530,7 +555,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Academic project focused on interactive interfaces, data and accessibility.',
       descricaoCompleta:
-        'Academic project developed as a team to promote Brazilian games and make them easier to discover. I took part in front-end development, contributing to improvements in accessibility, keyboard navigation and typography. I also collaborated on prototyping a forum in Node-RED Dashboard, with topic listing and search features.',
+        'Our team created Iara Games as an academic showcase for discovering Brazilian games. The website includes a catalog, game detail pages and a sample sign-up form validated in the browser using fictional data.',
+      contribuicao: [
+        'I worked on the front end, focusing on typography, focus states and keyboard navigation. I also contributed to the sample sign-up, including local validation and notices about fictional data.',
+        'In a separate experiment, I helped prototype a forum in Node-RED Dashboard that lists topics and lets users search them. The gallery includes screens from the showcase and the forum prototype.',
+      ],
       textoAlternativo:
         'Iara character sitting in a forest beside covers from different games',
       textosAlternativosModal: [
@@ -547,7 +576,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'App móvil de salud mental y bienestar para astronautas en misiones de larga duración.',
       descricaoCompleta:
-        'Aplicación móvil desarrollada en equipo para la Global Solution FIAP 2026, orientada al bienestar de astronautas en misiones prolongadas. Participé en la concepción, la identidad visual y el prototipado en Figma. En el desarrollo con React Native y TypeScript, contribuí a mejorar el registro emocional y el recorrido interactivo, así como a estandarizar componentes reutilizables y mensajes de respuesta.',
+        'Creamos Estelar para la Global Solution Space Connect 2026 de la FIAP. La aplicación móvil propone una rutina de cuidado emocional para astronautas en misiones largas. El registro recoge el estado de ánimo, la energía, el estrés y el sueño. Con el tiempo, las entradas forman una constelación que muestra la evolución del bienestar.',
+      contribuicao: [
+        'Participé en la concepción, la identidad visual y el prototipado en Figma. En React Native y TypeScript, contribuí a mejorar el registro emocional y el recorrido en forma de constelación, además de unificar componentes y mensajes de respuesta entre pantallas.',
+        'El equipo reunió el registro local, la respiración guiada y un radar de apoyo en el flujo de la misión. La galería muestra cómo los registros diarios alimentan el recorrido y cómo se accede a recursos de cuidado inmediato.',
+      ],
       textoAlternativo:
         'Astronauta sosteniendo un corazón luminoso junto a interfaces de seguimiento emocional y una constelación colorida',
       textosAlternativosModal: [
@@ -562,7 +595,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Plataforma web responsiva creada para dar visibilidad a deportes menos valorados.',
       descricaoCompleta:
-        'Plataforma web desarrollada en equipo para ampliar la visibilidad de deportes poco difundidos. Participé en el desarrollo con un enfoque en JavaScript y documentación, contribuyendo a la implementación del carrusel de testimonios con navegación circular y a la organización de la documentación técnica del proyecto. SportsX fue seleccionado para FIAP NEXT 2025, donde obtuvo el 2.º puesto.',
+        'Creamos SportsX en el Enterprise Challenge de la FIAP con Concentrix y Google para dar visibilidad a deportes poco difundidos. En el sitio se pueden explorar modalidades, consultar perfiles y usar el buscador y el mapa para encontrar lugares de práctica.',
+      contribuicao: [
+        'Trabajé con JavaScript y en la documentación. Contribuí al carrusel circular de testimonios, que permite avanzar y retroceder de forma continua, y organicé la documentación técnica para facilitar el mantenimiento en equipo.',
+        'También contribuí a mejorar la navegación y la búsqueda en la revisión del sitio. SportsX fue seleccionado para NEXT FIAP 2025 y obtuvo el segundo puesto, según mi registro de nuestra participación.',
+      ],
       textoAlternativo:
         'Atleta practicando escalada junto a tarjetas que presentan distintas modalidades deportivas',
       textosAlternativosModal: [
@@ -577,7 +614,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Caso de estudio UX/UI de una app para acompañar hábitos de salud mental.',
       descricaoCompleta:
-        'Estudio de caso de UX/UI y prototipo para el seguimiento de hábitos de salud mental. Al completar hábitos, se obtienen flores para un jardín virtual que permite visualizar el progreso.',
+        'Creé Jardimental como caso de estudio de UX/UI para explorar cómo un diario puede fomentar hábitos de bienestar. En el prototipo, las personas registran su estado de ánimo, consultan el historial y consiguen flores para un jardín virtual al completar hábitos.',
+      contribuicao: [
+        'Concebí el jardín como representación visual de la rutina. Organicé la arquitectura de la aplicación en Figma y diseñé los flujos que conectan el registro diario, el resumen del estado de ánimo y el jardín, para ofrecer distintas formas de seguir el progreso.',
+        'Desarrollé la identidad botánica y prototipé pantallas de contenidos de relajación y comunidad. El caso de estudio muestra cómo estas decisiones se reflejan en la interfaz y cómo la recompensa visual se integra en el seguimiento diario.',
+      ],
       textoAlternativo:
         'Pantallas de la aplicación con registro de ánimo, jardín virtual florecido e historial emocional',
       textosAlternativosModal: [
@@ -598,7 +639,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Proyecto académico enfocado en interfaces interactivas, datos y accesibilidad.',
       descricaoCompleta:
-        'Proyecto académico desarrollado en equipo para poner en valor y facilitar el descubrimiento de juegos brasileños. Participé en el desarrollo front-end, contribuyendo a mejoras de accesibilidad, navegación por teclado y tipografía. También colaboré en el prototipado de un foro en Node-RED Dashboard, con funcionalidades de listado y búsqueda de temas.',
+        'Creamos Iara Games como escaparate académico para facilitar el descubrimiento de videojuegos brasileños. El sitio web reúne un catálogo, fichas de juegos y un registro de demostración que se valida en el navegador con datos ficticios.',
+      contribuicao: [
+        'Trabajé en el front-end, con especial atención a la tipografía, los estados de foco y la navegación por teclado. También contribuí al registro de demostración mediante la validación local y los avisos sobre el uso de datos ficticios.',
+        'En un experimento separado, colaboré en el prototipo de un foro en Node-RED Dashboard con listado y búsqueda de temas. La galería muestra pantallas del escaparate y del prototipo.',
+      ],
       textoAlternativo:
         'Personaje Iara sentada en un bosque junto a portadas de distintos juegos',
       textosAlternativosModal: [
@@ -615,7 +660,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Application mobile de santé mentale et de bien-être pour les astronautes en mission longue durée.',
       descricaoCompleta:
-        'Application mobile développée en équipe pour la Global Solution FIAP 2026, consacrée au bien-être des astronautes en mission de longue durée. J’ai participé à la conception, à l’identité visuelle et au prototypage sur Figma. Dans le développement avec React Native et TypeScript, j’ai contribué à améliorer le bilan émotionnel et le parcours interactif, ainsi qu’à harmoniser les composants réutilisables et les messages de retour.',
+        'Nous avons créé Estelar pour la Global Solution Space Connect 2026 de la FIAP. L’application mobile propose aux astronautes une routine de bien-être émotionnel pendant les missions de longue durée. Ils consignent leur humeur, leur énergie, leur stress et leur sommeil. Au fil de la mission, ces entrées forment une constellation qui rend visible l’évolution de leur bien-être.',
+      contribuicao: [
+        'J’ai participé à la conception, à l’identité visuelle et au prototypage sur Figma. Avec React Native et TypeScript, j’ai contribué à affiner le bilan émotionnel et le parcours en constellation, ainsi qu’à harmoniser les composants et les messages entre les écrans.',
+        'L’équipe a intégré la sauvegarde locale, la respiration guidée et un radar de soutien au parcours de mission. La galerie montre comment les entrées quotidiennes alimentent ce parcours et comment accéder aux ressources de soutien immédiat.',
+      ],
       textoAlternativo:
         'Astronaute tenant un cœur lumineux près d’interfaces de suivi émotionnel et d’une constellation colorée',
       textosAlternativosModal: [
@@ -630,7 +679,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Plateforme web responsive conçue pour donner de la visibilité aux sports moins médiatisés.',
       descricaoCompleta:
-        'Plateforme web développée en équipe pour accroître la visibilité des sports peu médiatisés. J’ai participé au développement en me concentrant sur JavaScript et la documentation, en contribuant à l’implémentation du carrousel de témoignages avec navigation circulaire et à l’organisation de la documentation technique du projet. SportsX a été sélectionné pour le FIAP NEXT 2025, où il a obtenu la 2e place.',
+        'Nous avons créé SportsX dans le cadre de l’Enterprise Challenge de la FIAP, avec Concentrix et Google, pour donner de la visibilité aux sports peu médiatisés. Le site permet de découvrir des disciplines, de consulter des profils et de trouver des lieux de pratique grâce à la recherche et à la carte.',
+      contribuicao: [
+        'J’ai travaillé sur le JavaScript et la documentation. J’ai contribué au carrousel de témoignages, qui défile en boucle dans les deux sens, et organisé la documentation technique pour faciliter la maintenance en équipe.',
+        'J’ai aussi contribué à améliorer la navigation et la recherche lors de la révision du site. SportsX a été sélectionné pour le NEXT FIAP 2025 et y a obtenu la deuxième place, d’après mes notes sur notre participation.',
+      ],
       textoAlternativo:
         'Athlète pratiquant l’escalade près de cartes présentant différentes disciplines sportives',
       textosAlternativosModal: [
@@ -645,7 +698,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Étude de cas UX/UI d’une application de suivi des habitudes de santé mentale.',
       descricaoCompleta:
-        'Étude de cas UX/UI et prototype de suivi des habitudes liées à la santé mentale. Les habitudes accomplies rapportent des fleurs pour un jardin virtuel, ce qui permet de visualiser les progrès.',
+        'J’ai créé Jardimental comme étude de cas UX/UI pour explorer comment un journal peut encourager des habitudes de bien-être. Le prototype permet de noter son humeur, de consulter son historique et de gagner des fleurs pour un jardin virtuel en accomplissant ses habitudes.',
+      contribuicao: [
+        'J’ai pensé le jardin comme une représentation visuelle de la routine. Sur Figma, j’ai organisé l’architecture de l’application et conçu les parcours qui relient le bilan quotidien, le résumé de l’humeur et le jardin, afin de proposer plusieurs façons de suivre ses progrès.',
+        'J’ai développé l’identité botanique et prototypé les écrans de relaxation et de communauté. L’étude de cas montre comment ces choix se traduisent à l’écran et comment la récompense visuelle s’inscrit dans le suivi quotidien.',
+      ],
       textoAlternativo:
         'Écrans de l’application avec suivi de l’humeur, jardin virtuel fleuri et historique émotionnel',
       textosAlternativosModal: [
@@ -666,7 +723,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Projet universitaire axé sur les interfaces interactives, les données et l’accessibilité.',
       descricaoCompleta:
-        'Projet universitaire développé en équipe pour valoriser les jeux brésiliens et faciliter leur découverte. J’ai participé au développement front-end, en contribuant à améliorer l’accessibilité, la navigation au clavier et la typographie. J’ai également collaboré au prototypage d’un forum dans Node-RED Dashboard, avec des fonctionnalités de liste et de recherche de sujets.',
+        'Notre équipe a créé Iara Games comme vitrine universitaire pour faciliter la découverte de jeux brésiliens. Le site réunit un catalogue, des fiches de jeux et un formulaire d’inscription de démonstration validé dans le navigateur avec des données fictives.',
+      contribuicao: [
+        'J’ai travaillé sur le front-end, notamment sur la typographie, les indicateurs de focus et la navigation au clavier. J’ai aussi contribué au formulaire de démonstration, avec la validation locale et les indications sur les données fictives.',
+        'Dans un projet expérimental séparé, j’ai participé au prototype d’un forum dans Node-RED Dashboard, avec liste et recherche de sujets. La galerie présente des écrans de la vitrine et du prototype.',
+      ],
       textoAlternativo:
         'Personnage Iara assis dans une forêt près de jaquettes de différents jeux',
       textosAlternativosModal: [
@@ -683,7 +744,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Mobile App für mentale Gesundheit und Wohlbefinden von Astronauten auf Langzeitmissionen.',
       descricaoCompleta:
-        'Mobile App, die im Team für die FIAP Global Solution 2026 entwickelt wurde und auf das Wohlbefinden von Astronauten auf Langzeitmissionen ausgerichtet ist. Ich beteiligte mich an der Konzeption, der visuellen Identität und dem Prototyping in Figma. Bei der Entwicklung mit React Native und TypeScript trug ich zur Verbesserung des emotionalen Check-ins und der interaktiven Reise sowie zur Vereinheitlichung wiederverwendbarer Komponenten und Rückmeldungen bei.',
+        'Wir haben Estelar für die Global Solution Space Connect 2026 der FIAP entwickelt. Die mobile App schlägt eine Routine für das emotionale Wohlbefinden auf langen Raumfahrtmissionen vor. Astronauten erfassen Stimmung, Energie, Stress und Schlaf. Im Laufe der Mission bilden die Einträge ein Sternbild, das die Entwicklung ihres Wohlbefindens zeigt.',
+      contribuicao: [
+        'Ich wirkte an der Konzeption, der visuellen Identität und dem Figma-Prototyp mit. Mit React Native und TypeScript half ich, den emotionalen Check-in und den Verlauf als Sternbild weiterzuentwickeln und Komponenten sowie Rückmeldungen zu vereinheitlichen.',
+        'Das Team verband lokale Einträge, geführte Atemübungen und ein Unterstützungsradar mit dem Missionsablauf. Die Galerie zeigt, wie tägliche Einträge den Verlauf ergänzen und wie man auf Angebote zur unmittelbaren Unterstützung zugreift.',
+      ],
       textoAlternativo:
         'Astronaut mit leuchtendem Herzen neben Interfaces zur emotionalen Begleitung und einer farbigen Konstellation',
       textosAlternativosModal: [
@@ -698,7 +763,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Responsive Webplattform, die weniger beachteten Sportarten mehr Sichtbarkeit gibt.',
       descricaoCompleta:
-        'Webplattform, die im Team entwickelt wurde, um wenig beachteten Sportarten mehr Sichtbarkeit zu geben. Ich beteiligte mich an der Entwicklung mit Schwerpunkt auf JavaScript und Dokumentation und trug zur Implementierung des Karussells für Erfahrungsberichte mit zyklischer Navigation sowie zur Strukturierung der technischen Projektdokumentation bei. SportsX wurde für die FIAP NEXT 2025 ausgewählt und belegte dort den 2. Platz.',
+        'Wir entwickelten SportsX im Enterprise Challenge der FIAP mit Concentrix und Google, um wenig beachteten Sportarten mehr Sichtbarkeit zu geben. Auf der Website kann man Sportarten entdecken, Profile ansehen und mit Suche und Karte Orte zum Trainieren finden.',
+      contribuicao: [
+        'Ich arbeitete an JavaScript und der Dokumentation. Ich half beim Karussell für Erfahrungsberichte, das sich in beide Richtungen endlos durchblättern lässt, und strukturierte die technische Dokumentation für die gemeinsame Pflege.',
+        'Bei der Überarbeitung der Website trug ich auch zu Verbesserungen an Navigation und Suche bei. SportsX wurde für die NEXT FIAP 2025 ausgewählt und erreichte laut meinen Aufzeichnungen zur Teilnahme den zweiten Platz.',
+      ],
       textoAlternativo:
         'Kletternder Athlet neben Karten mit verschiedenen Sportarten',
       textosAlternativosModal: [
@@ -713,7 +782,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'UX/UI-Fallstudie zu einer App für die Begleitung von Gewohnheiten rund um mentale Gesundheit.',
       descricaoCompleta:
-        'UX/UI-Fallstudie und Prototyp zur Begleitung von Gewohnheiten rund um die mentale Gesundheit. Wer Gewohnheiten erfüllt, erhält Blumen für einen virtuellen Garten und kann so seine Fortschritte sehen.',
+        'Ich entwickelte Jardimental als UX/UI-Fallstudie, um zu erkunden, wie ein Tagebuch Gewohnheiten für das eigene Wohlbefinden fördern kann. Im Prototyp halten Nutzer ihre Stimmung fest, sehen frühere Einträge ein und erhalten Blumen für einen virtuellen Garten, wenn sie Gewohnheiten umsetzen.',
+      contribuicao: [
+        'Ich konzipierte den Garten als visuelle Darstellung der Routine. In Figma strukturierte ich die App und entwarf Abläufe, die den täglichen Check-in, die Stimmungsübersicht und den Garten verbinden. So lässt sich die Entwicklung auf verschiedene Arten verfolgen.',
+        'Ich entwickelte die botanische Gestaltung und entwarf Prototypen für Entspannungsinhalte und den Community-Bereich. Die Fallstudie zeigt, wie diese Entscheidungen in der Oberfläche sichtbar werden und wie die Belohnung in den Alltag eingebunden ist.',
+      ],
       textoAlternativo:
         'App-Bildschirme mit Stimmungserfassung, blühendem virtuellem Garten und emotionalem Verlauf',
       textosAlternativosModal: [
@@ -734,7 +807,11 @@ const traducoesProjetos: Record<
       descricaoCurta:
         'Akademisches Projekt mit Fokus auf interaktive Interfaces, Daten und Barrierefreiheit.',
       descricaoCompleta:
-        'Akademisches Projekt, das im Team entwickelt wurde, um brasilianische Spiele zu würdigen und ihre Entdeckung zu erleichtern. Ich beteiligte mich an der Frontend-Entwicklung und trug zu Verbesserungen der Barrierefreiheit, der Tastaturnavigation und der Typografie bei. Außerdem wirkte ich am Prototyp eines Forums in Node-RED Dashboard mit, das Funktionen zum Auflisten und Suchen von Themen bietet.',
+        'Unser Team entwickelte Iara Games als Hochschulprojekt, um brasilianische Spiele leichter auffindbar zu machen. Die Website bietet einen Katalog, Detailseiten und ein Anmeldeformular, das im Browser mit fiktiven Daten getestet werden kann.',
+      contribuicao: [
+        'Ich arbeitete am Frontend, insbesondere an Typografie, Fokusmarkierungen und Tastaturnavigation. Außerdem wirkte ich am Demo-Formular mit, das Eingaben lokal prüft und auf die Verwendung fiktiver Daten hinweist.',
+        'In einem separaten Experiment arbeitete ich an einem Forumsprototyp in Node-RED Dashboard mit Themenliste und Suche mit. Die Galerie zeigt Ansichten der Website und des Prototyps.',
+      ],
       textoAlternativo:
         'Figur Iara sitzt in einem Wald neben Covern verschiedener Spiele',
       textosAlternativosModal: [
@@ -763,6 +840,7 @@ export function traduzirProjeto(projeto: Projeto, idioma: Idioma): Projeto {
     ...projeto,
     descricaoCurta: traducao.descricaoCurta,
     descricaoCompleta: traducao.descricaoCompleta,
+    contribuicao: traducao.contribuicao,
     textoAlternativo: traducao.textoAlternativo,
     imagensModal: projeto.imagensModal?.map((imagem, indice) => ({
       ...imagem,
