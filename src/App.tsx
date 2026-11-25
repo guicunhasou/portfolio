@@ -5,7 +5,6 @@ import FundoLava from './components/FundoLava/FundoLava';
 import PainelPerfil from './components/PainelPerfil/PainelPerfil';
 import Rodape from './components/Rodape/Rodape';
 import SecaoProjetos from './components/SecaoProjetos/SecaoProjetos';
-import SeparadorLogo from './components/SeparadorLogo/SeparadorLogo';
 
 function App() {
   const [destinoControles, setDestinoControles] =
@@ -22,10 +21,6 @@ function App() {
 
       <main className="conteudo-principal">
         <PainelPerfil />
-
-        <div className="divisor-mobile" aria-hidden="true">
-          <SeparadorLogo />
-        </div>
 
         <SecaoProjetos aoDefinirDestinoControles={setDestinoControles} />
       </main>

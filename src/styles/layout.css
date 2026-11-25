@@ -17,10 +17,6 @@
   min-width: 0;
 }
 
-.divisor-mobile {
-  display: none;
-}
-
 @media (max-width: 1024px) {
   body {
     background-attachment: scroll;
@@ -35,35 +31,7 @@
 
 @media (max-width: 680px) {
   .conteudo-principal {
-    row-gap: clamp(4rem, 15vw, 5rem);
-  }
-
-  .divisor-mobile {
-    width: min(240px, calc(100% - 4rem));
-    display: flex;
-    align-items: center;
-    justify-self: center;
-    gap: 0.75rem;
-    color: var(--texto-principal);
-  }
-
-  .divisor-mobile::before,
-  .divisor-mobile::after {
-    content: "";
-    height: 2px;
-    flex: 1;
-    background: linear-gradient(90deg, transparent, currentColor);
-    opacity: 0.55;
-  }
-
-  .divisor-mobile::after {
-    background: linear-gradient(90deg, currentColor, transparent);
-  }
-
-  .divisor-mobile .separador-logo {
-    width: 1.5rem;
-    height: 1.5rem;
-    opacity: 0.75;
+    row-gap: clamp(3rem, 12vw, 4.5rem);
   }
 }
 
