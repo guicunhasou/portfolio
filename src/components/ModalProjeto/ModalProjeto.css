@@ -373,7 +373,6 @@ body.modal-aberto {
 
 @media (min-width: 1025px) {
   .conteudo-modal {
-    top: calc(50% - clamp(1.2rem, 1.15vw, 1.3rem));
     width: min(
       calc(1050px + var(--gap-paineis)),
       calc(
@@ -381,10 +380,8 @@ body.modal-aberto {
           var(--padding-horizontal-conteudo)
       )
     );
-    height: var(--altura-blocos);
-    max-height: var(--altura-blocos);
-    grid-template-rows: auto minmax(0, 1fr);
-    overflow: hidden;
+    /* O corpo usa contenção de tamanho e precisa de uma altura disponível. */
+    block-size: min(100%, 45rem);
   }
 
   .cabecalho-modal {
