@@ -44,14 +44,10 @@ body {
 
 .link-discreto {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 0.075em;
+  text-underline-offset: 0.18em;
   cursor: pointer;
-}
-
-.link-discreto:visited,
-.link-discreto:hover {
-  color: inherit;
-  text-decoration: none;
 }
 
 .link-discreto:focus-visible {
