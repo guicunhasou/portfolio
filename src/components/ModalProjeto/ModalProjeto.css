@@ -9,6 +9,8 @@ body.modal-aberto {
 }
 
 .modal-projeto {
+  --margem-externa-modal: clamp(0.75rem, 1.4vw, 1.5rem);
+
   position: fixed;
   inset: 0;
   inline-size: 100%;
@@ -16,7 +18,7 @@ body.modal-aberto {
   block-size: 100dvh;
   max-block-size: none;
   margin: 0;
-  padding: env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + 0.5rem);
+  padding: env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + var(--margem-externa-modal));
   overflow: hidden;
   border: 0;
   color: var(--texto-principal);
@@ -26,7 +28,7 @@ body.modal-aberto {
 .modal-projeto[open] {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: 0.5rem;
+  row-gap: var(--margem-externa-modal);
 }
 
 .modal-projeto:focus {
@@ -58,8 +60,8 @@ body.modal-aberto {
 .conteudo-modal {
   --recuo-modal: clamp(1rem, 2.55vw, 2.25rem);
   --espaco-modal: var(--space-3);
-  --espaco-barras-modal: 0.5rem;
-  --espaco-itens-modal: 0.375rem;
+  --recuo-barras-modal: clamp(1rem, 2vw, 1.625rem);
+  --espaco-itens-modal: 0.625rem;
   --largura-texto-modal: 56ch;
   --alvo-modal: 44px;
   --recuo-controle-galeria: 0.625rem;
@@ -68,12 +70,17 @@ body.modal-aberto {
   --texto-controle-galeria: #fff;
 
   grid-row: 2;
-  align-self: center;
   justify-self: center;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
-  inline-size: min(68rem, calc(100% - 2 * var(--recuo-modal)));
-  max-block-size: min(100%, 45rem);
+  inline-size: min(
+    68rem,
+    calc(100% - 2 * max(
+      var(--margem-externa-modal),
+      env(safe-area-inset-left),
+      env(safe-area-inset-right)
+    ))
+  );
   min-block-size: 0;
   overflow: hidden;
   border: 1px solid var(--borda-modal);
@@ -98,6 +105,7 @@ body.modal-aberto {
   min-block-size: 0;
   min-inline-size: 0;
   overflow: hidden auto;
+  scrollbar-width: thin;
   overscroll-behavior: contain;
   scroll-padding-block:
     calc(var(--altura-cabecalho-modal, 0px) + var(--espaco-modal))
@@ -112,7 +120,8 @@ body.modal-aberto {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   gap: var(--espaco-itens-modal) var(--espaco-modal);
-  padding: var(--espaco-barras-modal) var(--recuo-modal);
+  padding: var(--recuo-barras-modal);
+  padding-inline-end: max(0px, calc(var(--recuo-barras-modal) - var(--largura-barra-modal, 0px)));
   border-block-end: 1px solid var(--borda-suave);
   background-color: var(--fundo-modal-solido);
 }
@@ -200,7 +209,7 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 }
 
 .tags-modal li {
-  padding: 0.22rem 0.62rem;
+  padding: 0.28rem 0.62rem;
   border: 1px solid var(--borda-tag-modal);
   border-radius: 0.58rem;
   color: var(--texto-tag-modal);
@@ -211,7 +220,7 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 }
 
 .rodape-modal {
-  padding: var(--espaco-barras-modal) var(--recuo-modal);
+  padding: var(--recuo-barras-modal);
   border-block-start: 1px solid var(--borda-suave);
 }
 
@@ -234,7 +243,6 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 
 .links-modal .botao-completo {
   max-inline-size: 100%;
-  padding: var(--espaco-itens-modal) 0.625rem;
   white-space: normal;
   text-align: left;
   font-size: clamp(0.8rem, 1.05vw, 0.93rem);
@@ -429,15 +437,10 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
   }
 }
 
-@media (max-width: 42.5rem) {
-  .conteudo-modal {
-    inline-size: calc(100% - 1rem);
-  }
-}
-
 .conteudo-modal[data-rolagem-integral] {
-  grid-template-rows: auto auto;
+  display: block;
   overflow: hidden auto;
+  scrollbar-width: thin;
   overscroll-behavior: contain;
   scroll-padding-block: var(--espaco-modal);
 }

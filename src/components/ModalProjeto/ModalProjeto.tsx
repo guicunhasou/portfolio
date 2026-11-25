@@ -80,12 +80,17 @@ function ModalProjeto({
 
       // A área central precisa acomodar leitura e navegação por teclado.
       painel.toggleAttribute('data-rolagem-integral', alturaLivre < 9 * rem);
+      // Compensa a barra de rolagem quando ela ocupa espaço no layout.
+      const barraPainel = painel.offsetWidth - painel.clientWidth - 2 * painel.clientLeft;
+      const barraRolagem = rolagem.offsetWidth - rolagem.clientWidth;
       rolagem.style.setProperty('--altura-cabecalho-modal', `${alturaCabecalho}px`);
       rolagem.style.setProperty('--altura-central-modal', `${alturaLivre}px`);
+      rolagem.style.setProperty('--largura-barra-modal', `${barraPainel + barraRolagem}px`);
     };
 
     const observador = new ResizeObserver(ajustarRolagem);
     observador.observe(painel);
+    observador.observe(rolagem);
     observador.observe(cabecalho);
     if (rodape) {
       observador.observe(rodape);
