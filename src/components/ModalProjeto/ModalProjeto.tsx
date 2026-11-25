@@ -81,6 +81,7 @@ function ModalProjeto({
       // A área central precisa acomodar leitura e navegação por teclado.
       painel.toggleAttribute('data-rolagem-integral', alturaLivre < 9 * rem);
       rolagem.style.setProperty('--altura-cabecalho-modal', `${alturaCabecalho}px`);
+      rolagem.style.setProperty('--altura-central-modal', `${alturaLivre}px`);
     };
 
     const observador = new ResizeObserver(ajustarRolagem);
@@ -361,7 +362,7 @@ function ModalProjeto({
               {imagensModal.length > 1 && (
                 <div className="controles-galeria">
                   <button
-                    className="botao-acao botao-galeria"
+                    className="botao-acao botao-galeria botao-galeria-anterior"
                     type="button"
                     aria-label={traducao.projetos.imagemAnterior}
                     onClick={() => navegarImagem(-1)}
@@ -383,7 +384,7 @@ function ModalProjeto({
                     {posicaoImagem}
                   </span>
                   <button
-                    className="botao-acao botao-galeria"
+                    className="botao-acao botao-galeria botao-galeria-proxima"
                     type="button"
                     aria-label={traducao.projetos.proximaImagem}
                     onClick={() => navegarImagem(1)}
