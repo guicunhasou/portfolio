@@ -53,7 +53,6 @@ type TraducaoInterface = {
     linkedinDe: string;
     imagensProjeto: string;
     conteudoProjeto: string;
-    minhaContribuicao: string;
     imagemAnterior: string;
     proximaImagem: string;
     posicaoImagem: string;
@@ -135,7 +134,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imagens do projeto',
       conteudoProjeto: 'Conteúdo do projeto',
-      minhaContribuicao: 'Minha contribuição',
       imagemAnterior: 'Imagem anterior',
       proximaImagem: 'Próxima imagem',
       posicaoImagem: 'Imagem {atual} de {total}',
@@ -215,7 +213,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       linkedinDe: 'LinkedIn profile of',
       imagensProjeto: 'Images from project',
       conteudoProjeto: 'Project content',
-      minhaContribuicao: 'My contribution',
       imagemAnterior: 'Previous image',
       proximaImagem: 'Next image',
       posicaoImagem: 'Image {atual} of {total}',
@@ -295,7 +292,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imágenes del proyecto',
       conteudoProjeto: 'Contenido del proyecto',
-      minhaContribuicao: 'Mi contribución',
       imagemAnterior: 'Imagen anterior',
       proximaImagem: 'Imagen siguiente',
       posicaoImagem: 'Imagen {atual} de {total}',
@@ -375,7 +371,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       linkedinDe: 'Profil LinkedIn de',
       imagensProjeto: 'Images du projet',
       conteudoProjeto: 'Contenu du projet',
-      minhaContribuicao: 'Ma contribution',
       imagemAnterior: 'Image précédente',
       proximaImagem: 'Image suivante',
       posicaoImagem: 'Image {atual} sur {total}',
@@ -455,7 +450,6 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       linkedinDe: 'LinkedIn-Profil von',
       imagensProjeto: 'Bilder des Projekts',
       conteudoProjeto: 'Projektinhalte',
-      minhaContribuicao: 'Mein Beitrag',
       imagemAnterior: 'Vorheriges Bild',
       proximaImagem: 'Nächstes Bild',
       posicaoImagem: 'Bild {atual} von {total}',

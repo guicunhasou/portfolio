@@ -54,8 +54,10 @@
   --fundo-acao-modal: #eee5f5;
   --fundo-acao-modal-hover: #e5d7f0;
   --borda-acao-modal: #8c6ba5;
-  --fundo-acao-modal-principal: #65418a;
-  --texto-acao-modal-principal: #fff;
+  --fundo-cabecalho-modal: rgb(249 245 251 / 82%);
+  --fundo-link-modal: #e2d8ea;
+  --borda-link-modal: #79578f;
+  --texto-link-modal-hover: #fff;
   --fundo-imagem: var(--fundo-painel);
   --borda-card-interacao: rgb(102 66 138 / 48%);
   --borda-card-ativa: rgb(102 66 138 / 42%);
@@ -171,8 +173,10 @@
   --fundo-acao-modal: #294438;
   --fundo-acao-modal-hover: #375a49;
   --borda-acao-modal: #719b83;
-  --fundo-acao-modal-principal: #a7d7b3;
-  --texto-acao-modal-principal: #172a20;
+  --fundo-cabecalho-modal: rgb(30 45 37 / 81%);
+  --fundo-link-modal: #1c3027;
+  --borda-link-modal: #93bda6;
+  --texto-link-modal-hover: #101f17;
   --fundo-imagem: rgb(31 46 37 / 82%);
   --borda-card-interacao: rgb(155 214 174 / 48%);
   --borda-card-ativa: rgb(155 214 174 / 42%);

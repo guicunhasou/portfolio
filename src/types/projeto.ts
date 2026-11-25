@@ -5,6 +5,7 @@ export type ColaboradorProjeto = {
 
 export type ImagemModalProjeto = {
   src: string;
+  srcMobile?: string;
   textoAlternativo: string;
 };
 

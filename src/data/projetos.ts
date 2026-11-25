@@ -31,8 +31,6 @@ const colaboradorasProjetos: ColaboradorProjeto[] = [
   },
 ];
 
-const matheus: ColaboradorProjeto = { nome: "Matheus Dias Gomes Silva" };
-
 export const projetos: Projeto[] = [
   {
     id: "estelar",
@@ -91,7 +89,7 @@ export const projetos: Projeto[] = [
       "Trabalhei em JavaScript e na documentação. Contribuí para o carrossel circular de depoimentos, que permite avançar e voltar sem chegar a um fim abrupto, e organizei a documentação técnica para facilitar a manutenção em equipe.",
       "Na revisão da versão web, contribuí com ajustes de navegação e busca. O SportsX foi selecionado para o NEXT FIAP 2025 e ficou em segundo lugar, conforme meu registro da participação.",
     ],
-    colaboradores: [...colaboradorasProjetos, matheus],
+    colaboradores: colaboradorasProjetos,
     imagem: imagemSportsX,
     textoAlternativo:
       "Atleta praticando escalada ao lado de cards que apresentam diferentes modalidades esportivas",
@@ -193,10 +191,9 @@ export const projetos: Projeto[] = [
       "Trabalhei no front-end com foco na tipografia, nos estados de foco e na navegação por teclado. Também contribuí para o cadastro demonstrativo, com validação local e avisos sobre o uso de dados fictícios.",
       "Em um experimento separado, colaborei no protótipo de um fórum no Node-RED Dashboard, com listagem e busca de tópicos. A galeria reúne telas da vitrine e desse protótipo.",
     ],
-    colaboradores: [
-      ...colaboradorasProjetos.filter(({ nome }) => nome !== "Mirna Marinho"),
-      matheus,
-    ],
+    colaboradores: colaboradorasProjetos.filter(
+      ({ nome }) => nome !== "Mirna Marinho",
+    ),
     imagem: imagemIaraGames,
     textoAlternativo:
       "Personagem Iara sentada em uma floresta ao lado de capas de diferentes jogos",
