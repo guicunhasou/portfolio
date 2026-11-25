@@ -137,15 +137,45 @@ function ModalProjeto({
 
   const revelarConteudoFocado = (evento: FocusEvent<HTMLDivElement>) => {
     const { target: alvo, currentTarget: corpo } = evento;
-    if (alvo === corpo || painelRef.current?.hasAttribute('data-rolagem-integral')) {
+    const rolagem = rolagemRef.current;
+    if (alvo === corpo || !rolagem || painelRef.current?.hasAttribute('data-rolagem-integral')) {
       return;
     }
 
     requestAnimationFrame(() => {
-      if (document.activeElement === alvo) {
-        alvo.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+      if (document.activeElement !== alvo) {
+        return;
       }
+
+      const limites = rolagem.getBoundingClientRect();
+      const posicao = alvo.getBoundingClientRect();
+      const { scrollPaddingBlockStart, scrollPaddingBlockEnd } = getComputedStyle(rolagem);
+      const inicioVisivel = limites.top + parseFloat(scrollPaddingBlockStart);
+      const fimVisivel = limites.bottom - parseFloat(scrollPaddingBlockEnd);
+      const ajuste = posicao.top < inicioVisivel
+        ? posicao.top - inicioVisivel
+        : Math.max(0, posicao.bottom - fimVisivel);
+
+      rolagem.scrollTo({ top: rolagem.scrollTop + ajuste, behavior: 'instant' });
     });
+  };
+
+  const rolarConteudoPorPagina = (evento: KeyboardEvent<HTMLDivElement>) => {
+    if (evento.key !== 'PageUp' && evento.key !== 'PageDown') {
+      return;
+    }
+
+    const rolagem = rolagemRef.current;
+    const cabecalho = cabecalhoRef.current;
+    if (!rolagem || !cabecalho || painelRef.current?.hasAttribute('data-rolagem-integral')) {
+      return;
+    }
+
+    evento.preventDefault();
+    // Usa a altura de leitura e conclui a rolagem antes de um possível Tab.
+    const alturaVisivel = rolagem.clientHeight - cabecalho.offsetHeight;
+    const direcao = evento.key === 'PageDown' ? 1 : -1;
+    rolagem.scrollBy({ top: direcao * alturaVisivel * 0.9, behavior: 'instant' });
   };
 
   const manterFocoNoModal = (evento: KeyboardEvent<HTMLDialogElement>) => {
@@ -280,6 +310,7 @@ function ModalProjeto({
             aria-label={traducao.projetos.conteudoProjeto}
             tabIndex={0}
             onFocusCapture={revelarConteudoFocado}
+            onKeyDown={rolarConteudoPorPagina}
           >
             <div
               className="galeria-modal"
