@@ -164,6 +164,14 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 }
 
 .corpo-modal {
+  /* As imagens atuais são 2:1. A medida reserva 2,5 entrelinhas e a borda da imagem. */
+  --largura-previa-modal: calc(
+    2 * (var(--altura-central-modal, 100dvh) - 2 * var(--espaco-modal) - 2.5lh) - 2px
+  );
+  --largura-coluna-modal: min(
+    100%, var(--largura-texto-modal), max(16rem, var(--largura-previa-modal))
+  );
+
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   justify-items: center;
@@ -182,7 +190,7 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 .texto-modal {
   display: grid;
   gap: var(--espaco-modal);
-  inline-size: min(100%, var(--largura-texto-modal));
+  inline-size: var(--largura-coluna-modal);
   min-inline-size: 0;
   color: var(--texto-principal);
   overflow-wrap: anywhere;
@@ -277,7 +285,7 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 
 .galeria-modal {
   position: relative;
-  inline-size: min(100%, var(--largura-texto-modal));
+  inline-size: var(--largura-coluna-modal);
   min-inline-size: 0;
 }
 
@@ -382,6 +390,7 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 
 .paginacao-galeria {
   position: absolute;
+  isolation: isolate;
   inset-block-end: var(--recuo-controle-galeria);
   inset-inline: 0;
   inline-size: max-content;
@@ -391,11 +400,20 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: var(--espaco-itens-modal);
-  padding: var(--espaco-itens-modal) var(--recuo-controle-galeria);
-  border-radius: var(--radius-pill);
+  gap: 0.45rem;
+  padding: 0.38rem 0.7rem;
   color: var(--texto-controle-galeria);
+}
+
+.paginacao-galeria::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: var(--radius-pill);
   background: var(--fundo-controle-galeria);
+  box-shadow: 0 2px 5px rgb(14 19 17 / 24%);
 }
 
 .paginacao-galeria span {
@@ -416,15 +434,14 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
 @media (min-width: 48rem) and (pointer: fine) {
   .corpo-modal {
     --margem-controles-galeria: calc(var(--alvo-modal) + var(--recuo-controle-galeria));
+    --largura-coluna-modal: min(100%, var(--largura-texto-modal));
   }
 
   .galeria-modal {
-    /* As imagens atuais têm proporção 2:1. Reserva espaço para duas linhas de texto. */
-    --altura-disponivel-imagem: calc(var(--altura-central-modal) - 2 * var(--espaco-modal) - 2lh);
     inline-size: min(
-      78%,
+      88%,
       calc(100% - 2 * var(--margem-controles-galeria)),
-      max(23rem, 2 * var(--altura-disponivel-imagem))
+      max(23rem, var(--largura-previa-modal))
     );
   }
 
@@ -447,6 +464,10 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
 
 .conteudo-modal[data-rolagem-integral] .rolagem-modal {
   overflow: visible;
+}
+
+.conteudo-modal[data-rolagem-integral] .corpo-modal {
+  --largura-previa-modal: 100%;
 }
 
 .conteudo-modal[data-rolagem-integral] .cabecalho-modal {
