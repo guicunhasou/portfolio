@@ -44,17 +44,30 @@ body {
 
 .link-discreto {
   color: inherit;
-  text-decoration: underline;
+  font-weight: 700;
+  text-decoration: none;
   text-decoration-thickness: 0.075em;
   text-underline-offset: 0.18em;
   cursor: pointer;
 }
 
+.link-discreto::after {
+  content: "\00a0\2197" / "";
+  font-size: 0.8em;
+}
+
 .link-discreto:focus-visible {
   color: var(--texto-principal);
+  text-decoration-line: underline;
   border-radius: 0.2rem;
   outline: 2px solid currentColor;
   outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-discreto:hover {
+    text-decoration-line: underline;
+  }
 }
 
 .separador-logo {
