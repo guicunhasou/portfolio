@@ -171,7 +171,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(250px, 38%);
     align-items: center;
     gap: clamp(2rem, 5vw, 4rem);
-    margin: clamp(1rem, 3vw, 2rem) auto 0;
+    margin-inline: auto;
     padding: clamp(2rem, 5vw, 3.5rem);
     border: 1px solid var(--borda-suave);
     border-radius: clamp(28px, 5vw, 48px);
@@ -218,8 +218,7 @@
       "links";
     gap: clamp(2.25rem, 7vw, 3.25rem);
     justify-items: center;
-    padding-top: 1.5rem;
-    padding-bottom: 0;
+    padding-block: 0;
   }
 
   .conteudo-perfil {
@@ -274,7 +273,7 @@
     align-content: space-evenly;
     justify-items: center;
     gap: clamp(0.75rem, 2dvh, 1.5rem);
-    padding: clamp(1rem, 3dvh, 2rem) clamp(1.25rem, 2.8dvh, 3rem);
+    padding: var(--respiro-interno-painel) clamp(1.25rem, 2.8dvh, 3rem);
     border: 1px solid var(--borda-painel-desktop);
     border-radius: clamp(28px, 4vw, 52px);
     background: var(--fundo-painel-desktop);

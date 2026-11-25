@@ -28,6 +28,8 @@
 
   .conteudo-principal {
     display: grid;
+    row-gap: var(--space-5);
+    padding-block: var(--space-4);
   }
 }
 
@@ -69,6 +71,13 @@
   :root {
     --gap-paineis: clamp(0.9rem, 1.4vw, 1.5rem);
     --padding-horizontal-conteudo: clamp(1rem, 2vw, 2rem);
+    --respiro-interno-painel: clamp(1rem, 3dvh, 2rem);
+  }
+
+  .rodape {
+    min-block-size: var(--altura-controle-recolhido);
+    align-items: center;
+    padding-block: 0.5rem;
   }
 
   .conteudo-principal {

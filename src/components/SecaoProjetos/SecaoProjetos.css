@@ -1,10 +1,12 @@
 /* ========== SEÇÃO DE PROJETOS ========== */
 
 .secao-projetos {
+  --gap-projetos: var(--space-3);
+
   width: 100%;
   display: grid;
-  gap: var(--space-3);
-  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+  gap: var(--gap-projetos);
+  padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
 .cabecalho-projetos {
@@ -21,7 +23,7 @@
 .lista-cards-projetos {
   width: min(760px, 100%);
   display: grid;
-  gap: var(--space-3);
+  gap: var(--gap-projetos);
   margin-inline: auto;
   list-style: none;
 }
@@ -31,10 +33,6 @@
 }
 
 @media (min-width: 681px) and (max-width: 1024px) {
-  .secao-projetos {
-    padding-top: clamp(3rem, 7vw, 5rem);
-  }
-
   .cabecalho-projetos,
   .lista-cards-projetos {
     width: min(920px, 100%);
@@ -47,21 +45,17 @@
 
 @media (max-width: 680px) {
   .secao-projetos {
-    padding-top: 0;
     padding-inline: 0.75rem;
   }
 }
 
 @media (min-width: 1025px) {
   .secao-projetos {
-    --respiro-interno-projetos: clamp(1rem, min(3vw, 4.5dvh), 2.5rem);
-    --largura-conteudo-projetos: 100%;
+    --gap-projetos: clamp(0.75rem, min(1.4vw, 2.4dvh), 1.5rem);
 
     grid-template-rows: auto minmax(min-content, 1fr);
     justify-items: center;
-    gap: 0.5rem;
-    padding: clamp(1.25rem, 2.8dvh, 2rem) var(--respiro-interno-projetos)
-      var(--respiro-interno-projetos);
+    padding: var(--respiro-interno-painel);
     border: 1px solid var(--borda-painel-desktop);
     border-radius: clamp(28px, 4vw, 52px);
     background: var(--fundo-painel-desktop);
@@ -71,7 +65,7 @@
   }
 
   .cabecalho-projetos {
-    width: var(--largura-conteudo-projetos);
+    width: 100%;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -82,10 +76,9 @@
   }
 
   .lista-cards-projetos {
-    width: var(--largura-conteudo-projetos);
+    width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(min-content, 1fr));
-    gap: clamp(0.65rem, min(1.1vw, 1.8dvh), 1.1rem);
     margin: 0;
     padding: 0;
   }
