@@ -14,9 +14,11 @@ function App() {
   return (
     <>
       <FundoLava />
-      {destinoControles
-        ? createPortal(<ControlesExperiencia />, destinoControles)
-        : <ControlesExperiencia />}
+      <div className="faixa-controles">
+        {destinoControles
+          ? createPortal(<ControlesExperiencia />, destinoControles)
+          : <ControlesExperiencia />}
+      </div>
 
       <main className="conteudo-principal">
         <PainelPerfil />

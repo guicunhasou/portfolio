@@ -1,7 +1,20 @@
 /* ========== LAYOUT COMPARTILHADO ========== */
 
+#root {
+  --altura-controle-recolhido: 60px;
+
+  block-size: 100dvh;
+  display: grid;
+  grid-template-rows: max-content minmax(min-content, 1fr) max-content;
+}
+
+.faixa-controles {
+  min-block-size: var(--altura-controle-recolhido);
+}
+
 .conteudo-principal {
   width: 100%;
+  min-width: 0;
 }
 
 .divisor-mobile {
@@ -54,25 +67,8 @@
 
 @media (min-width: 1025px) {
   :root {
-    --altura-blocos: min(720px, calc(100dvh - 5rem));
     --gap-paineis: clamp(0.9rem, 1.4vw, 1.5rem);
     --padding-horizontal-conteudo: clamp(1rem, 2vw, 2rem);
-  }
-
-  html,
-  body,
-  #root {
-    height: 100%;
-  }
-
-  body {
-    overflow: hidden;
-  }
-
-  #root {
-    min-height: 100dvh;
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
   }
 
   .conteudo-principal {
@@ -83,14 +79,15 @@
       ),
       100%
     );
-    min-height: 0;
     display: grid;
-    grid-template-columns: minmax(384px, 2fr) minmax(576px, 3fr);
-    align-items: center;
-    justify-content: center;
-    gap: var(--gap-paineis);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    /* A altura útil vem da faixa de controles e do rodapé no fluxo.
+       Se os painéis precisarem de mais espaço, a página pode rolar. */
+    grid-template-rows: minmax(min-content, min(100%, 45rem));
+    align-content: center;
+    column-gap: var(--gap-paineis);
     margin-inline: auto;
-    padding: 1rem var(--padding-horizontal-conteudo);
+    padding: clamp(0.75rem, 2dvh, 1.5rem) var(--padding-horizontal-conteudo);
   }
 
   @supports not (

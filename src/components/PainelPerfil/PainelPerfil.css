@@ -28,7 +28,7 @@
 }
 
 .apresentacao-perfil h1 {
-  white-space: nowrap;
+  text-wrap: balance;
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   line-height: 1.05;
   letter-spacing: 0.2px;
@@ -43,10 +43,6 @@
   font-size: clamp(0.92rem, 1.2vw, 1.08rem);
   line-height: 1.2;
   text-align: center;
-}
-
-.areas-atuacao > span {
-  white-space: nowrap;
 }
 
 .bio {
@@ -222,7 +218,7 @@
       "links";
     gap: clamp(2.25rem, 7vw, 3.25rem);
     justify-items: center;
-    padding-top: calc(60px + 1.5rem);
+    padding-top: 1.5rem;
     padding-bottom: 0;
   }
 
@@ -237,7 +233,6 @@
 
   .apresentacao-perfil h1 {
     max-width: 100%;
-    white-space: normal;
   }
 
   .foto-perfil {
@@ -269,7 +264,6 @@
   .painel-perfil {
     position: relative;
     min-height: 0;
-    height: var(--altura-blocos);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
@@ -279,9 +273,8 @@
       "links";
     align-content: space-evenly;
     justify-items: center;
-    gap: 0;
-    padding: 0 clamp(1.25rem, 2.8dvh, 3rem);
-    overflow: hidden;
+    gap: clamp(0.75rem, 2dvh, 1.5rem);
+    padding: clamp(1rem, 3dvh, 2rem) clamp(1.25rem, 2.8dvh, 3rem);
     border: 1px solid var(--borda-painel-desktop);
     border-radius: clamp(28px, 4vw, 52px);
     background: var(--fundo-painel-desktop);
@@ -321,7 +314,7 @@
 
   .foto-perfil {
     grid-area: foto;
-    width: min(16vw, 27dvh, 246px);
+    width: min(100%, 16vw, clamp(7.5rem, 25dvh, 15.375rem));
   }
 
   .foto-perfil img {
@@ -339,7 +332,7 @@
 
 @media (min-width: 1025px) and (max-height: 760px) {
   .foto-perfil {
-    width: min(14.5vw, 23dvh, 210px);
+    width: min(100%, 14.5vw, clamp(7.5rem, 22dvh, 13.125rem));
   }
 
   .apresentacao-perfil h1 {

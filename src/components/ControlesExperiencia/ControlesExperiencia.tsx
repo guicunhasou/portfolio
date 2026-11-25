@@ -95,7 +95,7 @@ function navegarGrupoOpcoes<T extends string>(
   const proximoValor = opcoes[proximoIndice];
   selecionar(proximoValor);
   window.requestAnimationFrame(() => {
-    referencias[proximoValor]?.focus({ preventScroll: true });
+    referencias[proximoValor]?.focus();
   });
 }
 
@@ -188,7 +188,7 @@ function ControlesExperiencia() {
           ? opcoesIdiomaRef.current[idioma]
           : opcoesAcessibilidadeRef.current.reduzirMovimento;
 
-    elementoInicial?.focus({ preventScroll: true });
+    elementoInicial?.focus();
   }, [controleAberto, idioma, temaPreferido]);
 
   useEffect(() => {
@@ -196,7 +196,7 @@ function ControlesExperiencia() {
       return;
     }
 
-    const fecharAoClicarFora = (evento: PointerEvent) => {
+    const fecharAoClicarFora = (evento: MouseEvent) => {
       const grupo = grupoRef.current;
 
       if (
@@ -221,11 +221,11 @@ function ControlesExperiencia() {
       });
     };
 
-    document.addEventListener('pointerdown', fecharAoClicarFora);
+    document.addEventListener('click', fecharAoClicarFora);
     document.addEventListener('keydown', fecharComEsc);
 
     return () => {
-      document.removeEventListener('pointerdown', fecharAoClicarFora);
+      document.removeEventListener('click', fecharAoClicarFora);
       document.removeEventListener('keydown', fecharComEsc);
     };
   }, [controleAberto]);
@@ -347,10 +347,14 @@ function ControlesExperiencia() {
                 aria-controls={idPainel}
                 aria-label={`${rotulo}${descricaoEstado}`}
                 tabIndex={aberto ? -1 : 0}
-                onFocus={() => {
+                onFocus={(evento) => {
                   limparTemporizadorAbertura();
 
-                  if (controleAberto && controleAberto !== tipo) {
+                  if (
+                    controleAberto &&
+                    controleAberto !== tipo &&
+                    evento.currentTarget.matches(':focus-visible')
+                  ) {
                     setControleAberto(null);
                   }
                 }}

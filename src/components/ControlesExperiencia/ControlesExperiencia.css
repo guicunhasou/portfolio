@@ -1,11 +1,13 @@
 /* ========== CONTROLES DE EXPERIÊNCIA ========== */
 
 .controles-experiencia {
-  position: fixed;
-  top: 0;
-  right: clamp(0.5rem, 1.8vw, 1.5rem);
+  --recuo-controles: clamp(0.5rem, 1.8vw, 1.5rem);
+
+  position: relative;
   z-index: 2147483647;
-  max-width: calc(100vw - 1rem);
+  width: max-content;
+  max-width: calc(100% - 2 * var(--recuo-controles));
+  margin-inline: auto var(--recuo-controles);
 }
 
 .lista-controles-experiencia {
@@ -20,7 +22,7 @@
   --largura-recolhida: 46px;
   --largura-hover: 7rem;
   --largura-aberta: 13rem;
-  --altura-recolhida: 60px;
+  --altura-recolhida: var(--altura-controle-recolhido);
 
   position: relative;
   width: var(--largura-recolhida);
@@ -103,8 +105,14 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   transform: translateY(0);
   transition-delay: 190ms, 0ms, 160ms;
+}
+
+.faixa-controles .controle-aberto .painel-controle {
+  max-block-size: 65dvh;
 }
 
 .cabecalho-controle {
@@ -384,11 +392,6 @@
 }
 
 @media (max-width: 680px) {
-  .controles-experiencia {
-    position: absolute;
-    right: 0.5rem;
-  }
-
   .controle-experiencia {
     --largura-aberta: clamp(9.25rem, calc(100vw - 7.25rem), 13rem);
   }
