@@ -49,6 +49,7 @@ type TraducaoInterface = {
     verDetalhes: string;
     fechar: string;
     colaboracaoCom: string;
+    colaboracaoCurta: string;
     conjuncaoColaboradores: string;
     linkedinDe: string;
     imagensProjeto: string;
@@ -130,6 +131,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       verDetalhes: 'Ver detalhes de',
       fechar: 'Fechar',
       colaboracaoCom: 'em colaboração com',
+      colaboracaoCurta: 'Colaboração:',
       conjuncaoColaboradores: ' e ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imagens do projeto',
@@ -209,6 +211,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       verDetalhes: 'View details for',
       fechar: 'Close',
       colaboracaoCom: 'in collaboration with',
+      colaboracaoCurta: 'Collaboration:',
       conjuncaoColaboradores: ' and ',
       linkedinDe: 'LinkedIn profile of',
       imagensProjeto: 'Images from project',
@@ -288,6 +291,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       verDetalhes: 'Ver detalles de',
       fechar: 'Cerrar',
       colaboracaoCom: 'en colaboración con',
+      colaboracaoCurta: 'Colaboración:',
       conjuncaoColaboradores: ' y ',
       linkedinDe: 'LinkedIn de',
       imagensProjeto: 'Imágenes del proyecto',
@@ -367,6 +371,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       verDetalhes: 'Voir les détails de',
       fechar: 'Fermer',
       colaboracaoCom: 'en collaboration avec',
+      colaboracaoCurta: 'Collaboration\u00a0:',
       conjuncaoColaboradores: ' et ',
       linkedinDe: 'Profil LinkedIn de',
       imagensProjeto: 'Images du projet',
@@ -446,6 +451,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       verDetalhes: 'Details anzeigen für',
       fechar: 'Schließen',
       colaboracaoCom: 'in Zusammenarbeit mit',
+      colaboracaoCurta: 'Mitwirkung:',
       conjuncaoColaboradores: ' und ',
       linkedinDe: 'LinkedIn-Profil von',
       imagensProjeto: 'Bilder des Projekts',

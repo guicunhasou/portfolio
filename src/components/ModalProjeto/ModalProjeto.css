@@ -170,6 +170,10 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
   content: none;
 }
 
+.colaboracao-curta-modal {
+  display: none;
+}
+
 .corpo-modal {
   --largura-natural-galeria: min(100%, var(--largura-texto-modal));
   --largura-minima-galeria: calc(0.9 * var(--largura-natural-galeria));
@@ -310,6 +314,55 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 
 .links-modal .link-projeto-em-breve {
   cursor: default;
+}
+
+@media (max-width: 42.5rem) {
+  .colaboracao-longa-modal {
+    display: none;
+  }
+
+  .colaboracao-curta-modal {
+    display: inline;
+  }
+
+  .rodape-modal,
+  .tags-modal,
+  .links-modal {
+    min-inline-size: 0;
+  }
+
+  .tags-modal,
+  .links-modal {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--borda-tag-modal) transparent;
+  }
+
+  .tags-modal li,
+  .links-modal li {
+    flex: 0 0 auto;
+    max-inline-size: none;
+    white-space: nowrap;
+  }
+
+  .links-modal .botao-completo {
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .tags-modal:focus-visible {
+    outline: 2px solid var(--texto-principal);
+    outline-offset: -2px;
+    border-radius: 0.58rem;
+  }
+
+  .links-modal .botao-acao:focus-visible {
+    outline-offset: -5px;
+    box-shadow: inset 0 0 0 3px var(--foco-escuro);
+  }
 }
 
 .galeria-modal {

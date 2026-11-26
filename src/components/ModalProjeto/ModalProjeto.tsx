@@ -18,6 +18,42 @@ type PropriedadesModalProjeto = {
   aoDefinirDestinoControles: (elemento: HTMLElement | null) => void;
 };
 
+function rolarFaixaDeTags(evento: KeyboardEvent<HTMLUListElement>) {
+  const faixa = evento.currentTarget;
+  switch (evento.key) {
+    case 'ArrowLeft':
+    case 'ArrowRight':
+      faixa.scrollBy({
+        left: faixa.clientWidth * (evento.key === 'ArrowLeft' ? -0.75 : 0.75),
+        behavior: 'instant',
+      });
+      break;
+    case 'Home':
+    case 'End':
+      faixa.scrollTo({
+        left: evento.key === 'Home' ? 0 : faixa.scrollWidth,
+        behavior: 'instant',
+      });
+      break;
+    default:
+      return;
+  }
+  evento.preventDefault();
+}
+
+function revelarLinkFocado(evento: FocusEvent<HTMLUListElement>) {
+  const faixa = evento.currentTarget;
+  if (faixa.scrollWidth <= faixa.clientWidth) {
+    return;
+  }
+
+  const link = evento.target.getBoundingClientRect();
+  const limites = faixa.getBoundingClientRect();
+  const ajuste = link.left < limites.left ? link.left - limites.left
+    : Math.max(0, link.right - limites.right);
+  faixa.scrollBy({ left: ajuste, behavior: 'instant' });
+}
+
 function ModalProjeto({
   projeto,
   aoFechar,
@@ -32,6 +68,7 @@ function ModalProjeto({
   const rodapeRef = useRef<HTMLElement>(null);
   const galeriaRef = useRef<HTMLDivElement>(null);
   const textoRef = useRef<HTMLDivElement>(null);
+  const tagsRef = useRef<HTMLUListElement>(null);
   const [indiceImagem, setIndiceImagem] = useState(0);
   const [rotacaoInterrompida, setRotacaoInterrompida] = useState(false);
   const animacoesPausadas = preferencias.pausarAnimacoes;
@@ -69,6 +106,7 @@ function ModalProjeto({
     const rodape = rodapeRef.current;
     const galeria = galeriaRef.current;
     const texto = textoRef.current;
+    const tags = tagsRef.current;
 
     if (!painel || !rolagem || !cabecalho || !galeria || !texto) {
       return;
@@ -78,6 +116,14 @@ function ModalProjeto({
     const ajustarRolagem = () => {
       if (!painel.clientHeight) {
         return;
+      }
+
+      if (tags) {
+        if (tags.scrollWidth > tags.clientWidth) {
+          tags.tabIndex = 0;
+        } else {
+          tags.removeAttribute('tabindex');
+        }
       }
 
       const alturaCabecalho = cabecalho.offsetHeight;
@@ -103,6 +149,9 @@ function ModalProjeto({
     observador.observe(cabecalho);
     observador.observe(galeria);
     observador.observe(texto);
+    if (tags) {
+      observador.observe(tags);
+    }
     if (rodape) {
       observador.observe(rodape);
     }
@@ -284,28 +333,46 @@ function ModalProjeto({
 
               {colaboradores.length > 0 && (
                 <p className="colaboradores-projeto-modal">
-                  {traducao.projetos.colaboracaoCom}{' '}
-                  {colaboradores.map((colaborador, indice) => (
-                    <span key={colaborador.nome}>
-                      {indice > 0 &&
-                        (indice === colaboradores.length - 1
-                          ? traducao.projetos.conjuncaoColaboradores
-                          : ', ')}
-                      {colaborador.url ? (
-                        <a
-                          className="link-discreto"
-                          href={colaborador.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${traducao.projetos.linkedinDe} ${colaborador.nome} (${traducao.geral.abreNovaAba})`}
-                        >
+                  <span className="colaboracao-longa-modal">{traducao.projetos.colaboracaoCom}</span>
+                  <span className="colaboracao-curta-modal">{traducao.projetos.colaboracaoCurta}</span>
+                  {' '}
+                  {colaboradores.map((colaborador, indice) => {
+                    const nome = (
+                      <>
+                        <span className="colaboracao-longa-modal" aria-hidden="true">
                           {colaborador.nome}
-                        </a>
-                      ) : (
-                        colaborador.nome
-                      )}
-                    </span>
-                  ))}
+                        </span>
+                        <span className="colaboracao-curta-modal" aria-hidden="true">
+                          {colaborador.nome.trim().split(/\s+/, 1)[0]}
+                        </span>
+                      </>
+                    );
+
+                    return (
+                      <span key={colaborador.nome}>
+                        {indice > 0 &&
+                          (indice === colaboradores.length - 1
+                            ? traducao.projetos.conjuncaoColaboradores
+                            : ', ')}
+                        {colaborador.url ? (
+                          <a
+                            className="link-discreto"
+                            href={colaborador.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${traducao.projetos.linkedinDe} ${colaborador.nome} (${traducao.geral.abreNovaAba})`}
+                          >
+                            {nome}
+                          </a>
+                        ) : (
+                          <>
+                            {nome}
+                            <span className="somente-leitor">{colaborador.nome}</span>
+                          </>
+                        )}
+                      </span>
+                    );
+                  })}
                   {'.'}
                 </p>
               )}
@@ -322,8 +389,10 @@ function ModalProjeto({
             {projeto.tags.length > 0 && (
               <ul
                 className="tags-modal"
+                ref={tagsRef}
                 role="list"
                 aria-label={traducao.projetos.tecnologiasCompetencias}
+                onKeyDown={rolarFaixaDeTags}
               >
                 {projeto.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
@@ -441,6 +510,7 @@ function ModalProjeto({
             <ul
               className="links-modal"
               aria-label={traducao.projetos.linksProjeto}
+              onFocusCapture={revelarLinkFocado}
             >
               {projeto.links.map((link) => (
                 <li key={`${projeto.id}-${link.tipo}-${link.rotulo}`}>
