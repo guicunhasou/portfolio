@@ -10,6 +10,7 @@ import { useAcessibilidade } from '../../acessibilidade/AcessibilidadeContexto';
 import { useIdioma } from '../../idiomas/IdiomaContexto';
 import type { Projeto } from '../../types/projeto';
 import IconeAcao from '../IconeAcao/IconeAcao';
+import { ajustarPreviaModal } from './previaModal';
 
 type PropriedadesModalProjeto = {
   projeto: Projeto;
@@ -29,6 +30,8 @@ function ModalProjeto({
   const rolagemRef = useRef<HTMLDivElement>(null);
   const cabecalhoRef = useRef<HTMLElement>(null);
   const rodapeRef = useRef<HTMLElement>(null);
+  const galeriaRef = useRef<HTMLDivElement>(null);
+  const textoRef = useRef<HTMLDivElement>(null);
   const [indiceImagem, setIndiceImagem] = useState(0);
   const [rotacaoInterrompida, setRotacaoInterrompida] = useState(false);
   const animacoesPausadas = preferencias.pausarAnimacoes;
@@ -64,11 +67,14 @@ function ModalProjeto({
     const rolagem = rolagemRef.current;
     const cabecalho = cabecalhoRef.current;
     const rodape = rodapeRef.current;
+    const galeria = galeriaRef.current;
+    const texto = textoRef.current;
 
-    if (!painel || !rolagem || !cabecalho) {
+    if (!painel || !rolagem || !cabecalho || !galeria || !texto) {
       return;
     }
 
+    let quadroPrevia = 0;
     const ajustarRolagem = () => {
       if (!painel.clientHeight) {
         return;
@@ -79,26 +85,42 @@ function ModalProjeto({
       const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
       // A área central precisa acomodar leitura e navegação por teclado.
-      painel.toggleAttribute('data-rolagem-integral', alturaLivre < 9 * rem);
+      const rolagemIntegral = alturaLivre < 9 * rem;
+      painel.toggleAttribute('data-rolagem-integral', rolagemIntegral);
       // Compensa a barra de rolagem quando ela ocupa espaço no layout.
       const barraPainel = painel.offsetWidth - painel.clientWidth - 2 * painel.clientLeft;
       const barraRolagem = rolagem.offsetWidth - rolagem.clientWidth;
       rolagem.style.setProperty('--altura-cabecalho-modal', `${alturaCabecalho}px`);
       rolagem.style.setProperty('--altura-central-modal', `${alturaLivre}px`);
       rolagem.style.setProperty('--largura-barra-modal', `${barraPainel + barraRolagem}px`);
+      cancelAnimationFrame(quadroPrevia);
+      quadroPrevia = requestAnimationFrame(() => ajustarPreviaModal(rolagem, texto, rolagemIntegral));
     };
 
     const observador = new ResizeObserver(ajustarRolagem);
     observador.observe(painel);
     observador.observe(rolagem);
     observador.observe(cabecalho);
+    observador.observe(galeria);
+    observador.observe(texto);
     if (rodape) {
       observador.observe(rodape);
     }
     ajustarRolagem();
 
-    return () => observador.disconnect();
-  }, [temLinks]);
+    let ativo = true;
+    void document.fonts.ready.then(() => {
+      if (ativo) {
+        ajustarRolagem();
+      }
+    });
+
+    return () => {
+      ativo = false;
+      cancelAnimationFrame(quadroPrevia);
+      observador.disconnect();
+    };
+  }, [projeto.id, temLinks, traducao]);
 
   useEffect(() => {
     setIndiceImagem(0);
@@ -320,6 +342,7 @@ function ModalProjeto({
           >
             <div
               className="galeria-modal"
+              ref={galeriaRef}
               role="group"
               aria-label={`${traducao.projetos.imagensProjeto} ${projeto.nome}`}
               onPointerEnter={() => setRotacaoInterrompida(true)}
@@ -402,7 +425,7 @@ function ModalProjeto({
               )}
             </div>
 
-            <div className="texto-modal">
+            <div className="texto-modal" ref={textoRef}>
               <p className="descricao-projeto-modal" id={idDescricao}>
                 {projeto.descricaoCompleta}
               </p>
