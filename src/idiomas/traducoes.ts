@@ -518,7 +518,7 @@ const traducoesProjetos: Record<
         'SportsX screens with sport details, sponsor area and contact form',
       ],
       tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Accessibility'],
-      rotulosLinks: ['Live page', 'Repository', 'Figma'],
+      rotulosLinks: ['Website', 'Repository', 'Figma'],
     },
     jardimental: {
       descricaoCurta:
@@ -562,7 +562,7 @@ const traducoesProjetos: Record<
         'Iara Games screens with game details, catalog and purchase page',
       ],
       tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
-      rotulosLinks: ['Live page', 'Repository', 'Figma'],
+      rotulosLinks: ['Website', 'Repository', 'Figma'],
     },
   },
   es: {
@@ -602,7 +602,7 @@ const traducoesProjetos: Record<
         'Pantallas de SportsX con detalles de modalidad, área para patrocinadores y formulario de contacto',
       ],
       tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Accesibilidad'],
-      rotulosLinks: ['Página publicada', 'Repositorio', 'Figma'],
+      rotulosLinks: ['Sitio web', 'Repositorio', 'Figma'],
     },
     jardimental: {
       descricaoCurta:
@@ -646,7 +646,7 @@ const traducoesProjetos: Record<
         'Pantallas de Iara Games con detalles de juegos, catálogo y página de compra',
       ],
       tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
-      rotulosLinks: ['Página publicada', 'Repositorio', 'Figma'],
+      rotulosLinks: ['Sitio web', 'Repositorio', 'Figma'],
     },
   },
   fr: {
@@ -686,7 +686,7 @@ const traducoesProjetos: Record<
         'Écrans de SportsX avec détails d’une discipline, espace sponsors et formulaire de contact',
       ],
       tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Accessibilité'],
-      rotulosLinks: ['Page en ligne', 'Dépôt', 'Figma'],
+      rotulosLinks: ['Site', 'Dépôt', 'Figma'],
     },
     jardimental: {
       descricaoCurta:
@@ -730,7 +730,7 @@ const traducoesProjetos: Record<
         'Écrans d’Iara Games avec détails des jeux, catalogue et page d’achat',
       ],
       tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
-      rotulosLinks: ['Page en ligne', 'Dépôt', 'Figma'],
+      rotulosLinks: ['Site', 'Dépôt', 'Figma'],
     },
   },
   de: {
@@ -770,7 +770,7 @@ const traducoesProjetos: Record<
         'SportsX-Bildschirme mit Sportdetails, Sponsorenbereich und Kontaktformular',
       ],
       tags: ['UX/UI', 'HTML', 'CSS', 'JavaScript', 'Barrierefreiheit'],
-      rotulosLinks: ['Veröffentlichte Seite', 'Repository', 'Figma'],
+      rotulosLinks: ['Website', 'Repository', 'Figma'],
     },
     jardimental: {
       descricaoCurta:
@@ -814,7 +814,7 @@ const traducoesProjetos: Record<
         'Iara-Games-Bildschirme mit Spieldetails, Katalog und Kaufseite',
       ],
       tags: ['Front-end', 'UX/UI', 'JavaScript', 'Bootstrap', 'Node-RED'],
-      rotulosLinks: ['Veröffentlichte Seite', 'Repository', 'Figma'],
+      rotulosLinks: ['Website', 'Repository', 'Figma'],
     },
   },
 };

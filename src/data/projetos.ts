@@ -113,7 +113,7 @@ export const projetos: Projeto[] = [
     tags: ["UX/UI", "HTML", "CSS", "JavaScript", "Acessibilidade"],
     links: [
       {
-        rotulo: "Página publicada",
+        rotulo: "Site",
         url: "https://fiap-webdesign.github.io/enterprise-challenge-sportsx/",
         tipo: "site",
       },
@@ -217,7 +217,7 @@ export const projetos: Projeto[] = [
     tags: ["Front-end", "UX/UI", "JavaScript", "Bootstrap", "Node-RED"],
     links: [
       {
-        rotulo: "Página publicada",
+        rotulo: "Site",
         url: "https://guicunhasou.github.io/iara-games/index.html",
         tipo: "site",
       },

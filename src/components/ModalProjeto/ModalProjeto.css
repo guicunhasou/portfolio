@@ -47,10 +47,11 @@ body.modal-aberto {
 }
 
 .destino-controles-modal .controles-experiencia {
-  max-block-size: 50dvh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
   pointer-events: auto;
+}
+
+.destino-controles-modal .controle-aberto .painel-controle {
+  max-block-size: 50dvh;
 }
 
 .destino-controles-modal .controle-experiencia.controle-aberto {
@@ -113,13 +114,18 @@ body.modal-aberto {
 }
 
 .cabecalho-modal {
+  --fonte-titulo-modal: clamp(1.5rem, 3.4vw, 2.45rem);
+  --recuo-fechar-modal: max(
+    calc(var(--recuo-barras-modal) + (1.1 * var(--fonte-titulo-modal) - var(--alvo-modal)) / 2),
+    var(--largura-barra-modal, 0px)
+  );
+
   position: sticky;
   inset-block-start: 0;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: var(--espaco-itens-modal) var(--espaco-modal);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espaco-itens-modal);
   padding: var(--recuo-barras-modal);
   padding-inline-end: max(0px, calc(var(--recuo-barras-modal) - var(--largura-barra-modal, 0px)));
   border-block-end: 1px solid var(--borda-suave);
@@ -146,7 +152,8 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 }
 
 .cabecalho-modal h2 {
-  font-size: clamp(1.5rem, 3.4vw, 2.45rem);
+  max-inline-size: calc(100% - var(--alvo-modal) - var(--espaco-itens-modal));
+  font-size: var(--fonte-titulo-modal);
   line-height: 1.1;
   overflow-wrap: anywhere;
 }
@@ -203,10 +210,6 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
   align-items: center;
   gap: var(--espaco-itens-modal);
   list-style: none;
-}
-
-.tags-modal {
-  grid-column: 1 / -1;
 }
 
 .tags-modal li,
@@ -355,6 +358,27 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
   padding: 0;
 }
 
+.modal-projeto .botao-fechar {
+  position: absolute;
+  inset-block-start: var(--recuo-fechar-modal);
+  inset-inline-end: calc(var(--recuo-fechar-modal) - var(--largura-barra-modal, 0px));
+  border-color: transparent;
+  border-radius: 0.55rem;
+  background: transparent;
+}
+
+.botao-fechar .icone-acao {
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
+  flex-basis: 1.35rem;
+}
+
+.modal-projeto .botao-fechar:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -3px;
+  box-shadow: none;
+}
+
 .modal-projeto .botao-galeria {
   position: absolute;
   inset-block-start: 50%;
@@ -471,7 +495,7 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
 }
 
 .conteudo-modal[data-rolagem-integral] .cabecalho-modal {
-  position: static;
+  position: relative;
   background-color: var(--fundo-modal-solido);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
