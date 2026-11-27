@@ -106,7 +106,6 @@ body.modal-aberto {
   min-block-size: 0;
   min-inline-size: 0;
   overflow: hidden auto;
-  scrollbar-width: thin;
   overscroll-behavior: contain;
   scroll-padding-block:
     calc(var(--altura-cabecalho-modal, 0px) + var(--espaco-modal))
@@ -159,15 +158,11 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
 }
 
 .colaboradores-projeto-modal {
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
   font-size: clamp(0.8rem, 1.05vw, 0.93rem);
   font-weight: 500;
   line-height: 1.45;
   overflow-wrap: anywhere;
-}
-
-.colaboradores-projeto-modal a::after {
-  content: none;
 }
 
 .colaboracao-curta-modal {
@@ -444,7 +439,8 @@ html[data-contraste-reforcado="true"] .cabecalho-modal {
   inset-block-start: var(--recuo-fechar-modal);
   inset-inline-end: calc(var(--recuo-fechar-modal) - var(--largura-barra-modal, 0px));
   border-color: transparent;
-  border-radius: 0.55rem;
+  block-size: var(--alvo-modal);
+  border-radius: 50%;
   background: transparent;
 }
 
@@ -565,9 +561,31 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
 .conteudo-modal[data-rolagem-integral] {
   display: block;
   overflow: hidden auto;
-  scrollbar-width: thin;
   overscroll-behavior: contain;
   scroll-padding-block: var(--espaco-modal);
+}
+
+:is(.rolagem-modal, .conteudo-modal[data-rolagem-integral]) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--indicador-rolagem) transparent;
+}
+
+@supports selector(::-webkit-scrollbar) {
+  :is(.rolagem-modal, .conteudo-modal[data-rolagem-integral]) {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  :is(.rolagem-modal, .conteudo-modal[data-rolagem-integral])::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  :is(.rolagem-modal, .conteudo-modal[data-rolagem-integral])::-webkit-scrollbar-thumb {
+    background: var(--indicador-rolagem);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    background-clip: padding-box;
+  }
 }
 
 .conteudo-modal[data-rolagem-integral] .rolagem-modal {

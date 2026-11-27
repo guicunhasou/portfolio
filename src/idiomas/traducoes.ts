@@ -102,7 +102,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       escolherAcessibilidade: 'Preferências adicionais de acessibilidade',
       preferenciasAcessibilidade: {
         reduzirMovimento: 'Reduzir movimento',
-        pausarAnimacoes: 'Pausar animações automáticas',
+        pausarAnimacoes: 'Pausar animações',
         contrasteReforcado: 'Reforçar contraste',
         destacarLinks: 'Destacar links',
       },
@@ -182,7 +182,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       escolherAcessibilidade: 'Additional accessibility preferences',
       preferenciasAcessibilidade: {
         reduzirMovimento: 'Reduce motion',
-        pausarAnimacoes: 'Pause automatic animations',
+        pausarAnimacoes: 'Pause animations',
         contrasteReforcado: 'Increase contrast',
         destacarLinks: 'Highlight links',
       },
@@ -262,7 +262,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       escolherAcessibilidade: 'Preferencias adicionales de accesibilidad',
       preferenciasAcessibilidade: {
         reduzirMovimento: 'Reducir movimiento',
-        pausarAnimacoes: 'Pausar animaciones automáticas',
+        pausarAnimacoes: 'Pausar animaciones',
         contrasteReforcado: 'Reforzar contraste',
         destacarLinks: 'Destacar enlaces',
       },
@@ -422,7 +422,7 @@ export const traducoes: Record<Idioma, TraducaoInterface> = {
       escolherAcessibilidade: 'Zusätzliche Einstellungen zur Barrierefreiheit',
       preferenciasAcessibilidade: {
         reduzirMovimento: 'Bewegung reduzieren',
-        pausarAnimacoes: 'Automatische Animationen pausieren',
+        pausarAnimacoes: 'Animationen pausieren',
         contrasteReforcado: 'Kontrast verstärken',
         destacarLinks: 'Links hervorheben',
       },

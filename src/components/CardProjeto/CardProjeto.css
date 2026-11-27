@@ -47,7 +47,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 320ms ease;
 }
 
 .imagem-projeto-indisponivel {
@@ -92,22 +91,9 @@
 }
 
 .textos-projeto h3 {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
   font-size: clamp(1.125rem, 4vw, 1.5rem);
   font-weight: 700;
   color: var(--texto-principal);
-}
-
-.textos-projeto h3::after {
-  content: '';
-  width: 0.37em;
-  height: 0.37em;
-  flex: none;
-  border: solid currentColor;
-  border-width: 0 2px 2px 0;
-  transform: translateY(-0.12em) rotate(-45deg);
 }
 
 .textos-projeto p {
@@ -137,10 +123,6 @@
     border-color: var(--borda-card-ativa);
     box-shadow: var(--sombra-card-interacao);
     transform: translateY(-2px);
-  }
-
-  .card-projeto:hover .imagem-projeto img {
-    transform: scale(1.015);
   }
 }
 

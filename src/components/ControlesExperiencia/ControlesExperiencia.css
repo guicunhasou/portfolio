@@ -74,19 +74,11 @@
   transition-delay: 100ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms;
 }
 
-.controle-idioma.controle-aberto {
-  max-height: 19rem;
-}
-
-.controle-acessibilidade.controle-aberto {
-  max-height: 24rem;
-}
-
 .painel-controle {
   grid-row: 1;
   min-height: 0;
   display: grid;
-  align-content: start;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.8rem;
   overflow: hidden;
@@ -105,8 +97,6 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  overflow-y: auto;
-  overscroll-behavior: contain;
   transform: translateY(0);
   transition-delay: 190ms, 0ms, 160ms;
 }
@@ -258,15 +248,36 @@
 .opcoes-tema,
 .opcoes-idioma,
 .opcoes-acessibilidade {
-  display: grid;
-  gap: 0.35rem;
+  --altura-opcao: 2.75rem;
+  --espacamento-opcoes: 0.35rem;
+  --recuo-foco-opcoes: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacamento-opcoes);
+  min-block-size: 0;
+  max-block-size: calc(
+    3 * var(--altura-opcao) + 2 * var(--espacamento-opcoes) + 2 * var(--recuo-foco-opcoes)
+  );
+  padding: var(--recuo-foco-opcoes);
+  margin-inline: calc(-1 * var(--recuo-foco-opcoes));
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--recuo-foco-opcoes);
+  scrollbar-width: thin;
+  scrollbar-color: var(--indicador-rolagem) transparent;
+}
+
+.opcoes-acessibilidade {
+  --altura-opcao: 3rem;
 }
 
 .opcao-tema,
 .opcao-idioma,
 .opcao-acessibilidade {
   width: 100%;
-  min-height: 34px;
+  min-block-size: var(--altura-opcao);
+  flex: 0 0 var(--altura-opcao);
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -310,8 +321,12 @@
 }
 
 .opcao-acessibilidade {
-  min-height: 44px;
   line-height: 1.25;
+}
+
+.opcao-acessibilidade > span:last-child {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
 }
 
 .indicador-preferencia {
