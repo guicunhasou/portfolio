@@ -1,6 +1,8 @@
 /* ========== CARDS DE PROJETO ========== */
 
 .card-projeto {
+  --escala-zoom-imagem: 1.04;
+
   position: relative;
   width: 100%;
   display: grid;

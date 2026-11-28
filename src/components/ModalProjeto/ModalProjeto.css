@@ -128,18 +128,23 @@ body.modal-aberto {
   padding: var(--recuo-barras-modal);
   padding-inline-end: max(0px, calc(var(--recuo-barras-modal) - var(--largura-barra-modal, 0px)));
   border-block-end: 1px solid var(--borda-suave);
+}
+
+/* Em repouso, o painel inteiro compartilha o vidro de .conteudo-modal. */
+.rolagem-modal[data-conteudo-sob-cabecalho] .cabecalho-modal {
   background-color: var(--fundo-modal-solido);
 }
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  .cabecalho-modal {
-    background-color: var(--fundo-cabecalho-modal);
+  .rolagem-modal[data-conteudo-sob-cabecalho] .cabecalho-modal {
+    background-color: var(--fundo-cabecalho-em-rolagem);
     -webkit-backdrop-filter: blur(14px) saturate(115%);
     backdrop-filter: blur(14px) saturate(115%);
   }
 }
 
-html[data-contraste-reforcado="true"] .cabecalho-modal {
+html[data-contraste-reforcado="true"]
+.rolagem-modal[data-conteudo-sob-cabecalho] .cabecalho-modal {
   background-color: var(--fundo-modal-solido);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
@@ -580,6 +585,10 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
     width: 9px;
   }
 
+  .rolagem-modal::-webkit-scrollbar-track:vertical {
+    margin-top: var(--altura-cabecalho-modal, 0px);
+  }
+
   :is(.rolagem-modal, .conteudo-modal[data-rolagem-integral])::-webkit-scrollbar-thumb {
     background: var(--indicador-rolagem);
     border: 1px solid transparent;
@@ -596,9 +605,9 @@ html[data-contraste-reforcado="true"] .conteudo-modal {
   --largura-adaptativa-galeria: var(--largura-natural-galeria);
 }
 
-.conteudo-modal[data-rolagem-integral] .cabecalho-modal {
+.conteudo-modal[data-rolagem-integral] .rolagem-modal .cabecalho-modal {
   position: relative;
-  background-color: var(--fundo-modal-solido);
+  background-color: transparent;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }

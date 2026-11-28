@@ -326,7 +326,13 @@ function ModalProjeto({
       onKeyDown={manterFocoNoModal}
     >
       <div className="conteudo-modal" ref={painelRef}>
-        <div className="rolagem-modal" ref={rolagemRef}>
+        <div
+          className="rolagem-modal"
+          ref={rolagemRef}
+          onScroll={({ currentTarget }) => {
+            currentTarget.toggleAttribute('data-conteudo-sob-cabecalho', currentTarget.scrollTop > 0);
+          }}
+        >
           <header className="cabecalho-modal" ref={cabecalhoRef}>
             <div className="identificacao-modal">
               <h2 id={idTitulo}>{projeto.nome}</h2>
